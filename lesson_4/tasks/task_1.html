@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 1. Вивести з використанням циклів маркований список з випадковими числами (1-100). Кількість випадкових
+      чисел вводиться користувачем.
+   </h1>
+
+   <script>
+
+      //Вводимо необхідні дані
+
+      const minRandomNumber = 1,
+         maxRandomNumber = 100
+
+      let userRandomNumber = parseInt(prompt('Введіть кількість випадкових чисел яку би ви хотіли відобризити')),
+         randomNumber
+
+      // Знаходимо результат
+
+      for (let i = 1; i <= userRandomNumber; i++) {
+
+         randomNumber = Math.floor(Math.random() * (maxRandomNumber - minRandomNumber + 1)) + minRandomNumber
+         message =
+            `
+               <li>${randomNumber}</li>
+            `
+         //Виводимо результат
+         // Вирішив виводити таким чином, а не одразу через document.write(message) для того щоб у майбутньому я міг цю змінну вставляти в необхідні місця, хоча в цьому випадку мабуть і не треба
+
+         document.write(message)
+      }
+
+   </script>
+
+</body>
+
+</html>

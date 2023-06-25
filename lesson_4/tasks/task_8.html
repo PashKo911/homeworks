@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>
+      Задача 8. Користувач загадує число. За 3 спроби комп’ютер намагається вгадати число користувача (використати confirm).
+	</h1>
+
+	<script>
+		//Вводимо необхідні дані
+
+      let randomNumber,
+         userChoiсe,
+         message = 'Компютер не вгадав з трьох спроб'
+
+      const minRandomNumber = 1,
+            maxRandomNumber = 50,
+            attemptNumber = 3
+            
+      confirm('Загадайте число від 1 до 50')
+
+		// Знаходимо результат
+
+      for (let i = 1; i <= attemptNumber; i++) {
+         randomNumber = Math.floor(Math.random() * (maxRandomNumber - minRandomNumber + 1)) + minRandomNumber
+         console.log(randomNumber);
+         userChoiсe =  confirm(`Спроба компютера № ${i} Ваше число ${randomNumber}?`)
+
+            if (userChoiсe) {
+                  message = `Компютер також має інтуіцію, він вгадав, ваше число ${randomNumber}`
+                  break 
+               }
+                else continue
+      }
+
+		//Виводимо результат
+
+		document.write(message)
+
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 5. Створити окремі функції, які переводять:
+      Сантиметри у дюйми;<br>
+      Кілограми у фунти;<br>
+      Кілометри у милі<br>
+   </h1>
+
+   <script>
+      //Вводимо необхідні дані
+
+      let userCentimeterNumber = parseFloat(prompt('Введіть число, кількість сантиметрів для переводу в дюйми','2.54'))
+      let userKilogramNumber = parseFloat(prompt('Введіть число, кількість кілограмів для переводу в фунти','0.45359237449'))
+      let userKilometerNumber = parseFloat(prompt('Введіть число, кількість кілометрів для переводу в милі','1.60934399'))
+
+      const CENTIMETER_TO_INCH = 0.3937008,
+            KILOGRAM_TO_POUND = 0.45359237,
+            KILOMETER_TO_MILE = 0.62137
+
+      // Описуємо функції
+
+      let getInch = length => length * CENTIMETER_TO_INCH
+      let getPound = weight => weight / KILOGRAM_TO_POUND
+      let getMile =  length => length * KILOMETER_TO_MILE
+
+      // Виводимо результат
+
+      document.write(`Введене значення ${userCentimeterNumber} дорівнює ${getInch(userCentimeterNumber).toFixed(1)} дюймам <br>`)
+      document.write(`Введене значення ${userKilogramNumber} дорівнює ${getPound(userKilogramNumber).toFixed(1)} фунтам <br>`)
+      document.write(`Введене значення ${userKilometerNumber} дорівнює ${getMile(userKilometerNumber).toFixed(1)} милям <br>`)
+   </script>
+
+</body>
+
+</html>

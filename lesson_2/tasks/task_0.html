@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 0. Обчислити значення виразів
+   </h1>
+   <p>
+      1: S1= a+12+b <br>
+      2: S2= Math.sqrt((a+b)/(2*a)) <br>
+      3: S3= Math.cbrt((a+b)*c) <br>
+      4: S4= Math.sin(a/-(-b)) <br>
+   </p>
+   <script>
+
+      // 1: S1= a+12+b
+      // 2: S2= Math.sqrt((a+b)/(2*a))
+      // 3: S3= Math.cbrt((a+b)*c)
+      // 4: S4= Math.sin(a/-(-b))
+
+      //Вводимо необхідні дані
+
+      const someNumber = 12
+      let a = parseFloat(prompt('Введіть значення a'))
+      let b = parseFloat(prompt('Введіть значення b'))
+      let c = parseFloat(prompt('Введіть значення c'))
+
+      // Знаходимо результат
+
+      let s1 = a + someNumber + b
+      let s2 = Math.sqrt((a + b) / (2 * a))
+      let s3 = Math.cbrt((a + b) * c)
+      let s4 = Math.sin(a / (-b))
+      // Виводимо результат
+
+      document.write(
+         `Значення S1 = ${s1.toFixed(2)} <br>
+			 Значення S2 = ${s2.toFixed(2)} <br>
+			 Значення S3 = ${s3.toFixed(2)} <br>
+			 Значення S4 = ${s4.toFixed(2)} <br>`
+      )
+
+
+
+
+   </script>
+
+</body>
+
+</html>

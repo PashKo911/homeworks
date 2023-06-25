@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 7. Знайти суму випадкового номера місяця (від 1 до 12) та випадкового номера дня (від 0 до 6).
+   </h1>
+
+   <script>
+
+      //Вводимо необхідні дані
+
+      let NumberMonthMin = parseInt(prompt('Введіть мінімальне значення місяця', '1'))
+      let NumberMonthMax = parseInt(prompt('Введіть максимальне значення місяця', '12'))
+      let NumberDayMin = parseInt(prompt('Введіть мінімальне значення дня', '0'))
+      let NumberDayMax = parseInt(prompt('Введіть максимальне значення дня', '6'))
+
+      // Знаходимо результат
+
+      let randomNumberMonth = Math.floor(Math.random() * (NumberMonthMax - NumberMonthMin) + NumberMonthMin)
+      let randomNumberDay = Math.floor(Math.random() * (NumberDayMax - NumberDayMin) + NumberDayMin)
+      let randomSum = randomNumberMonth + randomNumberDay
+      // Виводимо результат
+
+      document.write(`Сума випадкового номера місяця та дня = ${randomSum}`)
+   </script>
+
+</body>
+
+</html>

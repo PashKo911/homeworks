@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      З клавіатури вводиться вік людини. Вивести на екран ким він є (дитиною у садочку, школярем, студентом,
+      працівником, пенсіонером).
+   </h1>
+
+   <script>
+
+
+      // Припустимо що дитина у садочку відповідає проміжку від 0 до 6, правильніше буде від 1-6 але існують випадки коли дитину віддають до року тому це 0 років, спосіб виключити 0 у 7й задачі
+      // Школяр 6-16
+      // Студент 16-21 
+      // Дорослий 21-60
+      // Пенсіонер >60 
+
+      //Вводимо необхідні дані
+
+      let userAge = parseInt(prompt('Введіть ваш вік')),
+         message
+
+      const child = 5,
+         schoolChild = 16,
+         student = 21,
+         adoult = 60
+
+
+      // Знаходимо результат
+
+      let whoYouAre = (userAge < child) ? 'Ви ще в дитячому садочку' :
+         (userAge <= schoolChild) ? 'Привіт школяр' :
+            (userAge <= student) ? 'Ти студент, чудовий час, не гай його' :
+               (userAge <= adoult) ? 'Нажаль ви вже дорослий' :
+                  'Мої вітання ви дожили до пенсії'
+
+      //Виводимо результат
+
+      document.write(whoYouAre)
+
+   </script>
+
+</body>
+
+</html>

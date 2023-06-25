@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 6. З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару
+      окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.
+   </h1>
+
+   <script>
+
+      //Вводимо необхідні дані
+
+      let firstProductNumber = parseFloat(prompt('Введіть кількість першого товару'))
+      let firstProductPrice = parseFloat(prompt('Введіть вартість першого товару'))
+      let secondProductNumber = parseFloat(prompt('Введіть кількість другого товару'))
+      let secondProductPrice = parseFloat(prompt('Введіть вартість другого товару'))
+      let thirdProductNumber = parseFloat(prompt('Введіть кількість третього товару'))
+      let thirdProductPrice = parseFloat(prompt('Введіть вартість третього товару'))
+
+      // Знаходимо результат
+
+      let firstSum = firstProductNumber * firstProductPrice
+      let secondSum = secondProductNumber * secondProductPrice
+      let thirdSum = thirdProductNumber * thirdProductPrice
+      let totalPrice = firstSum + secondSum + thirdSum
+
+      // Виводимо результат
+
+      document.write(`
+      <table border ="2px"> 
+         <th colspan="3">
+               ЧЕК
+            </th> 
+         <tr>
+            <th>Найменування товару</th>
+            <th>Кількість</th>
+            <th>Сумма</th>
+         </tr>
+         <tr>
+            <th>
+               Товар №1
+            </th>
+            <td>
+               Кількість x ${firstProductNumber.toFixed(2)}
+            </td>
+            <td>
+               Cума ${firstProductPrice.toFixed(2)}
+            </td>
+         </tr>
+         <tr>
+            <th>
+               Товар №2
+            </th>
+            <td>
+               Кількість x ${secondProductNumber.toFixed(2)}
+            </td>
+            <td>
+               Cума ${secondProductPrice.toFixed(2)}
+            </td>
+         </tr>
+         <tr>
+            <th>
+               Товар №3
+            </th>
+            <td>
+               Кількість x ${thirdProductNumber.toFixed(2)}
+            </td>
+            <td>
+               Cума ${thirdProductPrice.toFixed(2)}
+            </td>
+         </tr>
+         <tr>
+            <th colspan="3">
+               Загальна сума = ${totalPrice.toFixed(2)} грн.
+            </th> 
+         </tr>
+      </table>
+      `)
+   </script>
+
+</body>
+
+</html>

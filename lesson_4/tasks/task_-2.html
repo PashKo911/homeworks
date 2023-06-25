@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача -2. Поступово генерувати 100 випадкових чисел від 1 до 1000. Підрахувати яких чисел більше: парних чи
+      непарних.
+   </h1>
+
+   <script>
+
+      //Вводимо необхідні дані
+
+      const minRandomNumber = 1,
+            maxRandomNumber = 1000
+
+      let message,
+         pairNumbers = 0,
+         unPairNumbers = 0
+
+      // Знаходимо результат
+
+      for (let i = 0; i < 100; i++) {
+
+         let randomNumber = Math.floor(Math.random() * (maxRandomNumber - minRandomNumber + 1)) + minRandomNumber
+
+         if (randomNumber % 2 === 0)
+            pairNumbers++
+         else unPairNumbers++
+      }
+
+      if (pairNumbers > unPairNumbers) 
+         message = ` Даний алгоритм згенерував парних чисел - ${pairNumbers}, та не парних чисел - ${unPairNumbers}, як ми бачимо парних більше`
+
+      else if (pairNumbers < unPairNumbers) 
+         message = `Даний алгоритм згенерував парних чисел - ${pairNumbers}, та не парних чисел - ${unPairNumbers}, як ми бачимо не парних більше`
+
+         else 
+         message = `Даний алгоритм згенерував парних чисел - ${pairNumbers}, та не парних чисел - ${unPairNumbers}, як ми бачимо їх порівну`
+
+      //Виводимо результат
+
+      document.write(message)
+
+   </script>
+
+</body>
+
+</html>

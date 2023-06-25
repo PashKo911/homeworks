@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 12. Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір у кожній позиції вибирається як
+      одне з чотирьох зображень. Вивести ці зображення і повідомити виграш користувача (три перших зображення 100 грн,
+      три других – 200, три третіх – 500, три четвертих зображення – 1000грн). Використати цикли і switch (для вибору
+      зображення за номером).
+   </h1>
+   <!-- <div class="img_box">
+      <img src="../img/image_1.png" alt="">
+      <img src="../img/image_2.png" alt="">
+      <img src="../img/image_3.png" alt="">
+      <img src="../img/image_4.png" alt="">
+   </div>-->
+   <a href="https://pasha-kovalenko.github.io/homework/lesson-4/tasks/task_12.html" class="button">Cпробувати ще за
+      100$?</a>
+   <script>
+
+      //Вводимо необхідні дані
+
+      const minRandomNumber = 1,
+         maxRandomNumber = 4,
+         image_1 = 1,
+         image_2 = 2, // Значення для розрахунку необхідної суми, щоб визначити розмір виграшу
+         image_3 = 3,
+         image_4 = 4,
+         numberPosition = 3 // кількість позицій для чотирьох зображень
+
+      let randomNumber,
+         randomImage,
+         victorySum = 0,
+         message
+
+      document.write(`<div class="img_box">`)
+      // Знаходимо результат
+      for (let i = 0; i < numberPosition; i++) {
+
+         randomNumber = Math.floor(Math.random() * (maxRandomNumber - minRandomNumber + 1)) + minRandomNumber
+         console.log(`random${randomNumber}`)
+         victorySum += Math.pow(10, randomNumber - 1)
+         console.log(victorySum);
+
+         if (victorySum === (Math.pow(10, image_1 - 1)) * numberPosition)
+            message = 'Мої вітання ти виграв 100гр'
+
+         else if (victorySum === (Math.pow(10, image_2 - 1)) * numberPosition)
+            message = 'Мої вітання ти виграв 200гр'
+
+         else if (victorySum === (Math.pow(10, image_3 - 1)) * numberPosition)
+            message = 'Мої вітання ти виграв 500гр'
+
+         else if (victorySum === (Math.pow(10, image_4 - 1)) * numberPosition) // Цей блок думав через свіч зробити, що скажете як би було краще
+            message = 'Мої вітання ти виграв 1000гр'
+
+         else message = 'Нажаль ви програли, спробуйте ще'
+
+         switch (randomNumber) {
+            case 1: randomImage = `<img src="../img/image_1.png" alt="">`
+               break;
+            case 2: randomImage = `<img src="../img/image_2.png" alt="">`
+               break;
+            case 3: randomImage = `<img src="../img/image_3.png" alt="">`
+               break;
+            case 4: randomImage = `<img src="../img/image_4.png" alt="">`
+               break;
+         }
+         document.write(randomImage)
+      }
+
+      document.write(`</div>`)
+
+      //Виводимо результат
+
+      document.write(`<h1>${message}</h1>`)
+
+
+
+
+
+
+
+
+
+
+
+
+
+   </script>
+
+</body>
+
+</html>

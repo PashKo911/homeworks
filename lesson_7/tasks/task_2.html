@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 2. Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.
+   </h1>
+   <script>
+      // Описуємо функцію
+      let showValueOfCurrentDay = currentUserDay => {
+         let result
+
+         if (currentUserDay <= 5) 
+            result = 'Ведений день робочий'
+          else result = 'Введений день вихідний'
+            
+         return result
+      } 
+
+      //Вводимо необхідні дані
+      const currentUserDay = parseInt(prompt('Введіть номер поточного дня'))
+
+      //Виводимо результат
+      document.write(showValueOfCurrentDay(currentUserDay))
+   </script>
+</body>
+</html>

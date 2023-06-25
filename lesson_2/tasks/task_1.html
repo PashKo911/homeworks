@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css" />
+   <title>Document</title>
+</head>
+
+
+<body>
+   <h1>
+      Задача 1. Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у формі таблиці
+   </h1>
+   <script>
+      //Вводимо необхідні дані
+
+      let realNumberFirst = parseFloat(prompt('Введіть  перше дійсне число'))
+      let realNumberSecond = parseFloat(prompt('Введіть  друге дійсне число'))
+
+      // Знаходимо результат
+
+      let sum = realNumberFirst + realNumberSecond
+      let multi = realNumberFirst * realNumberSecond
+      let divide = realNumberFirst / realNumberSecond
+
+      // Виводимо результат
+
+      document.write(
+         `<table border="2px">
+            <tr>
+               <th> Шуканий результат </th>
+               <th> Отримане значення </th>
+            </tr>
+            <tr>
+               <th> Сума </th>
+               <td> ${sum.toFixed(2)}</td>
+            </tr>
+            <tr>
+               <th> Добуток </th>
+               <td> ${multi.toFixed(2)}</td>
+            </tr>
+            <tr>
+               <th> Частка </th>
+               <td> ${divide.toFixed(2)}</td>
+            </tr>
+            `
+      )
+   </script>
+</body>
+
+</html>

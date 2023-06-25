@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 4. Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних,
+      кількість додатних, кількість більших за 100.
+   </h1>
+
+   <script>
+      // Описуємо функції 
+
+      let getQuantityEvenNumbers = (number_1, number_2, number_3) => {
+         let evenNumbersCounter = 0
+
+         if (number_1 % 2 === 0)
+            ++evenNumbersCounter
+         if (number_2 % 2 === 0)  //я так розумію наступна тема роботи з масивами буде повязана з такими ситуаціями, перечисляти кожен параметр, повинен бути розумніший спосіб
+            ++evenNumbersCounter
+         if (number_3 % 2 === 0)
+            ++evenNumbersCounter
+         if (evenNumbersCounter === 0)
+            evenNumbersCounter = 'Парних чисел не знайдено'
+         return evenNumbersCounter
+      }
+
+      function getQuantityPositiveNumbers(number_1, number_2, number_3) {
+         let positiveNumbersCounter = 0
+
+         if (number_1 > 0)
+            ++positiveNumbersCounter
+         if (number_2 > 0)
+            ++positiveNumbersCounter
+         if (number_3 > 0)
+            ++positiveNumbersCounter
+         if (positiveNumbersCounter === 0)
+            positiveNumbersCounter = 'Додатніх чисел не знайдено'
+         return positiveNumbersCounter
+      }
+
+      let getQuantityMoreThenOneHundredNumbers = function (number_1, number_2, number_3) {
+         let MoreThenOneHundredNumbersCounter = 0
+
+         if (number_1 > 100)
+            ++MoreThenOneHundredNumbersCounter
+         if (number_2 > 100)
+            ++MoreThenOneHundredNumbersCounter
+         if (number_3 > 100)
+            ++MoreThenOneHundredNumbersCounter
+         if (MoreThenOneHundredNumbersCounter === 0)
+            MoreThenOneHundredNumbersCounter = 'Чисел більших за 100 не знайдено'
+         return MoreThenOneHundredNumbersCounter //На рахунок імен, чи адекватні такі?))
+      }
+      // Виводимо результат
+
+      document.write(`Кількість парних чисел = ${getQuantityEvenNumbers (30, 22, 36)}<br>`)
+      document.write(`Кількість додатніх чисел = ${getQuantityPositiveNumbers (30, 22, -36)}<br>`)
+      document.write(`Кількість чисел більших за 100 = ${getQuantityMoreThenOneHundredNumbers (101, 22, -36)}<br>`)
+
+   </script>
+
+</body>
+
+</html>

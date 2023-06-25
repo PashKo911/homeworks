@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      З клавіатури вводиться номер дня тижня. Вивести на екран назву дня.
+   </h1>
+
+   <script>
+      //Так як тиждень на мою думку починається з понеділка)) він і буде першим днем
+
+      //Вводимо необхідні дані
+
+      let currentWeekDay = parseInt(prompt('Введіть номер дня тижня')),
+         result
+
+      // Знаходимо результат
+
+      switch (currentWeekDay) {
+
+         case 1: result = 'Введений номер дня відповідає понеділку'
+            break;
+         case 2: result = 'Введений номер дня відповідає вівторку'
+            break;
+         case 3: result = 'Введений номер дня відповідає середі'
+            break;
+         case 4: result = 'Введений номер дня відповідає четвергу'
+            break;
+         case 5: result = 'Введений номер дня відповідає пятниці'
+            break;
+         case 6: result = 'Введений номер дня відповідає суботі'
+            break;
+         case 7: result = 'Введений номер дня відповідає неділі'
+            break;
+      }
+
+      // Виводимо результат
+
+      document.write(result)
+
+   </script>
+
+</body>
+
+</html>

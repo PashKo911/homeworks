@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Випадковим чином генерується число від 1 до 5. Спробуйте вгадати число за 2 спроби.
+   </h1>
+
+   <script>
+
+      //Вводимо необхідні дані
+
+      const minRandomNumber = 1,
+         maxRandomNumber = 5
+
+      let enterUserNumber = parseInt(prompt(`Згенеровано випадкове число в проміжку від ${minRandomNumber} до ${maxRandomNumber} введіть число та спробуйте вгадати`)),
+         message
+
+      //  Знаходимо результат
+
+      let randomNumber = Math.floor(Math.random() * (maxRandomNumber - minRandomNumber + 1) + minRandomNumber)
+
+      if (enterUserNumber !== randomNumber) {
+
+         enterUserNumber = parseInt(prompt('Ви не вгадали, спробуйте ще раз'))
+         console.log(randomNumber)
+
+         if (enterUserNumber !== randomNumber) {
+            message = `Ви програли випадковим числом було значення ${randomNumber}`
+
+         } else message = 'Ура ви вгадали з другого разу'
+
+      } else message = 'Круто ви вгадали з першого разу'
+
+      //Виводимо результат
+
+      document.write(message)
+
+
+   </script>
+
+</body>
+
+</html>
