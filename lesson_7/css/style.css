@@ -134,6 +134,7 @@ img{
    width: 100px;
    height: 100px;
 }
+
 .banner{
    display: flex;
    flex-direction: column;
@@ -143,6 +144,7 @@ img{
    border-radius: 10px;
    overflow: hidden;
 }
+
 .banner img{
    width: 400px;
    height: 300px;
