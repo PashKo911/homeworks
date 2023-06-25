@@ -18,24 +18,18 @@
       //Вводимо необхідні дані
 
       // Описуємо функцію
-      let getNumberNegativeTemperatureValue = function (value_1, value_2, value_3, value_4, value_5) {
+      let getNumberNegativeTemperatureValue = function () {
          let negativeTemperatureCounter = 0
 
-         if (value_1 < 0)
-            ++negativeTemperatureCounter
-         if (value_2 < 0)
-            ++negativeTemperatureCounter
-         if (value_3 < 0)
-            ++negativeTemperatureCounter
-         if (value_4 < 0)
-            ++negativeTemperatureCounter
-         if (value_5 < 0)
-            ++negativeTemperatureCounter
+         for (let i = 0; i < arguments.length; i++) {
+            if (arguments[i] < 0)
+            negativeTemperatureCounter++
+         }
          return negativeTemperatureCounter
       }
 
       // Виводимо результат
-      document.write(`Серед вказаних значень було визначено ${getNumberNegativeTemperatureValue(-4, 5, -30, 4, -40)} відʼємних показань температури`)
+      document.write(`Серед вказаних значень було визначено ${getNumberNegativeTemperatureValue(-4, -5, 30, -4, 40)} відʼємних показань температури`)
 
    </script>
 </body>
