@@ -36,10 +36,6 @@ a:hover{text-decoration: none;}
 ul li{list-style: none;}
 img{vertical-align: top;}
 
-a {
-	text-decoration: none;
-}
-
 ul,
 ol,
 li {
@@ -83,9 +79,12 @@ li{
 }
 a {
 	color: #000;
+   text-decoration: none;
+   cursor: pointer;
 	transition: color 0.3s ease 0s;
 }
 a:hover{
+   cursor: pointer;
 	color: #7ab13b;
    text-decoration: underline;
 }

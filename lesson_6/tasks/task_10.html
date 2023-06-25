@@ -11,23 +11,26 @@
 
 <body>
    <h1>
-      5. Інвестор вклад тис. грн на 20 років під 20% річних. Визначити за допомогою циклів суму, яку він одержить (без
-      оподаткування).
+      6. Інвестор вклав  тис. грн на 20 років під 20% річних, податок складає 5% від суми прибутку. Визначити за допомогою циклів суму, яку він одержить.
    </h1>
 
    <script>
 
       //Вводимо необхідні дані
       const depositeTime = 20,
-         yearPercentProfit = 20 / 100
+         yearPercentProfit = 20 / 100,
+         tax = 5 / 100
 
       let userDepositeSum = parseFloat(prompt('Введіть суму яку би ви хотіли вкласти на депозит', '1000')),
-         totalProfit = userDepositeSum
+         totalProfit = userDepositeSum,
+         yearTax
 
       //Знаходимо результат
       for (let i = 0; i < depositeTime; i++) {
-         totalProfit += totalProfit * yearPercentProfit
-         console.log(totalProfit);
+         yearTax = totalProfit * yearPercentProfit * tax
+         console.log(yearTax)
+         totalProfit += totalProfit * yearPercentProfit - yearTax
+         console.log(totalProfit)
       }
       //Виводимо результат
       document.write(`Загальна сума на вашому рахунку через ${depositeTime} років скалде ${totalProfit.toFixed(2)} грн`)

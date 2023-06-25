@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>8. Вивести на екран послідовність символів repetition</h1>
+   <div class="image">
+      <img src="../img/img_7.png" alt="">
+   </div>
+   <script>
+      //Вводимо необхідні дані
+
+      const firstLetter = 'a'
+      const secondLetter = 'o'
+      const repeatNumber = 82
+
+      let result = 'a',
+      counter = 0
+
+      // Розраховуємо та виводимо результат
+
+      for (let i = 0; i < repeatNumber; i++) {
+         result += secondLetter + firstLetter
+         console.log(counter);
+      }
+
+      document.write(result)
+   </script>
+
+</body>
+
+</html>

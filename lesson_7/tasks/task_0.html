@@ -19,7 +19,7 @@
 
       function showSeason(monthNumber) {
          let result
-         if (monthNumber === 0)
+         if (monthNumber === 0 || monthNumber > 12)
             result = 'Такого місяця не інує'
          else if (monthNumber < 3 || monthNumber === 12)
             result = `Введений місяць ${monthNumber} відповідає зимній порі`
@@ -29,7 +29,6 @@
             result = `Введений місяць ${monthNumber} відповідає літній порі`
          else if (monthNumber < 11)
             result = `Введений місяць ${monthNumber} відповідає осінній порі`
-         else result = 'Такого місяця не інує'
          return result
       }
       //Вводимо необхідні дані
