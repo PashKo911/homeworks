@@ -134,4 +134,30 @@ img{
    width: 100px;
    height: 100px;
 }
+.banner{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background-color: white;
+   border: 1px solid #000;
+   border-radius: 10px;
+   overflow: hidden;
+}
+.banner img{
+   width: 400px;
+   height: 300px;
+   margin-bottom: 15px;
 
+   transition: scale 0.3s ease 0s;
+}
+.banner img:hover{
+   scale: 1.02;
+}
+.banner__title{
+   text-align: center;
+   width: 400px;
+}
+.banner__title a:hover{
+   text-decoration: underline;
+   color: #477216;
+}
