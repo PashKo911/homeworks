@@ -22,8 +22,17 @@
       // Описуємо функції 
 
       let getSumNumbers = (number1, number2, number3, number4,) => number1 + number2 + number3 + number4
+      // Виводимо результат
+         document.write(`Сума заданих чисел S= ${getSumNumbers(2, 3, 4, 5)}<br>`)
+
       let getMultiplyNumbers = (number1, number2, number3, number4) => number1 * number2 * number3 * number4
-      let getAverageNumber = (number1, number2, number3, number4) => getSumNumbers(number1, number2, number3, number4) / 4 // Тут доречі цікавий момент, а як зробити щоб автоматично визначалась кількість параметрів, наприклад для знаходження середнього, щоб не я число 4 на яке треба ділити вираховував?
+      // Виводимо результат
+         document.write(`Добуток заданих чисел = ${getMultiplyNumbers(2, 3, 4, 5)}<br>`)
+
+      let getAverageNumber = (number1, number2, number3, number4, numbersCount) => getSumNumbers(number1, number2, number3, number4) / numbersCount // Тут доречі цікавий момент, а як зробити щоб автоматично визначалась кількість параметрів, наприклад для знаходження середнього, щоб не я число 4 на яке треба ділити вираховував?
+      // Виводимо результат
+         document.write(`Середнє арифметичне заданих чисел = ${getAverageNumber(2, 7, 10, 5, 4)}<br>`)
+
       let getMinNumber = (number1, number2, number3, number4) => {
          let minNumber = Infinity
          if (number1 < minNumber)
@@ -37,12 +46,14 @@
          return minNumber
       }
       // Виводимо результат
+         document.write(`Мінімальне число із заданих = ${getMinNumber(2, 3, 7, 1)}<br>`)
+
       //Тут можна було заморочитись щоб користувач вводив необхідні числа, та вирішив не гаяти на цьому часу, та і вам не зручно буде перевіряти
-      
-      document.write(`Сума заданих чисел S= ${getSumNumbers(2, 3, 4, 5)}<br>`)
-      document.write(`Добуток заданих чисел = ${getMultiplyNumbers(2, 3, 4, 5)}<br>`) 
-      document.write(`Середнє арифметичне заданих чисел = ${getAverageNumber(2, 3, 4, 5)}<br>`)
-      document.write(`Мінімальне число із заданих = ${getMinNumber(2, 3, 7, 1)}<br>`)
+
+
+
+
+
    </script>
 
 </body>
