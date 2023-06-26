@@ -24,19 +24,19 @@
                maxRandomDistance = 50 / 100, //Одразу переводжу у відсотки, щоб не робити це обчислення постійно в циклі, є мінус як мені здається, потім при обчисленні рандом буде більше чисел після коми, так як я впевнений що повторення математичної операції в циклі це зайве, та не впевнений в числах після коми, прийняв таке рішення))
                finishDistance = 200
 
-            let randomPercentDistance,
-               totalDays = 0,
+            let totalDays = 0,
                totalDistance = firstDayDistance,
-               counterDays = 1, //від одного тому що в умові уже заданий перший день
+               counterDays = 1, //від одного тому що по умові уже один день відбігав
                dayDistance = firstDayDistance
 
             // Знаходимо результат
 
             while (totalDistance <= finishDistance) {
-               randomPercentDistance = Math.random() * maxRandomDistance
-               //console.log(randomDayDistance);
+               let randomPercentDistance = Math.random() * maxRandomDistance // в умові 0 < P < 50 тому така формула
+
                dayDistance += randomPercentDistance * dayDistance // Пробіг за один наступний день з урахуванням відсотку
                console.log(`Денний пробіг ${dayDistance}`);
+
                totalDistance += dayDistance 
                console.log(`Загальний пробіг ${totalDistance}`);
                ++counterDays

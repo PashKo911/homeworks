@@ -38,6 +38,7 @@
 
       while (firstNumberRange % 10 !== lastNumberOfUserRange) { // І знаходимо власне суму до наступної 7ки
          counterSumNumbers += showSumNumbers = firstNumberRange % 10
+         
          document.write(`${showSumNumbers} + `) // ввів для більшої наглядності, не знаю як позбавитись останнього + 
          firstNumberRange = Math.floor(firstNumberRange / 10)
       }

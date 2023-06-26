@@ -23,12 +23,13 @@
 
       //Знаходимо результат
       for (let i = numberRows; i >= 1; i--) {
-         for (let k = numberRows; k > i; k-- ){
+
+         for (let k = numberRows; k > i; k-- ) {
             document.write(SPACE)
          }
+
          for (let j = 0; j < i; j++) {
             document.write('o')
-            
          }
          document.write('<br>')
       }

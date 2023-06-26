@@ -27,10 +27,13 @@
 
       //Знаходимо результат
       for (let i = 0; i < depositeTime; i++) {
+
          yearTax = totalProfit * yearPercentProfit * tax
          console.log(yearTax)
+
          totalProfit += totalProfit * yearPercentProfit - yearTax
          console.log(totalProfit)
+
       }
       //Виводимо результат
       document.write(`Загальна сума на вашому рахунку через ${depositeTime} років скалде ${totalProfit.toFixed(2)} грн`)

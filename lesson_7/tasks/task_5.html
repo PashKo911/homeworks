@@ -30,14 +30,19 @@
 
       // Описуємо функції
 
-      let getInch = length => length * CENTIMETER_TO_INCH
-      let getPound = weight => weight / KILOGRAM_TO_POUND
-      let getMile =  length => length * KILOMETER_TO_MILE
+      let getInch = userLength => userLength * CENTIMETER_TO_INCH
 
       // Виводимо результат
-
       document.write(`Введене значення ${userCentimeterNumber} дорівнює ${getInch(userCentimeterNumber).toFixed(1)} дюймам <br>`)
+
+      let getPound = userWeight => userWeight / KILOGRAM_TO_POUND
+
+      // Виводимо результат
       document.write(`Введене значення ${userKilogramNumber} дорівнює ${getPound(userKilogramNumber).toFixed(1)} фунтам <br>`)
+
+      let getMile =  userLength => userLength * KILOMETER_TO_MILE
+
+      // Виводимо результат
       document.write(`Введене значення ${userKilometerNumber} дорівнює ${getMile(userKilometerNumber).toFixed(1)} милям <br>`)
    </script>
 

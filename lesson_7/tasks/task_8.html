@@ -23,18 +23,22 @@
 
       // Описуємо функцію
       let showBanner = function (path, title, link) {
-         document.write(`<div class="banner">`)
+         document.write('<div class="banner">')
+
             document.write(
                `<a href="${link}">
                   <img src="${path}" alt="">
                </a>`)
-            document.write(`<div class="banner__title">`)  // Перейдіть за посиланням:)))
+
+            document.write('<div class="banner__title">')
+                                                               // Перейдіть за посиланням:)))
             document.write(
                `<a href="${link}">
                   ${title}
                </a>`)
-            document.write(`</div`)
-         document.write(`</div>`)
+
+            document.write('</div')
+         document.write('</div>')
       }
 
       // Виводимо результат
