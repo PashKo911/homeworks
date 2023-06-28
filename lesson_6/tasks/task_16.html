@@ -18,33 +18,35 @@
 
    <script>
       //Вводимо необхідні дані
+      const userRowsNumber = parseInt(prompt('Введіть кількість рядків майбутньої таблиці', '10')),
+         userColumnsNumber = parseInt(prompt('Введіть кількість стовпців майбутньої таблиці', '10'))
 
-      const userRowsNumber = parseInt(prompt('Введіть кількість рядків майбутньої таблиці','10')),
-         userColumnsNumber = parseInt(prompt('Введіть кількість стовпців майбутньої таблиці','10'))
-         userMessage = prompt('Введіть повідомлення яке буде відображено в таблиці','Фіксоване повідомлення')
 
       // Описуємо функції
 
       let showTable = function (rows, columns, message) {
+
+         let blue = 'style="background-color: blue;"',
+            red = 'style="background-color: red;"',
+            keeper = 'style="background-color: blue;"'
          document.write('<table>')
 
          for (let i = 0; i < rows; i++) {
             document.write('<tr>')
 
             for (let j = 0; j < columns; j++) {
-               document.write(`<td> ${message} </td>`)
+               if (j === 2 && i === 3) { // ЗАМІСТЬ ТРІЙОК РАНДОМНЕ ЧИСЛО, ПОСТРІЛИ ТАК ДУМАЮ ТАКИМИ Ж ІФАМИ
+                  blue = red // присвоїти клітинці червоний якщо співпадають координати
+               }
+               document.write(`<td ${blue}>  </td>`)
+               blue = keeper // повертаю синій щоб всі послідуючі також не зафарбовувались в червоний
             }
-            
             document.write('</tr>')
          }
          document.write('</table>')
 
       }
-
-      // Виводимо результат
-
-      showTable(userRowsNumber, userColumnsNumber, userMessage)
-
+      showTable(userRowsNumber, userColumnsNumber)
    </script>
 
 </body>

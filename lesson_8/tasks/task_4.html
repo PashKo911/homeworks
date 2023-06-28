@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      30. Спортсмен-лижник в перший день тренування пробіг 10 км. Кожного наступного дня він збільшував довжину пробігу
+      на P% від довжини пробігу попереднього дня (P – дійсне число, 0 < P < 50). Визначити, після якого дня тренування
+         сумарний пробіг лижника за всі дні перевищить 200 км. Вивести знайдену кількість днів K (ціле) і сумарний
+         пробіг S (дійсне число). </h1>
+
+         <script>
+
+            //Вводимо необхідні дані
+
+            const firstDayDistance = parseFloat(prompt('Введіть дистанцію яку ви пробігли за перший день тренування в кілометрах', '10'))
+               maxRandomDistance = 50 / 100, //Одразу переводжу у відсотки, щоб не робити це обчислення постійно в циклі, є мінус як мені здається, потім при обчисленні рандом буде більше чисел після коми, так як я впевнений що повторення математичної операції в циклі це зайве, та не впевнений в числах після коми, прийняв таке рішення))
+               finishDistance = 200
+
+            let totalDays = 0,
+               totalDistance = firstDayDistance,
+               counterDays = 1, //від одного тому що по умові уже один день відбігав
+               dayDistance = firstDayDistance
+
+            // Знаходимо результат
+
+            while (totalDistance <= finishDistance) {
+               let randomPercentDistance = Math.random() * maxRandomDistance // в умові 0 < P < 50 тому така формула
+
+               dayDistance += randomPercentDistance * dayDistance // Пробіг за один наступний день з урахуванням відсотку
+               console.log(`Денний пробіг ${dayDistance}`);
+
+               totalDistance += dayDistance 
+               console.log(`Загальний пробіг ${totalDistance}`);
+               ++counterDays
+            }
+
+            document.write(`За ${counterDays} днів лижник пробіг ${totalDistance.toFixed(2)} кілометри`)
+
+
+         </script>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      2. Знайти суму цифр числа, що знаходяться між першою цифрою 7 і останньою цифрою 7 (у числі є всього дві цифри 7,
+      наприклад: 2679328712)
+   </h1>
+
+   <script>
+
+      //Вводимо необхідні дані
+
+      const startNumber = parseInt(prompt('Введіть ціле число', '2679328712')),
+         firstNumberOfUserRange = parseInt(prompt('Введіть ціле число початку діапазону з кінця в якому ви хочете знайти суму чисел', '7')),
+         lastNumberOfUserRange = parseInt(prompt('Введіть ціле число на якому знаходження суми повинно завершитись', '7'))
+
+      let lastNumberRange = startNumber,
+         firstNumberRange,
+         showSumNumbers,
+         counterSumNumbers = 0
+
+      //Знаходимо результат
+
+      while (lastNumberRange % 10 !== firstNumberOfUserRange) {
+         lastNumberRange = Math.floor(lastNumberRange / 10) //Шукаю першу 7ку з кінця, або задане користувачем число
+      }
+
+      firstNumberRange = Math.floor(lastNumberRange / 10) // Тепер відкидаю цю 7ку щоб вона не входила в розрахунок суми, також без цієї дії не запрацює другий цикл якщо числа діапазону однакові як в завданні
+
+      while (firstNumberRange % 10 !== lastNumberOfUserRange) { // І знаходимо власне суму до наступної 7ки
+         counterSumNumbers += showSumNumbers = firstNumberRange % 10
+         
+         document.write(`${showSumNumbers} + `) // ввів для більшої наглядності, не знаю як позбавитись останнього + 
+         firstNumberRange = Math.floor(firstNumberRange / 10)
+      }
+
+      //Виводимо результат
+
+      document.write(`<br> Сума чисел в заданому діапазоні = ${counterSumNumbers}`)
+
+      /* 1. В програмі є баг, рахує тільки з кінця, тобто якщо задати перше число 6 останнє 1, або якщо початком діапазону буде остання цифра 2, отримуємо нескінченний цикл, приблизно уявив як вирішити але мабуть піде на це три дні, вважаю умову завдання виконаною))
+         2. Як спростити чи оптимізувати уяви не маю, навіть не пропонуйте:))
+         3. Був би надзвичайно радий побачити та вивчити простіше, чи розумніше рішення, так як чомусь довго мучився із завданням))
+      */
+   </script>
+
+</body>
+
+</html>

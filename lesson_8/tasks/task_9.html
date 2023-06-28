@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      5. Інвестор вклад тис. грн на 20 років під 20% річних. Визначити за допомогою циклів суму, яку він одержить (без
+      оподаткування).
+   </h1>
+
+   <script>
+
+      //Вводимо необхідні дані
+      const depositeTime = 20,
+         yearPercentProfit = 20 / 100
+
+      let userDepositeSum = parseFloat(prompt('Введіть суму яку би ви хотіли вкласти на депозит', '1000')),
+         totalProfit = userDepositeSum
+
+      //Знаходимо результат
+      for (let i = 0; i < depositeTime; i++) {
+
+         totalProfit += totalProfit * yearPercentProfit
+         console.log(totalProfit);
+         
+      }
+      //Виводимо результат
+      document.write(`Загальна сума на вашому рахунку через ${depositeTime} років скалде ${totalProfit.toFixed(2)} грн`)
+   </script>
+
+</body>
+
+</html>

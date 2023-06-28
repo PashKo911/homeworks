@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      3.1. Відобразити трикутник за допомогою символів «о»
+   </h1>
+   <img src="../img/img_6.png" alt="">
+
+   <script>
+
+      //Вводимо необхідні дані
+      const numberRows = 12,
+            SPACE = '&#160'
+
+      //Знаходимо результат
+      for (let b = 0; b < 3; b++){
+         for (let i = 0; i <= numberRows; i++) {
+
+            for (let k = numberRows; k > i; k-- ){
+               document.write(SPACE)
+            }
+
+            for (let j = 0; j < i; j++) {
+               document.write('o')
+            }
+            document.write('<br>')
+         }
+      }
+
+
+   </script>
+
+</body>
+
+</html>

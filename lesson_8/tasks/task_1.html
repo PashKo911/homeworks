@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+
+   <h1>
+      Задача 1. Дано масив, який містить оцінки з К предметів. Знайти середній
+      бал і з’ясувати до якої категорії він відноситься (відмінник, двійочник
+      (має хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча би одна трійка)).
+   </h1>
+   <script>
+
+      //Функція для введення даних користувачем
+
+      function getUserGrades(classesNumber) {
+         let userGrades = []
+
+         for (let i = 0; i < classesNumber; i++) {
+            const userGrade = parseInt(prompt(`Введіть оцінку за ${i + 1}й пердмет`))
+            userGrades.push(userGrade)
+         }
+         return userGrades
+      }
+
+      //Функція для знаходження середньої оцінки
+
+      function getAverageGrade(grades) {
+         let gradesSum = 0
+
+         for (let i = 0; i < grades.length; i++) {
+            gradesSum += grades[i]
+            console.log(grades[i]);
+         }
+         return gradesSum / grades.length
+      }
+      // Функція визначення мінімального балу
+
+      function getMinGrade(getUserGrades) {
+         let minGrade = getUserGrades[0]
+
+         for (let i = 0; i < getUserGrades.length; i++) {
+
+            if (getUserGrades[i] < minGrade)
+               minGrade = getUserGrades[i]
+            console.log(minGrade);
+         }
+         return minGrade
+      }
+      //Функція для визначення категорії учня
+
+      function getStudentCategory(getMinGrade) {
+
+         if (getMinGrade === 2)
+            result = 'Ви двійочник'
+
+         if (getMinGrade === 3)
+            result = 'Ви трійочник'
+
+         if (getMinGrade === 4)
+            result = 'Ви хорошист'
+
+         if (getMinGrade === 5)
+            result = 'Ви відмінник'
+
+         return result
+      }
+
+      //Виводимо результат
+
+      let gradesTable = getUserGrades(4)
+      document.write(`Оцінки ${gradesTable} <br>`)
+
+      document.write(`Середній бал ${getAverageGrade(gradesTable)} <br>`)
+
+      let minGrade = getMinGrade(gradesTable)
+      
+      let whoAreYou = getStudentCategory(minGrade)
+      document.write(whoAreYou)
+
+   </script>
+
+</body>
+
+</html>
