@@ -72,7 +72,7 @@ h1 {
 	font-size: 24px;
 	font-weight: 700;
 	margin-top: 20px;
-	margin-bottom: 80px;
+	margin-bottom: 40px;
 }
 
 
@@ -136,4 +136,7 @@ img{
 .image img{
    width: 307px;
    height: 38px;
+}
+li:last-child{
+   margin-bottom: 40px;
 }

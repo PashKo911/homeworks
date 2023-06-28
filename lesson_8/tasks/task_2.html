@@ -11,27 +11,139 @@
 
 <body>
    <h1>
-      2. Відобразити трикутник за допомогою символів «о»
+      Задача 2. Дано масив, який зберігає кількість відвідувачів магазину протягом тижня. Вивести на екран:
    </h1>
-   <img src="../img/img_2.png" alt="">
+      <ul>
+         <li>
+            номери днів, протягом яких кількість відвідувачів була меншою за 20;
+         </li>
+         <li>
+            номери днів, коли кількість відвідувачів була мінімальною;
+         </li>
+         <li>
+            номери днів, коли кількість відвідувачів була мінімальною; <!-- Я ТАК РОЗУМІЮ МАКСИМАЛЬНОЮ-->
+         </li>
+         <li>
+            загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.
+         </li>
+      </ul>
+
    <script>
 
+   //Функція для введення даних користувачем
 
-      //Вводимо необхідні дані
+   function getVisitorsNumber (daysNumber) {
+      let visitorsNumber = []
 
-      const numberRows = 7
+      for (let i = 0; i < daysNumber; i++) {
 
-      // Знаходимо результат
+         const dayNumberVisitors = parseInt( prompt(`Введіть кількість відвідувачій у ${i + 1}й день`))
+         visitorsNumber.push(dayNumberVisitors)
+      }
+      return visitorsNumber
+   }
+//==========================================================================================================================================
+   // Визначаємо номери днів, протягом яких кількість відвідувачів була меншою за 20;
 
-      for (let i = 1; i <= numberRows; i++) {
+   function getLessThanTwentyVisitorsPerPeriod (visitorsNumber) {
+      let getLessThanTwentyVisitorsPerPeriod = [],
+         value = 20
 
-         for (let j = 0; j < i; j++) {
-            document.write('o')
-         }
-         document.write('<br>')
+      for (let i = 0; i < visitorsNumber.length; i++) {
+
+         if (visitorsNumber[i] < value) getLessThanTwentyVisitorsPerPeriod.push(i+1)
+         
+      }
+      return getLessThanTwentyVisitorsPerPeriod
+   }
+
+//==========================================================================================================================================
+//Визначаємо номери днів, коли кількість відвідувачів була мінімальною;
+
+   function getMinVisitorsPerPeriod(visitorsNumber) {
+   let minVisitorsPerPeriod = visitorsNumber[0]
+
+      for (let i = 0; i < visitorsNumber.length; i++) {
+      
+         if (visitorsNumber[i] < minVisitorsPerPeriod) minVisitorsPerPeriod = visitorsNumber[i] 
       }
 
+   console.log(minVisitorsPerPeriod)
+   return minVisitorsPerPeriod
+}
 
+   function getVisitorsDaysNumber (minVisitorsPerPeriod, visitorsNumber) {
+      let minVisitorsDaysNumber = []
+
+      for (let i = 0; i < visitorsNumber.length; i++) {
+
+         if (minVisitorsPerPeriod === visitorsNumber[i])
+         minVisitorsDaysNumber.push(i+1)
+      }
+      return minVisitorsDaysNumber
+   }
+//==========================================================================================================================================
+   // Визначаємо номери днів, коли кількість відвідувачів була максимальною;
+
+   function getMaxVisitorsPerPeriod(visitorsNumber) {
+   let maxVisitorsPerPeriod = visitorsNumber[0]
+
+      for (let i = 0; i < visitorsNumber.length; i++) {
+      
+         if (visitorsNumber[i] > maxVisitorsPerPeriod) maxVisitorsPerPeriod = visitorsNumber[i] 
+      }
+
+   console.log(maxVisitorsPerPeriod)
+   return maxVisitorsPerPeriod
+}
+
+//==========================================================================================================================================
+//Визначаємо загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.
+
+   function getTotalClientsWorkingDays (visitorsNumber){
+      let res = 0
+
+      for (let i = 0; i < 5; i++) {
+         res += visitorsNumber[i] 
+      }
+      return res
+   }
+
+   function getTotalClientsWeekends (visitorsNumber){
+      let res = 0
+
+      for (let i = 5; i < 7; i++) {
+         res += visitorsNumber[i] 
+      }
+      return res
+   }
+
+
+//==========================================================================================================================================
+   //Виводимо результати
+
+   let visitorsNumber = getVisitorsNumber(7)
+   document.write(`${visitorsNumber} <br>`)
+
+   let lessThanTwentyVisitorsPerPeriod = getLessThanTwentyVisitorsPerPeriod (visitorsNumber)
+   document.write(`Дні в які кількість відвідувачів була меншою за 20 - ${lessThanTwentyVisitorsPerPeriod} <br>`)// Можна було заморочитись з виводом, щоб не виводити тупо масив, а окремо значення, вирішив не акцентувати поки що на цьому увагу
+
+   let minVisitorsPerPeriod = getMinVisitorsPerPeriod (visitorsNumber)
+   let maxVisitorsPerPeriod = getMaxVisitorsPerPeriod (visitorsNumber)
+
+   let minVisitorsDaysNumber = getVisitorsDaysNumber (minVisitorsPerPeriod, visitorsNumber)
+   document.write(`Дні в яких кількість відвідувачів була мінімальною - ${minVisitorsDaysNumber} <br>`)
+
+   let maxVisitorsDaysNumber = getVisitorsDaysNumber (maxVisitorsPerPeriod, visitorsNumber)
+   document.write(`Дні в яких кількість відвідувачів була максимальною - ${maxVisitorsDaysNumber} <br>`)
+
+   let totalClientsWorkingDays = getTotalClientsWorkingDays (visitorsNumber)
+   document.write(`Загальна кількість клієнтів у робочі дні - ${totalClientsWorkingDays} <br>`)
+
+   let totalClientsWeekends = getTotalClientsWeekends (visitorsNumber)
+   document.write(`Загальна кількість клієнтів у вихідні дні - ${totalClientsWeekends} <br>`)
+
+   //НУ Я ТУТ В ІМЕНАХ ФУНКЦІЙ І ЗМІННИХ САМ НАСТІЛЬКИ ЗАПУТАВСЯ ЩО БІЛЬШЕ ЧАСУ ПОМИЛКИ В ІМЕНАХ ВИПРАВЛЯВ, НАДАЛІ ПОСТАРАЮСЬ ЩОСЬ ВИГАДАТИ))
    </script>
 
 </body>
