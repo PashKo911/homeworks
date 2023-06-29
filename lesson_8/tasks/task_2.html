@@ -37,7 +37,7 @@
 
       for (let i = 0; i < daysNumber; i++) {
 
-         const dayNumberVisitors = parseInt( prompt(`Введіть кількість відвідувачій у ${i + 1}й день`))
+         const dayNumberVisitors = parseInt( prompt(`Введіть кількість відвідувачів у ${i + 1}й день`))
          visitorsNumber.push(dayNumberVisitors)
       }
       return visitorsNumber
@@ -72,15 +72,15 @@
    return minVisitorsPerPeriod
 }
 
-   function getVisitorsDaysNumber (minVisitorsPerPeriod, visitorsNumber) {
-      let minVisitorsDaysNumber = []
+   function getVisitorsDaysNumber (visitorsPerPeriod, visitorsNumber) {
+      let visitorsDaysNumber = []
 
       for (let i = 0; i < visitorsNumber.length; i++) {
 
-         if (minVisitorsPerPeriod === visitorsNumber[i])
-         minVisitorsDaysNumber.push(i+1)
+         if (visitorsPerPeriod === visitorsNumber[i])
+         visitorsDaysNumber.push(i+1)
       }
-      return minVisitorsDaysNumber
+      return visitorsDaysNumber
    }
 //==========================================================================================================================================
    // Визначаємо номери днів, коли кількість відвідувачів була максимальною;

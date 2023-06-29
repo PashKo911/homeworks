@@ -58,17 +58,20 @@
 
       function getStudentCategory(getMinGrade) {
 
-         if (getMinGrade === 2)
-            result = 'Ви двійочник'
+         switch (getMinGrade) {
 
-         if (getMinGrade === 3)
-            result = 'Ви трійочник'
+            case 2: result = 'Ви двійочник'
+               break;
 
-         if (getMinGrade === 4)
-            result = 'Ви хорошист'
+            case 3: result = 'Ви трійочник'
+               break;
 
-         if (getMinGrade === 5)
-            result = 'Ви відмінник'
+            case 4: result = 'Ви хорошист'
+               break;
+
+            case 5: result = 'Ви відмінник'
+               break;
+         }
 
          return result
       }
@@ -79,9 +82,8 @@
       document.write(`Оцінки ${gradesTable} <br>`)
 
       document.write(`Середній бал ${getAverageGrade(gradesTable)} <br>`)
-
-      let minGrade = getMinGrade(gradesTable)
       
+      let minGrade = getMinGrade(gradesTable)
       let whoAreYou = getStudentCategory(minGrade)
       document.write(whoAreYou)
 

@@ -11,33 +11,28 @@
 
 <body>
    <h1>
-      2.1. Відобразити трикутник за допомогою символів «о»
+      Задача 3. Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».
    </h1>
-   <img src="../img/img_3.png" alt="">
+
    <script>
 
+      const necessaryName = 'Іван'
+      //Функція пошуку однакових імен
 
-      //Вводимо необхідні дані
+      function getNameRepeatNumber (name, ...namesList) { // Тут вирішив не використовувати функцію введення щоб довго не писати імʼя і вам і мені та заодно попрактикувати rest parametr
+         let sameNamesCounter = 0 
 
-      const numberOfRows = 7,
-            SPACE = '&#160'
-
-      // Знаходимо результат
-
-      for (let rangeNumber = 1; rangeNumber <= numberOfRows; rangeNumber++) {
-         
-         for (let rangeSpaceNumber = numberOfRows; rangeSpaceNumber > rangeNumber; rangeSpaceNumber--) {
-            document.write(SPACE) // щось я не розібрався як вставити пробіл за допомогою &bnsp та знайшов інший спосіб
+         for (let i = 0; i < namesList.length; i++) {
+            if (namesList[i] === name)
+            sameNamesCounter += 1
          }
-         
-         for (let rangeLetterNumber = 0; rangeLetterNumber < rangeNumber; rangeLetterNumber++) {
-            document.write('o')  
-         }
-
-         document.write('<br>')
+         return sameNamesCounter
       }
 
-//&bnsp
+      //Виводимо результат
+      let result = getNameRepeatNumber(necessaryName, 'Степан', 'Василь', 'Іван', 'Степан', 'Андрій', 'Віктор', 'Іван')
+      document.write(`Вказане імʼя ${necessaryName} повторювалось ${result} разів`)
+
    </script>
 
 </body>
