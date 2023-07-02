@@ -24,19 +24,23 @@
          if (number_1 % 2 === 0)
             ++evenNumbersCounter
 
-         if (number_2 % 2 === 0)  //я так розумію наступна тема роботи з масивами буде повязана з такими ситуаціями, перечисляти кожен параметр, повинен бути розумніший спосіб
+         if (number_2 % 2 === 0)  
             ++evenNumbersCounter
 
          if (number_3 % 2 === 0)
             ++evenNumbersCounter
 
-         if (evenNumbersCounter === 0)
-            evenNumbersCounter = 'Парних чисел не знайдено'
          return evenNumbersCounter
       }
       
+      let resultQuantityEvenNumbers = getQuantityEvenNumbers(30, 21, 36)
+      
       // Виводимо результат
-      document.write(`Кількість парних чисел = ${getQuantityEvenNumbers (30, 22, 36)}<br>`)
+      if (resultQuantityEvenNumbers === 0)
+            document.write ('Парних чисел не знайдено')
+            else document.write(`Кількість парних чисел = ${resultQuantityEvenNumbers}<br>`)
+
+
 
       function getQuantityPositiveNumbers(number_1, number_2, number_3) {
          let positiveNumbersCounter = 0
@@ -59,20 +63,20 @@
       document.write(`Кількість додатніх чисел = ${getQuantityPositiveNumbers (30, 22, -36)}<br>`)
 
       let getQuantityMoreThenOneHundredNumbers = function (number_1, number_2, number_3) {
-         let MoreThenOneHundredNumbersCounter = 0
+         let moreThenOneHundredNumbersCounter = 0
 
          if (number_1 > 100)
-            ++MoreThenOneHundredNumbersCounter
+            ++moreThenOneHundredNumbersCounter
 
          if (number_2 > 100)
-            ++MoreThenOneHundredNumbersCounter
+            ++moreThenOneHundredNumbersCounter
 
          if (number_3 > 100)
-            ++MoreThenOneHundredNumbersCounter
+            ++moreThenOneHundredNumbersCounter
 
-         if (MoreThenOneHundredNumbersCounter === 0)
-            MoreThenOneHundredNumbersCounter = 'Чисел більших за 100 не знайдено'
-         return MoreThenOneHundredNumbersCounter //На рахунок імен, чи адекватні такі?))
+         if (moreThenOneHundredNumbersCounter === 0)
+            moreThenOneHundredNumbersCounter = 'Чисел більших за 100 не знайдено'
+         return moreThenOneHundredNumbersCounter //На рахунок імен, чи адекватні такі?))
       }
 
       // Виводимо результат

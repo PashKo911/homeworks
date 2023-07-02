@@ -11,41 +11,79 @@
 
 <body>
    <h1>
-      30. Спортсмен-лижник в перший день тренування пробіг 10 км. Кожного наступного дня він збільшував довжину пробігу
-      на P% від довжини пробігу попереднього дня (P – дійсне число, 0 < P < 50). Визначити, після якого дня тренування
-         сумарний пробіг лижника за всі дні перевищить 200 км. Вивести знайдену кількість днів K (ціле) і сумарний
-         пробіг S (дійсне число). </h1>
+      Задача 4. Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :</h1>
+   <ul>
+      <li>
+         починаються на букву «А»;
+      </li>
+      <li>
+         перша і остання літери співпадають;
+      </li>
+      <li>
+         складаються з більше ніш 5 символів;
+      </li>
+   </ul>
 
-         <script>
+   <script>
 
-            //Вводимо необхідні дані
+      const searchLetter = 'А',
+         carNumbersList = ['АХ1234ВВ', 'ВХ1234ВА', 'ИХ1АИ', 'АХ1234ВА', 'А34ВВ', 'АХ1234ВА']
+      //Функція для пошуку номерів що починаються на букву «А»;
 
-            const firstDayDistance = parseFloat(prompt('Введіть дистанцію яку ви пробігли за перший день тренування в кілометрах', '10'))
-               maxRandomDistance = 50 / 100, //Одразу переводжу у відсотки, щоб не робити це обчислення постійно в циклі, є мінус як мені здається, потім при обчисленні рандом буде більше чисел після коми, так як я впевнений що повторення математичної операції в циклі це зайве, та не впевнений в числах після коми, прийняв таке рішення))
-               finishDistance = 200
+      function searchFirstLetter(searchLetter, carNumbersList) {
+         let searchLetterCounter = 0
 
-            let totalDays = 0,
-               totalDistance = firstDayDistance,
-               counterDays = 1, //від одного тому що по умові уже один день відбігав
-               dayDistance = firstDayDistance
+         for (let i = 0; i < carNumbersList.length; i++) {
 
-            // Знаходимо результат
+            if (carNumbersList[i][0] === searchLetter)
+               searchLetterCounter++
+         }
+         return searchLetterCounter
+      }
 
-            while (totalDistance <= finishDistance) {
-               let randomPercentDistance = Math.random() * maxRandomDistance // в умові 0 < P < 50 тому така формула
+      //==========================================================================================================================================
+      //Якщо перша і остання літери співпадають;
 
-               dayDistance += randomPercentDistance * dayDistance // Пробіг за один наступний день з урахуванням відсотку
-               console.log(`Денний пробіг ${dayDistance}`);
+      function searchSameLetters(carNumbersList) {
+         sameLettersCounter = 0
 
-               totalDistance += dayDistance 
-               console.log(`Загальний пробіг ${totalDistance}`);
-               ++counterDays
-            }
+         for (let i = 0; i < carNumbersList.length; i++) {
 
-            document.write(`За ${counterDays} днів лижник пробіг ${totalDistance.toFixed(2)} кілометри`)
+            if (carNumbersList[i][0] === carNumbersList[i][carNumbersList[i].length - 1])//Якщо тут я наче зрозумів
+               sameLettersCounter++
+         }
+         return sameLettersCounter
+      }
+      //==========================================================================================================================================
+      //складаються з більше ніш 5 символів;
+      const letterNumber = 5
 
+      function searchNumberMore5Letter(carNumbersList, letterNumber) {
+         let moreletterNumberCounter = 0
 
-         </script>
+         for (let i = 0; i < carNumbersList.length; i++) {
+
+            if ([carNumbersList[i].length] > letterNumber)//То тут я запутався чому воно працює)))
+               moreletterNumberCounter++
+         }
+         return moreletterNumberCounter
+      }
+
+      //==========================================================================================================================================
+      //Виводимо результати
+      let resultSearchingFirstLetter = searchFirstLetter(searchLetter, carNumbersList)
+      document.write(`У заданому списку кількість номерів що починаються на літеру ${searchLetter} дорівнює ${resultSearchingFirstLetter}<br>`)
+
+      let resultSearchingSameLetters = searchSameLetters(carNumbersList)
+      document.write(`Кількість номерів у яких перша і остання літера співпадають дорівнює ${resultSearchingSameLetters}<br>`)
+
+      let resultMore5Letter = searchNumberMore5Letter(carNumbersList, letterNumber)
+      document.write(`Кількість номерів які складаються більш ніж з ${letterNumber} символів дорівнює ${resultMore5Letter}<br>`)
+
+      document.write(carNumbersList)
+//==========================================================================================================================================
+
+   </script>
 
 </body>
 

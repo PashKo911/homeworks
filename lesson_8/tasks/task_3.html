@@ -19,18 +19,21 @@
       const necessaryName = 'Іван'
       //Функція пошуку однакових імен
 
-      function getNameRepeatNumber (name, ...namesList) { // Тут вирішив не використовувати функцію введення щоб довго не писати імʼя і вам і мені та заодно попрактикувати rest parametr
-         let sameNamesCounter = 0 
+      function getNameRepeatNumber(name, ...namesList) {
+         let sameNamesCounter = 0
 
          for (let i = 0; i < namesList.length; i++) {
+
             if (namesList[i] === name)
-            sameNamesCounter += 1
+               sameNamesCounter += 1
+
          }
          return sameNamesCounter
       }
 
       //Виводимо результат
       let result = getNameRepeatNumber(necessaryName, 'Степан', 'Василь', 'Іван', 'Степан', 'Андрій', 'Віктор', 'Іван')
+      // Тут вирішив не використовувати функцію введення щоб довго не писати імʼя і вам, і мені та заодно попрактикувати rest parametr
       document.write(`Вказане імʼя ${necessaryName} повторювалось ${result} разів`)
 
    </script>

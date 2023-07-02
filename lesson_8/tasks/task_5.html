@@ -11,46 +11,109 @@
 
 <body>
    <h1>
-      2. Знайти суму цифр числа, що знаходяться між першою цифрою 7 і останньою цифрою 7 (у числі є всього дві цифри 7,
-      наприклад: 2679328712)
+      Задача 5. Дано послідовність оцінок учня. Підрахувати кількість:
    </h1>
+   <ul>
+      <li>
+         двійок
+      </li>
+      <li>
+         кількість хороших оцінок (добре, відмінно);
+      </li>
+      <li>
+         кількість оцінок, які нижче середнього.
+      </li>
+   </ul>
 
    <script>
+      // Оголошуемо змінні
 
-      //Вводимо необхідні дані
+      const userGradesNumber = parseInt(prompt('Введіть число оцінок для введення')),
+            messageToUser = 'Введіть оцінку'
 
-      const startNumber = parseInt(prompt('Введіть ціле число', '2679328712')),
-         firstNumberOfUserRange = parseInt(prompt('Введіть ціле число початку діапазону з кінця в якому ви хочете знайти суму чисел', '7')),
-         lastNumberOfUserRange = parseInt(prompt('Введіть ціле число на якому знаходження суми повинно завершитись', '7'))
+      //==========================================================================================================================================           
+      // Функція введення даних користувачем
 
-      let lastNumberRange = startNumber,
-         firstNumberRange,
-         showSumNumbers,
-         counterSumNumbers = 0
+      function getUserGrades(gradesNumber, messageToUser) {
+         let userGradesList = []
 
-      //Знаходимо результат
-
-      while (lastNumberRange % 10 !== firstNumberOfUserRange) {
-         lastNumberRange = Math.floor(lastNumberRange / 10) //Шукаю першу 7ку з кінця, або задане користувачем число
+         for (let i = 0; i < gradesNumber; i++) {
+            let gradesList = parseInt(prompt(`${messageToUser}`))
+            userGradesList.push(gradesList)
+         }
+         return userGradesList
       }
 
-      firstNumberRange = Math.floor(lastNumberRange / 10) // Тепер відкидаю цю 7ку щоб вона не входила в розрахунок суми, також без цієї дії не запрацює другий цикл якщо числа діапазону однакові як в завданні
+      //==========================================================================================================================================
+      //Функція знаходження кількості двійок
 
-      while (firstNumberRange % 10 !== lastNumberOfUserRange) { // І знаходимо власне суму до наступної 7ки
-         counterSumNumbers += showSumNumbers = firstNumberRange % 10
-         
-         document.write(`${showSumNumbers} + `) // ввів для більшої наглядності, не знаю як позбавитись останнього + 
-         firstNumberRange = Math.floor(firstNumberRange / 10)
+      function searchGrade2(userGradesList) {
+         const badGrade = 2
+         let counterBedGrades = 0
+
+         for (let i = 0; i < userGradesList.length; i++) {
+
+            if (userGradesList[i] === badGrade)
+               counterBedGrades++
+         }
+         return counterBedGrades
+      }
+      //==========================================================================================================================================
+      //Функція знаходження хороших оцінок
+
+      function searchGoodGrades(userGradesList) {
+         const goodGrade1 = 4,
+            goodGrade2 = 5
+         let goodGradesCounter = 0
+
+         for (let i = 0; i < userGradesList.length; i++) {
+
+            if (userGradesList[i] === goodGrade1 || userGradesList[i] === goodGrade2)
+               goodGradesCounter++
+         }
+         return goodGradesCounter
       }
 
-      //Виводимо результат
+      //==========================================================================================================================================
+      //Функція знаходження оцінок нижчих за середню
 
-      document.write(`<br> Сума чисел в заданому діапазоні = ${counterSumNumbers}`)
+      function getAverageGrade(userGradesList) {
+         let averageGrade = userGradesList[0]
 
-      /* 1. В програмі є баг, рахує тільки з кінця, тобто якщо задати перше число 6 останнє 1, або якщо початком діапазону буде остання цифра 2, отримуємо нескінченний цикл, приблизно уявив як вирішити але мабуть піде на це три дні, вважаю умову завдання виконаною))
-         2. Як спростити чи оптимізувати уяви не маю, навіть не пропонуйте:))
-         3. Був би надзвичайно радий побачити та вивчити простіше, чи розумніше рішення, так як чомусь довго мучився із завданням))
-      */
+         for (let i = 1; i < userGradesList.length; i++) {
+            averageGrade += userGradesList[i]
+         }
+         return averageGrade / userGradesList.length
+      }
+
+      function searchLessThanAverageGrades(userGradesList, averageGrade) {
+         lessAverageCounter = 0
+
+         for (let i = 0; i < userGradesList.length; i++) {
+
+            if (userGradesList[i] < averageGrade)
+               lessAverageCounter++
+         }
+         return lessAverageCounter
+      }
+
+      //==========================================================================================================================================
+      //Виводимо результати
+
+      userGradesList = getUserGrades(userGradesNumber, messageToUser)
+      document.write(`Список оцінок ${userGradesList}<br>`)
+
+      let resultGrade2 = searchGrade2(userGradesList)
+      document.write(`Кількість двійок в заданому списку оцінок дорівнює ${resultGrade2}<br>`)
+
+      let resultGoodGrades = searchGoodGrades(userGradesList)
+      document.write(`Кількість хороших оцінок (4 та 5) дорівнює ${resultGoodGrades}<br>`)
+
+      let averageGrade = getAverageGrade(userGradesList)
+      document.write(`Середній бал - ${averageGrade}<br>`)
+
+      resultLessThanAverageGrades = searchLessThanAverageGrades(userGradesList, averageGrade)
+      document.write(`Кількість оцінок нижчих за середній бал - ${resultLessThanAverageGrades}`)
    </script>
 
 </body>

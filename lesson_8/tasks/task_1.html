@@ -17,7 +17,8 @@
       (має хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча би одна трійка)).
    </h1>
    <script>
-
+      
+      const userGradesNumber = parseInt(prompt('Введіть число оцінок для введення'))
       //Функція для введення даних користувачем
 
       function getUserGrades(classesNumber) {
@@ -46,11 +47,11 @@
       function getMinGrade(getUserGrades) {
          let minGrade = getUserGrades[0]
 
-         for (let i = 0; i < getUserGrades.length; i++) {
+         for (let i = 1; i < getUserGrades.length; i++) {
 
             if (getUserGrades[i] < minGrade)
                minGrade = getUserGrades[i]
-            console.log(minGrade);
+
          }
          return minGrade
       }
@@ -78,7 +79,7 @@
 
       //Виводимо результат
 
-      let gradesTable = getUserGrades(4)
+      let gradesTable = getUserGrades(userGradesNumber)
       document.write(`Оцінки ${gradesTable} <br>`)
 
       document.write(`Середній бал ${getAverageGrade(gradesTable)} <br>`)

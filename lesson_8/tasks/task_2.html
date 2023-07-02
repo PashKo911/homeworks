@@ -37,7 +37,7 @@
 
       for (let i = 0; i < daysNumber; i++) {
 
-         const dayNumberVisitors = parseInt( prompt(`Введіть кількість відвідувачів у ${i + 1}й день`))
+         const dayNumberVisitors = parseInt( prompt(`Введіть кількість відвідувачів у ${i + 1}й день`)) //Вже прочитав у перевірках дз що краще через змінну такі повідомлення виводити, але тоді ця частина коду працювати не буде, 'у ${i + 1}й ', поки що лишу так, так здається привабливіше))
          visitorsNumber.push(dayNumberVisitors)
       }
       return visitorsNumber
@@ -46,33 +46,33 @@
    // Визначаємо номери днів, протягом яких кількість відвідувачів була меншою за 20;
 
    function getLessThanTwentyVisitorsPerPeriod (visitorsNumber) {
-      let getLessThanTwentyVisitorsPerPeriod = [],
+      let lessThanTwentyVisitorsPerPeriod = [],
          value = 20
 
       for (let i = 0; i < visitorsNumber.length; i++) {
 
-         if (visitorsNumber[i] < value) getLessThanTwentyVisitorsPerPeriod.push(i+1)
+         if (visitorsNumber[i] < value) lessThanTwentyVisitorsPerPeriod.push(i+1)
          
       }
-      return getLessThanTwentyVisitorsPerPeriod
+      return lessThanTwentyVisitorsPerPeriod
    }
 
 //==========================================================================================================================================
 //Визначаємо номери днів, коли кількість відвідувачів була мінімальною;
 
-   function getMinVisitorsPerPeriod(visitorsNumber) {
+   function getMinVisitorsPerPeriod(visitorsNumber) { //Змінна період а не тиєжень для гнучкості, щоб можна було використовавути функцію для іниших періодів
    let minVisitorsPerPeriod = visitorsNumber[0]
 
-      for (let i = 0; i < visitorsNumber.length; i++) {
+      for (let i = 1; i < visitorsNumber.length; i++) {
       
-         if (visitorsNumber[i] < minVisitorsPerPeriod) minVisitorsPerPeriod = visitorsNumber[i] 
+         if (visitorsNumber[i] < minVisitorsPerPeriod) minVisitorsPerPeriod.push(visitorsNumber[i])
       }
 
    console.log(minVisitorsPerPeriod)
    return minVisitorsPerPeriod
 }
 
-   function getVisitorsDaysNumber (visitorsPerPeriod, visitorsNumber) {
+   function getVisitorsDaysNumber (visitorsPerPeriod, visitorsNumber) { //ця функція використовується двічі, для мінімальних значень та максимальних
       let visitorsDaysNumber = []
 
       for (let i = 0; i < visitorsNumber.length; i++) {
@@ -90,7 +90,7 @@
 
       for (let i = 0; i < visitorsNumber.length; i++) {
       
-         if (visitorsNumber[i] > maxVisitorsPerPeriod) maxVisitorsPerPeriod = visitorsNumber[i] 
+         if (visitorsNumber[i] > maxVisitorsPerPeriod) maxVisitorsPerPeriod.push(visitorsNumber[i])
       }
 
    console.log(maxVisitorsPerPeriod)
@@ -101,21 +101,17 @@
 //Визначаємо загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.
 
    function getTotalClientsWorkingDays (visitorsNumber){
-      let res = 0
+      let res = visitorsNumber[0]
 
-      for (let i = 0; i < 5; i++) {
+      for (let i = 1; i < 5; i++) {
          res += visitorsNumber[i] 
       }
       return res
    }
 
-   function getTotalClientsWeekends (visitorsNumber){
-      let res = 0
+   function getTotalClientsWeekends (visitorsNumber){ //спочатку по звичці через for написав, потім побачив що тут всього два дні додати треба, зпростив, тепер думаю чи взагалі потрібна функція в даному випадку)) також вирішив не вводити змінні для робочих та вихідних днів, просто цифрами прописав
 
-      for (let i = 5; i < 7; i++) {
-         res += visitorsNumber[i] 
-      }
-      return res
+      return visitorsNumber[5] + visitorsNumber[6]
    }
 
 
