@@ -65,7 +65,8 @@
 
       for (let i = 1; i < visitorsNumber.length; i++) {
       
-         if (visitorsNumber[i] < minVisitorsPerPeriod) minVisitorsPerPeriod.push(visitorsNumber[i])
+         if (visitorsNumber[i] < minVisitorsPerPeriod) 
+         minVisitorsPerPeriod = visitorsNumber[i]
       }
 
    console.log(minVisitorsPerPeriod)
@@ -90,7 +91,8 @@
 
       for (let i = 0; i < visitorsNumber.length; i++) {
       
-         if (visitorsNumber[i] > maxVisitorsPerPeriod) maxVisitorsPerPeriod.push(visitorsNumber[i])
+         if (visitorsNumber[i] > maxVisitorsPerPeriod) 
+         maxVisitorsPerPeriod = visitorsNumber[i]
       }
 
    console.log(maxVisitorsPerPeriod)
