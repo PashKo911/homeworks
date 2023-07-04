@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+
+   <h1>
+      1. Користувач вводить кількість елементів. 
+      Створити масив, що складається з вказаної кількості елементів заповнених нулями.
+   </h1>
+   <script>
+      
+  //Описуємо змінні
+
+  const userElementNumber = parseInt(prompt('Введіть кількість елементів яку ви хочите вивести на екран')),
+      arrayFilling = 0
+
+//==========================================================================================================================================
+   //Створюємо та заповнюємо масив
+   let userArray = new Array (userElementNumber).fill(arrayFilling)
+
+   //Виводимо результат
+   document.write(userArray)
+
+
+//==========================================================================================================================================
+
+   </script>
+
+</body>
+
+</html>
