@@ -88,7 +88,7 @@
       const halfYearPaymentsSum = getPaymentsSum(paymentsArray, startZeroRange, halfOfYear, monthlyStep)
       document.write(`Сума платіжок за перше піврічча складає - ${halfYearPaymentsSum}<br>`)
 
-      const secondHalfYearPaymentsSum = getPaymentsSum(paymentsArray, halfOfYear + 1, monthNumber, monthlyStep)// не знаю чи можна так робити з +1, щоб не вводити додаткову змінну, та в сумму не враховувався 6й місяць
+      const secondHalfYearPaymentsSum = getPaymentsSum(paymentsArray, halfOfYear + 1, monthNumber, monthlyStep)// не знаю чи можна так робити з +1, щоб не вводити додаткову змінну, та в сумму не враховувався 6й місяць, таким чином можна було ще декілька змінних прибрати та вирішив на цьому зупинитись
       document.write(`Сума платіжок за друге піврічча складає - ${secondHalfYearPaymentsSum}<br>`)
 
       const summerPaymentsSum = getPaymentsSum(paymentsArray, halfOfYear, lastSummerMonth, monthlyStep)
@@ -97,10 +97,10 @@
       const secondQurterPaymentsSum = getPaymentsSum(paymentsArray, firstMonthOf2qurter, lastMonthOf2qurter, monthlyStep)
       document.write(`Сума платіжок за другий квартал складає - ${secondQurterPaymentsSum}<br>`)
 
-      const evenMonthPaymentsSum = getPaymentsSum(paymentsArray, evenMonthlyStep , monthNumber, evenMonthlyStep)
+      const evenMonthPaymentsSum = getPaymentsSum(paymentsArray, evenMonthlyStep , monthNumber, evenMonthlyStep)//Тут використав для початку діапазону Step щоб не створювати ще одну змінну
       document.write(`Сума платіжок за парні місяці складає - ${evenMonthPaymentsSum}<br>`)
 
-      const startSeasonMonthsPaymentsSum = getPaymentsSum(paymentsArray, thirdStep, monthNumber, thirdStep) //Тут використав для початку діапазону thirdStep щоб не створювати ще одну змінну
+      const startSeasonMonthsPaymentsSum = getPaymentsSum(paymentsArray, thirdStep, monthNumber, thirdStep) //Тут використав для початку діапазону Step щоб не створювати ще одну змінну
       document.write(`Сума платіжок за місяці, які є початковими у сезоні складає - ${startSeasonMonthsPaymentsSum}<br>`)
    </script>
 
