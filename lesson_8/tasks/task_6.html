@@ -11,25 +11,55 @@
 
 <body>
    <h1>
-      3. Відобразити трикутник за допомогою символів «о»
+      Задача 6. Дано послідовність цін товарів та назв (у окремих масивах). Вивести на екран ті, які може собі дозволити
+      користувач (кількість грошей задається).
    </h1>
-   <img src="../img/img_4.png" alt="">
 
    <script>
 
-      //Вводимо необхідні дані
-      const numberRows = 12
+      // Масиви цін та товарів
 
-      //Знаходимо результат
-      for (let i = numberRows; i >= 1; i--) {
-         
-         for (let j = 0; j < i; j++) {
-            document.write('o')
-            
+      const productNames = ['Макарони', 'Морозиво', 'Мівіна', 'Капустина', 'Шорти', 'Парасолька'],
+         productPrices = [1200, 800, 450, 900, 3000, 8500]
+
+      //Зчитування даних користувача
+
+      const userMoneySum = parseFloat(prompt('Введіть кількість грошей яку ви маєте')),
+         messageToUser1 = 'У вас достатньо коштів щоб купити:<br>',
+         messageToUser2 = 'У нас трішки піднялись ціни. Ви нічого не можете купити з цією сумою. Ідіть працюйте!'
+      //==========================================================================================================================================
+
+      //Функція знаходження товарів які може дозволити собі користувач
+
+      function searchProductsWithNecessaryPrice(productPrices, userMoneySum) {
+         const necessaryIndexes = []
+
+         for (let i = 0; i < productPrices.length; i++) {
+
+            if (userMoneySum >= productPrices[i])
+               necessaryIndexes.push(i)
          }
-         document.write('<br>')
+         return necessaryIndexes
       }
+      //==========================================================================================================================================
+      //Функція виведення результату на екран
+
+      function showResult(necessaryIndexes, productNames, productPrices, messageToUser1) {
+         document.write(messageToUser1)
+
+         for (let i = 0; i < necessaryIndexes.length; i++) {
+            document.write(`${productNames[necessaryIndexes[i]]} за ${productPrices[necessaryIndexes[i]]} грн.<br>`)
+         }
+      }
+      //==========================================================================================================================================
       //Виводимо результат
+      resultProductWithNecessaryPrice = searchProductsWithNecessaryPrice(productPrices, userMoneySum)
+      
+
+      if (resultProductWithNecessaryPrice.length === 0)
+         document.write(messageToUser2)
+
+      else showResult(resultProductWithNecessaryPrice, productNames, productPrices, messageToUser1)
 
    </script>
 
