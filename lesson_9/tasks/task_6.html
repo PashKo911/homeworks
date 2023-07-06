@@ -17,7 +17,8 @@
    <script>
       // Зчитуємо дані користувача
       const userElementNumber = parseInt(prompt('Введіть кількість елементів які хочете проаналізувати')),
-         messageToUser = 'Введіть число'
+         messageToUser = 'Введіть число',
+         multiplier = 2
       //==========================================================================================================================================
       //Функція введення даних користувача
 
@@ -42,7 +43,7 @@
          (element, index, elementsArray) => {
 
             if (element > elementsArray[0])
-               elementsArray[index] *= 2
+               elementsArray[index] *= multiplier
          }
       )
 
