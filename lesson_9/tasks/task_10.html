@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      10. Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у грн.
+   </h1>
+
+   <script>
+      // Зчитуємо дані користувача
+
+      const pricesList = [999, 500, 1100, 2200, 5000, 500, 200, 1000],
+            tax = 20 / 100
+
+      //==========================================================================================================================================
+      //Знаходимо величину податку для кожної ціни
+
+      function getPricesTax(pricesList, tax) {
+         const taxesList = []
+
+         for (const price of pricesList) {
+            
+            taxesList.push(price * tax)
+         }
+         return taxesList
+      }
+
+      //==========================================================================================================================================
+      //Виводимо результат
+      const taxesList = getPricesTax(pricesList, tax)
+
+       function showResult(pricesList, taxesList) {
+
+         for (let i = 0; i < pricesList.length; i++) {
+            document.write(`Податок від ціни ${pricesList[i]} скалдає ${taxesList[i]} грн. <br>`)
+         }
+       }
+
+       showResult(pricesList, taxesList)
+      //==========================================================================================================================================           
+
+   </script>
+
+</body>
+
+</html>

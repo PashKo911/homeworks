@@ -11,28 +11,36 @@
 
 <body>
    <h1>
-      5. Інвестор вклад тис. грн на 20 років під 20% річних. Визначити за допомогою циклів суму, яку він одержить (без
-      оподаткування).
+      9. Дано масив імен. Сформувати масив з перших літер цих імен.
    </h1>
 
    <script>
 
-      //Вводимо необхідні дані
-      const depositeTime = 20,
-         yearPercentProfit = 20 / 100
+      //Оголошуємо змінні
 
-      let userDepositeSum = parseFloat(prompt('Введіть суму яку би ви хотіли вкласти на депозит', '1000')),
-         totalProfit = userDepositeSum
+      const namesList = ['Степан', 'Василь', 'Іван', 'Степан', 'Андрій', 'Віктор', 'Іван']
 
-      //Знаходимо результат
-      for (let i = 0; i < depositeTime; i++) {
+      //==========================================================================================================================================
+      //Функція створення масиву перших літер імен
 
-         totalProfit += totalProfit * yearPercentProfit
-         console.log(totalProfit);
-         
+      document.write(`Початковий масив - ${namesList} <br>`)
+
+      function createFirstNamesLetterArray(namesList) {
+         const arrayWithFirstNamesLetter = []
+
+         for (const name of namesList) {
+            arrayWithFirstNamesLetter.push(name[0])
+         }
+         return arrayWithFirstNamesLetter
       }
+      //==========================================================================================================================================
+
       //Виводимо результат
-      document.write(`Загальна сума на вашому рахунку через ${depositeTime} років скалде ${totalProfit.toFixed(2)} грн`)
+      
+      document.write(`Масив з результатами - ${createFirstNamesLetterArray(namesList)}`)
+
+      //==========================================================================================================================================           
+
    </script>
 
 </body>

@@ -11,25 +11,45 @@
 
 <body>
    <h1>
-      3. Відобразити трикутник за допомогою символів «о»
+      6.Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2
    </h1>
-   <img src="../img/img_4.png" alt="">
 
    <script>
+      // Зчитуємо дані користувача
+      const userElementNumber = parseInt(prompt('Введіть кількість елементів які хочете проаналізувати')),
+         messageToUser = 'Введіть число'
+      //==========================================================================================================================================
+      //Функція введення даних користувача
 
-      //Вводимо необхідні дані
-      const numberRows = 12
+      function getUserElements(userElementNumber, messageToUser) {
+         let elementsArray = []
 
-      //Знаходимо результат
-      for (let i = numberRows; i >= 1; i--) {
-         
-         for (let j = 0; j < i; j++) {
-            document.write('o')
-            
+         for (let i = 0; i < userElementNumber; i++) {
+            let userElement = parseInt(prompt(messageToUser))
+            elementsArray.push(userElement)
          }
-         document.write('<br>')
+         return elementsArray
       }
+
+      //==========================================================================================================================================
+      //Знаходимо результат
+
+      const elementsArray = getUserElements(userElementNumber, messageToUser)
+
+      document.write(`Початковий масив - ${elementsArray} <br>`)
+
+      elementsArray.forEach(
+         (element, index, elementsArray) => {
+
+            if (element > elementsArray[0])
+               elementsArray[index] *= 2
+         }
+      )
+
       //Виводимо результат
+
+      document.write(`Кінцевий масив - ${elementsArray}`)
+      //==========================================================================================================================================
 
    </script>
 
