@@ -316,72 +316,72 @@
       // «переводиться у наступний клас (>=5)» / «залишається, не вистає ${5-бал} якщо (<5)»
       // Вивести на екран маркований список з переведеними у дану шкалу оцінками.
 
-      // let scores = [3, 9, 2, 10, 8]
+       let scores = [3, 9, 2, 10, 8]
 
-      // //--- Результа за шкалою 1
-      // function getResultByScale1(score) {
-      //   return score >= 7 ? 'високий' : 'нижче середнього'
-      // }
+       //--- Результа за шкалою 1
+       function getResultByScale1(score) {
+         return score >= 7 ? 'високий' : 'нижче середнього'
+       }
 
-      // //--- Результа за шкалою 2
-      // function getResultByScale2(score) {
-      //   return score >= 5
-      //     ? 'переводиться'
-      //     : `залишається, не вистачає ${5 - score}`
-      // }
+       //--- Результа за шкалою 2
+       function getResultByScale2(score) {
+         return score >= 5
+           ? 'переводиться'
+           : `залишається, не вистачає ${5 - score}`
+       }
 
-      // function printByScale(scores, userScale) {
-      //   document.write('<ul>')
-      //   for (const score of scores) {
-      //     document.write(`
-      //       <li>
-      //         ${userScale(score)}
-      //       </li>
-      //       `)
-      //   }
-      //   document.write('</ul>')
-      // }
-      // let userAnswer = parseInt(
-      //   prompt(`
-      // 1)Шкала  «високий(>=7)»/«нижче середнього(<7)»
-      // 2)«переводиться у наступний клас (>=5)» / «залишається, не вистає {5-бал} якщо (<5)»
-      // `)
-      // )
+       function printByScale(scores, userScale) {
+         document.write('<ul>')
+         for (const score of scores) {
+           document.write(`
+             <li>
+               ${userScale(score)}
+             </li>
+             `)
+         }
+         document.write('</ul>')
+       }
+       let userAnswer = parseInt(
+         prompt(`
+       1)Шкала  «високий(>=7)»/«нижче середнього(<7)»
+       2)«переводиться у наступний клас (>=5)» / «залишається, не вистає {5-бал} якщо (<5)»
+       `)
+       )
 
-      // const userScale = userAnswer === 1 ? getResultByScale1 : getResultByScale2
-      // printByScale(scores, userScale)
-      //----- ЦЕ МОЖНА ВИДАЛИТИ ---
-      // //--- Вивід за заданою шкалою
-      // function print1(scores) {
-      //   document.write('<ul>')
-      //   for (const score of scores) {
-      //     document.write(`
-      //       <li>
-      //         ${score >= 7 ? 'високий' : 'нижче середнього'}
-      //       </li>
-      //       `)
-      //   }
-      //   document.write('</ul>')
-      // }
+       const userScale = userAnswer === 1 ? getResultByScale1 : getResultByScale2
+       printByScale(scores, userScale)
+      ----- ЦЕ МОЖНА ВИДАЛИТИ ---
+       //--- Вивід за заданою шкалою
+       function print1(scores) {
+         document.write('<ul>')
+         for (const score of scores) {
+           document.write(`
+             <li>
+               ${score >= 7 ? 'високий' : 'нижче середнього'}
+             </li>
+             `)
+         }
+         document.write('</ul>')
+       }
 
-      // //--- Вивід за шкалою 2
-      // function print2(scores) {
-      //   document.write('<ul>')
-      //   for (const score of scores) {
-      //     document.write(`
-      //     <li>
-      //      ${
-      //        score >= 5
-      //          ? 'переводиться'
-      //          : `залишається, не вистачає ${5 - score}`
-      //      }
-      //     </li>
-      //       `)
-      //   }
-      //   document.write('</ul>')
-      // }
-      // if (userAnswer === 1) print1(scores)
-      // else print2(scores)
+       //--- Вивід за шкалою 2
+       function print2(scores) {
+         document.write('<ul>')
+         for (const score of scores) {
+           document.write(`
+           <li>
+            ${
+              score >= 5
+                ? 'переводиться'
+                : `залишається, не вистачає ${5 - score}`
+            }
+           </li>
+             `)
+         }
+         document.write('</ul>')
+       }
+       if (userAnswer === 1) print1(scores)
+       else print2(scores)
       //=============================================
       //--- якісь тестові функції, які я буду передавати у інші функції як параметри
       // function f1() {

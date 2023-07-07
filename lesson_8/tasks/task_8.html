@@ -11,31 +11,62 @@
 
 <body>
    <h1>
-      3.1. Відобразити трикутник за допомогою символів «о»
+      Задача 8. Дано одновимірний масив, у якому зберігається певна виграшна сума (елементи заповнюються випадковим чином значеннями від -500 до 500). Надаючи користувачу можливість вибирати номери елементів  (поки він не відмовиться). Знаходити сумарний виграш.
    </h1>
-   <img src="../img/img_6.png" alt="">
 
    <script>
 
-      //Вводимо необхідні дані
-      const numberRows = 12,
-            SPACE = '&#160'
+      const userArraySize = parseInt(prompt('Введіть число можливих варіантів виграшу', '10')),
+            maxRandomNumber = 500,
+            minRandomNumber = -500
 
-      //Знаходимо результат
-      for (let b = 0; b < 3; b++){
-         for (let i = 0; i <= numberRows; i++) {
+//==========================================================================================================================================
+//Функція знаходження рандомного числа
 
-            for (let k = numberRows; k > i; k-- ){
-               document.write(SPACE)
-            }
-
-            for (let j = 0; j < i; j++) {
-               document.write('o')
-            }
-            document.write('<br>')
-         }
+      function getRandomNumber(minRandomNumber, maxRandomNumber) {
+         return Math.floor(Math.random() * (maxRandomNumber - minRandomNumber + 1) + minRandomNumber)
       }
 
+//==========================================================================================================================================
+      //Функція заповнення масиву рандомними числами виграшу
+
+      function fillingPricesArray(userArraySize, getRandomNumber, minRandomNumber, maxRandomNumber) {
+         const praicesArray = []
+
+         for (let i = 0; i < userArraySize; i++) {
+            praicesArray.push(getRandomNumber(minRandomNumber, maxRandomNumber))
+         }
+         return praicesArray
+      }
+
+      document.write( fillingPricesArray(userArraySize, getRandomNumber, minRandomNumber, maxRandomNumber))
+//==========================================================================================================================================
+      //Функція визначення суми виграшу
+
+      function getWinningSum(praicesArray) {
+         let priceSum = 0,
+               userChoice = true
+
+            while (userChoice) {
+            userChoice = parseInt(prompt('Введіть номер комірки для аналізу вашого виграшу'))
+
+            if (userChoice > 0) {
+            priceSum += praicesArray[userChoice - 1] //мається на увазі що користувач не знає що массиви заповнюються з нульвої комірки
+
+            console.log(`Комірка ${userChoice}`)
+            console.log(`Виграш ${priceSum}`)
+            console.log(`массив ${praicesArray}`)
+            }
+         } 
+         return priceSum
+      }
+
+//==========================================================================================================================================
+      //Виводимо результат
+
+      const pricesArray = fillingPricesArray(userArraySize, getRandomNumber, minRandomNumber, maxRandomNumber)
+      
+      document.write(`<br> Ваш виграш склав ${getWinningSum(pricesArray)} грн.`)
 
    </script>
 
