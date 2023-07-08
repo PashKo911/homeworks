@@ -11,27 +11,120 @@
 
 <body>
    <h1>
-      Задача 9. Морський бій. Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних кораблів. Комп’ютер довільно розміщує ці одиночні кораблі у масиві по один у клітинці (якщо у клітинці 0, то клітинка пуста, якщо 1 – то це означає, що там є корабель. Користувач вводить номер клітинки, куди стріляє. Гра продовжується до тих пір, поки не будуть потоплені усі кораблі.
+      Задача 9. Морський бій. Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних
+      кораблів. Комп’ютер довільно розміщує ці одиночні кораблі у масиві по один у клітинці (якщо у клітинці 0, то
+      клітинка пуста, якщо 1 – то це означає, що там є корабель. Користувач вводить номер клітинки, куди стріляє. Гра
+      продовжується до тих пір, поки не будуть потоплені усі кораблі.
    </h1>
 
    <script>
+      //Оголошуємо змінні
 
-      //Вводимо необхідні дані
-      const depositeTime = 20,
-         yearPercentProfit = 20 / 100
+      const xTableSize = 5,
+         yTableSize = 5,
+         shipsNumber = 3
 
-      let userDepositeSum = parseFloat(prompt('Введіть суму яку би ви хотіли вкласти на депозит', '1000')),
-         totalProfit = userDepositeSum
+      //==========================================================================================================================================
+      //Функція знаходження рандомного числа
 
-      //Знаходимо результат
-      for (let i = 0; i < depositeTime; i++) {
-
-         totalProfit += totalProfit * yearPercentProfit
-         console.log(totalProfit);
-         
+      function getRandomNumber(maxRandomNumber) {
+         return Math.floor(Math.random() * maxRandomNumber)
       }
+      //==========================================================================================================================================
+      //Функція генерації координати по осі X та Y
+
+      function getСoordinatesList(shipsNumber, getRandomNumber, maxRandomNumber) {
+         const coordinatesListX = []
+
+         for (let i = 0; i < shipsNumber; i++) {
+            coordinatesListX.push(getRandomNumber(maxRandomNumber))
+
+         }
+         return coordinatesListX
+      }
+
+      const coordinatesListX = getСoordinatesList(shipsNumber, getRandomNumber, xTableSize)
+      const coordinatesListY = getСoordinatesList(shipsNumber, getRandomNumber, yTableSize)
+
+      document.write(`${coordinatesListX} <br>`)
+      document.write(`${coordinatesListY} <br>`)
+
+      //==========================================================================================================================================
+      //Функція створення та відображення таблиці 
+
+      function showTable(xTableSize, yTableSize, coordinatesListX, coordinatesListY, shipsNumber) {
+         let blue = 'style="background-color: blue;"',
+            red = 'style="background-color: red;"',
+            keeper = 'style="background-color: blue;"'
+
+         document.write('<table>')
+
+         for (let i = 0; i < xTableSize; i++) {
+            document.write('<tr>')
+
+            for (let j = 0; j < yTableSize; j++) {
+
+               for (let k = 0; k < shipsNumber; k++) {
+
+                  if (j === coordinatesListX[k] && i === coordinatesListY[k]) {
+                     blue = red // присвоїти клітинці червоний якщо співпадають координати
+                  }
+               }
+
+               document.write(`<td ${blue}>  </td>`)
+               blue = keeper // повертаю синій щоб всі послідуючі також не зафарбовувались в червоний
+            }
+
+            document.write('</tr>')
+         }
+         document.write('</table>')
+      }
+
+      //==========================================================================================================================================
+      //Функція логіки гри
+
+      const copyOfcoordinatesListX = Array.from(coordinatesListX)
+      const copyOfcoordinatesListY = Array.from(coordinatesListY)
+
+
+      function getWinInGame(copyOfcoordinatesListX, copyOfcoordinatesListY) {
+         const missingShots = []
+
+         do {
+            let userChoiceX = parseInt(prompt('Введіть координату пострілу по осі X'))
+            let userChoiceY = parseInt(prompt('Введіть координату пострілу по осі Y'))
+
+            for (let i = 0; i < copyOfcoordinatesListY.length; i++) {
+               if (userChoiceX === copyOfcoordinatesListX[i] && userChoiceY === copyOfcoordinatesListY[i]) {
+
+                  confirm('Ви попали')
+
+                  copyOfcoordinatesListX.splice(userChoiceX, 1)
+                  copyOfcoordinatesListY.splice(userChoiceY, 1)
+
+                  console.log(copyOfcoordinatesListX);
+                  console.log(copyOfcoordinatesListy);
+
+               } else {
+
+                  confirm('Ви промазали')
+                  missingShots.push(userChoiceX)
+                  missingShots.push(userChoiceY)
+               }
+
+            }
+         } while (copyOfcoordinatesList.length === 0)
+
+      }
+
+      getWinInGame(copyOfcoordinatesListX, copyOfcoordinatesListY)
+      //==========================================================================================================================================
+      //Функція визначення суми виграшу
+
+      //==========================================================================================================================================
       //Виводимо результат
-      document.write(`Загальна сума на вашому рахунку через ${depositeTime} років скалде ${totalProfit.toFixed(2)} грн`)
+
+      showTable(xTableSize, yTableSize, coordinatesListX, coordinatesListY, shipsNumber)
    </script>
 
 </body>
