@@ -70,7 +70,7 @@
                if (coordinatesListX[i] === coordinatesListX[j] && coordinatesListY[i] === coordinatesListY[j]) { //Тут я поки що здаюсь, всі мої кроки тільки знижують вірогідність дублювання координат, та повністю виключити ще не можу, тут або ви підкажіть або почекаю  коли буде більше знань може тоді щось на думку спаде
 
                   do {
-                     randomNumberKeeper = getRandomNumber(maxRandomNumber)
+                     randomNumberKeeper = getRandomNumber(maxRandomNumber)//Виключення можливості генераціїї такого ж числа
 
                   } while (coordinatesListX[i] === randomNumberKeeper)
 
@@ -105,7 +105,7 @@
                         confirm('Ви попали')
       
                         copyOfcoordinatesListX.splice(i, 1)
-                        copyOfcoordinatesListY.splice(i, 1)
+                        copyOfcoordinatesListY.splice(i, 1) //Тут цікаво такі функції дуже складні, чи реально це розбити на менші?
       
                         checker = true
       
@@ -125,7 +125,7 @@
             }
       
             //==========================================================================================================================================
-            //Функція сортування координат X Y в два масиви 
+            //Функція розпаковки координат X Y в два масиви 
       
             function getTwoArrayFrom1(missingShotsArray, pushStep) { //Так як ви рекомендуєте повертати функцією щось одне, довелось всі координати забивати в один масив а потім розпаковувати в два
                const anyMissingShotsArray = []
@@ -163,7 +163,7 @@
 
                      for (let j = 0; j < yTableSize; j++) {
 
-                        for (let k = 0; k < missingShotsX.length; k++) {
+                        for (let k = 0; k < missingShotsX.length; k++) { //Так само і тут цікаво чи реально це розбити на менші?
 
                            if (j === missingShotsX[k] - 1 && i === missingShotsY[k] - 1) {
                               blue = black // присвоїти клітинці чорний якщо співпадають координати
