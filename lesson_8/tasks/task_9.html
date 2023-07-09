@@ -11,27 +11,34 @@
 
 <body>
    <h1>
-      Задача 9. Морський бій. Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних
-      кораблів. Комп’ютер довільно розміщує ці одиночні кораблі у масиві по один у клітинці (якщо у клітинці 0, то
-      клітинка пуста, якщо 1 – то це означає, що там є корабель. Користувач вводить номер клітинки, куди стріляє. Гра
-      продовжується до тих пір, поки не будуть потоплені усі кораблі.
+      ДЗ№ 8 Завдання 9. Морський бій. Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних кораблів. Комп’ютер довільно розміщує ці одиночні кораблі у масиві по один у клітинці (якщо у клітинці 0, то клітинка пуста, якщо 1 – то це означає, що там є корабель. Користувач вводить номер клітинки, куди стріляє. Гра продовжується до тих пір, поки не будуть потоплені усі кораблі.
    </h1>
 
+   <h1>ДЗ№ 6 Завдання 14. Морський бій. Комп’ютер випадковим чином розміщує одиночний корамель на полі 5*5. З клавіатури поступово вводяться координати пострілу поки корабель не буде потоплено. Спробуйте відоразити гру графічно.</h1>
+
+   <ul> Пояснення:
+      <li>Обʼєднав ці дві задачі в одну, поле зробив 3*3 в якому розміщено 3 корабля</li>
+      <li>Користувачу не надав права обирати розміри поля та кількість кораблів, навіть при таких розмірах поля та кількості кораблів виграти у грі не легко</li>
+      <li>Існує один великий недолік, у всякому разі який я помітив, це розміщення кораблів в одній координаті, повністю вилікувати не зміг, та вірогідність знизив</li>
+      <li>Червоним кольором помічені потоплені кораблі</li>
+      <li>Чорним кольором помічені промахи </li>
+      <li>Синім поле без пострілів та кораблів</li>
+   </ul>
    <script>
       //Оголошуємо змінні
 
-      const xTableSize = 5,
-         yTableSize = 5,
+      const xTableSize = 3,
+         yTableSize = 3,
          shipsNumber = 3
 
-      //==========================================================================================================================================
+//==========================================================================================================================================
       //Функція знаходження рандомного числа
 
       function getRandomNumber(maxRandomNumber) {
          return Math.floor(Math.random() * maxRandomNumber)
       }
-      //==========================================================================================================================================
-      //Функція генерації координати по осі X та Y
+//==========================================================================================================================================
+      //Функція генерації координат по осі X та Y
 
       function getСoordinatesList(shipsNumber, getRandomNumber, maxRandomNumber) {
          const coordinatesListX = []
@@ -43,88 +50,146 @@
          return coordinatesListX
       }
 
-      const coordinatesListX = getСoordinatesList(shipsNumber, getRandomNumber, xTableSize)
-      const coordinatesListY = getСoordinatesList(shipsNumber, getRandomNumber, yTableSize)
+      let coordinatesListX = getСoordinatesList(shipsNumber, getRandomNumber, xTableSize)
+      let coordinatesListY = getСoordinatesList(shipsNumber, getRandomNumber, yTableSize)
 
-      document.write(`${coordinatesListX} <br>`)
-      document.write(`${coordinatesListY} <br>`)
+      document.write(`Координати кораблів по осі X ${coordinatesListX} <br>`)
+      document.write(`Координати кораблів по осі Y ${coordinatesListY} <br>`)
+//==========================================================================================================================================
+      //Функція для виключення можливості розміщення двух кораблів в однаковій позиції
 
-      //==========================================================================================================================================
-      //Функція створення та відображення таблиці 
+      function replaceSameCoordinates(coordinatesListX, coordinatesListY, getRandomNumber, maxRandomNumber) {
+         let randomNumberKeeper
 
-      function showTable(xTableSize, yTableSize, coordinatesListX, coordinatesListY, shipsNumber) {
-         let blue = 'style="background-color: blue;"',
-            red = 'style="background-color: red;"',
-            keeper = 'style="background-color: blue;"'
+         for (let i = 0; i < maxRandomNumber; i++) {
 
-         document.write('<table>')
+            for (let j = 0; j < maxRandomNumber; j++) {
 
-         for (let i = 0; i < xTableSize; i++) {
-            document.write('<tr>')
+               if (i === j) continue
 
-            for (let j = 0; j < yTableSize; j++) {
+               if (coordinatesListX[i] === coordinatesListX[j] && coordinatesListY[i] === coordinatesListY[j]) { //Тут я поки що здаюсь, всі мої кроки тільки знижують вірогідність дублювання координат, та повністю виключити ще не можу, тут або ви підкажіть або почекаю  коли буде більше знань може тоді щось на думку спаде
 
-               for (let k = 0; k < shipsNumber; k++) {
+                  do {
+                     randomNumberKeeper = getRandomNumber(maxRandomNumber)
 
-                  if (j === coordinatesListX[k] && i === coordinatesListY[k]) {
-                     blue = red // присвоїти клітинці червоний якщо співпадають координати
+                  } while (coordinatesListX[i] === randomNumberKeeper)
+
+                  coordinatesListX[i] = randomNumberKeeper
+               }
+            }
+         }
+         return coordinatesListX
+      }
+
+      coordinatesListX = replaceSameCoordinates(coordinatesListX, coordinatesListY, getRandomNumber, xTableSize)
+
+      document.write(`Новий масив з координатами по X ${coordinatesListX}<br>`)
+//==========================================================================================================================================
+      //Функція логіки гри
+      
+            const copyOfcoordinatesListX = Array.from(coordinatesListX)
+            const copyOfcoordinatesListY = Array.from(coordinatesListY)
+      
+            function getWinInGame(copyOfcoordinatesListX, copyOfcoordinatesListY) {
+               const missingShots = []
+               let checker = false
+      
+               while (copyOfcoordinatesListY.length !== 0) {
+                  let userChoiceX = parseInt(prompt('Введіть координату пострілу по осі X'))
+                  let userChoiceY = parseInt(prompt('Введіть координату пострілу по осі Y'))
+      
+                  for (let i = 0; i < copyOfcoordinatesListY.length; i++) {
+                     checker = false
+      
+                     if (userChoiceX - 1 === copyOfcoordinatesListX[i] && userChoiceY - 1 === copyOfcoordinatesListY[i]) {
+                        confirm('Ви попали')
+      
+                        copyOfcoordinatesListX.splice(i, 1)
+                        copyOfcoordinatesListY.splice(i, 1)
+      
+                        checker = true
+      
+                        console.log(copyOfcoordinatesListX);
+                        console.log(copyOfcoordinatesListY);
+                     }
+                  }
+      
+                  if (checker === false) {
+                     confirm('Ви промазали спробуйте ще')
+      
+                     missingShots.push(userChoiceX)
+                     missingShots.push(userChoiceY)
                   }
                }
-
-               document.write(`<td ${blue}>  </td>`)
-               blue = keeper // повертаю синій щоб всі послідуючі також не зафарбовувались в червоний
+               return missingShots
             }
-
-            document.write('</tr>')
-         }
-         document.write('</table>')
-      }
-
-      //==========================================================================================================================================
-      //Функція логіки гри
-
-      const copyOfcoordinatesListX = Array.from(coordinatesListX)
-      const copyOfcoordinatesListY = Array.from(coordinatesListY)
-
-
-      function getWinInGame(copyOfcoordinatesListX, copyOfcoordinatesListY) {
-         const missingShots = []
-
-         do {
-            let userChoiceX = parseInt(prompt('Введіть координату пострілу по осі X'))
-            let userChoiceY = parseInt(prompt('Введіть координату пострілу по осі Y'))
-
-            for (let i = 0; i < copyOfcoordinatesListY.length; i++) {
-               if (userChoiceX === copyOfcoordinatesListX[i] && userChoiceY === copyOfcoordinatesListY[i]) {
-
-                  confirm('Ви попали')
-
-                  copyOfcoordinatesListX.splice(userChoiceX, 1)
-                  copyOfcoordinatesListY.splice(userChoiceY, 1)
-
-                  console.log(copyOfcoordinatesListX);
-                  console.log(copyOfcoordinatesListy);
-
-               } else {
-
-                  confirm('Ви промазали')
-                  missingShots.push(userChoiceX)
-                  missingShots.push(userChoiceY)
+      
+            //==========================================================================================================================================
+            //Функція сортування координат X Y в два масиви 
+      
+            function getTwoArrayFrom1(missingShotsArray, pushStep) { //Так як ви рекомендуєте повертати функцією щось одне, довелось всі координати забивати в один масив а потім розпаковувати в два
+               const anyMissingShotsArray = []
+      
+               for (let i = 0; i < missingShots.length; i += 2) {
+      
+                  anyMissingShotsArray.push(missingShotsArray[i + pushStep])
                }
-
+               return anyMissingShotsArray
             }
-         } while (copyOfcoordinatesList.length === 0)
+      
+            const missingShots = getWinInGame(copyOfcoordinatesListX, copyOfcoordinatesListY)
+            document.write(`Координати промахів загальні ${missingShots}<br>`)
+      
+            const missingShotsX = getTwoArrayFrom1(missingShots, 0)
+            document.write(`Координати промахів по осі X ${missingShotsX}<br>`) //Не знаю, не бачу тут сенсу сворювати змінні для 0 та 1 
+      
+            const missingShotsY = getTwoArrayFrom1(missingShots, 1)
+            document.write(`Координати промахів по осі Y ${missingShotsY}<br>`)
+      
+//==========================================================================================================================================
+      //Функція створення та відображення таблиці 
+
+      function showTable(xTableSize, yTableSize, coordinatesListX, coordinatesListY, shipsNumber, missingShotsX, missingShotsY) {
+         let blue = 'style="background-color: blue;"',
+            red = 'style="background-color: red;"',
+            black = 'style="background-color: black;"',
+            keeper = 'style="background-color: blue;"'
+
+            document.write('<div class="game">')
+                  document.write('<table>')
+
+                  for (let i = 0; i < xTableSize; i++) {
+                     document.write('<tr>')
+
+                     for (let j = 0; j < yTableSize; j++) {
+
+                        for (let k = 0; k < missingShotsX.length; k++) {
+
+                           if (j === missingShotsX[k] - 1 && i === missingShotsY[k] - 1) {
+                              blue = black // присвоїти клітинці чорний якщо співпадають координати
+
+                           } else if (j === coordinatesListX[k] && i === coordinatesListY[k])
+                           blue = red //  присвоїти клітинці червоний якщо співпадають координати
+
+                        }
+
+                        document.write(`<td width="75" height="75" ${blue}> </td>`)
+                        blue = keeper // повертаю синій щоб всі послідуючі також не зафарбовувались в червоний
+                     }
+
+                     document.write('</tr>')
+                  }
+                  document.write('</table>')
+
+            document.write('</div>')
 
       }
 
-      getWinInGame(copyOfcoordinatesListX, copyOfcoordinatesListY)
-      //==========================================================================================================================================
-      //Функція визначення суми виграшу
-
-      //==========================================================================================================================================
+//==========================================================================================================================================
       //Виводимо результат
 
-      showTable(xTableSize, yTableSize, coordinatesListX, coordinatesListY, shipsNumber)
+      showTable(xTableSize, yTableSize, coordinatesListX, coordinatesListY, shipsNumber, missingShotsX, missingShotsY)
+
    </script>
 
 </body>

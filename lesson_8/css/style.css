@@ -140,3 +140,9 @@ img{
 li:last-child{
    margin-bottom: 40px;
 }
+
+.game{
+   padding-top: 100px;
+   display: flex;
+   margin: 0 auto;
+}
