@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      2. Користувач вводить кількість елементів. Створити масив, у якому перша половина заповнена 1-цями, а друга заповнена 7-ками.
+   </h1>
+   <script>
+
+  //Отримуємо дані користувача
+
+  const userElementNumber = parseInt(prompt('Введіть кількість елементів яку ви хочите вивести на екран'))
+
+//==========================================================================================================================================
+   //Створюємо та заповнюємо масив
+   const userArray = new Array (userElementNumber),
+         middleOfArray = Math.ceil(userArray.length / 2),
+         arrayFilling1 = 0,
+         arrayFilling2 = 7
+
+   userArray.fill(arrayFilling1, 0, middleOfArray)
+   userArray.fill(arrayFilling2, middleOfArray)
+//==========================================================================================================================================
+
+   //Виводимо результат
+   document.write(userArray)
+ 
+   </script>
+
+</body>
+
+</html>

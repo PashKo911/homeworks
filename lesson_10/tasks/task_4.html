@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      4.Дано масив елементів. Вивести на екран елементи, що більші за 100</h1>
+
+   <script>
+      //Зчитування даних користувача
+      const userElementNumber = parseInt(prompt('Введіть бажану кількість елементів масиву')),
+         messageToUser = 'Введіть число'
+      //==========================================================================================================================================
+
+      //Функція введення даних користувача
+
+      function getUserElements(userElementNumber, messageToUser) {
+         let elementsArray = []
+
+         for (let i = 0; i < userElementNumber; i++) {
+            let userElement = parseInt(prompt(messageToUser))
+            elementsArray.push(userElement)
+         }
+         return elementsArray
+      }
+      //==========================================================================================================================================
+      // Виводимо на екран елементи масиву більші за 100
+
+      function showMore100elements(elementsArray) {
+
+         for (const more100Element of elementsArray) {
+            if (more100Element > 100)
+               document.write(`${more100Element} <br>`)
+         }
+      }
+      //==========================================================================================================================================
+      //Виводимо результат
+      
+      const userElementsArray = getUserElements(userElementNumber, messageToUser)
+      document.write(`Елементи масиву - ${userElementsArray}<br>`)
+
+      showMore100elements(userElementsArray)
+
+   </script>
+
+</body>
+
+</html>
