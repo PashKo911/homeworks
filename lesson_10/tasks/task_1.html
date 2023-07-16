@@ -106,7 +106,7 @@
             if (price > 1000)
                more1000PriceIndex.push(index)
 
-            return more1000PriceIndex
+             return more1000PriceIndex
          },
          []
       )
@@ -129,11 +129,23 @@
          const maxPrice = Math.max(...pricesHistory)
 
          const percentPricesRelativeMaxPrice = pricesHistory.map(
-            (price) => Math.ceil( price / maxPrice * 100)// Чи існує простіший метод закруглення кожного елементу масиву за допомогою toFixed  окрім функції в якій за допомогою циклу for присвоювати кожному елементу закруглення
+            (price) => price / maxPrice * 100
          )
 
-         document.write(`4. Масив, що міститить значення цін у відсотках стосовно максимального ${percentPricesRelativeMaxPrice.join('%, ')}%<br>`)
+      //Функція виведення заокруглених значень масиву
 
+         const messageToUser = '4. Масив, що міститить значення цін у відсотках стосовно максимального: '
+
+         function getRoundingNumbers(anyArray, anyMessage) {
+            document.write(anyMessage)
+
+            for (const element of percentPricesRelativeMaxPrice) {
+               document.write(`${element.toFixed(1)}%, `)
+            }
+         }
+         
+         getRoundingNumbers(percentPricesRelativeMaxPrice, messageToUser)
+         document.write('<br>')
 
 //==========================================================================================================================================
       //Підрахувати кількість змін цін
@@ -142,7 +154,7 @@
          (changePricesCounter, price, index, pricesHistory) => 
          {
 
-            if (index < pricesHistory.length - 1 && price !== pricesHistory[index + 1])//Намагався привести до одного ретурна але тоді потрібно changePricesCounter присвоювати значення, вирішив що так краще
+            if (index < pricesHistory.length - 1 && price !== pricesHistory[index + 1])
             return changePricesCounter + 1
 
             else return changePricesCounter
