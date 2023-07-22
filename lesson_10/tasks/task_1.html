@@ -93,7 +93,7 @@
       //Новий масив з більшими за 1000
 
       const more1000Prices = pricesHistory.filter(
-         (price) => price > 1000 ? price : null
+         (price) => price > 1000 
       )
 
       document.write(`1. Новий масив з цінами більшими за 1000 - ${more1000Prices}<br>`)
@@ -139,7 +139,7 @@
          function getRoundingNumbers(anyArray, anyMessage) {
             document.write(anyMessage)
 
-            for (const element of percentPricesRelativeMaxPrice) {
+            for (const element of anyArray) {
                document.write(`${element.toFixed(1)}%, `)
             }
          }
