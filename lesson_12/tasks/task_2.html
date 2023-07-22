@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+       18. Упорядкувати так, щоб спочатку були нулі, потім від"ємні, потім додатні
+   </h1>
+   <script>
+
+//==========================================================================================================================================
+   //Функція генерування рандомного числа
+
+//   function getRandomNumber(minValue, maxValue) {
+//      return minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+//   }
+
+////==========================================================================================================================================
+//   //Функція генерування одновимірного масиву
+
+//   function generateRandomArray(arrayLength, minValue, maxValue){
+//      const arr = []
+
+//      for (let i = 0; i < arrayLength; i++) {
+//         arr.push(getRandomNumber(minValue, maxValue))
+//      }
+//      return arr
+//   }
+
+//   //Виводимо результат
+//   const initialArray = generateRandomArray(15, -500, 500)
+//   document.write(`Початковий масив ${initialArray}<br>`)
+//==========================================================================================================================================
+   const initialArray = [1,0,10,12,0,-3,-10,0,-20,2]
+   //Функція сортування масиву згідно умови
+
+   function getSortingArray(arr) {
+
+      arr.sort(
+         (element1, element2) => {
+            if (element1 === 0 && element2 !== 0 ) return -1 // ну початкове моє рішення ви колись в чаті бачили, а це по памʼяті з заняття не памʼятаю з якого:)
+            if (element1 !== 0 && element2 === 0) return 1
+            else return element1 - element2
+         }
+      )
+   }
+
+   const sortingArray = getSortingArray(initialArray)
+   document.write(`Відсортований масив ${initialArray}`)
+
+   </script>
+
+</body>
+
+</html>

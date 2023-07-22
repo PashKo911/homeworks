@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      6.Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2
+   </h1>
+
+   <script>
+      // Зчитуємо дані користувача
+      const userElementNumber = parseInt(prompt('Введіть кількість елементів які хочете проаналізувати')),
+         messageToUser = 'Введіть число',
+         multiplier = 2
+      //==========================================================================================================================================
+      //Функція введення даних користувача
+
+      function getUserElements(userElementNumber, messageToUser) {
+         let elementsArray = []
+
+         for (let i = 0; i < userElementNumber; i++) {
+            let userElement = parseInt(prompt(messageToUser))
+            elementsArray.push(userElement)
+         }
+         return elementsArray
+      }
+
+      //==========================================================================================================================================
+      //Знаходимо результат
+
+      const elementsArray = getUserElements(userElementNumber, messageToUser)
+
+      document.write(`Початковий масив - ${elementsArray} <br>`)
+
+      elementsArray.forEach(
+         (element, index, elementsArray) => {
+
+            if (element > elementsArray[0])
+               elementsArray[index] *= multiplier
+         }
+      )
+
+      //Виводимо результат
+
+      document.write(`Кінцевий масив - ${elementsArray}`)
+      //==========================================================================================================================================
+
+   </script>
+
+</body>
+
+</html>

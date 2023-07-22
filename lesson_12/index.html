@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>ДЗ №12 Сортування
+   </h1>
+
+   <script>
+      //ВАМ ЗРУЧНІШЕ ТАК ПЕРЕВІРЯТИ ЧИ В ОКРЕМИХ ФАЙЛАХ???
+      //цікаво що кількість змін у перших трьох методах сортування однакова
+
+      // Описуємо змінну довжини масиву 
+
+      const arrayLength = 30
+
+      //Функція генерування рандомного числа
+
+      function getRandomNumber(minValue, maxValue) {
+         return minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+      }
+
+      //==========================================================================================================================================
+      //Функція генерування одновимірного масиву
+
+      function generateRandomArray(arrayLength, minValue, maxValue) {
+         const arr = []
+
+         for (let i = 0; i < arrayLength; i++) {
+            arr.push(getRandomNumber(minValue, maxValue))
+         }
+         return arr
+      }
+
+      //const someArray = generateRandomArray(arrayLength, 1, 1000) //Тут можна розкоментувати щоб було згідно умови але тоді таблиці страшні для зручності зробив так
+      const someArray = [2, 7, 4, 8, 1, 4, 5]
+      document.write(`Початковий масив : ${someArray}<br>`)
+      document.write('<br>')
+
+      //==========================================================================================================================================
+      //Описуємо змінні
+
+      const startIndexToBubbleSorting = 0,
+         endIndexToBubbleSorting = someArray.length,
+
+         leftIndex = 0,
+         rightIndex = someArray.length - 1
+
+      //==========================================================================================================================================
+      // Функція виведення поетапного результату на екран
+
+      function showGradualResult(array) {
+         document.write('<table>')
+         document.write('<tr>')
+         for (let i = 0; i < array.length; i++) {
+            document.write(`<td>${array[i]}</td>`)
+         }
+         document.write('</tr>')
+         document.write('</table>')
+      }
+      //==========================================================================================================================================
+      //Задача 1. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування бульбашкою
+
+      //Функція сортування одновимірного масиву методом бульбашки з підрахунком обмінів
+
+      const copyArrayToBubbleSorting = JSON.parse(JSON.stringify(someArray))
+
+      function getSortingWithBubble(array, startIndexToBubbleSorting, endIndexToBubbleSorting) {
+
+         let changesCounter = 0
+
+         do {
+            change = false
+
+            for (let i = startIndexToBubbleSorting; i < endIndexToBubbleSorting; i++) {// це вже звичка ускладнювати собі завдання та було цікаво як працює якщо задати межі сортування
+
+               if (array[i - 1] > array[i]) {
+
+                  let temp = array[i - 1]
+                  array[i - 1] = array[i]
+                  array[i] = temp
+                  changesCounter++
+
+                  change = true
+                  showGradualResult(array)// намагався запушити в багатовимірний та щось пішло не по плану
+               }
+
+            }
+         } while (change)
+
+         return changesCounter
+      }
+
+      document.write('Виведення масиву по етапам сортування <br>')
+      const numberChangesWithBubbleSorting = getSortingWithBubble(copyArrayToBubbleSorting, startIndexToBubbleSorting, endIndexToBubbleSorting)
+      document.write('<br>')
+      document.write(`Кількість змін під час сортування бульбашкою =  ${numberChangesWithBubbleSorting} <br>`)
+      document.write(`Відсортований масив ${copyArrayToBubbleSorting}<br>`)
+      document.write('<br>')
+
+      //==========================================================================================================================================
+      //Задача 2. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування змішуванням.
+
+      const copyArrayToBubbleMixSorting = JSON.parse(JSON.stringify(someArray))
+
+      function getSortingWithBubbleMix(array, leftIndex, rightIndex) {
+         let counter = 0
+
+         while (leftIndex < rightIndex) {
+            let temp
+
+            for (let i = leftIndex; i < rightIndex; i++) {
+
+               if (array[i] > array[i + 1]) {
+                  temp = array[i + 1]
+                  array[i + 1] = array[i]
+                  array[i] = temp
+
+                  showGradualResult(array)
+                  counter++
+               }
+            }
+            rightIndex--
+            for (let i = rightIndex; i > leftIndex; i--) {
+
+               if (array[i] < array[i - 1]) {
+                  temp = array[i - 1]
+                  array[i - 1] = array[i]
+                  array[i] = temp
+
+                  showGradualResult(array)
+                  counter++
+               }
+            }
+            leftIndex++
+         }
+         return counter
+      }
+
+      document.write('Виведення масиву по етапам сортування <br>')
+      const numberChangesWithBubbleMixSorting = getSortingWithBubbleMix(copyArrayToBubbleMixSorting, leftIndex, rightIndex)
+      document.write(`Кількість змін під час сортування алгоритмом змішування =  ${numberChangesWithBubbleMixSorting} <br>`)
+      document.write(`Відсортований масив ${copyArrayToBubbleMixSorting}<br>`)
+      document.write('<br>')
+
+      //==========================================================================================================================================
+      //Задача 3. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування включеннями.
+
+      const copyArrayToIncludingSorting = JSON.parse(JSON.stringify(someArray))
+
+      function getgetSortingWithIncluding(array) {
+         let key, i,
+            counter = 0
+
+         for (let k = 1; k < array.length; k++) {
+
+            key = array[k]
+            i = k - 1
+
+            while (i >= 0 && array[i] > key) {
+
+               array[i + 1] = array[i]
+               counter++
+               i--
+               showGradualResult(array)
+            }
+            array[i + 1] = key
+         }
+         return counter
+      }
+      document.write('Виведення масиву по етапам сортування <br>')
+      document.write(`Кількість змін під час сортування алгоритмом включення =  ${getgetSortingWithIncluding(copyArrayToIncludingSorting)} <br>`)
+      document.write(`Відсортований масив ${copyArrayToIncludingSorting}<br>`)
+
+      //==========================================================================================================================================
+      //Задача 4. Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних таблиць за зразком.
+
+
+      //==========================================================================================================================================
+      //Задача 5. Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я «Olga» і під яким індексом.
+
+
+      //Оголошуємо змінні
+
+      const namesArray = ['Marichka', 'Olga', 'Antoha', 'Jorik', 'Stepan', 'Stucko', 'Ira', 'Svetlana',],
+         searchName = 'Stucko'
+
+      //==========================================================================================================================================
+      //Функція сортування та пошуку необхідного імені з масиву
+
+      function searchIndexOfNecessaryElement(array, searchElement) {
+         const copyArray = [...array]                    // Копіюю масив, ну типу мені здається так правильніше, що основний не треба сортувати і функція нічого не чіпаючи виконює своє завдання))
+         copyArray.sort()                               //також вирішив сортування в середині записати так як це необхідний елемент для бінарного пошуку
+         let start = 0
+         let end = copyArray.length - 1
+
+         while (start <= end) {
+            const middleOfArray = Math.floor((start + end) / 2)
+
+            if (copyArray[middleOfArray] === searchElement) return middleOfArray
+            if (copyArray[middleOfArray] < searchElement) start = middleOfArray + 1
+            if (copyArray[middleOfArray] > searchElement) end = middleOfArray - 1
+         }
+         return -1
+      }
+
+      const copyNamesList = [...namesArray]
+      copyNamesList.sort()
+      document.write(`Початковий список імен: ${copyNamesList}<br>`)//Розумію що таким чином два рази копіюю масив та це тільки для демонстрації
+
+      const indexOfNecessaryElement = searchIndexOfNecessaryElement(namesArray, searchName)
+
+      if (indexOfNecessaryElement === -1)
+         document.write('Вказане імʼя відсутнє в заданому списку імен')
+
+      else document.write(`Імʼя яке ви шукаєте знаходиться під індексом ${indexOfNecessaryElement}<br>`)
+
+      //==========================================================================================================================================
+      //Задача 6. Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я довжиною 5 символів і під яким індексом.
+
+      //Оголошуємо змінні
+
+      const nameLengthToSearch = 5
+      //==========================================================================================================================================
+      //Функція пошуку індексу необхідної довжини імʼя
+
+      function searchIndexOfNecessaryElementLength(array, searchElement) {
+         const copyArray = [...array]
+         copyArray.sort(
+            (el1, el2) => el1.length - el2.length
+         )
+         let start = 0,
+            end = copyArray.length - 1
+
+         while (start <= end) {
+            const midddleOfArray = Math.floor((start + end) / 2)
+
+            if (copyArray[midddleOfArray].length === searchElement) return midddleOfArray
+            if (copyArray[midddleOfArray].length < searchElement) start = midddleOfArray + 1
+            if (copyArray[midddleOfArray].length > searchElement) end = midddleOfArray - 1
+         }
+         return -1
+      }
+
+      const indexOfNecessaryElementLength = searchIndexOfNecessaryElementLength(namesArray, nameLengthToSearch)
+      
+            const copyNamesList1 = [...namesArray]
+            copyNamesList1.sort(
+               (el1, el2) => el1.length - el2.length
+            )
+            document.write(`Початковий список імен відсортований за довжиною: ${copyNamesList1}<br>`)
+
+      if (indexOfNecessaryElementLength === -1)
+         document.write('Імʼя з вказаною довжиною відсутнє')
+
+      else document.write(`Імʼя з вказаною кількістю символів знаходиться під індексом ${indexOfNecessaryElementLength}<br>`)
+//==========================================================================================================================================
+   </script>
+
+</body>
+
+</html>
