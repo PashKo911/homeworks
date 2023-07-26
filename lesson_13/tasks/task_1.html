@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+
+   <h1>
+      <img src="../img/img_2.png" alt="">
+   </h1>
+   <script>
+      
+      //Оголошуємо змінні
+
+      let number = 3, // ну тут вже не став через prompt писати думає зараз це не важливо
+          degree = 3
+//==========================================================================================================================================
+//Рекурсивна функція знаходження степеня числа а
+
+      function getNumberDegree(number, degree) {
+
+         if (degree === 0) return 1
+
+         return getNumberDegree(number, degree - 1) * number
+      }
+
+      let numberDegree = getNumberDegree(number, degree)
+
+      document.write(`Число ${number} в сетпені ${degree} дорівнює ${numberDegree}`)
+   </script>
+
+</body>
+
+</html>

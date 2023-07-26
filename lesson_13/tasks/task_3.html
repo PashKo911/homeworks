@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 2. Реалізувати бінарний пошук (розглядали на попередніх уроках) з використанням рекурсивного алгоритму.
+   </h1>
+
+   <script>
+      //Оголошуємо змінні
+
+      const arrayToSearch = [23, 123, 24, 1, 2, 4, 5, 10, 15, 45, 34],
+            searchElement = 35
+
+//==========================================================================================================================================
+      // Сортуємо масив 
+
+      arrayToSearch.sort(
+         (el1, el2) => el1 - el2
+      ) 
+
+      document.write(`Початковий масив: ${arrayToSearch}<br>`)
+//==========================================================================================================================================
+      // Функція бінарного пошуку з використанням рекурсії
+
+      function binarySearch(array, searchElement, start , end) {
+         
+         let middleOfArray = Math.floor((start + end) / 2)
+
+         if (start <= end){
+
+            if (array[middleOfArray] === searchElement) return middleOfArray
+            if (array[middleOfArray] < searchElement) return binarySearch(array, searchElement, middleOfArray + 1 , end)
+            if (array[middleOfArray] > searchElement) return binarySearch(array, searchElement, start , middleOfArray - 1)
+         }
+         return -1
+      }
+
+//==========================================================================================================================================
+      //Виводимо результат
+
+      let result = binarySearch(arrayToSearch, searchElement, 0 , arrayToSearch.length - 1)
+
+      if (result === -1)
+      document.write('Такого числа в даному масиві не знайдено')
+      else document.write(`Введене число знаходиться у позиції ${result}`)
+
+//==========================================================================================================================================
+
+   </script>
+
+</body>
+
+</html>
