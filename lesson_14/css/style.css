@@ -1,0 +1,142 @@
+
+/*Обнуление*/
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+a:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 18px;
+	font-family: Manrope;
+	line-height: 1.3;
+	color: #000;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+
+input,button,textarea{font-family:inherit;}
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{}
+img{vertical-align: top;}
+
+a {
+   cursor: pointer;
+	text-decoration: none;
+}
+
+ul,
+ol,
+li {
+
+}
+img{
+	vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+/*Стилі сторінки */
+
+body {
+   padding: 40px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	background-color: #c8c5c589;
+}
+h1 {
+	text-align: center;
+	font-size: 24px;
+	font-weight: 700;
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+
+
+a {
+   cursor: pointer;
+   display: block;
+	color: #000;
+	transition: color 0.3s ease 0s;
+}
+
+
+.button{
+   display: flex;
+   justify-content:center;
+   align-items: center;
+   margin-bottom: 60px;
+   padding: 10px 30px;
+   border: 1px solid #7ab13b;
+   border-radius: 5px;
+   transition: all 0.3s ease 0s;
+
+}
+
+.button:hover{
+   background-color: #7ab13b;
+   color: #000;
+}
+
+.body__text{
+   padding: 0px 15px;
+}
+.body__element{
+   border: 1px solid #000;
+   width: 300px;
+}
+table{
+   border: 1px solid #000;
+   border-collapse: collapse;
+}
+
+td, tr, th {
+   padding: 10px;
+   border: 1px solid #000;
+   border-color: #58abab;
+}
+
+hr{
+   border: 2px dashed #000;
+   width: 100%;
+}
+.img_box{
+   display: flex;
+   gap: 5px;
+}
+img{
+   width: 75%;
+   height: 65%;
+   margin-bottom: 50px;
+}
+.image img{
+   width: 307px;
+   height: 38px;
+}
+li:last-child{
+   margin-bottom: 40px;
+}
