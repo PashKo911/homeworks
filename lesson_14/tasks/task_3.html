@@ -517,38 +517,33 @@ let availableProducts = dataList.filter(
    //        availableProductsWithPropertiesList.push({
    //         id: product.id,
    //         price: product.price,
-   //         old_price: product.old_price
+   //         old_price: product.old_price,
+            //usd_price: product.usd_price
    //      })
    //      return availableProductsWithPropertiesList
    //   },
    //   []
       
    //)
-   
-      const prudctProperties = {
-         productId : 'id',
-         productPrice : 'price',
-         prevProductPrice : 'old_price'
-
-      }
 
       //тут я сподіваюсь немає якогось способу за допомогою filter вивести ці дані без використання функції що нижче))
 
-   function getAvailableProductsWithProperties(array,properties) {
+   function getAvailableProductsWithProperties(array) {
       let productsWithPropertiesList = []
 
       for (const product of array) {
             let productsWithPropertiesObj = {
             id: product.id,
             price: product.price,
-            old_price: product.old_price
+            old_price: product.old_price,
+            usd_price: product.usd_price
          }
          productsWithPropertiesList.push(productsWithPropertiesObj)
       }
       return productsWithPropertiesList
    }
 
-   let availableProductsWithProperties = getAvailableProductsWithProperties(availableProducts,prudctProperties)
+   let availableProductsWithProperties = getAvailableProductsWithProperties(availableProducts)
    console.log(availableProductsWithProperties);
 
    </script>
