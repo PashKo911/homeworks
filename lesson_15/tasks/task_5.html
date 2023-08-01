@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 4. Розробити клас Baner
+   </h1>
+
+   <script>
+      //--- Створити ітератор по літерам слова
+
+      function getLettersInWord(word) {
+         let wordLetter,
+            counter = 0
+
+         function getLetter() {
+            if (counter === word.length) counter = 0
+
+               wordLetter = word[counter]
+               counter++
+
+            return wordLetter
+         }
+         return getLetter
+      }
+
+      function translator(word, description) {
+         let taskInfo = alert(
+            `Перекладіть англійською мовою: ${description} (${word.length} букв)`
+         )
+         let wordInLetters = getLettersInWord(word)
+         let counter = 0
+         let userLettersArr = []
+         for (let letter = 0; letter < word.length; letter++) {
+            const userLetter = prompt(
+               `Введіть ${letter + 1} букву перекладу`
+            ).toLowerCase()
+            const wrightLetter = wordInLetters()
+
+            userLettersArr.push(userLetter)
+            if (wrightLetter === userLetter) counter++
+         }
+         return [userLettersArr, counter]
+      }
+
+      let word = 'spring'
+
+      let description =
+         'Oдна з чотирьох пір року між зимою та літом, характерна для помірних широт '
+      let [userLettersArr, counter] = translator(word, description)
+      document.write(
+         `Переклад слова: ${word}. <br> Ви ввели букви: ${userLettersArr}.
+       Кількість правильно вгаданих букв: ${counter}`
+      )
+   </script>
+
+</body>
+
+</html>

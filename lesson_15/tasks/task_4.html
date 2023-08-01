@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 3. Розробити клас MultChecker для перевірки таблиці множення
+      </h1>
+
+   <script>
+   //Оголошуємо змінні
+
+      const minValue = 1,
+            maxValue = 6
+
+//==========================================================================================================================================
+      //Ітератор 
+       
+      function getIteratorWithStep1(minValue = 1, maxValue = 12) {
+         let result = minValue
+
+         function getNextValue() {
+
+            if(result === maxValue) 
+               result = minValue
+
+               else  ++result
+
+            return result
+         }
+         return getNextValue
+      }
+
+      let monthIterator = getIteratorWithStep1()
+//==========================================================================================================================================
+      //Функція перебору місяців в залежності від введених даних
+
+      function getMonthsOvercoming(monthsNumber, monthIterator) {
+         
+         for (let i = 0; i <= 20; i++) {
+
+            document.write(`${monthIterator()} <br>`)
+         }
+      }
+
+      getMonthsOvercoming(20, monthIterator)
+//==========================================================================================================================================
+   </script>
+
+</body>
+
+</html>

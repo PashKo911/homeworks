@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 5. Розробити клас «Керівник танців»
+   </h1>
+
+   <script>
+      //Функція генерування рандомного числа
+
+      function getRandomNumber(minValue = 1, maxValue = 20) {
+         return minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+      }
+
+//==========================================================================================================================================
+      //Функція обчислення суми
+
+      function getSum() {
+         const a = getRandomNumber(),
+            b = getRandomNumber(),
+            result = a + b
+
+            let userAnswer = parseInt(prompt(`Знайдіть значення суми двох чисел: ${a} + ${b} = ...?`))
+
+         if (userAnswer === result) {
+            document.write('Ваша відповідь вірна<br>')
+
+         } else document.write(`Правильна відповідь ${result}, купіть калькулятор<br>`)
+      }
+
+        let intervalId = setInterval(getSum, 10000)
+
+        setTimeout(
+         () => clearInterval(intervalId),
+         30000
+        )
+
+   </script>
+
+</body>
+
+</html>

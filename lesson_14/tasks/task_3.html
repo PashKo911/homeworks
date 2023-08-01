@@ -509,42 +509,76 @@ let availableProducts = dataList.filter(
 //==========================================================================================================================================
 //4) сформувати новий список об”єктів тільки доступних  для продажу товарів, які міститимуть тільки ідентифікатор товару (id), нову ціну (price), стару ціну (old_price), та ціну у доларах (usd_price)
 
-   //let availableProductsWithProperties = dataList.reduce(
+//let availableProductsWithProperties = dataList.reduce(
    //   (availableProductsWithPropertiesList, product) => {
-
-   //      if (product.sell_status === 'available') 
-
-   //        availableProductsWithPropertiesList.push({
-   //         id: product.id,
-   //         price: product.price,
-   //         old_price: product.old_price,
-            //usd_price: product.usd_price
-   //      })
-   //      return availableProductsWithPropertiesList
-   //   },
-   //   []
       
-   //)
+      //      if (product.sell_status === 'available') 
+      
+      //        availableProductsWithPropertiesList.push({
+         //         id: product.id,
+         //         price: product.price,
+         //         old_price: product.old_price,
+         //usd_price: product.usd_price
+         //      })
+         //      return availableProductsWithPropertiesList
+         //   },
+         //   []
+         //)
+//==========================================================================================================================================
 
-      //тут я сподіваюсь немає якогось способу за допомогою filter вивести ці дані без використання функції що нижче))
+//тут я сподіваюсь немає якогось способу за допомогою filter вивести ці дані без використання функції що нижче))
 
-   function getAvailableProductsWithProperties(array) {
-      let productsWithPropertiesList = []
-
-      for (const product of array) {
-            let productsWithPropertiesObj = {
-            id: product.id,
-            price: product.price,
-            old_price: product.old_price,
-            usd_price: product.usd_price
-         }
-         productsWithPropertiesList.push(productsWithPropertiesObj)
+function getAvailableProductsWithProperties(array) {
+   let productsWithPropertiesList = []
+   
+   for (const product of array) {
+      let productsWithPropertiesObj = {
+         id: product.id,
+         price: product.price,
+         old_price: product.old_price,
+         usd_price: product.usd_price
       }
-      return productsWithPropertiesList
+      productsWithPropertiesList.push(productsWithPropertiesObj)
    }
+   return productsWithPropertiesList
+}
 
-   let availableProductsWithProperties = getAvailableProductsWithProperties(availableProducts)
-   console.log(availableProductsWithProperties);
+let availableProductsWithProperties = getAvailableProductsWithProperties(availableProducts)
+console.log(availableProductsWithProperties);
+
+//==========================================================================================================================================
+
+//let listSellingGoods = []
+         //   const goodsData = ["id", "price", "old_price", "usd_price"]     //Рішення Юлії
+         //   for (const dataClient of dataList) {
+            //     if (dataClient.sell_status === "available") {
+               //       let currentProd = {}
+               //       for (const key in dataClient) {
+                  //         if (goodsData.includes(key)) {
+                     //           currentProd[key] = dataClient[key]
+                     //         }
+                     //       }
+                     //       listSellingGoods.push(currentProd)
+                     //     }
+                     //   }
+//==========================================================================================================================================
+
+//let listSellingGoods = []
+
+//const goodsData = ['id:dataList.id', 'price:dataList.price', 'old_price:dataList.price', 'usd_price:dataList.price'];
+
+//for (const dataClient of dataList) {
+//    for (const key in dataClient) {
+//        if (goodsData.includes(key)) {
+//            dataClient[key] = goodsData[key];    //  Рішення Alex_samsonov
+//        }
+//    }
+//    if (dataClient.sell_status === 'available') {
+//        listSellingGoods.push(dataClient)
+//    }
+
+//}
+//console.log(listSellingGoods);
 
    </script>
 
