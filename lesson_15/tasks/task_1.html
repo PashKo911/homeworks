@@ -19,18 +19,134 @@
 
    </h1>
    <script>
+   class Integers1{
+      constructor (){
 
-      const integersArray = [3, 5, 6, 7]
-
-      class Integers {
-         constructor(array){
-
-            this.array = array
-            console.log(array);
-         }
-
+         this.numbers = [1,2,4,3,5]
       }
 
+      getSum(){
+         return this.numbers.reduce(
+            (sum, number) => sum + number,
+            0
+         )
+      }
+   }
+   class Integers2{
+      constructor (){
+
+         this.numbers = [3,2,10,3,6,7]
+      }
+
+      getMultiply(minNumber, maxNumber){
+         return this.numbers.reduce(
+            (multiplyBetweenMinMax, number) => number > minNumber && number < maxNumber ? multiplyBetweenMinMax * number : multiplyBetweenMinMax,
+            1
+         )
+      }
+   }
+ //================================================================================================================================================================================================
+ //Call
+   let integers1 = new Integers1()
+   document.write(`Сумма цілих чисел першого масиву ${integers1.getSum()}<br>`)
+
+   let integers2 = new Integers2()
+   document.write(`Добуток між мін та макс другого масиву ${integers2.getMultiply(3, 10)}<br>`)
+
+   let integers2Sum = integers1.getSum.call(integers2)
+   document.write(`Сумма цілих чисел другого масиву ${integers2Sum}<br>`)
+
+   let integers1MultiplyBetweenMinMax = integers2.getMultiply.call(integers1, 1, 4)
+   document.write(`Добуток між мін та макс першого масиву ${integers1MultiplyBetweenMinMax}<br>`)
+ //================================================================================================================================================================================================
+ //Apply
+
+   let integers2SumApply = integers1.getSum.apply(integers2)
+   document.write(`Сумма цілих чисел другого масиву з використанням Apply ${integers2Sum}<br>`)
+
+   document.write(`Добуток між мін та макс першого масиву з використанням Apply ${integers2.getMultiply.apply(integers1,[1, 4])}<br>`)
+
+//================================================================================================================================================================================================
+
+   // НЕ УСКЛАДНЮЙ СОБІ ЗАВДАННЯ НЕ ВТРАТИШ ДЕНЬ!!!:))
+
+      //class Integers1 {
+      //   constructor(array){
+
+      //      this.array = array
+      //      console.log(this.array);
+      //   }
+
+      //   getSum(){
+      //      let sum = 0
+      //      for (const integerNumber of this.array) {
+      //         sum += integerNumber 
+      //      }
+      //      return sum
+      //   }
+      //}
+
+      //class Integers2 {
+      //   constructor(array){
+
+      //      this.array = array
+
+      //   }
+
+      //   getMaxValue(){
+      //      return Math.max(...this.array)
+
+      //   }
+
+      //   getMinValue(){
+      //      return Math.min(...this.array)
+      //   }
+
+      //   getIndex(value){
+      //      return this.array.indexOf(value)
+      //   }
+
+      //   getMultiplyBetweenMinMax(){
+      //      let multiply = 1,
+      //         maxIndex = this.getIndex(this.getMaxValue()),  
+      //         minIndex = this.getIndex(this.getMinValue()), // тут не враховано якщо буде декілька чисел мінімальних або максимальних, цікаво до речі треба буде доробити
+      //         keeper  
+
+      //      if (minIndex > maxIndex){
+
+      //         keeper = maxIndex
+      //         maxIndex = minIndex  
+      //         minIndex = keeper
+      //      }
+
+      //         let minIndexToCalculate = minIndex + 1
+
+      //            for (let i = minIndexToCalculate; i < maxIndex; i++) {
+      //               multiply *= this.array[i]
+      //            }
+
+      //      return multiply
+      //   }
+      //}
+
+
+      //const integers1 = new Integers1 ([3, 5, 6, 7])
+      //const integers2 = new Integers2 ([3, 1, 6, 3, 10])
+      //const integers1Sum = integers1.getSum()
+      //document.write(`Сумма цілих чисел першого масиву ${integers1Sum}<br>`)
+
+      //const integers2Sum = integers1.getSum.call(integers2)
+      //document.write(`Сумма цілих чисел другого масиву ${integers2Sum}<br>`)
+
+      //const integers2MultiplyBetweenMinMax = integers2.getMultiplyBetweenMinMax()
+      //document.write(`Добуток між мін та макс другого масиву ${integers2MultiplyBetweenMinMax}<br>`)
+
+      //const integers1MultiplyBetweenMinMax = integers2.getMultiplyBetweenMinMax.call(integers1)
+      //document.write(`Добуток між мін та макс першого масиву ${integers1MultiplyBetweenMinMax}<br>`)
+
+      //document.write(`Максимальне ${result2.getMaxValue()}<br>`)
+      //document.write(`Мінімальне ${result2.getMinValue()}<br>`)
+      //document.write(`Сума між мін та макс ${integers2.getMultiplyBetweenMinMax()}<br>`)
       
    </script>
 

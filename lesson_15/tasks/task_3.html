@@ -16,17 +16,16 @@
 
    <script>
       
-      class Auto{
+      class Car {
          constructor(autoBrand, carTankSize, amuntOfAvailableGas, seatsNumber, passengersNumber){
             //Властивості
 
             this.autoBrand = autoBrand
             this.carTankSize = carTankSize
-            this.amuntOfAvailableGas = this.getRandomNumber(0, this.carTankSize)
-            console.log(amuntOfAvailableGas);
+            this.amountOfAvailableGas = amuntOfAvailableGas
             this.seatsNumber = seatsNumber
-            this.passengersNumber = this.getRandomNumber(0, this.seatsNumber)
-            console.log(amuntOfAvailableGas);
+            this.passengersNumber = passengersNumber
+
          }
             //Методи
 
@@ -34,10 +33,37 @@
             return minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
          }
 
-         carRefueling(carTankSize, amuntOfAvailableGas){
-            
+         carRefueling(gasAmount){
+            if (carTankSize < this.amountOfAvailableGas + gasAmount)
+            throw new Error ('Забагато пального вам стільки не влізе')
+
+            this.amountOfAvailableGas += gasAmount
+         }
+         toString(){
+               return `В даному автомобілі ${this.passengersNumber} пасажирів`
+         }
+
+         addPassengers (newPassengersNumber){
+
+            if (this.seatsNumber < passengersNumber + newPassengersNumber)
+            throw new Error (`Забагато пасажирів`)
+
+            this.passengersNumber += newPassengersNumber
+         }
+         passengersDecreasing(passengersDecreasingNumber){
+            if (this.passengersNumber < passengersDecreasingNumber)
+            throw new Error ('Це неможливо звідки вас стільки')
+            this.passengersNumber -= passengersDecreasingNumber
          }
       }
+
+      let newCar = new Car('Nissan', 60, 30, 5, 2)
+         document.write(newCar)
+
+      // Ну а виведення кількості пасажирів за допомогою toString, заодно спробував використати
+      // Також не став виводити всі останні значення то не цікаво, це завдання останнім робив, до цього навиводився
+      // Взагалі це завдання було найнезрозумілішим для мене, не міг зрозуміти що тут робити, почав фантазувати та зупинив себе зробив по вашому прикладу
+
    </script>
 
 </body>

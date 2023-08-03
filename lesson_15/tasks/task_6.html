@@ -15,35 +15,51 @@
    </h1>
 
    <script>
-      //Функція генерування рандомного числа
+      const boysNamesArray = [
+         'Neo',
+         'Dima Bilan',
+         'Gerkules',
+         'Ahiles',
+         'Peley'
+      ]
+      const girlsNamesArray = [
+         'Trinity',
+         'Jessika Alba',
+         'Pamela Anderson',
+         'Prosto Svetka'
+      ]
 
-      function getRandomNumber(minValue = 1, maxValue = 20) {
-         return minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+      class DanceLeader{
+         constructor(boysNamesArray, girlsNamesArray){
+            this.boysNamesArray = boysNamesArray
+            this.girlsNamesArray = girlsNamesArray
+         }
+
+         getRandomNumber(maxNumber, minNumber = 0) { 
+               return minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
+         }
+
+         boyRandomName(){
+            return this.boysNamesArray[this.getRandomNumber(this.boysNamesArray.length - 1)]
+         }
+
+         girlRandomName(){
+            return this.girlsNamesArray[this.getRandomNumber(this.girlsNamesArray.length - 1)]
+         }
+
+         showDancingCouple(){
+            document.write(`${this.boyRandomName()} буде танцювати з ${this.girlRandomName()}<br>`)
+         }
+         
+         run(){
+            setInterval(() => {
+               this.showDancingCouple()
+            }, 5000) 
+         }
       }
 
-//==========================================================================================================================================
-      //Функція обчислення суми
-
-      function getSum() {
-         const a = getRandomNumber(),
-            b = getRandomNumber(),
-            result = a + b
-
-            let userAnswer = parseInt(prompt(`Знайдіть значення суми двох чисел: ${a} + ${b} = ...?`))
-
-         if (userAnswer === result) {
-            document.write('Ваша відповідь вірна<br>')
-
-         } else document.write(`Правильна відповідь ${result}, купіть калькулятор<br>`)
-      }
-
-        let intervalId = setInterval(getSum, 10000)
-
-        setTimeout(
-         () => clearInterval(intervalId),
-         30000
-        )
-
+      let dancingCouple = new DanceLeader(boysNamesArray, girlsNamesArray)
+      dancingCouple.run()
    </script>
 
 </body>

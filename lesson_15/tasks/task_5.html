@@ -13,53 +13,63 @@
    <h1>
       Задача 4. Розробити клас Baner
    </h1>
+   
 
    <script>
-      //--- Створити ітератор по літерам слова
+       const linksArray = [
+         {
+            image : '<img src="../img/image_1.png" alt="">',
+            url : 'https://foturist-ru.livejournal.com/97159.html'
+         },
+         {
+            image : '<img src="../img/image_2.png" alt="">',
+            url : 'https://foturist-ru.livejournal.com/92841.html'
+         },
+         {
+            image : '<img src="../img/image_3.png" alt="">',
+            url : 'https://foturist-ru.livejournal.com/94139.html'
+         },
+         {
+            image : '<img src="../img/image_4.png" alt="">',
+            url : 'https://foturist-ru.livejournal.com/91665.html'
+         },
+         {
+            image : '<img src="../img/image_5.png" alt="">',
+            url : 'https://foturist-ru.livejournal.com/90282.html'
+         },
+      ]
 
-      function getLettersInWord(word) {
-         let wordLetter,
-            counter = 0
-
-         function getLetter() {
-            if (counter === word.length) counter = 0
-
-               wordLetter = word[counter]
-               counter++
-
-            return wordLetter
+      
+      class Banner {
+         constructor(linksArray){
+            this.linksArray = linksArray
          }
-         return getLetter
+
+         getRandomNumber(minNumber, maxNumber) { 
+
+            return minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
+            }
+
+         getRandomLink(){
+
+            let index = this.getRandomNumber(0, this.linksArray.length - 1)
+            return this.linksArray[index]
+         }
+
+         toString(){
+            const randObj = this.getRandomLink()
+
+            return `<a href="${randObj.url}" class="href">
+               ${randObj.image}
+               </a> `
+         }
       }
 
-      function translator(word, description) {
-         let taskInfo = alert(
-            `Перекладіть англійською мовою: ${description} (${word.length} букв)`
-         )
-         let wordInLetters = getLettersInWord(word)
-         let counter = 0
-         let userLettersArr = []
-         for (let letter = 0; letter < word.length; letter++) {
-            const userLetter = prompt(
-               `Введіть ${letter + 1} букву перекладу`
-            ).toLowerCase()
-            const wrightLetter = wordInLetters()
+      let randBanner = new Banner(linksArray)
+      document.write(randBanner)
 
-            userLettersArr.push(userLetter)
-            if (wrightLetter === userLetter) counter++
-         }
-         return [userLettersArr, counter]
-      }
 
-      let word = 'spring'
 
-      let description =
-         'Oдна з чотирьох пір року між зимою та літом, характерна для помірних широт '
-      let [userLettersArr, counter] = translator(word, description)
-      document.write(
-         `Переклад слова: ${word}. <br> Ви ввели букви: ${userLettersArr}.
-       Кількість правильно вгаданих букв: ${counter}`
-      )
    </script>
 
 </body>

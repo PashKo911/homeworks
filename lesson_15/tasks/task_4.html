@@ -15,43 +15,62 @@
       </h1>
 
    <script>
-   //Оголошуємо змінні
 
-      const minValue = 1,
-            maxValue = 6
+      class MultChecker{
+         constructor(checkingNumber){
 
-//==========================================================================================================================================
-      //Ітератор 
-       
-      function getIteratorWithStep1(minValue = 1, maxValue = 12) {
-         let result = minValue
-
-         function getNextValue() {
-
-            if(result === maxValue) 
-               result = minValue
-
-               else  ++result
-
-            return result
+            this.checkingNumber = checkingNumber
+            this.correctAnswersCounter = 0
+            this.unCorrectAnswersCounter = 0
          }
-         return getNextValue
-      }
 
-      let monthIterator = getIteratorWithStep1()
-//==========================================================================================================================================
-      //Функція перебору місяців в залежності від введених даних
+         getRandomNumber(minNumber = 0, maxNumber = 10) { 
 
-      function getMonthsOvercoming(monthsNumber, monthIterator) {
+            return minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
+         }
          
-         for (let i = 0; i <= 20; i++) {
+         checkingAnswer(userAnswer){
+            const correctAnswer = this.checkingNumber * this.secondNumberToMult
 
-            document.write(`${monthIterator()} <br>`)
+            if (!userAnswer){
+            throw new Error ('Введено некоректне значення')
+            } 
+
+             if (userAnswer === correctAnswer){
+               this.correctAnswersCounter++
+               return true
+             } 
+             else{
+               this.unCorrectAnswersCounter++
+               return false
+            } 
          }
+
+         render(){
+         let userAnswer
+
+            do {
+
+               this.secondNumberToMult = this.getRandomNumber() 
+
+               userAnswer = parseInt(prompt(`Введіть результат множення двох чисел ${this.checkingNumber} * ${this.secondNumberToMult} = ...?`)) 
+
+             if (this.checkingAnswer(userAnswer)){
+                  
+               alert(`Мої вітання відповідь вірна, правильних відповідей: ${this.correctAnswersCounter}`)
+               }
+               else {
+                  
+                  alert(`Відповідь не вірна, не правильних відповідей: ${this.unCorrectAnswersCounter}`)
+               }
+            } while(userAnswer) 
+         }
+
       }
 
-      getMonthsOvercoming(20, monthIterator)
-//==========================================================================================================================================
+      let multCheckerGame = new MultChecker(7)
+      multCheckerGame.render()
+
    </script>
 
 </body>
