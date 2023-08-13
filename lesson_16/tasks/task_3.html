@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 3. Об’єкт “Фірма” (використати члени-класи)
+
+   </h1>
+
+   <script>
+
+      class CompanyCreatedYear {
+         #month
+         #year
+
+         constructor(year, month) {
+            this.Month = month
+            this.Year = year
+         }
+
+         get Month() {
+            return this.#month
+         }
+
+         set Month(value) {
+            if (value > 12 || value < 1)
+               throw new Error('Некоректні дані, такого місяця не існує')
+            this.#month = value
+         }
+
+         get Year() {
+            return this.#year
+         }
+
+         set Year(value) {
+            if (value < 1600 || value > 2023)
+               throw new Error('Некоректне значення, дата реєстрації не може бути раніше 1600 та більше 2023 року') // спеціально гуглив, перша зареєстрована офіціально компанія була в 1600 році
+            this.#year = value
+         }
+
+
+         toString() {
+            return `Компанія була створена ${this.Month} місяця ${this.Year} року<br>`
+         }
+      }
+
+      //let firstCompanyCreatingYear = new CompanyCreatedYear(1991, 5)
+      //document.write(firstCompanyCreatingYear)
+      //console.log(firstCompanyCreatingYear);
+
+      class CompanyService {
+         #price
+         #deadline
+         constructor(initData) {
+
+            Object.assign(this, initData)
+         }
+
+         get Price() {
+            return this.#price
+         }
+
+         set Price(value) {
+            if (value <= 0)
+               throw new Error('Значення ціни не може бути менше або дорівнювати нулю')
+            this.#price = value
+         }
+
+         get Deadline() {
+            return this.#deadline
+         }
+
+         set Deadline(value) {
+            if (value < 1 || value > 365)
+               throw new Error('Значення не коректне')
+            this.#deadline = value
+         }
+
+         toString() {
+            return `
+            Послуга: ${this.serviceName}<br>
+            Ціна ${this.Price}<br>
+            Термін виконання ${this.Deadline}<br>
+            `
+         }
+      }
+
+      let companyServicesList = [
+
+         new CompanyService({ serviceName: 'Створення сайту 1', Price: 20000, Deadline: 30 }),
+         new CompanyService({ serviceName: 'Створення сайту 2', Price: 30000, Deadline: 40 }),
+         new CompanyService({ serviceName: 'Створення сайту 3', Price: 40000, Deadline: 50 }),
+         new CompanyService({ serviceName: 'Створення сайту 4', Price: 50000, Deadline: 60 }),
+         new CompanyService({ serviceName: 'Створення сайту 5', Price: 60000, Deadline: 70 }),
+         new CompanyService({ serviceName: 'Створення сайту 6', Price: 70000, Deadline: 80 }),
+      ]
+      console.log(companyServicesList);
+      //document.write(companyServicesList);
+
+      class BranchAdress{
+         #houseNumber
+         constructor(initData){
+            Object.assign(this, initData)
+         }
+
+         get HouseNumber(){
+            return this.#houseNumber
+         }
+
+         set HouseNumber(value){
+            if( value < 1 || value > 1000)
+            throw new Error('Номер будинку введено некоректно')
+            this.#houseNumber = value
+         }
+
+         toString(){
+            return `
+            Місто ${this.city},
+            Вулиця ${this.street},
+            Номер Будинку ${this.HouseNumber}<br>
+            <br>
+            `
+         }
+      }
+
+      let branchAdressesList = [
+         new BranchAdress({country: 'Ukraine', city: 'Kharkiv', street: 'Kibalchicha', HouseNumber: 45}),
+         new BranchAdress({country: 'Ukraine', city: 'Kyiv', street: 'Vilna', HouseNumber: 30}),
+         new BranchAdress({country: 'Ukraine', city: 'Kyiv', street: 'Vilna', HouseNumber: 30}),
+         new BranchAdress({country: 'Ukraine', city: 'Lviv', street: 'Shuvarska', HouseNumber: 21}),
+         new BranchAdress({country: 'Ukraine', city: 'Dnipro', street: 'Frunze', HouseNumber: 11}),
+         new BranchAdress({country: 'Ukraine', city: 'Rivne', street: 'Shidna', HouseNumber: 2}),
+         new BranchAdress({country: 'Ukraine', city: 'Kharkiv', street: 'Kibalchicha', HouseNumber: 45}),
+         new BranchAdress({country: 'Ukraine', city: 'Kharkiv', street: 'Kibalchicha', HouseNumber: 45}),
+      ]
+      console.log(branchAdressesList);
+
+      class Company{
+         constructor(initData, companyServicesList, branchAdressesList){ //ой накрутив))))) я це все ще хотів в один обʼєкт покласти и просто через initData передати
+
+            Object.assign(this, initData)
+            this.companyServicesList = companyServicesList
+            this.branchAdressesList = branchAdressesList
+         }
+
+         getCompanyAge(currentYear){
+            return currentYear - this.creatingYear.Year 
+         }
+
+         filterByBrunchesInNessesaryCity(city){
+            return this.branchAdressesList.filter(
+               brunch => brunch.city === city
+            )
+         }
+
+         filterServicesBySomeParameters(price, deadline){
+            return this.companyServicesList.filter(
+               service => service.Price <= price && service.Deadline <= deadline
+            )
+         }
+
+         toString(){
+            return `
+               Назва компанії: ${this.name}<br>
+                ${this.creatingYear}<br>
+               Філіали:<br> ${this.branchAdressesList}<br>
+            `// ну послуги вирішив вже не не виводити
+         }
+      }
+
+      let company1 = new Company(
+         {
+            name: 'Columbia Pictures',
+            creatingYear: new CompanyCreatedYear(1991, 5),
+         },
+         companyServicesList,
+         branchAdressesList
+      )
+         document.write(company1)
+
+      console.log(company1.Year);
+      console.log(company1.getCompanyAge(2023));
+      console.log(company1.filterByBrunchesInNessesaryCity('Kharkiv'));
+      console.log(company1.filterServicesBySomeParameters(50000, 60));
+   </script>
+
+</body>
+
+</html>
