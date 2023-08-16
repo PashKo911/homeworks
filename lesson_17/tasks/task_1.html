@@ -12,83 +12,47 @@
 <body>
 
    <h1>
-      Задача 1. Створити клас TDate для роботи із датами у форматі “день.місяць.рік”. 
-      Дата представляється структурою із трьома полями. 
-      Реалізувати методи збільшення/зменшення дати на певну кількість днів, місяців чи років. 
-      Введення та виведення дати реалізувати за допомогою методу  toString.
+      Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних,
+       кількості від’ємних, кількість входжень деякого числа (статичні методи)
+
 
    </h1>
    <script>
-   //
-   class TDate{
-      #day
-      #month
-      #year
+   
+   class SomeArrayOperations{
+      
 
-      constructor(initDay, initMonth, initYear){
-
-         this.Day = initDay
-         this.Month = initMonth
-         this.Year = initYear
+      static getPositiveNumbersCount(array){
+         return array.reduce(
+            (positiveNumbersCounter, number) => number > 0 ? positiveNumbersCounter + 1 : positiveNumbersCounter,
+            0
+         )
       }
 
-      get Day(){
-         return this.#day
+      static getNegativeNumbersCount(array){
+         return array.reduce(
+            (negativeNumbersCounter, number) => number < 0 ? negativeNumbersCounter + 1 : negativeNumbersCounter,
+            0
+         )
       }
 
-      set Day(newValue){
-         if (newValue < 1 || newValue > 31)
-         throw new Error ('Значення не коректне, має бути від 1 до 31')
-
-         this.#day = newValue
-      }
-      get Month(){
-         return this.#month
-      }
-
-      set Month(newValue){
-         if (newValue < 1 || newValue > 12)
-         throw new Error ('Значення не коректне, має бути від 1 до 12')
-
-         this.#month = newValue
-      }
-      get Year(){
-         return this.#year
-      }
-
-      set Year(newValue){
-         if (newValue < 1 || newValue > 2023)
-         throw new Error ('Значення не коректне, має бути від 1 до 2023')
-
-         this.#year = newValue
-      }
-
-      getDaysNumberInMonth(monthValue){
-
-         switch (monthValue) {
-            case value:
-               
-               break;
-         
-            default:
-               break;
-         }
-      }
-
-      increasingDay(maxDay) {
-
-      }
-
-      toString(){
-         return ` День: ${this.Day}, Місяць: ${this.Month}, Рік: ${this.Year}`
+      static getRepeatNumberCount(array, userNumber){
+         return array.reduce(
+            (repeatNumberCounter, number) => number === userNumber ? repeatNumberCounter + 1 : repeatNumberCounter,
+            0
+         )
       }
    }
 
-   let date = new TDate(20, 12, 2001)
-   document.write(date)
+   let array = [-3, 3, -4, 5, 6, 3, 3, -7, 8, 3, 10]
 
-   //date.Day = 32
-   //document.write(date)
+   document.write(`
+      Масив: ${array}<br>
+      Кількість додатніх: ${SomeArrayOperations.getPositiveNumbersCount(array)}<br>
+      Кількість відʼємних: ${SomeArrayOperations.getNegativeNumbersCount(array)}<br>
+      Кількість входжень деякого числа: ${SomeArrayOperations.getRepeatNumberCount(array, 3)}<br>
+
+   `)
    </script>
 
 </body>

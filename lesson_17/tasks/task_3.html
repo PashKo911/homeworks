@@ -11,13 +11,60 @@
 
 <body>
    <h1>
-      Задача 3. Об’єкт “Фірма” (використати члени-класи)
-
+      Задача 3. Створити клас Нагадувач. 
+      Кожні вказані кількості секунд (використати setInterval) програма нагадує про якусь подію 
+      (це просто текст) і також виводиться порядковий номер скільки раз вже нагадування було. 
+      Зробити так, щоб неможна було зробити одночасно декілька об’єктів-нагадувачів. 
+      Методи зупинки таймера, метод зміни повідомлення без зупинки таймера.
+      context
  
    </h1>
 
    <script>
      
+     class Reminder{
+      static #context
+
+      constructor(interval, message){
+
+         if(Reminder.#context)
+         return Reminder.#context
+
+         this.interval = interval
+         this.message = message
+         this.counter = 0
+
+         Reminder.#context = this
+      }
+
+      run(){
+         this.interval = setInterval(() => {
+            this.counter++
+            document.write(`${this.counter}) ${this.message}<br>`)
+         }, this.interval);
+      }
+
+      changeMessage(message){
+         this.message = message
+      }
+
+      stopInterval(){
+         clearInterval(this.interval)
+      }
+     }
+
+     let reminder = new Reminder(2000, 'Hello')
+     reminder.run()
+
+
+     setTimeout(() => {
+        reminder.changeMessage('Bye Bye')
+     }, 10000);
+
+     setTimeout(() => {
+        reminder.stopInterval()
+     }, 20000);
+
    </script>
 
 </body>

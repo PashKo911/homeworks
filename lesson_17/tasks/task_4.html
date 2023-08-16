@@ -11,15 +11,50 @@
 
 <body>
    <h1>
-      Задача. Створити клас TBankomat, який моделює роботу банкомата. 
-      Клас повинен містити поля для зберігання кількості купюр кожного із номіналів від 5 до 200 гривень.
-       Реалізувати методи знаходження максимальної та мінімальної сум, 
-       які може видати банкомат, та метод зняття деякої суми.
+      Особиста бібліотека. Картотека домашньої бібліотеки: дані книги 
+      (автори (піб, рік народження, короткий опис), назва книги, жанр, 
+      видавництво (назва, реєстраційний номер, рік засування)). 
+      Реалізувати розділи бібліотеки організувати додавання/вилучення книг та  вибір книг за назвою, 
+      за ПІБ автора, за видавництвом.
 
       </h1>
 
    <script>
 
+      class Library{
+         constructor(libraryName, booksList){
+            this.libraryName = libraryName
+            this.booksList = booksList
+         }
+      }
+
+      class Authors{
+         constructor(authorData){
+            Object.assign(this, authorData)
+         }
+      }
+
+      let author = new Authors({
+         firstName: 'Тим',
+         secondName: 'Харфорд',
+         birthYear: '1976',
+         description: 'Cуть процессов экономики сквозь призму окружающих нас изобретений и предметов'
+      })
+
+      console.log(author);
+
+      class Publisher{
+         constructor(publisherData){
+            Object.assign(this, publisherData)
+         }
+      }
+
+      let publisher = new Publisher({
+         publisherTitle: 'Старого Лева',
+         registrationNumber: '12sd23',
+         foundationYear: 1992
+      })
+      console.log(publisher);
    </script>
 
 </body>

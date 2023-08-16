@@ -11,13 +11,42 @@
 
 <body>
    <h1>
-      Задача 2. Створити клас TMoney для роботи з грошовими сумами. 
-      Сума повинна зберігатися у вигляді доларового еквіваленту. 
-      Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу долара, при якому сума у гривнях збільшиться на 100.
-      Курс долара зберігати в окремому полі. 
+      Створити службове авто (водій, марка, номер). 
+      Створити клас таким чином, щоб можна було створити тільки один екземпляр цього класу.
+
    </h1>
    <script>
      
+     class CompanyCar{
+      static #car
+
+      constructor(driver, model, carNumber){
+         if( CompanyCar.#car)
+         return CompanyCar.#car
+
+         this.driver = driver
+         this.model = model
+         this.carNumber = carNumber
+
+         CompanyCar.#car = this
+      }
+      toString(){
+         return `
+         Водій: ${this.driver}<br>
+         Марка авто: ${this.model}<br>
+         Номерний знак: ${this.carNumber}<br>
+         `
+      }
+     }
+
+     let car1 = new CompanyCar('Vasil', 'Zaporojec', 'ВТ0331ВК')
+     document.write(car1)
+   //  CompanyCar.car = null
+     
+   //  let car2 = new CompanyCar('Petro', 'Slavuta', 'ВТ1991ВК')
+   //  console.log(car2)
+     
+
    </script>
 
 </body>

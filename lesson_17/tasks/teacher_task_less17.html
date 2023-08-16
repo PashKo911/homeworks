@@ -211,35 +211,35 @@
 
       // console.log(t1)
       //--------------------------------------
-      // class Reminder {
-      //   static interval = 1000
-      //   static stop = false
-      //   constructor(message) {
-      //     this.message = message
-      //   }
-      //   run() {
-      //     setTimeout(() => {
-      //       document.write(this.message)
-      //       document.write('<br>')
-      //       if (!Reminder.stop) this.run()
-      //     }, Reminder.interval)
-      //   }
-      // }
-      // const r1 = new Reminder('1111111')
-      // r1.run()
-      // const r2 = new Reminder('2222222')
-      // r2.run()
-      // const r3 = new Reminder('3333333')
-      // r3.run()
+       class Reminder {
+         static interval = 1000
+         static stop = false
+         constructor(message) {
+           this.message = message
+         }
+         run() {
+           setTimeout(() => {
+             document.write(this.message)
+             document.write('<br>')
+             if (!Reminder.stop) this.run()
+           }, Reminder.interval)
+         }
+       }
+       const r1 = new Reminder('1111111')
+       r1.run()
+       const r2 = new Reminder('2222222')
+       r2.run()
+       const r3 = new Reminder('3333333')
+       r3.run()
 
-      // setTimeout(() => {
-      //   document.write('=====================')
-      //   Reminder.interval = 2000
-      // }, 3000)
+       setTimeout(() => {
+         document.write('=====================')
+         Reminder.interval = 2000
+       }, 3000)
 
-      // setTimeout(() => {
-      //   Reminder.stop = true
-      // }, 10000)
+       setTimeout(() => {
+         Reminder.stop = true
+       }, 10000)
 
       //============================================= static
       // Задача. Реалізувати конвертер валют. Курси валют та методи перетвоення повинні бути статичними
