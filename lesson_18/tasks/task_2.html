@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 2. Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.
+   </h1>
+   <script>
+   
+//Описуємо обʼєкт
+
+      const userDate = {
+         day : 30,
+         month : 5,
+         year : 1991
+      }
+
+      function getShiftedYear({month, year}, N) {
+
+         return year + Math.floor(((month - 1 + N) / 12)) // чомусь не впевнений в формулі та наче так, наче працює))
+      }
+
+      //   //(currentValue - min +N)%(max-min+1) +min    //min=1, max =12 формула циклічності
+
+      const N = parseInt(prompt('Введіть кількість місяців через яку хочете знайти рік'))
+      const shiftedYear = getShiftedYear(userDate, N)
+      alert(`Через ${N} місяців буде ${shiftedYear} рік`)
+
+   </script>
+
+</body>
+
+</html>
