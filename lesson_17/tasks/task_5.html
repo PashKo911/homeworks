@@ -11,65 +11,183 @@
 
 <body>
    <h1>
-      Задача 4. Розробити клас Baner
+      Дано два класи MultChecker (клас для перевірки таблиці множення -
+      рандомно генеруються числа, які треба перемножати), AddChecker
+      (клас для перевірки додавання - рандомно генеруються числа у заданому діапазоні, які треба додавати).
+      Обидва класи надсилають результати тестування об'єкту класу Hystory,
+      який зберігає історію тестування у масиві у вигляді об'єктів
+      Приклад.
+      testsList= [
+      {firstNum:1, secondNum:5,opration:’*’, userAnswer:7, correctAnswer:5},
+      {firstNum:3, secondNum:4,opration:’+’, userAnswer:7, correctAnswer:7},
+      ]
+      Можна створити окремий клас TestData, який описує один такий тест і у якому будуть ці поля.
+      Розробити клас TestManager, який використовуючи ці класи за допомогою таймера періодично генерує
+      якісь N задач (рандомно вибираємо, що опитувати: додавання чи множення) і проводить опитування.
+      Результати тестування додаються в об’єкт History.
+      Зробити так, щоб об'єкт такого класу можна було створити тільки один.
+      Коли зроблено ці N задач вивести усю історію на екран.
+
    </h1>
-   
+
 
    <script>
-       const linksArray = [
-         {
-            image : '<img src="../img/image_1.png" alt="">',
-            url : 'https://foturist-ru.livejournal.com/97159.html'
-         },
-         {
-            image : '<img src="../img/image_2.png" alt="">',
-            url : 'https://foturist-ru.livejournal.com/92841.html'
-         },
-         {
-            image : '<img src="../img/image_3.png" alt="">',
-            url : 'https://foturist-ru.livejournal.com/94139.html'
-         },
-         {
-            image : '<img src="../img/image_4.png" alt="">',
-            url : 'https://foturist-ru.livejournal.com/91665.html'
-         },
-         {
-            image : '<img src="../img/image_5.png" alt="">',
-            url : 'https://foturist-ru.livejournal.com/90282.html'
-         },
-      ]
+      //-1. Написати клас математичних операцій з використанням статичних методів
 
-      
-      class Banner {
-         constructor(linksArray){
-            this.linksArray = linksArray
-         }
+      class SomeMathOperations {
 
-         getRandomNumber(minNumber, maxNumber) { 
+         static getRandomNumberInRange(minNumber, maxNumber) {
+            minNumber ??= 0
+            maxNumber ??= 9
 
             return minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
-            }
-
-         getRandomLink(){
-
-            let index = this.getRandomNumber(0, this.linksArray.length - 1)
-            return this.linksArray[index]
          }
 
-         toString(){
-            const randObj = this.getRandomLink()
+         static getMathOperation(firstNumber, secondNumber, operation) {
 
-            return `<a href="${randObj.url}" class="href">
-               ${randObj.image}
-               </a> `
+            operation ??= '*'
+
+            if (operation === '+')
+               return firstNumber + secondNumber
+
+            if (operation === '*')
+               return firstNumber * secondNumber
          }
       }
 
-      let randBanner = new Banner(linksArray)
-      document.write(randBanner)
+      //console.log(SomeMathOperations.getMathOperation(2,4));
+      //console.log(SomeMathOperations.getRandomNumberInRange(1,5));
 
+      //0. Розробити клас TestData
 
+      class TestData {
+         constructor(testObject) {
+            Object.assign(this, testObject)
+         }
 
+         toString() {
+
+            return `Тест: "${this.firstNumber} ${this.operation} ${this.secondNumber}" , "Ваша відповідь: ${this.userAnswer}" "Правильна відповідь: ${this.correctAnswer}"`
+         }
+      }
+
+      //1. Розробити клас MultChecker
+      //2. Розробити клас AddChecker
+
+      class Checker {
+         constructor(minNumber, maxNumber, operation = '*') {//тут би можна було не передавати знак множення, так як в класі SomeMathOperations якщо операція undefined прописана умова і все працює, та потім в історії негарно відображається, можна було і це фіксити, та то таке
+            this.minNumber = minNumber
+            this.maxNumber = maxNumber
+            this.operation = operation
+         }
+
+         test() {
+
+            const firstNumber = SomeMathOperations.getRandomNumberInRange(this.minNumber, this.maxNumber)
+            const secondNumber = SomeMathOperations.getRandomNumberInRange(this.minNumber, this.maxNumber)
+            const correctAnswer = SomeMathOperations.getMathOperation(firstNumber, secondNumber, this.operation)// Ну шось таке вигадав)) я бачив заняття 19 та хотілось якось спробувати оминути таки ctrl + c, та повторення формули рандомного числа, та трохи видозмінив завдання, так як рішення вже побачив, та і взагалі так як останнє завдання по ООП, хотілось спробувати використати по максимуму все те, що вивчили
+            const userAnswer = parseInt(prompt(`Скільки буде ${firstNumber} ${this.operation} ${secondNumber} = ?`))
+
+            if (userAnswer === correctAnswer)
+               alert('Відповідь вірна')
+            else alert(`Відповідь не вірна, правильна відповідь: ${correctAnswer}`)
+
+            return new TestData({
+               firstNumber,
+               secondNumber,
+               operation: this.operation,
+               userAnswer,
+               correctAnswer,
+            })
+         }
+      }
+
+      //3. Розробити клас History із застосуванням singleton
+
+      class History {
+         constructor() {
+            this.testsList = []
+         }
+
+         addTest(testOject) {
+            this.testsList.push(new TestData(testOject))
+         }
+
+         showTestsList() {
+            for (const test of this.testsList) {
+               document.write(test)
+               document.write('<br>')
+            }
+         }
+      }
+
+      //4. Розробити клас TestManager
+
+      class TestManager {
+         #testsCount
+         #intervalBetweenTests
+
+         constructor(
+            testsCount,
+            intervalBetweenTests,
+            minNumberForMult,
+            maxNumberForMult,
+            minNumberForAdd = 20,
+            maxNumberForAdd = 200,
+            operation = '+'// ну а з цим оператором, по суті можна параметром не писати, а десь просто як змінну, ну типу якщо допрацювати трохи, можна ще зробити ділення і тд
+         ) {
+            this.TestsCount = testsCount
+            this.IntervalBetweenTests = intervalBetweenTests
+            this.multChecker = new Checker(minNumberForMult, maxNumberForMult)
+            this.addChecker = new Checker(minNumberForAdd, maxNumberForAdd, operation)
+            this.history = new History()
+            this.testsDone = 0
+         }
+
+         set TestsCount(value) {
+            if (value < 1 || value > 10)
+               throw new Error('Помилка, неможливо виконати вказану кількість тестів')
+
+            this.#testsCount = value
+         }
+
+         get TestsCount(){
+            return this.#testsCount
+         }
+
+         set IntervalBetweenTests(value) {
+            if (value < 1 || value > 50000)
+               throw new Error('Помилка, неможливо виконати тест в заданому інтервалі')
+
+            this.#intervalBetweenTests = value
+         }
+
+         get IntervalBetweenTests(){
+            return this.#intervalBetweenTests
+         }
+
+         doTest() {
+            let testResult
+
+            if (Math.random() > 0.5)
+               testResult = this.multChecker.test()
+            else testResult = this.addChecker.test()
+
+            this.history.addTest(testResult)
+            this.testsDone++
+            
+            if (this.testsDone < this.TestsCount) {
+               setTimeout(() => {
+                  this.doTest()
+               }, this.IntervalBetweenTests);
+            }
+            else this.history.showTestsList()
+         }
+      }
+
+      //const manager = new TestManager(4, 2000)
+      const manager = new TestManager(4, 2000, 2, 7, 10, 15 )// ну типу тепер все універсально
+      manager.doTest()     // якщо запуск без інтервала не бачу тоді сенсу створювати ще метод run
    </script>
 
 </body>

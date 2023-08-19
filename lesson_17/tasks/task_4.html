@@ -11,50 +11,172 @@
 
 <body>
    <h1>
-      Особиста бібліотека. Картотека домашньої бібліотеки: дані книги 
-      (автори (піб, рік народження, короткий опис), назва книги, жанр, 
-      видавництво (назва, реєстраційний номер, рік засування)). 
-      Реалізувати розділи бібліотеки організувати додавання/вилучення книг та  вибір книг за назвою, 
+      Особиста бібліотека. Картотека домашньої бібліотеки: дані книги
+      (автори (піб, рік народження, короткий опис), назва книги, жанр,
+      видавництво (назва, реєстраційний номер, рік засування)).
+      Реалізувати розділи бібліотеки організувати додавання/вилучення книг та вибір книг за назвою,
       за ПІБ автора, за видавництвом.
 
-      </h1>
+   </h1>
 
    <script>
 
-      class Library{
-         constructor(libraryName, booksList){
-            this.libraryName = libraryName
+      class Authors {
+         constructor({ firstName, secondName, birthYear, description }) {
+            this.firstName = firstName
+            this.secondName = secondName
+            this.birthYear = birthYear
+            this.description = description
+         }
+      }
+
+      //let author = new Authors({
+      //   firstName: 'Тим',
+      //   secondName: 'Харфорд',
+      //   birthYear: '1976',
+      //   description: 'Cуть процессов экономики сквозь призму окружающих нас изобретений и предметов'
+      //})
+
+      //console.log(author);
+
+      class Publisher {
+         constructor({ publisherTitle, registrationNumber, foundationYear }) {
+            this.publisherTitle = publisherTitle
+            this.registrationNumber = registrationNumber
+            this.foundationYear = foundationYear
+         }
+      }
+
+      //let publisher = new Publisher({
+      //   publisherTitle: 'Старого Лева',
+      //   registrationNumber: '12sd23',
+      //   foundationYear: 1992
+      //})
+      //console.log(publisher);
+
+      class Book {
+         constructor(initData) {
+            this.bookName = initData.bookName
+            this.genre = initData.genre
+            this.author = new Authors(initData)
+            this.publisher = new Publisher(initData)
+         }
+      }
+
+      let booksList = [
+         new Book({
+            bookName: 'Memento mori. История человеческих достижений в борьбе с неизбежным',
+            genre: 'Медицина',
+            firstName: 'Эндрю',
+            secondName: 'Дойг',
+            birthYear: '1976',
+            description: 'Это книга на неоднозначную тему — о том, какие риски сопровождали человеческую жизнь на протяжении веков и как люди учились избегать их в своем естественном стремлении к долголетию. Если всего лишь 100 лет назад люди умирали в первую очередь от инфекционных заболеваний, то сегодня основными причинами смерти в промышленно развитых странах стали болезни сердца, инсульт и рак. Изучая подобную статистику, мы можем понять, как жили предыдущие поколения, учиться на их ошибках, заимствовать лучшее и создавать новое. От средневекового голода и ныне полузабытой цинги до современного ожирения; от открытия витамина С и базовых правил санитарии и гигиены до терапии стволовыми клетками, редактирования ДНК, генной инженерии — освещая темы причин человеческой смерти в срезе множества поколений и вопросы охраны здоровья, профессор Манчестерского университета Эндрю Дойг насыщает свой рассказ интереснейшими фактами из области истории, культуры, политики, права и экономики. Особо выделяется тема вредных привычек и всевозможных зависимостей. Захватывающая история накопления знаний в области медицины, удивительных достижений и надежд на будущее. В нашей библиотеке вы можете бесплатно почитать книгу « Memento mori. История человеческих достижений в борьбе с неизбежным ». Чтобы читать онлайн книгу « Memento mori. История человеческих достижений в борьбе с неизбежным » перейдите по указанной ссылке. Приятного Вам чтения.',
+            publisherTitle: 'Старого Лева',
+            registrationNumber: '12sd23',
+            foundationYear: 2022
+         }),
+         new Book({
+            bookName: 'Психология убийцы. Откровения тюремного психиатра',
+            genre: 'Психология',
+            firstName: 'Альпина',
+            secondName: 'Диджитал',
+            birthYear: '1913',
+            description: 'Что толкает людей на преступления и что они чувствуют потом, как оценивают свои деяния? Пожалуй, лучше всего в психологии убийц может разобраться тюремный психолог: именно с ним осужденные часто делятся секретами, рассказывают то, о чем не говорили ни в суде, ни близким. Теодор Далримпл много лет работал психиатром и тюремным врачом в Лондоне и Бирмингеме. За время своей работы он столкнулся со множеством ужасающих, смешных и печальных историй. Он выступал на резонансных процессах как эксперт, лечил убийц, грабителей и мошенников, общался с их жертвами, тюремщиками и адвокатами. Сочетая в повествовании сострадание и иронию, автор рисует психологический портрет убийцы, а вместе с тем раскрывает пороки современного общества. Книга Далримпла позволяет по-новому взглянуть на сегодняшнюю систему правосудия, на взаимоотношения закона и общества, на устоявшиеся стереотипы и модные социальные веяния, порой не позволяющие трезво оценивать мотивы преступников и выносить им справедливое наказание.',
+            publisherTitle: 'Світанок',
+            registrationNumber: '12sd24',
+            foundationYear: 2023
+         }),
+         new Book({
+            bookName: 'Руки прочь, профессор',
+            genre: 'Эротика',
+            firstName: ' Джина  ',
+            secondName: 'Шэй',
+            birthYear: '1989',
+            description: 'Что должен сделать порядочный профессор, узнав, что его студентка работает стриптизершей? Использовать любую возможность, чтобы спасти душу этой несчастной! Выгнать её из универа, когда не получится! Ни в коем случае не искушаться её длинными стройными ногами… Что делать, если мне достался непорядочный профессор?',
+            publisherTitle: 'Vivat',
+            registrationNumber: '12sd25',
+            foundationYear: 2019
+         }),
+         new Book({
+            bookName: 'Граф Мо́нте-Кри́сто',
+            genre: 'исторический роман, приключенческий роман',
+            firstName: 'Александр',
+            secondName: 'Дюма',
+            birthYear: '1844',
+            description: 'Главный герой романа — марсельский моряк Эдмон Дантес с корабля «Фараон». Во время одного из рейсов он заходил на остров Эльба, где встречался с маршалом Бертраном, который поручает ему доставить письмо в Париж. Этим Эдмон выполняет последнюю волю скончавшегося незадолго до этого капитана «Фараона».',
+            publisherTitle: 'Старого Лева',
+            registrationNumber: '12sd26',
+            foundationYear: 1860
+         }),
+      ]
+      console.log(booksList);
+
+
+      class Library {
+         constructor(booksList) {
             this.booksList = booksList
          }
-      }
 
-      class Authors{
-         constructor(authorData){
-            Object.assign(this, authorData)
+         addBook(book) {
+            this.booksList.push(book)
+         }
+
+         removeBook(bookName) {
+            this.booksList = this.booksList.filter(
+               book => book.bookName !== bookName
+            )
+         }
+
+         getBookByName(bookName) {
+            return this.booksList.filter(
+               book => book.bookName === bookName
+            )
+         }
+
+         getBookByAuthor( {firstName, secondName} ) {//просто хотів спробувати
+            return this.booksList.filter(
+               book => book.author.firstName === firstName && book.author.secondName === secondName
+               )
+         }
+
+         getBookByPublisher(publisherTitle, registrationNumber){
+            return this.booksList.filter(
+               book => book.publisher.publisherTitle === publisherTitle && book.publisher.registrationNumber === registrationNumber
+            )
          }
       }
 
-      let author = new Authors({
-         firstName: 'Тим',
-         secondName: 'Харфорд',
-         birthYear: '1976',
-         description: 'Cуть процессов экономики сквозь призму окружающих нас изобретений и предметов'
+      let myOwnLibrary = new Library(booksList)
+
+      myOwnLibrary.addBook(
+         new Book({
+            bookName: 'Руки прочь, профессор',
+            genre: 'Эротика',
+            firstName: ' Джина  ',
+            secondName: 'Шэй',
+            birthYear: '1989',
+            description: 'Что должен сделать порядочный профессор, узнав, что его студентка работает стриптизершей? Использовать любую возможность, чтобы спасти душу этой несчастной! Выгнать её из универа, когда не получится! Ни в коем случае не искушаться её длинными стройными ногами… Что делать, если мне достался непорядочный профессор?',
+            publisherTitle: 'Vivat',
+            registrationNumber: '12sd25',
+            foundationYear: 2019
+         }),)
+
+      myOwnLibrary.removeBook('Руки прочь, профессор')
+
+      let findBookByName = myOwnLibrary.getBookByName('Психология убийцы. Откровения тюремного психиатра')
+      console.log(findBookByName);
+
+      let findBookByAuthor = myOwnLibrary.getBookByAuthor({
+         firstName: 'Эндрю',
+         secondName: 'Дойг',
       })
 
-      console.log(author);
+      console.log(findBookByAuthor);
 
-      class Publisher{
-         constructor(publisherData){
-            Object.assign(this, publisherData)
-         }
-      }
+      let findBookByPublisher = myOwnLibrary.getBookByPublisher('Старого Лева', '12sd26')
+      console.log(findBookByPublisher);
 
-      let publisher = new Publisher({
-         publisherTitle: 'Старого Лева',
-         registrationNumber: '12sd23',
-         foundationYear: 1992
-      })
-      console.log(publisher);
+      console.log(myOwnLibrary);
    </script>
 
 </body>
