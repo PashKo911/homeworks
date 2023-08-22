@@ -7,6 +7,52 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="../css/style.css">
    <title>Document</title>
+   <script>
+
+      function mathOperations(operation) {
+         const firstNum = parseInt(document.getElementById('firstNum').value) //вирішив працювати з цілими числами
+         const secondNum = parseInt(document.getElementById('secondNum').value)
+         const value = operation
+
+         let result
+
+         switch (value) {
+            case "+":
+               result = firstNum + secondNum
+               break
+
+            case "-":
+               result = firstNum - secondNum
+               break
+
+            case "*":
+               result = firstNum * secondNum
+               break
+
+            case "/":
+               result = firstNum / secondNum
+               break
+            default:
+               break
+         }
+
+         document.getElementById('result').value = result
+
+      }
+
+      window.onload = function () {
+         const buttons = document.querySelectorAll('.buttons__button')
+
+         buttons.forEach(button => {
+            button.onclick = function () {
+               mathOperations(button.value)
+            }
+         })
+      }
+
+
+
+   </script>
 </head>
 
 <body>
@@ -14,10 +60,35 @@
    <h1>
       Задача 1. Розробити калькулятор
    </h1>
-   <script>
 
-   </script>
 
+   <div class="container">
+      <form action="#" class="form">
+         <div class="inputs">
+            <label class="custom-input" for="firstNum">First Number</label>
+            <input class="custom-input" type="number" id="firstNum" placeholder="0" value="0">
+         </div>
+
+         <div class="inputs">
+            <label class="custom-input" for="secondNum">Second Number</label>
+            <input class="custom-input" type="number" id="secondNum" placeholder="0" value="0">
+         </div>
+
+         <div class="buttons">
+
+            <button type="button" class="buttons__button" value="+">Add</button>
+            <button type="button" class="buttons__button" value="-">Subtract</button>
+            <button type="button" class="buttons__button" value="*">Multiply</button>
+            <button type="button" class="buttons__button" value="/">Divide</button>
+
+         </div>
+
+         <div class="result">
+            <label class="custom-input" for="result">Result</label>
+            <input class="custom-input" type="number" id="result" placeholder="Result">
+         </div>
+      </form>
+   </div>
 </body>
 
 </html>

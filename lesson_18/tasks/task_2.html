@@ -7,16 +7,63 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="../css/style.css">
    <title>Document</title>
+
+   <script>
+
+      const usdRate = 37,
+            euroRate = 41
+
+      function converter(usdRate, euroRate){
+         const userMoneyNumber = parseFloat(document.getElementById('userMoneyNumber').value)
+
+         if(userMoneyNumber < 1)
+         throw new Error ('Некоректна сума')
+
+         const usdResult = userMoneyNumber / usdRate
+         const euroResult = userMoneyNumber / euroRate
+
+         document.getElementById('usdResult').value = usdResult.toFixed(2)
+         document.getElementById('euroResult').value = euroResult.toFixed(2)
+      }
+
+      window.onload = function(){
+         document.querySelector('.buttons__button').onclick = function(){
+            converter(usdRate, euroRate)
+         }
+      }
+   </script>
+
 </head>
 
 <body>
    <h1>
       Задача 2. Зробити конвертер валют (курси валют – константи у скрипті)
    </h1>
-   <script>
- 
-   </script>
+   <div class="container">
+      <form action="#" class="form">
+         <div class="inputs">
+            <label class="custom-input" for="userMoneyNumber">Сума у гривнях</label>
+            <input class="custom-input" type="number" id="userMoneyNumber" placeholder="0" value="0">
+         </div>
 
+
+         <div class="buttons">
+
+            <button type="button" class="buttons__button">Конвертувати</button>
+         </div>
+
+         <div class="result">
+            <div class="result__euro">
+               <label class="custom-input answer" for="euroResult">Сума у євро</label>
+               <input class="custom-input answer" id="euroResult" type="text" placeholder="Result">
+            </div>
+            <div class="result__usd">
+               <label class="custom-input answer" for="usdResult">Сума у долларах</label>
+               <input class="custom-input answer" id="usdResult" type="text" placeholder="Result">
+            </div>
+         </div>
+      </form>
+   </div>
 </body>
 
 </html>

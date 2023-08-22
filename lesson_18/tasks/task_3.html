@@ -7,6 +7,34 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="../css/style.css">
    <title>Document</title>
+
+   <script>
+    const currentYear = 2023
+
+    function getUserAge(currentYear) {
+      const userYearBirth = parseInt(document.getElementById('userYearBirth').value)
+
+      if(userYearBirth < 1900 || userYearBirth > currentYear)
+      throw new Error ('Некоректний рік народження')
+   
+      const userAge = currentYear - userYearBirth + ' років'
+
+      document.querySelector('.result__age').innerText = userAge
+    }
+
+    window.onload = function(){
+      document.querySelector('.buttons__button').onclick = function(){
+         getUserAge(currentYear)
+      }
+      //document.getElementById('userYearBirth').onchange = function(){
+      //   getUserAge(currentYear)
+      //}
+      //document.getElementById('userYearBirth').oninput = function(){
+      //   getUserAge(currentYear)
+      //}
+    }
+   </script>
+
 </head>
 
 <body>
@@ -14,10 +42,28 @@
       Задача 3. Користувач задає рік народження. Визначити кількість років користувача.
    </h1>
 
-   <script>
-    
-   </script>
+   <div class="container">
+      <form action="#" class="form">
+         <div class="inputs">
+            <label class="custom-input" for="userYearBirth">Введіть ваш рік народження</label>
+            <input class="custom-input" type="number" id="userYearBirth" placeholder="0" value="0">
+         </div>
 
+
+         <div class="buttons">
+
+            <button type="button" class="buttons__button">Визначити вік</button>
+         </div>
+
+         <div class="result">
+            Ваш вік:
+            <div class="result__age">
+               
+            </div>
+
+         </div>
+      </form>
+   </div>
 </body>
 
 </html>

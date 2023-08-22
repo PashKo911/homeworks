@@ -7,17 +7,96 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="../css/style.css">
    <title>Document</title>
+
+   <script>
+      const minGrade = 1,
+         maxGrade = 12
+
+      function createInputTable(minGrade, maxGrade) {
+         const rowsCount = parseInt(document.getElementById('rowsCount').value)
+
+         if (rowsCount < 1)
+            throw new Error('Не коректна кількість оцінок')
+
+         const table = document.createElement('table')
+
+         for (let i = 0; i < rowsCount; i++) {
+            const row = document.createElement('tr')
+            const input = document.createElement('input')
+
+            input.className = 'custom-input grade'
+            input.setAttribute('type', 'number')
+            input.setAttribute('value', '0')
+
+            row.append(input)
+            table.append(row)
+         }
+
+         const container = document.querySelector('.container')
+         container.append(table)
+
+         const button = document.createElement('button')
+         button.innerText = 'Знайти середній бал'
+         container.append(button)
+         button.setAttribute('type', 'button')
+         button.className = 'buttons__button average'
+         button.onclick = function () {
+            getAverageGrade(minGrade, maxGrade)
+         }
+      }
+
+      function getAverageGrade(minGrade, maxGrade) {
+         const gradesCollection = document.querySelectorAll('.grade')
+         let sum = 0
+
+         for (const grade of gradesCollection) {
+            if (grade.value < minGrade || grade.value > maxGrade)
+               throw new Error('Не коректна оцінка')
+
+            sum += parseFloat(grade.value)
+         }
+         const averageGrade = sum / gradesCollection.length
+         const resDiv = document.createElement('div')
+         resDiv.innerText = 'Ваш середній бал: ' + averageGrade.toFixed(1)
+         const container = document.querySelector('.container')
+         container.append(resDiv)
+      }
+
+      window.onload = function () {
+         document.querySelector('.buttons__button').onclick = function () {
+            createInputTable(minGrade, maxGrade)
+         }
+      }
+
+
+   </script>
+
 </head>
+
 
 <body>
    <h1>
-      Задача 6. Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.
+      Задача 6. Користувач задає кількість оцінок і натискає на кнопку «get table».
+      В результаті формується таблиця з input, куди користувач вводить оцінки.
+      Після цього натискає на кнопку “get sum” і знаходить середнє значення.
    </h1>
 
-   <script>
-     
-   </script>
 
+   <div class="container">
+      <form action="#" class="form">
+         <div class="inputs">
+            <label class="custom-input" for="rowsCount">Kількість оцінок</label>
+            <input class="custom-input" type="number" id="rowsCount" placeholder="0" value="3">
+         </div>
+
+
+         <div class="buttons">
+
+            <button type="button" class="buttons__button">Створити таблицю</button>
+         </div>
+   </div>
+   </form>
+   </div>
 </body>
 
 </html>

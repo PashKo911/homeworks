@@ -7,16 +7,53 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="../css/style.css">
    <title>Document</title>
+
+   <script>
+      const repeatingNumber = 3
+      const wishesList = [
+         'Have a good day!!!',
+         'Have a good friends!!!',
+         'Have a good car!!!',
+         'Have a good house!!!',
+         'Have a good job!!!',
+         'Have a quaite NIGHT!!!',
+         'And a lot of fresh things about your Feature!!!',
+      ]
+
+      function showWishes(wishesList, repeatingNumber) {
+         const elDiv = document.createElement('div')
+         elDiv.className = 'wishes'
+         const container = document.querySelector('.container') //можна було створити тут же, то для практики
+         container.append(elDiv)
+
+         for (let i = 0; i < repeatingNumber; i++) {
+            const randomIndex = Math.floor(Math.random() * wishesList.length)
+            
+            const wishDiv = document.createElement('div')
+            wishDiv.className  = 'wish'
+            wishDiv.innerText = wishesList[randomIndex]
+            elDiv.append(wishDiv)
+         }
+      }
+
+      window.onload = function () {
+         showWishes(wishesList, repeatingNumber)
+      }
+
+   </script>
+
 </head>
 
 <body>
    <h1>
-      Задача 4. Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином вибираються 3 і відображаються у окремих div (їх треба створити і додати на сторінку)
-    </h1>
+      Задача 4. Наперед задано у скрипті масив зі списком бажань.
+      Після завантаження сторінки випадковим чином
+      вибираються 3 і відображаються у окремих div (їх треба створити і додати на сторінку)
+   </h1>
 
-   <script>
-    </script>
+   <div class="container">
 
+   </div>
 </body>
 
 </html>

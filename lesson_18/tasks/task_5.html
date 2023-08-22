@@ -7,17 +7,67 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="../css/style.css">
    <title>Document</title>
+
+   <script>
+
+      function createTable() {
+         const rowsCount = parseInt(document.getElementById('rowsCount').value)
+         const columnsCount = parseInt(document.getElementById('columnsCount').value)
+
+         if(rowsCount < 1 || columnsCount < 1)
+         throw new Error ('Не коректні значення рядків або стовпців')
+
+         let counter = 0
+         const table = document.createElement('table')
+
+         for (let i = 0; i < rowsCount; i++) {
+            const row = document.createElement('tr')
+            table.append(row)
+
+            for (let j = 0; j < columnsCount; j++) {
+               const column = document.createElement('td')
+               counter++
+               column.innerText = counter
+               row.append(column)
+            }
+
+         }
+         const container = document.querySelector('.container')
+         container.append(table)
+      }
+
+      window.onload = function () {
+         document.querySelector('.buttons__button').onclick = createTable
+      }
+   </script>
+
 </head>
 
 <body>
    <h1>
-      Задача 5. Користувач задає кількість рядків і стовпців. Відобразити таблицю, у клітинках якої знаходяться числа 1, 2, 3, …
+      Задача 5. Користувач задає кількість рядків і стовпців.
+      Відобразити таблицю, у клітинках якої знаходяться числа 1,
+      2, 3, …
    </h1>
 
-   <script>
-    
-   </script>
+   <div class="container">
+      <form action="#" class="form">
+         <div class="inputs">
+            <label class="custom-input" for="rowsCount">Kількість рядків</label>
+            <input class="custom-input" type="number" id="rowsCount" placeholder="0" value="3">
 
+            <label class="custom-input" for="columnsCount">Kількість стовпців</label>
+            <input class="custom-input" type="number" id="columnsCount" placeholder="0" value="4">
+         </div>
+
+
+         <div class="buttons">
+
+            <button type="button" class="buttons__button">Створити таблицю</button>
+         </div>
+   </div>
+   </form>
+   </div>
 </body>
 
 </html>
