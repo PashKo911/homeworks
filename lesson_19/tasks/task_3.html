@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+
+   <script>
+
+      const ulsNumber = 5
+
+      class ListsCreator {
+
+         getRandomNumber(min = 1, max = 10) {
+            return min + Math.floor(Math.random() * (max - min + 1))
+         }
+
+         render(containerSelector) {
+            const container = document.querySelector(containerSelector)
+
+            const ul = document.createElement('ul'),
+               liNumber = this.getRandomNumber()
+
+            for (let i = 0; i < liNumber; i++) {
+               const li = document.createElement('li')
+               li.innerText = this.getRandomNumber(1, 100)
+               ul.append(li)
+            }
+
+            if (containerSelector)
+               container.prepend(ul)
+         }
+      }
+
+      class Painter {
+
+         changeBGColor() {
+            let ulsCollection = document.querySelectorAll('ul')
+
+            for (const ul of ulsCollection) {
+
+               if (ul.children.length % 2 === 0)
+                  ul.className = 'bg_green'
+               else ul.className = 'bg_red'
+            }
+         }
+
+         run(){
+            const button = document.querySelector('.buttons__button')
+            button.onclick = this.changeBGColor.bind(this) //працює і без bind та в занятті казали щось типу "забайндити і забути в таких ситуаціях", так і зробимо))
+         }
+      }
+
+      window.onload = function () {
+         let lists = new ListsCreator()
+
+         for (let i = 0; i < ulsNumber; i++) {
+            lists.render('.container')
+         }
+
+         let painter = new Painter()
+         painter.run()
+      }
+   </script>
+
+</head>
+
+<body>
+   <h1>
+      Задача 3. Дано 5 випадковим чином згенерованих нумерованих списків з рандомними числами
+      (кількість елементів у списку випадкова від 1 до 10, елементи випадкові – від 1 до 100).
+      При натисненні на кнопку нумеровані списки з парною кількістю елементів зафарбувати у зелений колір, інші у
+      червоний.
+   </h1>
+
+   <div class="container">
+      <button class="buttons__button">Start</button>
+   </div>
+</body>
+
+</html>

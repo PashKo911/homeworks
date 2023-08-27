@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+
+   <script>
+      //А можна всі такі ДЗ?))
+      //Прочитав зауваження до інших дз про id для кожного єтапу, для транспорту використав та щось не сподобалось, може як за звичай не зрозумів що з вашою підказкою робити)
+
+      function getTotalPrice() {
+         let totalSum = 0
+
+         //const transportsCollection = document.getElementsByTagName('select')
+         const transportsCollection = document.querySelectorAll('#first__stage select, #second__stage select, #third__stage select')//щось якось не гарно, та це на випадок якщо на сторінці будуть ще селекти, які не стосуються транспорту, почав вигадувати таке, цікаво чи є якийсь більш привабливий способ
+
+         for (const transport of transportsCollection) {
+            totalSum += parseFloat(transport.value)
+         }
+
+         const eatingCollection = document.querySelectorAll('input.eating')
+
+         for (const foodType of eatingCollection) {
+            if (foodType.checked)
+               totalSum += parseFloat(foodType.value)
+         }
+
+         const guidesCollection = document.querySelectorAll('input.guide')
+
+         for (const guide of guidesCollection) {
+            if (guide.checked)
+               totalSum += parseFloat(guide.value)
+         }
+
+         const result = document.querySelector('.result')
+         result.innerText = totalSum.toFixed(1)
+      }
+
+      window.onload = function () {
+         document.querySelector('button').onclick = getTotalPrice
+      } 
+   </script>
+
+</head>
+
+<body>
+   <h1>
+      Задача 7. Відобразити падаючий сніг. Сніжинка з’являється у верхній частині екрану (top =0)
+      і з випадковою швидкістю рухається вниз (у setInterval викликати метод, у якому додавати крок до top).
+      Як тільки сніжинка досягає нижньої частини екрану (top>maxTop)
+      вона знову повинна з’явитись у верхній частині екрану (top=0).
+   </h1>
+
+   <div class="container">
+      <div id="first__stage">
+         <label>
+            Вид транспорту
+            <select>
+               <option value="1000">Авто</option>
+               <option value="600">Автобус</option>
+               <option value="5000">Літак</option>
+            </select>
+         </label>
+         <br>
+         <label>
+            Харчування <br>
+            <input class="eating" type="checkbox" value="40">Сніданок</input>
+            <input class="eating" type="checkbox" value="150">Обід</input>
+            <input class="eating" type="checkbox" value="120">Вечеря</input>
+         </label>
+         <br>
+         <label>
+            Оберіть гіда <br>
+            <input class="guide" type="radio" name="first_stage_guide" value="1000">Василь</input>
+            <input class="guide" type="radio" name="first_stage_guide" value="1500">Петро</input>
+            <input class="guide" type="radio" name="first_stage_guide" value="2000">Іван</input>
+         </label>
+      </div>
+      <div id="second__stage">
+         <label>
+            Вид транспорту
+            <select>
+               <option value="1000">Авто</option>
+               <option value="600">Автобус</option>
+               <option value="5000">Літак</option>
+            </select>
+         </label>
+         <br>
+         <label>
+            Харчування <br>
+            <input class="eating" type="checkbox" value="40">Сніданок</input>
+            <input class="eating" type="checkbox" value="150">Обід</input>
+            <input class="eating" type="checkbox" value="120">Вечеря</input>
+         </label>
+         <br>
+         <label>
+            Оберіть гіда <br>
+            <input class="guide" type="radio" name="second_stage_guide" value="1000">Василь</input>
+            <input class="guide" type="radio" name="second_stage_guide" value="1500">Петро</input>
+            <input class="guide" type="radio" name="second_stage_guide" value="2000">Іван</input>
+         </label>
+      </div>
+      <div id="third__stage">
+         <label>
+            Вид транспорту
+            <select>
+               <option value="1000">Авто</option>
+               <option value="600">Автобус</option>
+               <option value="5000">Літак</option>
+            </select>
+         </label>
+         <br>
+         <label>
+            Харчування <br>
+            <input class="eating" type="checkbox" value="40">Сніданок</input>
+            <input class="eating" type="checkbox" value="150">Обід</input>
+            <input class="eating" type="checkbox" value="120">Вечеря</input>
+         </label>
+         <br>
+         <label>
+            Оберіть гіда <br>
+            <input class="guide" type="radio" name="third_stage_guide" value="1000">Василь</input>
+            <input class="guide" type="radio" name="third_stage_guide" value="1500">Петро</input>
+            <input class="guide" type="radio" name="third_stage_guide" value="2000">Іван</input>
+         </label>
+      </div>
+      <div class="buttons">
+         <button type="button" class="buttons__button">Підрахувати вартість</button>
+      </div>
+      <div class="result">
+
+      </div>
+   </div>
+</body>
+
+</html>

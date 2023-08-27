@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+
+   <script>
+
+      const playersList = [
+         'Ederson',
+         'Uoker',
+         'Ake',
+         'Stouns',
+         'De Bruyne',
+         'Foden',
+         'Holland',
+         'Mahrez',
+         'Rodrigo'
+      ]
+
+      class Competition {
+         constructor(playersList) {
+            this.playersList = playersList
+         }
+
+         render(containerSelector) {
+            this.container = document.querySelector(containerSelector)
+
+            const allPlayers = document.createElement('ol')
+            allPlayers.className = 'all__players'
+
+            for (const player of this.playersList) {
+               const li = document.createElement('li')
+               li.innerText = player
+
+               const arrDiv = document.createElement('div')
+               arrDiv.className = 'arrow__right'
+               li.append(arrDiv)
+
+               allPlayers.append(li)
+            }
+
+            const choosedPlayers = document.createElement('ol')
+            choosedPlayers.className = 'choosed__players'
+
+            this.container.onclick = this.replacement.bind(this)
+
+            this.allPlayers = allPlayers
+            this.choosedPlayers = choosedPlayers
+
+            if (containerSelector) {
+               this.container.append(allPlayers)
+               this.container.append(choosedPlayers)
+            }
+         }
+
+         replacement(e) {
+
+            let button = e.target
+            let player = button.parentElement
+
+            if (button.className === "arrow__right") {
+               this.choosedPlayers.append(player)
+               button.className = 'arrow__left'
+
+            } else if (button.className === 'arrow__left') {
+               this.allPlayers.append(player)
+               button.className = 'arrow__right'
+            }
+         }
+
+      }
+
+      window.onload = function () {
+         const competition = new Competition(playersList)
+         competition.render('.players__box')
+
+      }
+      //   <ol class="all__players">
+      //      <li>sdfs
+      //         <div class="arrow__right"></div>
+      //      </li>
+      //   </ol>
+      //   <ol class="choosed__players">
+      //   </ol>
+
+   </script>
+
+</head>
+
+
+<body>
+   <h1>
+      Задача 6. Дано список спортсменів.
+      Потрібно сформувати список тих, які будуть брати участь у змаганні.
+      При цьому є два стовпці. В одному відображені всі спортсмени, в іншому – список тих, хто був вибраний.
+      При натисканні на зелену стрілку спортсмен переміщається у список для змагань.
+      При натисканні на червону стрілку спортсмен переміщається у загальний список.
+   </h1>
+
+
+   <div class="container">
+      <div class="players__box">
+
+      </div>
+   </div>
+</body>
+
+</html>

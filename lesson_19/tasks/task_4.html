@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+
+   <script>
+
+      const tablesCount = 3
+
+      class TableCreator {
+         constructor(rowsCount, columnsCount, tableTitle) {
+            this.rowsCount = rowsCount
+            this.columnsCount = columnsCount
+            this.tableTitle = tableTitle
+         }
+
+         getRandomNumber(min = 1, max = 10) {
+            return min + Math.floor(Math.random() * (max - min + 1))
+         }
+
+         render(containerSelector) {
+
+            if (this.rowsCount < 1 || this.columnsCount < 1)
+               throw new Error('Не коректні значення рядків або стовпців')
+
+            const tableBox = document.createElement('div')
+            tableBox.className = 'table__box'
+            tableBox.innerText = this.tableTitle
+
+            const span = document.createElement('span')
+            tableBox.append(span)
+
+            const table = document.createElement('table')
+            tableBox.append(table)
+
+            for (let i = 0; i < this.rowsCount; i++) {
+               const row = document.createElement('tr')
+               table.append(row)
+
+               for (let j = 0; j < this.columnsCount; j++) {
+                  const column = document.createElement('td')
+                  column.innerText = this.getRandomNumber()
+                  row.append(column)
+               }
+
+            }
+            if (containerSelector) {
+               this.container = document.querySelector(containerSelector)
+               this.container.append(tableBox)
+            }
+         }
+
+         showBorder() {
+            let counter = 0
+
+            this.container.onclick = function (e) {
+               const tableBox = e.target.closest('.table__box') //('table') //тут я не визначився, чи весь дів додавати рамку, чи привабливіше таблицю, та то не важливо
+
+               if (tableBox && e.target.tagName === 'TD') {
+                  tableBox.classList.toggle('red_border')
+                  counter++
+                  tableBox.querySelector('span').innerText = ` Кількість кліків: ${counter} `//Кількість кліків рахує загальну, не для окремо взятої таблиці, та в завданні і не вказано яку саме кількість брати
+               }
+            }
+         }
+      }
+
+      window.onload = function () {
+         let table = new TableCreator(3, 3, 'Title')
+
+         for (let i = 0; i < tablesCount; i++) {
+            table.render('.container')
+         }
+
+         table.showBorder()
+      }
+
+   </script>
+
+</head>
+
+<body>
+   <h1>
+      Задача 4. Дано 3 таблиці розмірності 3*3 з випадковими числами.
+      Якщо відбувається клік на якійсь із клітинок, то до відповідної таблиці додається червона рамка
+      (спробуйте додати можливість відображення кількості кліків біля назви таблиці
+      з використанням відповідно доданого для цього атрибута).
+   </h1>
+
+   <div class="container">
+
+   </div>
+</body>
+
+</html>

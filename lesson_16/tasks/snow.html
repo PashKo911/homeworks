@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+
+
+
+   <style>
+      body {
+         height: 100vh;
+         overflow: hidden;
+         background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      }
+
+      .snow_flake {
+         border-radius: 50%;
+         background: #fff;
+         position: absolute;
+         z-index: 999;
+         top: 0;
+         box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.5);
+      }
+   </style>
+
+   <script>
+      "use strict";
+
+      class SnowFlake {
+         constructor() {
+            this.snowflakeElement = this.createSnowFlake();
+            this.speed = Math.random() * 3 + 1; // Швидкість сніжинки випадково обирається від 1 до 4
+            this.currentTop = Math.random() * window.innerHeight; // Рандомна стартова позиція
+            this.snowflakeElement.style.top = `${this.currentTop}px`; // Встановлюємо це значення як початкову позицію для
+
+            document.body.append(this.snowflakeElement);
+         }
+
+         // Функція створення елементу сніжинки
+         createSnowFlake() {
+            const size = Math.random() * 10 + 5; // Розмір сніжинки випадково обирається від 5 до 15px
+            const op = Math.random() * 1 + 0.3; // Випадкова непрозорість сніжинки не менше 0.3
+            const snow = document.createElement("div");
+            snow.classList.add("snow_flake");
+            snow.style.left = `${Math.random() * (window.innerWidth - 15)}px`; // Випадкова горизонтальна позиція сніжинки
+            snow.style.width = `${size}px`;
+            snow.style.height = `${size}px`;
+            snow.style.opacity = `${op}`;
+            return snow;
+         }
+
+         // Рух сніжинки
+         move() {
+            this.currentTop += this.speed; // Зміна позиції сніжинки з урахуванням швидкості
+            // Врахуємо розмір сніжинки, щоб вона поверталася на початок до того, як досягне краю вікна
+            if (this.currentTop > window.innerHeight - this.snowflakeElement.offsetHeight) {
+               // Якщо сніжинка вийшла за межі екрану
+               this.currentTop = 0; // Повертаємо її на початок
+               this.snowflakeElement.style.left = `${Math.random() * (window.innerWidth - this.snowflakeElement.offsetWidth)}px`;
+            }
+            this.snowflakeElement.style.top = `${this.currentTop}px`;
+         }
+      }
+
+      class Snowfall {
+         constructor(snowflakesCount) {
+            this.snowflakes = [];
+            for (let i = 0; i < snowflakesCount; i++) {
+               this.snowflakes.push(new SnowFlake());
+            } setInterval(this.moveSnowflakes.bind(this), 40);
+
+         }
+         moveSnowflakes() {
+            for (const snowflake of this.snowflakes) { snowflake.move(); }
+         }
+      } new Snowfall(120);
+   </script>
+</body>
+
+</html>
