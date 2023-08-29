@@ -23,7 +23,7 @@
          showSnow() {
 
             for (const lake of this.snowContainer.children) {
-               let topPosition = this.getRandomNumber(-30, -5)
+               let topPosition = this.getRandomNumber(-30, -5) // щось полінився всюди передавати значення для рандомного числа змінними*)
                setInterval(() => {
                   topPosition += 0.2
                   lake.style.top = topPosition + '%'
