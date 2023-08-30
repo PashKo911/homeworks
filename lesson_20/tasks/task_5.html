@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+
+   <script>
+      //Верстка така собі, все гуляє, ну сорі))
+
+      const bannersList = [
+         {
+            imgSrc: '../img/1.png',
+            title: 'Соковитискач відцентровий Bosch MES25G0',
+            itemLable: 'Топ продажів',
+            price: '6 049'
+         },
+         {
+            imgSrc: '../img/2.png',
+            title: 'Системний блок Qbox I25229',
+            itemLable: 'Топ продажів',
+            price: '88 722'
+         },
+         {
+            imgSrc: '../img/3.png',
+            title: 'Подрібнювач Bosch MMR08R2 Red',
+            itemLable: 'Скидка 25%',
+            price: '1 799'
+         },
+         {
+            imgSrc: '../img/4.png',
+            title: 'Подрібнювач Bosch MMR08A1',
+            itemLable: 'Скидка 50%',
+            price: '1 799 '
+         },
+      ]
+
+      class Banner {
+         constructor(bannersList) {
+            Object.assign(this, bannersList)
+         }
+
+         render(containerSelector) {                              //таке собі заняття))
+            const productList = document.createElement('div')
+            productList.classList = 'product__list product'
+
+            const link = document.createElement('a')
+            link.setAttribute('href', '#')
+            link.classList = 'product__item item'
+            productList.append(link)
+
+            const itemImg = document.createElement('div')
+            itemImg.className = 'item__img'
+            link.append(itemImg)
+
+            const img = document.createElement('img')
+            img.setAttribute('src', this.imgSrc)
+            itemImg.append(img)
+
+            const itemLable = document.createElement('div')
+            itemLable.className = 'item__label'
+            itemLable.innerText = this.itemLable
+            itemImg.append(itemLable)
+
+            const title = document.createElement('div')
+            title.className = 'item__title'
+            title.innerText = this.title
+            link.append(title)
+
+            const price = document.createElement('div')
+            price.className = 'item__price'
+            price.innerText = this.price + ' грн.'
+            link.append(price)
+
+            this.link = link
+
+            this.link.onclick = (e) =>
+               this.link.classList.toggle('green__border')
+
+            if (containerSelector)
+               document.querySelector(containerSelector).append(link)
+         }
+      }
+
+      window.onload = function () {
+
+         for (const el of bannersList) {
+            let banner = new Banner(el)
+            banner.render('.product__list')
+            console.log(banner.imgSrc);
+         }
+      }
+      //<div class="product__list product">
+      //   <a href="#" class="product__item item">
+      //      <div class="item__img">
+      //         <img src="../img/1.png" alt="Соковитискач">
+      //            <div class="item__label">Топ продажів</div>
+      //      </div>
+      //      <div class="item__title">Соковитискач відцентровий Bosch MES25G0</div>
+      //      <div class="item__price">6 049</div>
+      //   </a>
+      //</div>
+   </script>
+
+</head>
+
+<body>
+   <h1>
+      Приклад. Дано перелік товарів у кошику. При зміні кількості одиниць товару збільшувати загальну
+      вартість. Створити клас Product, що призначений для маніпуляцій товаром та клас ProductManager
+      що оперує з усіма товарами (через подію передвати ідентифікатор товару та операцію, що зроблена
+
+   </h1>
+
+   <div class="container">
+      <div class="product__list product">
+
+      </div>
+   </div>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+
+   <script>
+
+      //З цього моменту буду намагатись визначати за допомогою чого вирішувати завдання (функції чи класи),
+      //Це завдання наче легке, вирішив через функцію, якщо десь не правильно прийняв рішення, коментуйте будь ласка
+
+      function createInput(inputsNumber, containerSelector) {
+
+         if (containerSelector) {
+
+            for (let i = 0; i < inputsNumber; i++) {
+               const input = document.createElement('input')
+
+               input.setAttribute('type', 'number')
+               input.className = 'custom-input'
+
+               document.querySelector('.container').append(input)
+            }
+         }
+         return document.querySelectorAll('input')
+      }
+
+      function inputsAutoFilling() {
+         let input = this,
+            counter = parseInt(input.value)
+
+         const originalInput = input //прочитав у помилках що треба би зберегти початковий інпут, сам би не здогадався також що воно буде переприсвоювати значення, спеціально подивився як працює функція через браузер, і дійсно переприсвоює, здається через тагргет було б легше, та то поки тільки здається
+
+         while (input.previousElementSibling) {
+            input = input.previousElementSibling
+            input.value = --counter
+         }
+
+         input = originalInput
+         counter = parseInt(input.value)
+
+         while (input.nextElementSibling) {
+            input = input.nextElementSibling
+            input.value = ++counter
+         }
+      }
+
+      window.onload = function () {
+
+         const inputsCollection = createInput(5, '.container')
+         console.log(inputsCollection);
+
+         for (const input of inputsCollection) { //про listener вже знаю, далі буде))
+            input.onchange = inputsAutoFilling
+         }
+
+      }
+      //custom-input
+   </script>
+
+</head>
+
+<body>
+   <h1>
+      Задача 2. Байрактар. З верхньої частини екрану у випадковій позиції по горизонталі з’являються танки,
+      які їдуть вниз. При кліку на танк він вибухає і зникає з екрану.
+
+   </h1>
+   <div class="container">
+
+   </div>
+</body>
+
+</html>
