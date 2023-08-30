@@ -42,49 +42,46 @@
             }
          }
 
-         animateMoonEllipticalPath(semiMajorAxis, semiMinorAxis, speed) {
+         animateMoonEllipticalPath(semiMajorAxis = 600, semiMinorAxis = 350, speed = 0.0075, interval = 20) {
             let angle = 0;
 
-            const animate = () => {
-               const centerX = window.innerWidth / 2; // центр экрана
-               const centerY = window.innerHeight / 2;
-               const x = centerX + semiMajorAxis * Math.cos(angle);
-               const y = centerY + semiMinorAxis * Math.sin(angle);
+            setInterval(() => {
 
-               this.moon.style.left = x + 'px';
-               this.moon.style.top = y + 'px';
+               const centerX = window.innerWidth / 2 
+               const centerY = window.innerHeight / 2
+               const x = centerX + semiMajorAxis * Math.cos(angle) //я просто пригадав ці еліпси параболи, гіперболи зі школи і не розумів ніколи нащо ми це вчимо, і ось воно
+               const y = centerY + semiMinorAxis * Math.sin(angle)
+
+               this.moon.style.left = x + 'px'
+               this.moon.style.top = y + 'px'
 
                angle += speed;
+            }, interval)
+      }
 
-               requestAnimationFrame(animate);
-            };
+      render(containerSelector) {
 
-            animate();
+         if (containerSelector)
+            this.starsContainer = document.querySelector('.stars__container')
+
+         for (let i = 0; i < this.starsNumber; i++) {
+            const star = document.createElement('div')
+            star.className = 'star'
+
+            star.style.left = this.getRandomNumber() + '%'
+            star.style.top = this.getRandomNumber() + '%'
+
+            this.starsContainer.append(star)
          }
 
-         render(containerSelector) {
+         this.moon = document.createElement('div')  // ну не втримався, як без місяця)) в мене телескоп є, полюбляю на нього дивитись)) скільки ідей як прикрасити зоряне небо) сто проц сюди повернусь а поки що так примітивненько))
+         this.moon.className = 'moon'
+         this.moon.style.top = 1 + '%'
+         document.body.append(this.moon)
 
-            if (containerSelector)
-               this.starsContainer = document.querySelector('.stars__container')
-
-            for (let i = 0; i < this.starsNumber; i++) {
-               const star = document.createElement('div')
-               star.className = 'star'
-
-               star.style.left = this.getRandomNumber() + '%'
-               star.style.top = this.getRandomNumber() + '%'
-
-               this.starsContainer.append(star)
-            }
-
-            this.moon = document.createElement('div')  // ну не втримався, як без місяця)) в мене телескоп є, полюбляю на нього дивитись)) скільки ідей як прикрасити зоряне небо) сто проц сюди повернусь а поки що так примітивненько))
-            this.moon.className = 'moon'
-            this.moon.style.top = 1 + '%'
-            document.body.append(this.moon)
-
-            this.animateMoonEllipticalPath(600, 350, 0.005)
-            this.animationStarsSky()
-         }
+         this.animateMoonEllipticalPath()
+         this.animationStarsSky()
+      }
       }
 
       window.onload = function () {
