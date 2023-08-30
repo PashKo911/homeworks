@@ -42,7 +42,7 @@
             }
          }
 
-         animateMoonEllipticalPath(xAxis = 600, yAxis = 350, speed = 0.0075, interval = 20) {
+         animateMoon(xAxis = 600, yAxis = 350, speed = 0.0075, interval = 20) {
             let angle = 0;
 
             setInterval(() => {
@@ -79,7 +79,7 @@
          this.moon.style.top = 1 + '%'
          document.body.append(this.moon)
 
-         this.animateMoonEllipticalPath()
+         this.animateMoon()
          this.animationStarsSky()
       }
       }
