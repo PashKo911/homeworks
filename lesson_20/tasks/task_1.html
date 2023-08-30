@@ -20,7 +20,6 @@
             return min + Math.floor(Math.random() * (max - min + 1))
          }
 
-         
          animationStarsSky(step = 0.1, minSize = 3, maxSize = 7, minInterval = 20, maxInterval = 50) {
 
             for (const star of this.starsContainer.children) {
@@ -43,7 +42,7 @@
             }
          }
 
-         animateMoon(semiMajorAxis, semiMinorAxis, speed) {
+         animateMoonEllipticalPath(semiMajorAxis, semiMinorAxis, speed) {
             let angle = 0;
 
             const animate = () => {
