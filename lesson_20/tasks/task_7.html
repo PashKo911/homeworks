@@ -10,94 +10,174 @@
 
    <script>
 
-      class Snowflake {
-         constructor(imgSrc, snowflakesNumber) {
-            this.imgSrc = imgSrc
-            this.snowflakesNumber = snowflakesNumber
-         }
+      const winnerMessage = 'Мої вітання ви перемогли!!!'
 
-         getRandomNumber(min = 0, max = 100) {
+      // Я спочатку зробив щоб шляхи до зображень передавались через конструктор, потім переробив за допомогою стилів, не знаю як краще та правильніше
+
+      class Tank {
+
+         getRandomNumber(min = 3, max = 95) {
             return min + Math.floor(Math.random() * (max - min + 1))
          }
 
-         showSnow(step = 0.2, maxTopPOsition = 100, minTopPosition = -10, minInterval = 10, maxInterval = 40) {
+         deleteTank(e) {
 
-            for (const lake of this.snowContainer.children) {
-               let topPosition = this.getRandomNumber(-30, -5) // щось полінився всюди передавати значення для рандомного числа змінними*)
-               setInterval(() => {
-                  topPosition += step
-                  lake.style.top = topPosition + '%'
-                  if(topPosition >= maxTopPOsition)
-                  topPosition = minTopPosition
-               }, this.getRandomNumber(minInterval, maxInterval));
+            let checkedTank = e.target
+
+            const deleteEvent = new CustomEvent('deleteTank', { bubbles: true })
+
+            this.tank.dispatchEvent(deleteEvent)
+
+            checkedTank.classList.toggle('boom')
+
+            setInterval(() => {
+               this.tank.remove()
+            }, 100);
+
+         }
+
+         moveTank(
+            minTopPosition = -50,
+            maxTopPosition = -10,
+            step = 0.05,
+            minInterval = 1,
+            maxInterval = 10
+         ) {
+
+            let topPosition = this.getRandomNumber(minTopPosition, maxTopPosition)
+
+            setInterval(() => {
+               topPosition += step
+               this.tank.style.top = topPosition + '%'
+
+               if (topPosition >= '100')
+                  topPosition = this.getRandomNumber(minTopPosition, maxTopPosition)
+
+            }, this.getRandomNumber(minInterval, maxInterval));
+         }
+
+         render() {
+            const tank = document.createElement('img')
+            tank.className = 'tank'
+
+            //tank.style.background = `url("${this.imgPath}")`
+            //tank.style.backgroundSize = 'contain'
+            //tank.style.backgroundRepeat = 'no-repeat'
+
+            tank.style.left = this.getRandomNumber() + '%'
+
+            this.tank = tank
+            this.tank.onclick = this.deleteTank.bind(this)
+
+            this.moveTank()
+            return tank
+         }
+      }
+
+      class PlayGame {
+         constructor(tanksNumber, winnerMessage) {
+            this.tanksNumber = tanksNumber
+            this.winnerMessage = winnerMessage
+            this.tanksCounter = 0
+         }
+
+         getDeletedTanksNumber() {
+            this.tanksCounter++
+
+            if (this.tanksCounter === this.tanksNumber) {
+               const winnerDiv = document.createElement('img') // Безпрограшна гра, я так заморочився та зробив безпрограшною щоб сину дати пограти))
+               winnerDiv.setAttribute('src', '../img/20230903_100319.jpg')
+               winnerDiv.className = 'winner'
+               winnerDiv.innerText = this.winnerMessage
+               this.tankContainer.append(winnerDiv)
             }
          }
 
-         render(containerSelector, minLakeSize = 20, maxLakeSize = 50) {
+         render(containerSelector) {
+
+            this.tankContainer = document.createElement('div')
+            this.tankContainer.className = 'tanks__container'
+
+            for (let i = 0; i < this.tanksNumber; i++) {
+               const tank = new Tank()
+               this.tankContainer.append(tank.render())
+
+            }
+            this.tankContainer.addEventListener('deleteTank', this.getDeletedTanksNumber.bind(this))
 
             if (containerSelector)
-               this.snowContainer = document.querySelector(containerSelector)
-
-            for (let i = 0; i < this.snowflakesNumber; i++) {
-
-               const lake = document.createElement('img')
-               lake.setAttribute('src', this.imgSrc)
-
-               const lakeSize = this.getRandomNumber(minLakeSize, maxLakeSize) + 'px'
-               lake.style.width = lakeSize
-               lake.style.height = lakeSize
-               lake.style.left = this.getRandomNumber() + '%'
-               lake.className = 'snow'
-
-               this.snowContainer.append(lake)
-            }
-            this.showSnow()
+               document.querySelector(containerSelector).append(this.tankContainer)
          }
       }
 
       window.onload = function () {
-         const snowflake = new Snowflake('../img/snow.png', 50)
-         snowflake.render('.snow__container')
+         let tank = new PlayGame(50, winnerMessage)
+         tank.render('.main__container')
 
       }
    </script>
-
 </head>
 
 <body>
-
-   <h1>7. Задача 1. Відобразити падаючий сніг. Сніжинка з’являється у верхній частині екрану
-      (top =0) і з випадковою швидкістю рухається вниз (у setInterval викликати метод,
-      у якому додавати крок до top). Як тільки сніжинка досягає нижньої частини екрану (top>maxTop)
-      вона знову повинна з’явитись у верхній частині екрану (top=0).
-   </h1>
-
-   <div class="snow__container"></div>
    <style>
       body {
          position: relative;
-         background-color: #0c2239;
+         background-color: #fff;
          height: 100vh;
          overflow: hidden;
          margin: 0;
          padding: 0;
       }
 
-      .snow {
-         position: absolute;
-      }
-
-      .snow__container {
+      .tanks__container {
 
          height: 100%;
          width: 100%;
       }
+
+      .tank {
+         position: absolute;
+         padding: 35px;
+         background: url("../img/tank.png");
+         background-size: contain;
+         background-repeat: no-repeat;
+      }
+
+      .boom {
+         position: absolute;
+         padding: 35px;
+         background: url("../img/boom.png");
+         background-size: contain;
+         background-repeat: no-repeat;
+      }
+
+      h1 {
+         position: absolute;
+         top: 0;
+         left: 0;
+         text-align: center;
+      }
+
+      .winner {
+         position: absolute;
+         top: 10%;
+         left: 30%;
+         width: 500px;
+         height: 700px;
+         font-size: 40px;
+         text-align: center;
+         color: #17942a;
+
+      }
    </style>
+   <h1>
+      Задача 2. Байрактар. З верхньої частини екрану у випадковій позиції по горизонталі з’являються танки,
+      які їдуть вниз. При кліку на танк він вибухає і зникає з екрану.
 
+   </h1>
+   <div class="main__container">
 
-
-
-
+   </div>
 </body>
 
 </html>

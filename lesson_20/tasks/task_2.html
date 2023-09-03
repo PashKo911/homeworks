@@ -5,72 +5,174 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="../css/style.css">
+
    <title>Document</title>
 
    <script>
 
-      //З цього моменту буду намагатись визначати за допомогою чого вирішувати завдання (функції чи класи),
-      //Це завдання наче легке, вирішив через функцію, якщо десь не правильно прийняв рішення, коментуйте будь ласка
+      const winnerMessage = 'Мої вітання ви перемогли!!!'
 
-      function createInput(inputsNumber, containerSelector) {
+      // Я спочатку зробив щоб шляхи до зображень передавались через конструктор, потім переробив за допомогою стилів, не знаю як краще та правильніше
 
-         if (containerSelector) {
+      class Tank {
 
-            for (let i = 0; i < inputsNumber; i++) {
-               const input = document.createElement('input')
-
-               input.setAttribute('type', 'number')
-               input.className = 'custom-input'
-
-               document.querySelector('.container').append(input)
-            }
+         getRandomNumber(min = 3, max = 95) {
+            return min + Math.floor(Math.random() * (max - min + 1))
          }
-         return document.querySelectorAll('input')
+
+         deleteTank(e) {
+
+            let checkedTank = e.target
+
+            const deleteEvent = new CustomEvent('deleteTank', { bubbles: true })
+
+            this.tank.dispatchEvent(deleteEvent)
+
+            checkedTank.classList.toggle('boom')
+
+            setInterval(() => {
+               this.tank.remove()
+            }, 100);
+
+         }
+
+         moveTank(
+            minTopPosition = -50,
+            maxTopPosition = -10,
+            step = 0.05,
+            minInterval = 1,
+            maxInterval = 10
+         ) {
+
+            let topPosition = this.getRandomNumber(minTopPosition, maxTopPosition)
+
+            setInterval(() => {
+               topPosition += step
+               this.tank.style.top = topPosition + '%'
+
+               if (topPosition >= '100')
+                  topPosition = this.getRandomNumber(minTopPosition, maxTopPosition)
+
+            }, this.getRandomNumber(minInterval, maxInterval));
+         }
+
+         render() {
+            const tank = document.createElement('img')
+            tank.className = 'tank'
+
+            //tank.style.background = `url("${this.imgPath}")`
+            //tank.style.backgroundSize = 'contain'
+            //tank.style.backgroundRepeat = 'no-repeat'
+
+            tank.style.left = this.getRandomNumber() + '%'
+
+            this.tank = tank
+            this.tank.onclick = this.deleteTank.bind(this)
+
+            this.moveTank()
+            return tank
+         }
       }
 
-      function inputsAutoFilling() {
-         let input = this,
-            counter = parseInt(input.value)
-
-         const originalInput = input //прочитав у помилках що треба би зберегти початковий інпут, сам би не здогадався також що воно буде переприсвоювати значення, спеціально подивився як працює функція через браузер, і дійсно переприсвоює, здається через тагргет було б легше, та то поки тільки здається
-
-         while (input.previousElementSibling) {
-            input = input.previousElementSibling
-            input.value = --counter
+      class PlayGame {
+         constructor(tanksNumber, winnerMessage) {
+            this.tanksNumber = tanksNumber
+            this.winnerMessage = winnerMessage
+            this.tanksCounter = 0
          }
 
-         input = originalInput
-         counter = parseInt(input.value)
+         getDeletedTanksNumber() {
+            this.tanksCounter++
 
-         while (input.nextElementSibling) {
-            input = input.nextElementSibling
-            input.value = ++counter
+            if (this.tanksCounter === this.tanksNumber) {
+               const winnerDiv = document.createElement('div') // Безпрограшна гра, я так заморочився та зробив безпрограшною щоб сину дати пограти))
+               winnerDiv.className = 'winner'
+               winnerDiv.innerText = this.winnerMessage
+               this.tankContainer.append(winnerDiv)
+            }
+         }
+
+         render(containerSelector) {
+
+            this.tankContainer = document.createElement('div')
+            this.tankContainer.className = 'tanks__container'
+
+            for (let i = 0; i < this.tanksNumber; i++) {
+               const tank = new Tank()
+               this.tankContainer.append(tank.render())
+
+            }
+            this.tankContainer.addEventListener('deleteTank', this.getDeletedTanksNumber.bind(this))
+
+            if (containerSelector)
+               document.querySelector(containerSelector).append(this.tankContainer)
          }
       }
 
       window.onload = function () {
-
-         const inputsCollection = createInput(5, '.container')
-         console.log(inputsCollection);
-
-         for (const input of inputsCollection) { //про listener вже знаю, далі буде))
-            input.onchange = inputsAutoFilling
-         }
+         let tank = new PlayGame(5, winnerMessage)
+         tank.render('.main__container')
 
       }
-      //custom-input
    </script>
-
 </head>
 
 <body>
+   <style>
+      body {
+         position: relative;
+         background-color: #fff;
+         height: 100vh;
+         overflow: hidden;
+         margin: 0;
+         padding: 0;
+      }
+
+      .tanks__container {
+
+         height: 100%;
+         width: 100%;
+      }
+
+      .tank {
+         position: absolute;
+         padding: 35px;
+         background: url("../img/tank.png");
+         background-size: contain;
+         background-repeat: no-repeat;
+      }
+
+      .boom {
+         position: absolute;
+         padding: 35px;
+         background: url("../img/boom.png");
+         background-size: contain;
+         background-repeat: no-repeat;
+      }
+
+      h1 {
+         position: absolute;
+         top: 0;
+         left: 0;
+         text-align: center;
+      }
+
+      .winner {
+         position: absolute;
+         top: 50%;
+         left: 30%;
+         font-size: 40px;
+         text-align: center;
+         color: #17942a;
+
+      }
+   </style>
    <h1>
       Задача 2. Байрактар. З верхньої частини екрану у випадковій позиції по горизонталі з’являються танки,
       які їдуть вниз. При кліку на танк він вибухає і зникає з екрану.
 
    </h1>
-   <div class="container">
+   <div class="main__container">
 
    </div>
 </body>

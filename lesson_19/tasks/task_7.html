@@ -16,24 +16,24 @@
             this.snowflakesNumber = snowflakesNumber
          }
 
-         getRandomNumber(min = 1, max = 10) {
+         getRandomNumber(min = 0, max = 100) {
             return min + Math.floor(Math.random() * (max - min + 1))
          }
 
-         showSnow() {
+         showSnow(step = 0.2, maxTopPOsition = 100, minTopPosition = -10, minInterval = 10, maxInterval = 40) {
 
             for (const lake of this.snowContainer.children) {
                let topPosition = this.getRandomNumber(-30, -5) // щось полінився всюди передавати значення для рандомного числа змінними*)
                setInterval(() => {
-                  topPosition += 0.2
+                  topPosition += step
                   lake.style.top = topPosition + '%'
-                  if(topPosition >= 100)
-                  topPosition = -10
-               }, this.getRandomNumber(10, 40));
+                  if(topPosition >= maxTopPOsition)
+                  topPosition = minTopPosition
+               }, this.getRandomNumber(minInterval, maxInterval));
             }
          }
 
-         render(containerSelector) {
+         render(containerSelector, minLakeSize = 20, maxLakeSize = 50) {
 
             if (containerSelector)
                this.snowContainer = document.querySelector(containerSelector)
@@ -43,10 +43,10 @@
                const lake = document.createElement('img')
                lake.setAttribute('src', this.imgSrc)
 
-               const lakeSize = this.getRandomNumber(20, 50) + 'px'
+               const lakeSize = this.getRandomNumber(minLakeSize, maxLakeSize) + 'px'
                lake.style.width = lakeSize
                lake.style.height = lakeSize
-               lake.style.left = this.getRandomNumber(0, 100) + '%'
+               lake.style.left = this.getRandomNumber() + '%'
                lake.className = 'snow'
 
                this.snowContainer.append(lake)
