@@ -10,35 +10,87 @@
 
    <script>
 
-let arr = [
-        323, 445, 45, 88, 556, 677, 995, 555, 900, 333, 0, 44, 5, 545, 77, 8,
-        66, 50, 67, 56, 556, 44, 90, 45, 55,
-      ];
-      function getMaxOfArray(numArray) {
-        return Math.max.apply(null, numArray);
+      function getClicksNumber() {
+          const inputClicksAnswer = document.querySelector('.inputs__clicks'), //Ну на глобальному так на глобальному, як скажите в попередньому вирішив не змінювати, тут нічого складного))
+            buttonClicksAnswer = document.querySelector('.buttons__clicks')
+
+         let buttonClicksCounter = 0,
+            inputClicksCounter = 0
+
+         window.captureEvents(Event.CLICK)
+
+         window.onclick = (e) => {
+            if (e.target.tagName === 'INPUT') {
+               inputClicksCounter++
+               inputClicksAnswer.innerText = `Кількість кліків на Input: ${inputClicksCounter}`
+            }
+
+            if (e.target.tagName === 'BUTTON') {
+               buttonClicksCounter++
+               buttonClicksAnswer.innerText = `Кількість кліків на Button: ${buttonClicksCounter}`
+            }
+
+         }
       }
-      let maxAge = getMaxOfArray(arr);
-      let procentMaxAge = 100 / maxAge
-      let newArr = arr.map((el, ind, baseArr) => {
-        if (maxAge > el) procentMaxAge * el;
-      });
 
-      document.write(newArr);
+      //function getClicksNumber(containerSelector) {  
+      //   const container = document.querySelector(containerSelector),
+      //      inputClicksAnswer = document.querySelector('.inputs__clicks'),
+      //      buttonClicksAnswer = document.querySelector('.buttons__clicks')
 
-    
+      //   let buttonClicksCounter = 0,
+      //      inputClicksCounter = 0
+
+      //   container.onclick = (e) => {
+      //      if (e.target.tagName === 'INPUT') {
+      //         inputClicksCounter++
+      //         inputClicksAnswer.innerText = `Кількість кліків на Input: ${inputClicksCounter}`
+      //      }
+
+      //      if (e.target.tagName === 'BUTTON') {
+      //         buttonClicksCounter++
+      //         buttonClicksAnswer.innerText = `Кількість кліків на Button: ${buttonClicksCounter}`
+      //      }
+
+      //   }
+      //}
+
+
+      window.onload = function () {
+         getClicksNumber()
+      }
    </script>
 
 </head>
 
 <body>
    <h1>
-      Задача 4. На сторінці міститься певна кількість кнопок і інпутів. 
+      Задача 4. На сторінці міститься певна кількість кнопок і інпутів.
       Підраховувати загальну кількість кліків окремо на кнопках і окремо на інпутах.
    </h1>
 
-   <div class="container">
 
+   <div class="container">
+      <form action="#" class="form">
+         <div class="inputs">
+            <input class="custom-input" type="number" value="">
+         </div>
+         <div class="inputs">
+            <input class="custom-input" type="number" value="">
+         </div>
+         <div class="inputs">
+            <input class="custom-input" type="number" value="">
+         </div>
+         <div class="buttons">
+            <button type="button" class="buttons__button">Конвертувати</button>
+            <button type="button" class="buttons__button">Конвертувати</button>
+            <button type="button" class="buttons__button">Конвертувати</button>
+         </div>
+         <div class="inputs__clicks"></div>
+         <div class="buttons__clicks"></div>
+      </form>
    </div>
+
 </body>
 
 </html>

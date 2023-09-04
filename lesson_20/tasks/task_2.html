@@ -33,7 +33,6 @@
             setInterval(() => {
                this.tank.remove()
             }, 100);
-
          }
 
          moveTank(
@@ -85,7 +84,7 @@
             this.tanksCounter++
 
             if (this.tanksCounter === this.tanksNumber) {
-               const winnerDiv = document.createElement('div') // Безпрограшна гра, я так заморочився та зробив безпрограшною щоб сину дати пограти))
+               const winnerDiv = document.createElement('div')
                winnerDiv.className = 'winner'
                winnerDiv.innerText = this.winnerMessage
                this.tankContainer.append(winnerDiv)
@@ -100,7 +99,6 @@
             for (let i = 0; i < this.tanksNumber; i++) {
                const tank = new Tank()
                this.tankContainer.append(tank.render())
-
             }
             this.tankContainer.addEventListener('deleteTank', this.getDeletedTanksNumber.bind(this))
 

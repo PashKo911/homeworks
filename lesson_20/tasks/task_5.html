@@ -5,104 +5,236 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="../css/style.css">
+
    <title>Document</title>
 
    <script>
-      //Верстка така собі, все гуляє, ну сорі))
 
-      const bannersList = [
+      class Product {
+         constructor({ title, price, imgPath }) {
+            this.title = title
+            this.price = price
+            this.imgPath = imgPath
+         }
+
+         onDelete(e) {
+
+            const clickedButton = e.target
+            const changedItem = clickedButton.closest('.item')
+            const inputElement = changedItem.querySelector('.count')
+            const totalPrice = changedItem.querySelector('.total-price')
+
+            console.log(e.target.className);
+
+            if (clickedButton.className === 'delete-btn')
+               changedItem.remove()
+
+            if (clickedButton.className === 'plus') {
+               inputElement.value = parseInt(inputElement.value) + 1
+               totalPrice.innerText = parseInt(totalPrice.innerText) + this.price
+            }
+
+            if (clickedButton.className === 'minus' && inputElement.value > 0) {
+               inputElement.value = parseInt(inputElement.value) - 1
+               totalPrice.innerText = parseInt(totalPrice.innerText) - this.price
+            }
+
+            const deleteEvent = new CustomEvent('deleteProduct', {
+               bubbles: true,
+               detail: {
+                  priceOfDeletedProduct: totalPrice.innerText,
+                  count: inputElement.value
+               },
+            })
+
+            this.item.dispatchEvent(deleteEvent)
+
+         }
+
+         render(containerSelector) {
+            const item = document.createElement('div')
+            item.className = 'item'
+
+            const buttons = document.createElement('div')
+            buttons.className = 'buttons'
+            item.append(buttons)
+
+            const deleteBtn = document.createElement('span')
+            deleteBtn.className = 'delete-btn'
+            buttons.append(deleteBtn)
+
+            const productImageDiv = document.createElement('div')
+            productImageDiv.className = 'image'
+            item.append(productImageDiv)
+
+            const productImage = document.createElement('img')
+            productImage.setAttribute('src', this.imgPath)
+            productImageDiv.append(productImage)
+
+            const description = document.createElement('div')
+            description.className = 'description'
+            item.append(description)
+
+            const titleSpan = document.createElement('span')
+            titleSpan.innerText = this.title
+            description.append(titleSpan)
+
+            const quantity = document.createElement('div')
+            quantity.className = 'quantity'
+            item.append(quantity)
+
+            const plusButton = document.createElement('button')
+            plusButton.className = 'plus-btn'
+            plusButton.setAttribute('type', 'button')
+            quantity.append(plusButton)
+
+            const imgPlus = document.createElement('img')
+            imgPlus.className = 'plus'
+            imgPlus.setAttribute('src', '../img/plus.png')// знаю це краще через параметри або стилі, та і так грандіозне діло як для себе задумав, в таких моментах полінюсь, сорі
+            plusButton.append(imgPlus)
+
+            const inputText = document.createElement('input')
+            inputText.setAttribute('type', 'text')
+            inputText.className = 'count'
+            inputText.setAttribute('value', '1')
+            quantity.append(inputText)
+
+            const minusButton = document.createElement('button')
+            minusButton.className = 'minus-btn'
+            minusButton.setAttribute('type', 'button')
+            quantity.append(minusButton)
+
+            const imgMinus = document.createElement('img')
+            imgMinus.className = 'minus'
+            imgMinus.setAttribute('src', '../img/minus.png')
+            minusButton.append(imgMinus)
+
+            const totalPrice = document.createElement('div')
+            totalPrice.className = 'total-price'
+            totalPrice.innerText = this.price
+            item.append(totalPrice)
+
+            this.item = item
+            this.item.onclick = this.onDelete.bind(this)
+
+            if (containerSelector)
+               document.querySelector(containerSelector).append(item)
+
+            return item
+         }
+
+      }
+
+      class Cart {
+         constructor(productList) {
+            this.productList = productList
+         }
+
+         onProductDelete(e) {
+            console.log(e.detail.count);
+            if (e.target.className === 'delete-btn') {
+               const priceToDelete = e.detail.priceOfDeletedProduct
+               this.totalPrice -= priceToDelete
+               this.priceSpan.innerText = this.totalPrice
+            }
+            console.log(e.target.className);
+         }
+
+         render(containerSelector) {
+            const el = document.createElement('div')
+            el.className = 'shopping-cart'
+
+            for (const product of this.productList) {
+
+               const productObject = new Product(product)
+               el.append(productObject.render())
+
+               productObject.item.addEventListener(
+                  'deleteProduct',
+                  this.onProductDelete.bind(this)
+               )
+            }
+
+
+            const totalDiv = document.createElement('div')
+            totalDiv.className = 'total__div'
+            totalDiv.innerText = 'Загальна сума: '
+
+            const totalSpan = document.createElement('span')
+            this.priceSpan = totalSpan
+
+            totalDiv.append(totalSpan)
+            el.append(totalDiv)
+
+            this.totalPrice = this.productList.reduce(
+               (totalSum, product) => totalSum + product.price,
+               0
+            )
+
+            totalSpan.innerText = this.totalPrice
+            this.priceSpan = totalSpan
+
+
+            if (containerSelector)
+               document.querySelector(containerSelector).append(el)
+         }
+      }
+
+      const productList = [
          {
-            imgSrc: '../img/1.png',
-            title: 'Соковитискач відцентровий Bosch MES25G0',
-            itemLable: 'Топ продажів',
-            price: '6 049'
+            title: 'Подрібнювач Bosh',
+            price: 2000,
+            imgPath: '../img/1.png'
          },
          {
-            imgSrc: '../img/2.png',
-            title: 'Системний блок Qbox I25229',
-            itemLable: 'Топ продажів',
-            price: '88 722'
+            title: 'Подрібнювач Bosh',
+            price: 1000,
+            imgPath: '../img/1.png'
          },
          {
-            imgSrc: '../img/3.png',
-            title: 'Подрібнювач Bosch MMR08R2 Red',
-            itemLable: 'Скидка 25%',
-            price: '1 799'
-         },
-         {
-            imgSrc: '../img/4.png',
-            title: 'Подрібнювач Bosch MMR08A1',
-            itemLable: 'Скидка 50%',
-            price: '1 799 '
+            title: 'Подрібнювач Bosh',
+            price: 500,
+            imgPath: '../img/1.png'
          },
       ]
 
-      class Banner {
-         constructor(bannersList) {
-            Object.assign(this, bannersList)
-         }
-
-         render(containerSelector) {                              //таке собі заняття))
-            const productList = document.createElement('div')
-            productList.classList = 'product__list product'
-
-            const link = document.createElement('a')
-            link.setAttribute('href', '#')
-            link.classList = 'product__item item'
-            productList.append(link)
-
-            const itemImg = document.createElement('div')
-            itemImg.className = 'item__img'
-            link.append(itemImg)
-
-            const img = document.createElement('img')
-            img.setAttribute('src', this.imgSrc)
-            itemImg.append(img)
-
-            const itemLable = document.createElement('div')
-            itemLable.className = 'item__label'
-            itemLable.innerText = this.itemLable
-            itemImg.append(itemLable)
-
-            const title = document.createElement('div')
-            title.className = 'item__title'
-            title.innerText = this.title
-            link.append(title)
-
-            const price = document.createElement('div')
-            price.className = 'item__price'
-            price.innerText = this.price + ' грн.'
-            link.append(price)
-
-            this.link = link
-
-            this.link.onclick = (e) =>
-               this.link.classList.toggle('green__border')
-
-            if (containerSelector)
-               document.querySelector(containerSelector).append(link)
-         }
-      }
-
       window.onload = function () {
-
-         for (const el of bannersList) {
-            let banner = new Banner(el)
-            banner.render('.product__list')
-            console.log(banner.imgSrc);
-         }
+         let cart = new Cart(productList)
+         cart.render('.title')
       }
-      //<div class="product__list product">
-      //   <a href="#" class="product__item item">
-      //      <div class="item__img">
-      //         <img src="../img/1.png" alt="Соковитискач">
-      //            <div class="item__label">Топ продажів</div>
-      //      </div>
-      //      <div class="item__title">Соковитискач відцентровий Bosch MES25G0</div>
-      //      <div class="item__price">6 049</div>
-      //   </a>
+//      <div class="shopping-cart">
       //</div>
+      //<!-- Title -->
+
+      //   <!-- Товар #1 -->
+      //   <div class="item">
+      //      <div class="buttons">
+      //         <span class="delete-btn"></span>
+      //      </div>
+
+      //      <div class="image">
+      //         <img src="../img/1.png" alt="" />
+      //      </div>
+
+      //      <div class="description">
+      //         <span>Common Projects</span>
+      //         <span>Bball High</span>
+      //         <span>White</span>
+      //      </div>
+
+      //      <div class="quantity">
+      //         <button class="plus-btn" type="button" name="button">
+      //            <img class="plus" src="../img/plus.png" alt="" />
+      //         </button>
+
+      //         <input type="text" name="name" value="1">
+      //            <button class="minus-btn" type="button" name="button">
+      //               <img class="minus" src="../img/minus.png" alt="" />
+      //            </button>
+      //      </div>
+//      <div class="total-price">$549</div>
+
+
    </script>
 
 </head>
@@ -114,12 +246,226 @@
       що оперує з усіма товарами (через подію передвати ідентифікатор товару та операцію, що зроблена
 
    </h1>
-
    <div class="container">
-      <div class="product__list product">
-
+      <div class="title">
+         Shopping Bag
       </div>
    </div>
+
+   <style>
+      * {
+         box-sizing: border-box;
+      }
+
+      html,
+      body {
+         width: 100%;
+         height: 100%;
+         margin: 0;
+         background-color: #7EC855;
+         font-family: 'Roboto', sans-serif;
+      }
+
+      .shopping-cart {
+         width: 750px;
+         height: 423px;
+         margin: 80px auto;
+         background: #FFFFFF;
+         box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.10);
+         border-radius: 6px;
+
+      }
+
+      .title {
+         height: 60px;
+         border-bottom: 1px solid #E1E8EE;
+         padding: 20px 30px;
+         color: #5E6977;
+         font-size: 18px;
+         font-weight: 400;
+      }
+
+      .item {
+         margin-top: 20px;
+         padding: 20px 30px;
+         height: 120px;
+         display: flex;
+         align-items: center;
+
+      }
+
+      .item:nth-child(3) {
+         border-top: 1px solid #E1E8EE;
+         border-bottom: 1px solid #E1E8EE;
+      }
+
+      .buttons {
+         display: flex;
+         flex-direction: column;
+         padding-top: 20px;
+         margin-right: 60px;
+      }
+
+      .delete-btn,
+      .like-btn {
+         display: flex;
+         Cursor: pointer;
+      }
+
+      .delete-btn {
+
+         padding: 15px;
+         background: url("../img/delete.png");
+         background-size: contain;
+         background-repeat: no-repeat;
+      }
+
+      .like-btn {
+         position: absolute;
+         top: 9px;
+         left: 15px;
+         background: url('../img/heart.svg');
+         width: 60px;
+         height: 60px;
+         background-size: 2900%;
+         background-repeat: no-repeat;
+      }
+
+      .image {
+         margin-right: 50px;
+      }
+
+      .image img {
+         width: 140px;
+         height: 100px;
+      }
+
+      .description {
+         padding-top: 10px;
+         margin-right: 60px;
+         width: 115px;
+      }
+
+      .description span {
+         display: block;
+         font-size: 14px;
+         color: #43484D;
+         font-weight: 400;
+      }
+
+      .description span:first-child {
+         margin-bottom: 5px;
+      }
+
+      .description span:last-child {
+         font-weight: 300;
+         margin-top: 8px;
+         color: #86939E;
+      }
+
+      .quantity {
+         display: flex;
+         flex-direction: column;
+         padding-top: 10px;
+         margin-right: 50px;
+      }
+
+      .quantity input {
+         -webkit-appearance: none;
+         border: none;
+         text-align: center;
+         width: 32px;
+         font-size: 16px;
+         color: #43484D;
+         font-weight: 300;
+      }
+
+      button[class*=btn] {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         width: 40px;
+         height: 40px;
+         background-color: #E1E8EE;
+         border-radius: 6px;
+         border: none;
+         cursor: pointer;
+      }
+
+      .minus-btn img {
+         margin-bottom: 3px;
+
+      }
+
+      .plus-btn {}
+
+      .plus-btn button {
+         width: 10px;
+      }
+
+      .plus-btn img {
+         margin-top: 2px;
+
+         top: 0;
+      }
+
+      .plus {
+         width: 20px;
+      }
+
+      .minus {
+         width: 20px;
+      }
+
+      button:focus,
+      input:focus {
+         outline: 0;
+      }
+
+      .total-price {
+         width: 83px;
+         padding-top: 27px;
+         text-align: center;
+         font-size: 16px;
+         color: #43484D;
+         font-weight: 300;
+      }
+
+      @media (max-width: 800px) {
+         .shopping-cart {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+         }
+
+         .item {
+            height: auto;
+            flex-wrap: wrap;
+            justify-content: center;
+         }
+
+         .image img {
+            width: 50%;
+         }
+
+         .image,
+         .quantity,
+         .description {
+            width: 100%;
+            text-align: center;
+            margin: 6px 0;
+         }
+
+         .buttons {
+            margin-right: 20px;
+         }
+
+         .total__div {
+            margin-left: 20px;
+            font-weight: 600;
+         }
+      }
+   </style>
 </body>
 
 </html>

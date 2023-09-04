@@ -67,10 +67,12 @@
         }
         render(containerSelector) {
           const el = document.createElement('div')
-
+          console.log(el);
           for (const product of this.productList) {
             const productObj = new Product(product)
             el.append(productObj.render())
+
+            console.log(productObj.el);
 
             productObj.el.addEventListener(
               'deleteProduct',

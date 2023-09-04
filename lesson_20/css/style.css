@@ -22,6 +22,7 @@ body {
 
 form{
    display: flex;
+   width: 40%;
    flex-direction: column;
    gap: 15px;
    margin-bottom: 15px;
@@ -93,9 +94,13 @@ img{
    height: 38px;
 }
 
-
+.inputs {
+display: flex;
+justify-content: space-between;
+column-gap: 15px;
+}
 .custom-label {
-
+   width: 400px;
    margin-bottom: 8px;
    font-size: 16px;
    color: #333;
@@ -103,13 +108,15 @@ img{
 
 .custom-input {
    color: #693aff;
-   width: 25%;
+
    text-align: center;
    padding: 10px;
    font-size: 16px;
-   border: 1px solid #6f4ba5;
+
    border-radius: 5px;
 }
+
+
 
 
 .custom-input:hover {

@@ -10,20 +10,34 @@
 
    <script>
 
+      function changeValue(value, containerSelector){
+         const container = document.querySelector(containerSelector) 
+
+         container.onclick = (e) =>{
+            const changedInput = e.target
+
+            if(changedInput.tagName === 'INPUT'){
+               //changedInput.value = value //так не сподобалось, стрілочками число не змінюється
+
+               changedInput.setAttribute('value', value) // а тут при повторному натисканні нуль вже зʼявлятись не буде
+            }
+
+         }
+      }
+
+      window.onload = function(){
+         changeValue(0, '.form')
+      }
    </script>
 
 </head>
 
 <body>
    <style>
-   .tank {
-      position: absolute;
-      padding: 35px;
-      background:  url("../img/tank.png") ;
-      background-size: contain;
-      background-repeat: no-repeat;
-   }
-</style>
+
+
+
+   </style>
    <h1>
       Задача 3. На формі вводять 7 числових значень
       (вік, зріст, вага, заробітна плата, стаж, номер відділу, порядковий номер).
@@ -32,7 +46,39 @@
    </h1>
 
    <div class="container">
-      <div class="tank"></div>
+      <form action="#" class="form">
+         <div class="inputs">
+            <label class="custom-input" for="userMoneyNumber">Вік</label>
+            <input class="custom-input" type="number" value="">
+         </div>
+         <div class="inputs">
+            <label class="custom-input" for="userMoneyNumber">Зріст</label>
+            <input class="custom-input" type="number" value="">
+         </div>
+         <div class="inputs">
+            <label class="custom-input" for="userMoneyNumber">Вага</label>
+            <input class="custom-input" type="number" value="">
+         </div>
+         <div class="inputs">
+            <label class="custom-input" for="userMoneyNumber">Заробітна плата</label>
+            <input class="custom-input" type="number" value="">
+         </div>
+         <div class="inputs">
+            <label class="custom-input" for="userMoneyNumber">Стаж</label>
+            <input class="custom-input" type="number" value="">
+         </div>
+         <div class="inputs">
+            <label class="custom-input" for="userMoneyNumber">Номер відділу</label>
+            <input class="custom-input" type="number" value="">
+         </div>
+         <div class="inputs">
+            <label class="custom-input" for="userMoneyNumber">Порядковий номер</label>
+            <input class="custom-input" type="number" value="">
+         </div>
+
+
+
+      </form>
    </div>
 </body>
 
