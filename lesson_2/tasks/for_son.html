@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Document</title>
+   <style>
+      body{
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+      img {
+         width: 50px;
+         position: absolute;
+      }
+
+      .videoWinner{
+
+      }
+   </style>
+   <script>
+      //Заєць з"являється у випадковій позиції на вказану кількість секунд.Після цього випадково з"являється у іншій випадковій позиції. При кліку на зайця гра завершується.
+      class Rabbit {
+         constructor(imgPath, interval, video) {
+            this.imgPath = imgPath
+            this.interval = interval
+            this.video = video
+         }
+         getRandomValue(min = 0, max = 100) {
+            return min + Math.floor(Math.random() * (max - min + 1))
+         }
+         setRandomPosition() {
+            this.img.style.left = this.getRandomValue() + '%'
+            this.img.style.top = this.getRandomValue() + '%'
+         }
+         stop() {
+            clearInterval(this.intervalId);
+
+            const videoDiv = document.createElement('video');
+            videoDiv.className = 'videoWinner';
+            videoDiv.setAttribute('src', this.video);
+            document.body.append(videoDiv);
+
+            videoDiv.play(); // Начать воспроизведение видео
+         }
+         render(containerSelector) {
+            const img = document.createElement('img')
+            img.setAttribute('src', this.imgPath)
+            this.img = img
+            this.img.onclick = this.stop.bind(this)
+            this.setRandomPosition()
+
+            this.intervalId = setInterval(() => {
+               this.setRandomPosition()
+            }, this.interval)
+
+            if (containerSelector)
+               document.querySelector(containerSelector).append(img)
+         }
+      }
+
+      window.onload = function () {
+         const r = new Rabbit('../tasks/_2_catch_rabbit/img/rabbit.webp', 1000, '../tasks/_2_catch_rabbit/video/win.mp4')
+         r.render('body')
+      }
+   </script>
+</head>
+
+<body></body>
+
+</html>
