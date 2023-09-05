@@ -8,16 +8,13 @@
    <style>
       body{
          display: flex;
-         justify-content: center;
          align-items: center;
+         justify-content: center;
+         margin-top: 5%;
       }
       img {
          width: 50px;
          position: absolute;
-      }
-
-      .videoWinner{
-
       }
    </style>
    <script>
@@ -43,7 +40,7 @@
             videoDiv.setAttribute('src', this.video);
             document.body.append(videoDiv);
 
-            videoDiv.play(); // Начать воспроизведение видео
+            videoDiv.play();
          }
          render(containerSelector) {
             const img = document.createElement('img')
@@ -62,7 +59,7 @@
       }
 
       window.onload = function () {
-         const r = new Rabbit('../tasks/img/rabbit.webp', 1000, '../')
+         const r = new Rabbit('./img/rabbit.webp', 1000, '../_2_catch_rabbit/video/winner.mp4')
          r.render('body')
       }
    </script>

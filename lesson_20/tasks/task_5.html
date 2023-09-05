@@ -23,7 +23,11 @@
             const changedItem = clickedButton.closest('.item')
             const inputElement = changedItem.querySelector('.count')
             const totalPrice = changedItem.querySelector('.total-price')
+            const currentProductId = e.target.id
 
+
+
+            console.log(currentProductId);
             console.log(e.target.className);
 
             if (clickedButton.className === 'delete-btn')
@@ -42,6 +46,7 @@
             const deleteEvent = new CustomEvent('deleteProduct', {
                bubbles: true,
                detail: {
+                  id:
                   priceOfDeletedProduct: totalPrice.innerText,
                   count: inputElement.value
                },
@@ -182,16 +187,19 @@
 
       const productList = [
          {
+            id: 'firstProduct',
             title: 'Подрібнювач Bosh',
             price: 2000,
             imgPath: '../img/1.png'
          },
          {
+            id: 'firstProduct',
             title: 'Подрібнювач Bosh',
             price: 1000,
             imgPath: '../img/1.png'
          },
          {
+            id: 'firstProduct',
             title: 'Подрібнювач Bosh',
             price: 500,
             imgPath: '../img/1.png'
