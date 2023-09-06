@@ -11,7 +11,9 @@
    <script>
 
       class Product {
-         constructor({ title, price, imgPath }) {
+         constructor({ id, productCount, title, price, imgPath }) {
+            this.id = id
+            this.productCount = productCount
             this.title = title
             this.price = price
             this.imgPath = imgPath
@@ -19,36 +21,37 @@
 
          onDelete(e) {
 
-            const clickedButton = e.target
-            const changedItem = clickedButton.closest('.item')
-            const inputElement = changedItem.querySelector('.count')
-            const totalPrice = changedItem.querySelector('.total-price')
-            const currentProductId = e.target.id
+            const clickedButton = e.target,
+               changedItem = clickedButton.closest('.item'),
+               productsCounter = changedItem.querySelector('.count'),
+               totalPrice = changedItem.querySelector('.total-price')
 
+            let itemId,
+               productPrice = 0,
+               plusMinusButtonPosition
 
-
-            console.log(currentProductId);
-            console.log(e.target.className);
-
-            if (clickedButton.className === 'delete-btn')
+            if (clickedButton.className === 'delete-btn') {
+               itemId = changedItem.id
                changedItem.remove()
-
-            if (clickedButton.className === 'plus') {
-               inputElement.value = parseInt(inputElement.value) + 1
-               totalPrice.innerText = parseInt(totalPrice.innerText) + this.price
             }
 
-            if (clickedButton.className === 'minus' && inputElement.value > 0) {
-               inputElement.value = parseInt(inputElement.value) - 1
+            if (clickedButton.className === 'plus') {
+               productsCounter.value = parseInt(productsCounter.value) + 1
+               totalPrice.innerText = parseInt(totalPrice.innerText) + this.price
+               plusMinusButtonPosition = true
+            }
+
+            if (clickedButton.className === 'minus' && productsCounter.value > 0) {
+               productsCounter.value = parseInt(productsCounter.value) - 1
                totalPrice.innerText = parseInt(totalPrice.innerText) - this.price
             }
 
             const deleteEvent = new CustomEvent('deleteProduct', {
                bubbles: true,
                detail: {
-                  id:
-                  priceOfDeletedProduct: totalPrice.innerText,
-                  count: inputElement.value
+                  id: itemId,
+                  productPrice: totalPrice.innerText,
+                  plusMinusButtonPosition: plusMinusButtonPosition
                },
             })
 
@@ -59,6 +62,7 @@
          render(containerSelector) {
             const item = document.createElement('div')
             item.className = 'item'
+            item.setAttribute('id', this.id)
 
             const buttons = document.createElement('div')
             buttons.className = 'buttons'
@@ -101,7 +105,7 @@
             const inputText = document.createElement('input')
             inputText.setAttribute('type', 'text')
             inputText.className = 'count'
-            inputText.setAttribute('value', '1')
+            inputText.setAttribute('value', this.productCount)
             quantity.append(inputText)
 
             const minusButton = document.createElement('button')
@@ -133,16 +137,28 @@
       class Cart {
          constructor(productList) {
             this.productList = productList
+            this.selectedProducts = []
          }
 
          onProductDelete(e) {
-            console.log(e.detail.count);
-            if (e.target.className === 'delete-btn') {
-               const priceToDelete = e.detail.priceOfDeletedProduct
-               this.totalPrice -= priceToDelete
-               this.priceSpan.innerText = this.totalPrice
+
+            if (e.detail.id) {
+
+               this.selectedProducts = this.selectedProducts.filter(
+                  product => product.id !== e.detail.id
+               )
             }
-            console.log(e.target.className);
+            this.totalPrice = this.selectedProducts.reduce(
+               (totalSum, product) => totalSum + product.price,
+               0
+            )
+
+            if(e.detail.plusMinusButtonPosition)
+            this.totalPrice += parseInt(e.detail.productPrice)
+
+            this.priceSpan.innerText = this.totalPrice
+
+
          }
 
          render(containerSelector) {
@@ -154,11 +170,15 @@
                const productObject = new Product(product)
                el.append(productObject.render())
 
+               const { id, price, productCount } = productObject  //ну а кількість же динамічна тому її не можна так, або я як завжди не правильно Ментора зрозумів
+               this.selectedProducts.push({ id, price, productCount })
+
                productObject.item.addEventListener(
                   'deleteProduct',
                   this.onProductDelete.bind(this)
                )
             }
+
 
 
             const totalDiv = document.createElement('div')
@@ -171,8 +191,8 @@
             totalDiv.append(totalSpan)
             el.append(totalDiv)
 
-            this.totalPrice = this.productList.reduce(
-               (totalSum, product) => totalSum + product.price,
+            this.totalPrice = this.selectedProducts.reduce(
+               (totalSum, product) => totalSum + product.price * product.productCount,
                0
             )
 
@@ -187,19 +207,22 @@
 
       const productList = [
          {
-            id: 'firstProduct',
+            id: 'Product1',
+            productCount: 1,
             title: 'Подрібнювач Bosh',
             price: 2000,
             imgPath: '../img/1.png'
          },
          {
-            id: 'firstProduct',
+            id: 'Product2',
+            productCount: 1,
             title: 'Подрібнювач Bosh',
             price: 1000,
             imgPath: '../img/1.png'
          },
          {
-            id: 'firstProduct',
+            id: 'Product3',
+            productCount: 1,
             title: 'Подрібнювач Bosh',
             price: 500,
             imgPath: '../img/1.png'
