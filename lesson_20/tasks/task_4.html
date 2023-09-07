@@ -11,13 +11,13 @@
    <script>
 
       function getClicksNumber() {
-          const inputClicksAnswer = document.querySelector('.inputs__clicks'), //Ну на глобальному так на глобальному, як скажите в попередньому вирішив не змінювати, тут нічого складного))
+          const inputClicksAnswer = document.querySelector('.inputs__clicks'), 
             buttonClicksAnswer = document.querySelector('.buttons__clicks')
 
          let buttonClicksCounter = 0,
             inputClicksCounter = 0
 
-         window.captureEvents(Event.CLICK)
+         window.captureEvents(Event.CLICK)  //Ну на глобальному так на глобальному, як скажите в попередньому вирішив не змінювати, тут нічого складного))
 
          window.onclick = (e) => {
             if (e.target.tagName === 'INPUT') {
