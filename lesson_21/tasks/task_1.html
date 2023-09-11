@@ -8,21 +8,200 @@
    <link rel="stylesheet" href="../css/style.css">
    <title>Document</title>
 
-   <script>
 
-   </script>
 </head>
 
 <body>
 
    <h1>
       Задача 1. Створити клас Client
+      Задача 2. Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції
+
    </h1>
+   <script>
+      //Задача 1. Створити клас Client
+//=====================================================================================================================================//
 
-   <div class="stars__container">
+      const clientId = 12,
+         goldenClientId = 13,
+         moneyLimit = 10000,
+         creditPercent = 0.15,
+         clientMoneyCount = 5000.232,
+         goldenClientMoneyCount = 6000.2324
 
-   </div>
+      class Client {
+         #totalMoneyCount
+         #clientId
 
+         constructor(clientId, fullName, totalMoneyCount) {
+            this.ClientId = clientId
+            this.fullName = fullName
+            this.TotalMoneyCount = totalMoneyCount
+         }
+
+         get ClientId() {
+            return this.#clientId
+         }
+
+         set ClientId(value) {
+            if (value <= 0)
+               throw new Error('ID не може бути числом яке менше або дорівнює нулю')
+
+            this.#clientId = value
+         }
+
+         get TotalMoneyCount() {
+            return this.#totalMoneyCount
+         }
+
+         set TotalMoneyCount(value) {
+            if (value <= 0)
+               throw new Error('Сума не може бути меншою або дорівнювати нулю')
+
+            this.#totalMoneyCount = value
+         }
+
+         addMoney(moneyCount) {
+            if (moneyCount <= 0)
+               throw new Error('Сума яку ви хочете додати не повинна бути меншою або дорівнювати нулю')
+
+            this.TotalMoneyCount += moneyCount
+         }
+
+         withdrawMoney(moneyCount) {
+            if (this.TotalMoneyCount < moneyCount)
+               throw new Error('На Вашому рахунку недостатньо коштів')
+
+            this.TotalMoneyCount -= moneyCount
+         }
+
+         toString() {
+            return `<br> ID: ${this.ClientId} <br> 
+                    ПІБ: ${this.fullName} <br> 
+                    Кількість грошей на рахунку: ${this.TotalMoneyCount.toFixed(1)} грн.<br>`
+         }
+      }
+
+
+      class GoldenClient extends Client {
+         constructor(clientId, fullName, totalMoneyCount, moneyLimit, creditPercent) {
+            super(clientId, fullName, totalMoneyCount)
+
+            this.totalMoneyCount = totalMoneyCount                //так як до цієї властивості в класі Client застосовувалась інкапсуляція довелось перевизначити, для практики гуд)
+            this.moneyLimit = moneyLimit
+            this.creditPercent = creditPercent
+         }
+
+         withdrawMoney(moneyCount) {
+
+            if (moneyCount > this.totalMoneyCount + this.moneyLimit)
+               throw new Error('Неможливо зняти таку суму, кредитний ліміт перевищено')
+
+            this.totalMoneyCount -= moneyCount
+
+            //super.withdrawMoney(moneyCount) //не звертайте уваги, експеременти, залишив для себе на майбутнє
+         }
+
+         getCreditFoundsInterest() {
+            if (this.totalMoneyCount >= 0)
+               throw new Error('Ваш баланс позитивний, пеня не нараховується')
+
+            else return Math.abs(this.totalMoneyCount) * this.creditPercent
+         }
+
+         toString() {
+
+            return `<br> ${super.toString()} <br> 
+            Кредитний ліміт: ${this.moneyLimit} грн.<br>
+            Відсоток за використання кредитних коштів: ${this.creditPercent * 100}% <br>`
+         }
+      }
+
+      let client = new Client(clientId, 'Ilon Mask', clientMoneyCount)
+      let goldenClient = new GoldenClient(goldenClientId, 'Ivasik Telesik', goldenClientMoneyCount, moneyLimit, creditPercent)
+
+      document.write(client)
+      document.write('<br>')
+      document.write('<br>')
+
+      document.write(goldenClient)
+
+      //goldenClient.addMoney(60)
+      //goldenClient.withdrawMoney(16000)
+      //console.log(goldenClient.getCreditFoundsInterest())
+      //console.log(goldenClient)
+//=====================================================================================================================================//
+
+//Задача 2. Створити клас Bank, у якому зберігається масив клієнтів. Виконати такі операції
+
+const clientsLIst = [
+      new Client(1000, 'Ілон Маск', 10000),
+      new Client(1001, 'Івасик Телесик', 15000),
+      new Client(1002, 'Котигорошко', 20000),
+      new Client(1003, 'Олексій Попович', 25000),
+      new Client(1004, 'Кінь Юлій:))', 30000),
+      new GoldenClient(1005, 'Дональд Трамп', 1000000, 2000000, 0.5),
+      new GoldenClient(1006, 'Стів Джобс', 1500000, 2000000, 0.5),
+      new GoldenClient(1007, 'Барак Обама', 2000000, 2000000, 0.5),
+]
+
+//console.log(clientsLIst);
+
+
+      class Bank{
+         constructor(clientsLIst){
+            this.clientsLIst = clientsLIst
+         }
+
+         getClients(){
+            const clients = []
+
+            for (const client of this.clientsLIst) {
+               if (client instanceof Client && !(client instanceof GoldenClient))
+               clients.push(client)
+            }
+
+            return clients
+         }
+
+         getGoldenClients(){
+            const goldenClients = []
+
+            for (const client of this.clientsLIst) {
+               if (client instanceof GoldenClient)
+               goldenClients.push(client)
+            }
+
+            return goldenClients
+         }
+
+         getTotalSum(){
+            return this.clientsLIst.reduce(
+               (totalSum, client) => totalSum + client.TotalMoneyCount,
+               0
+            )
+         }
+
+         toString(){
+         //прикольно, таким чином викликається toString кожного класу і не потрібно вигадувати велосипед для виведення, корисна штука))
+
+            return `Прості клієнти: ${this.getClients()} <br>
+                    Скаладні клієнти (жарт:): ${this.getGoldenClients()} <br>
+                    Загальна сума коштів на рахунках: ${this.getTotalSum().toFixed(1)} грн.
+            `
+         }
+      }
+
+      let bank = new Bank(clientsLIst)
+
+      document.write('<br>')
+      document.write('<br>')
+      document.write(bank)
+
+      //console.log(bank.getClients());
+      //console.log(bank.getGoldenClients());
+      //console.log(bank.getTotalSum());
+   </script>
    <style>
 
    </style>

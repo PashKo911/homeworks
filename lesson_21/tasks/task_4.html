@@ -7,22 +7,244 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="../css/style.css">
    <title>Document</title>
-
-   <script>
-
-   </script>
-
 </head>
 
 <body>
    <h1>
       Задача 4. Користувач задає місяць навчання учня (перевіряти чи є числом, чи від 1 до 12, чи не канікули) та оцінку
       (перевіряти чи є числом, чи від 1 до 100). Вивести чи зможе він виправити оцінку (якщо оцінка погана і це не
-      останній місяць у семестрі) . Обробку усіх помилок зробити з використанням відповідних класів.
+      останній місяць у семестрі). Обробку усіх помилок зробити з використанням відповідних класів.
    </h1>
-
+   <div class="container">
+      <form action="#" class="form">
+         <div class="inputs">
+            <label class="custom-input " for="month">Місяць навчання</label>
+            <input class="custom-input" type="text" id="month" placeholder="0">
+         </div>
+         <div class="inputs">
+            <label class="custom-input" for="grade">Оцінка</label>
+            <input class="custom-input" type="text" id="grade" placeholder="0">
+         </div>
+         <div class="buttons">
+            <button type="button" id="btn" class="buttons__button">Надіслати</button>
+         </div>
+      </form>
    </div>
+   <script defer>
+      //Задумка була один універсальний валідатор, спочатку клас хотів, та щось в самому кінці не вийшло
+      //по перевіркам не впевнений, наче валідатор все повинен перевірити, але всі інші функції, є думки що і там треба натулити помилок
+      //Дякую за увагу:))
 
+
+      class IsNotNumberError extends Error {
+         constructor() {
+            super()
+            this.message = 'Має бути числом'
+            this.name = 'IsNotNumberError'
+         }
+      }
+
+      class IsInRangeError extends Error {
+         constructor(minValue, maxValue) {
+            super()
+            this.minValue = minValue
+            this.maxValue = maxValue
+            this.message = `Число між ${this.minValue} та  ${this.maxValue}`
+            this.name = 'IsInRange'
+         }
+      }
+
+      class IsCorrectNumber extends Error {
+         constructor() {
+            super()
+            this.message = `Це канікули`
+            this.name = 'IsCorrectNumber'
+         }
+      }
+
+      const initMonthData = {
+         formId: '#month',
+         btnId: '#btn',
+         minValue: 1,
+         maxValue: 12,
+         negativeValuesForChecking: [10, 1, 6, 7, 8],
+         message: ' це канікули',
+         interval: 2000,
+      }
+
+      const initGradeData = {
+         formId: '#grade',
+         btnId: '#btn',
+         minValue: 1,
+         maxValue: 100,
+         //negativeValuesForChecking: [0], //це типу заглушка, валідатор робив універсальним,а в першому виадку на одну перевірку більше, хоча і так працює, ще подумаю як правильніше
+         interval: 2000,
+      }
+
+      function showError(form, formId, err, interval) {
+         form.classList.toggle('error');
+         document.querySelector(formId).value = err.message
+         console.log(err);
+
+         setTimeout(() => {
+            document.querySelector(formId).value = ''
+            form.classList.toggle('error');
+         }, interval);
+      }
+
+      function validate(data) {
+         Object.assign(this, data)
+         const form = document.querySelector(formId);
+         let value = document.querySelector(formId).value
+
+         try {
+            if (isNaN(value))
+               throw new IsNotNumberError();
+
+            if (value < minValue || value > maxValue)
+               throw new IsInRangeError(minValue, maxValue);
+
+            if (negativeValuesForChecking.includes(parseInt(value)))
+               throw new IsCorrectNumber();
+
+         } catch (err) {
+            if (err instanceof IsNotNumberError) {
+               showError(form, formId, err, interval)
+            }
+            else if (err instanceof IsInRangeError) {
+               showError(form, formId, err, interval)
+            }
+            else if (err instanceof IsCorrectNumber) {
+               showError(form, formId, err, interval)
+            }
+         }
+      }
+
+      const data = {
+         userMonthFormId: '#month',
+         userGradeFormId: '#grade',
+         badGrades: 40,
+         lastMonthsInSemestersArray: [11, 2, 5],
+         positiveAnswer: 'Виправити оцінку можливо',
+         negativeAnswer: 'Виправити оцінку неможливо',
+         containerSelector: '.buttons',
+      }
+
+      function correctingGradePossible(data) {
+         Object.assign(this, data)
+
+         const month = parseInt(document.querySelector(userMonthFormId).value)
+         const grade = parseInt(document.querySelector(userGradeFormId).value)
+
+         if (month && grade) {                                //перевірка чи ці два значення визначені, не null or undefined
+            const answerDiv = document.createElement('div')
+            answerDiv.className = 'answer'
+
+            if (lastMonthsInSemestersArray.includes(month) || grade <= badGrades) {
+               answerDiv.classList.toggle('error')
+               answerDiv.innerText = negativeAnswer
+
+            } else {
+               answerDiv.innerText = positiveAnswer
+               answerDiv.classList.toggle('green')
+            }
+
+            if (containerSelector)
+               document.querySelector(containerSelector)?.append(answerDiv)
+         }
+
+      }
+
+      const button = document.querySelector('#btn');
+
+      button.addEventListener('click', () => {
+         validate(initMonthData)
+         validate(initGradeData)
+
+         correctingGradePossible(data)
+      });
+
+   //А спочатку було так та схоже це не запрацює))
+
+      //class Validator {
+      //   #value
+      //   constructor(initData) {
+      //      Object.assign(this, initData)
+      //      this.Value = document.querySelector(this.formId).value
+      //   }
+
+      //   get Value() {
+      //      return this.#value
+      //   }
+
+      //   set Value(newValue) {
+      //      if (isNaN(newValue))
+      //         throw new IsNotNumberError()
+
+      //      if (newValue < this.minValue || newValue > this.maxValue)
+      //         throw new IsInRangeError(this.minValue, this.maxValue)
+
+      //      if (this.negativeValuesForChecking.includes(parseInt(newValue)))
+      //         throw new IsCorrectNumber(newValue)
+
+      //      this.#value = newValue
+      //   }
+
+      //   errorChecking(err) {
+      //      const form = document.querySelector(this.formId)
+      //      console.log(form);
+      //      form.classList.toggle('error')
+      //      alert(err)
+      //      console.log(err);
+      //      setTimeout(() => {
+      //         form.classList.toggle('error')
+      //      }, 2000);
+      //   }
+
+      //   run() {
+      //      const button = document.querySelector(this.btnId)
+
+      //      button.addEventListener('click', () => {
+      //         try {
+      //            this.Value = document.querySelector(this.formId).value
+      //            console.log(this.Value);
+
+      //         } catch (err) {
+      //            if (err instanceof IsNotNumberError) {
+      //               this.errorChecking(err)
+      //            } else if (err instanceof IsInRangeError) {
+      //               this.errorChecking(err)
+      //            } else if (err instanceof IsCorrectNumber) {
+      //               this.errorChecking(err)
+      //            }
+      //         }
+      //      })
+      //   }
+      //}
+
+      //let val = new Validator(initMonthData)
+      //let grade = new Validator(initGradeData)
+      //console.log(val.Value);
+      //console.log(grade.Value);
+      //val.run();
+      //grade.run()
+
+      //const initAnswerData = {
+      //   userMonth: val.Value,
+      //   userGrade: grade.Value,
+      //   lastMonthsInSemester: [11, 2, 5],
+      //   containerSelector: '.container'
+      //}
+
+      //console.log(initAnswerData);
+
+      //function getAnswer(initAnswerData) {
+      //   const answerDiv = document.createElement('div')
+
+      //   if (initAnswerData.containerSelector)
+      //      document.querySelector(initAnswerData.containerSelector).append(answerDiv)
+      //}
+   </script>
 </body>
 
 </html>

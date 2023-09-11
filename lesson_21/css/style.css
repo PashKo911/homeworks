@@ -312,3 +312,22 @@ li:not(:last-child) {
       position: relative;
     
 }
+
+.error{
+   background-color: #f06363;
+}
+
+.green{
+   background-color: #7ab13b;
+}
+
+.answer{
+   font-size: 18px;
+   font-weight: bold;
+   color: #693aff;
+   align-self: center;
+   margin-left: 30px;
+   border: 2px solid #693aff;
+   padding: 10px 20px;
+   border-radius: 5px;
+}
