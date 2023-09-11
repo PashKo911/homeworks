@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <title>Document</title>
+
+   <script>
+
+      //coordinateX, coordinateY, imgPath, interval
+
+      class Image {
+         constructor(initData) {
+            Object.assign(this, initData)
+         }
+
+         getRandomNumber(min = 60, max = 500) {
+            return min + Math.floor(Math.random() * (max - min + 1))
+         }
+
+         render(containerSelector) {
+            const imgBox = document.createElement('div')
+            imgBox.className = 'image-box'
+
+            const imgContainer = document.createElement('div')
+            imgContainer.className = this.className
+            imgContainer.setAttribute('left', this.coordinateX) // ці дві властивості ввів тільки тому що вимагало завдання, не бачу в них необхідності в даному випадку
+            imgContainer.setAttribute('top', this.coordinateY)
+            imgBox.append(imgContainer)
+
+            const image = document.createElement('img')
+            image.setAttribute('src', this.imgPath)
+
+            imgContainer.append(image)
+
+            this.imageMoving(imgContainer)
+
+            if (containerSelector)
+               document.querySelector(containerSelector)?.append(imgBox)
+         }
+
+         getCoordinate(container) {
+            container.style.left = this.getRandomNumber() + 'px'
+         }
+
+         imageMoving(container) {
+            setInterval(() => {
+               this.getCoordinate(container)
+            }, this.interval);
+         }
+      }
+
+      class House extends Image {
+         constructor(initData) {
+            super(initData)
+            this.size = this.minSize
+         }
+
+         getCoordinate(container) {
+            this.size++
+            if (this.size > this.maxSize)
+               this.size = this.minSize
+            container.style.width = this.size + 'px'
+         }
+      }
+
+      class Dog extends Image {
+         constructor(initData) { //Не знаю, це взагалі адекватний клас??))
+            super(initData)
+         }
+      }
+
+      class Bird extends Image{
+         constructor(initData){
+            super(initData)
+         }
+
+         getCoordinate(container){
+            super.getCoordinate(container)
+            container.style.top = this.getRandomNumber() + 'px'
+         }
+      }
+
+      window.onload = function () {
+         let house = new House({
+            coordinateX: 0,
+            coordinateY: 0,
+            imgPath: '../img/house.jpg',
+            interval: 20,
+            minSize: 50,
+            maxSize: 150,
+            className: 'house'
+         })
+
+         let dog = new Dog({
+            coordinateX: 0,
+            coordinateY: 0,
+            imgPath: '../img/dog.jpg',
+            interval: 500,
+            className: 'dog',
+         })
+
+         let bird = new Bird({
+            coordinateX: 0,
+            coordinateY: 0,
+            imgPath: '../img/bird.png',
+            interval: 500,
+            className: 'bird',
+         })
+
+         house.render('.container')
+         dog.render('.dog-container')
+         bird.render('.bird-container')
+         
+         console.log(house);
+      }
+
+   </script>
+
+</head>
+
+<body>
+   <style>
+      .container {
+         display: flex;
+         min-width: 330px;
+         min-height: 300px;
+         align-items: center;
+         justify-content: center;
+      }
+
+      img {
+         width: 50px;
+      }
+
+      .image-box {
+         position: relative;
+         
+      }
+      .dog{
+         position: absolute;
+      }
+
+      .bird-container{
+         position: relative;
+         max-height: 600px;
+      }
+      .bird{
+         position: absolute;
+      }
+
+      .house {
+         position: relative;
+      }
+      .house img{
+         width: 100%;
+      }
+
+      .dog-container{
+         position: relative;
+      }
+      
+      .dog {
+
+      }
+      .dog img {
+         width: 100px;
+      }
+   </style>
+   <h1>
+      Задача 3. Розробити Класи
+   </h1>
+
+   <div class="container"></div>
+   <div class="dog-container" ></div>
+   <div class="bird-container" ></div>
+
+</body>
+
+</html>
