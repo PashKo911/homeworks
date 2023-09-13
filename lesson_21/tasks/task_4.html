@@ -141,7 +141,7 @@
             const answerDiv = document.createElement('div')
             answerDiv.className = 'answer'
 
-            if (lastMonthsInSemestersArray.includes(month) || grade <= badGrades) {
+            if (lastMonthsInSemestersArray.includes(month) && grade <= badGrades) {
                answerDiv.classList.toggle('error')
                answerDiv.innerText = negativeAnswer
 
