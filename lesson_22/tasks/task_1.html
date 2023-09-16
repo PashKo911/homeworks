@@ -17,29 +17,50 @@
       Задача 1. Визначити привітання у залежності від часу доби (Доброго дня, Доброго ранку, Доброго вечора)
 
    </h1>
+
+   <div class="container">
+      <div class="greet">
+
+      </div>
+   </div>
    <script>
+
+      //Ну просто іфами було не цікаво, та і взагалі помітив що з обʼєктами слабенько працюю, тому з деякими завданнями складнощі виникали,і тепер останні три ДЗ тулю їх всюди))
+      //Сумніваюсь що такий метод десь на практиці використовується, та прийшла така ідея не міг не втілити, спонсор ідеї АЮ (Андрій Юрієвич), та мій олюблений Банкомат::))
 
       const data = {
          currentDate: new Date(),
-         morningMessage: 'Бадьрого ранку',
-         dayMessage: 'Доброго дня',
-         eveningMessage: 'Доброго вечора',
-         containerSelector: '.container',
+         greetingsWithTime: {
+            10: 'Бадьорого ранку',
+            16: 'Доброго дня',
+            20: 'Доброго вечора',
+            24: 'Доброї ночі', //ось тут так, нестиковочка виходить))
+            5: 'Доброї ночі',
+         },
+         containerSelector: '.greet',
       }
 
-      function showGreeting(data){
-         
-         const greetDiv = document.createElement('div')
-         greetDiv.className = 'greet'
+      function showGreeting({ currentDate, greetingsWithTime, containerSelector }) {
+         const currentHour = currentDate.getHours();
+         const greetDiv = document.querySelector(containerSelector)
 
-         if(currentDate)
+         for (const key in greetingsWithTime) {
+            if (currentHour < parseInt(key)) {
+               greetDiv.textContent = greetingsWithTime[key]
+               break
+            }
+         }
       }
 
-      console.log(date);
+      showGreeting(data)
 
    </script>
    <style>
-
+      .greet {
+         font-size: 20px;
+         align-self: center;
+         font-weight: bold;
+      }
    </style>
 
 </body>
