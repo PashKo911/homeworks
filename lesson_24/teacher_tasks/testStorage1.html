@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Задача 1. Зберігати ім’я користувача при заході на сайт та кількість відвідувань.
+
+      window.onload = function () {
+        let userName = localStorage.getItem('userName')
+        if (!userName) {
+          userName = prompt('Як Вас звати?')
+          localStorage.setItem('userName', userName)
+        }
+
+        let visitNumber = parseInt(localStorage.getItem('visitNumber') ?? 0) + 1
+        localStorage.setItem('visitNumber', visitNumber)
+
+        document.write(`Name: ${userName}, Visit number : ${visitNumber}`)
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // let arr = [12, 'hello', '12', 45, true, 'false', 'true', '12']
+
+      //Задача. Підрахувати кількість входжень кожного із значень
+      // let map = new Map()
+
+      // for (const el of arr) {
+      //   let elCount = map.get(el) ?? 0
+      //   map.set(el, elCount + 1)
+      // }
+      // console.log(map)
+      // map.forEach((val, key) => {
+      //   document.write(`${key} - ${val} <br>`)
+      // })
+      //=========================================
+      //Приклад. Дано список з віком учнів. Підрахувати скільки разів кожне значення зустрічається у списку і максимальне.
+      let ages = [12, 13, 15, 12, 15, 12]
+      let mapAges = new Map()
+      for (const age of ages) {
+        mapAges.set(age, (mapAges.get(age) ?? 0) + 1)
+      }
+
+      console.log(mapAges)
+
+      // Приклад.Дано масив книг (назва, рік видання, автор (ПІБ, рік народження). Підрахувати кількість книг
+      //  для кожного автора
+    </script>
+  </head>
+  <body></body>
+</html>

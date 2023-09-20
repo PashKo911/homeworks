@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let user = {
+        name: 'Ivan',
+        age: 21,
+      }
+      //   localStorage.setItem('user', JSON.stringify(user))
+      const userCopy = JSON.parse(localStorage.getItem('user'))
+      console.log(userCopy.name)
+      userCopy.age += 10
+      document.write(userCopy.age)
+    </script>
+  </body>
+</html>

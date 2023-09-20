@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .addForm {
+        width: 200px;
+        border: 2px solid black;
+        margin: 20px;
+        padding: 5px;
+      }
+      .item {
+        width: 200px;
+        border: 2px solid black;
+        margin: 20px;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+    <script>
+      // Приклад. Реалізувати ToDo list з можливістю збереження
+      // [
+      //   {
+      //     id:1,
+      //     title:'Drink coffee',
+      //     priority:1
+      //   },
+      //   {
+      //     id:2,
+      //     title:'Eat something',
+      //     priority:2
+      //   },
+      // ]
+      class StorageManager {
+        constructor(propertyKey) {
+          this.propertyKey = propertyKey
+          this.itemsList = this.readDataList()
+        }
+        readDataList() {
+          let list
+          if (localStorage.getItem(this.propertyKey))
+            list = JSON.parse(localStorage.getItem(this.propertyKey))
+          else list = []
+          return list
+        }
+        addItem(title, priority) {
+          const list = this.readDataList()
+          list.push({
+            id: new Date().getTime(),
+            title,
+            priority,
+          })
+          this.saveList(list)
+        }
+        saveList(list) {
+          localStorage.setItem(this.propertyKey, JSON.stringify(list))
+        }
+        removeItem(itemIdToRemove) {
+          const list = this.readDataList()
+          const newList = list.filter((item) => item.id !== itemIdToRemove)
+          this.saveList(newList)
+        }
+      }
+      //------------------
+      class TodoManager {
+        constructor(propertyKey) {
+          this.storage = new StorageManager(propertyKey)
+        }
+        createLabelWithInput(title, inpType) {
+          const container = document.createElement('div')
+          const label = document.createElement('label')
+          container.append(label)
+          label.innerText = title
+
+          const input = document.createElement('input')
+          input.setAttribute('type', inpType)
+          label.append(input)
+          return { container, input }
+        }
+        addTask() {
+          this.storage.addItem(this.titleInput.value, this.priorityInput.value)
+          this.refresh()
+        }
+        renderForm() {
+          const formContainer = document.createElement('div')
+          formContainer.className = 'addForm'
+          let { container, input } = this.createLabelWithInput('Title', 'text')
+          formContainer.append(container)
+          this.titleInput = input
+
+          let { container: cnt2, input: inp2 } = this.createLabelWithInput(
+            'Priority',
+            'number'
+          )
+          formContainer.append(cnt2)
+          this.priorityInput = inp2
+
+          const btn = document.createElement('button')
+          btn.innerText = 'Add task'
+          btn.onclick = this.addTask.bind(this)
+          formContainer.append(btn)
+
+          return formContainer
+        }
+        onDelete(id) {
+          this.storage.removeItem(id)
+          this.refresh()
+        }
+        //--------------
+        renderTaskItem({ id, title, priority }) {
+          //<div class="item"><span>Drink coffee</span><span>12</span> <button>Delete</button></div>
+          const container = document.createElement('div')
+          container.className = 'item'
+
+          let span = document.createElement('span')
+          span.innerText = title
+          container.append(span)
+
+          span = document.createElement('span')
+          span.innerText = priority
+          container.append(span)
+
+          const btn = document.createElement('button')
+          btn.innerText = 'Delete'
+          btn.onclick = () => this.onDelete(id)
+          container.append(btn)
+
+          return container
+        }
+        renderList(listItem) {
+          const container = document.createElement('div')
+          container.className = 'tasksList'
+          for (const item of listItem) {
+            const itemDiv = this.renderTaskItem(item)
+            container.append(itemDiv)
+          }
+          return container
+        }
+        refresh() {
+          this.listContainer.remove()
+          this.listContainer = this.renderList(this.storage.readDataList())
+          this.managerContainer.append(this.listContainer)
+        }
+        render(containerSelector) {
+          const container = document.querySelector(containerSelector)
+          container.append(this.renderForm())
+          this.listContainer = this.renderList(this.storage.readDataList())
+          container.append(this.listContainer)
+          this.managerContainer = container
+        }
+      }
+      //===============
+      window.onload = function () {
+        const manager = new TodoManager('tasks')
+        manager.render('#manager')
+      }
+    </script>
+  </head>
+  <body>
+    <div id="manager"></div>
+  </body>
+</html>
