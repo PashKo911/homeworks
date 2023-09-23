@@ -19,8 +19,56 @@
 
    <div class="container">
       <div class="task task_1">
-         Задача 5. Дано список з віком учнів. Підрахувати скільки разів кожне значення зустрічається у списку і
-         максимальне.
+         Задача 1. Дано список з віком учнів. Підрахувати скільки разів кожне значення зустрічається у списку і
+         максимальне. <br>
+         <span></span>
+      </div><br>
+      <div class="task task_2">
+         Задача 2. Дано масив книг (назва, рік видання, автор). Підрахувати кількість книг для кожного автора.<br>
+         <span></span>
+      </div><br>
+      <div class="task task_3">
+         Задача 3. Дано інформацію про відвідувачів деякого сайту (для кожного відвідувача зберігається логін).
+         Підрахувати для кожного клієнта кількість відвідувань.
+         <br>
+         <span></span>
+      </div><br>
+      <div class="task task_4">
+         Задача 4. Дано масив студентів (піб, курс, факультет). Підрахувати кількість різних факультетів, та кількість
+         студентів кожного з курсів.
+         <br>
+         <span></span>
+      </div><br>
+      <div class="task task_5">
+         Задача 5. Дано масив показів температур. Підрахувати кількість входжень кожного із показів
+         let temperatures = [12.4, 24.9, 10.6, 12.4, 24.9, 12.4, 10.6, 11.9]
+         Заокруглити вверх значення та підрахувати кількість різних показів.
+         <br>
+         <span></span>
+      </div><br>
+      <div class="task task_6">
+         Задача 6. Дано два списки прізвищ студентів, що відвідують гуртки з математики і історії. Підрахувати скільки
+         студентів з гуртка з історії також відвідують гурток з математики. Також підрахувати скільки всього студентів
+         відвідують хоча б один гурток.
+         <br>
+         <span></span>
+      </div><br>
+      <div class="task task_7">
+         Задача 7. Користувач може змінювати колір фону, що вибирає користувач з використанням
+         <input type="color" id="input-color">.
+         Зберігати цей колір і відновлювати при наступному відкритті. Також зберігати і відображати кількість змін
+         протягом одного сеансу.
+         <br>
+         <span></span>
+      </div><br>
+      <div class="task task_8">
+         Задача 8. Зберігати у пам’яті список справ, які користувачу треба виконати (зберігати у localStorage).
+         Періодично випадковим чином вибирати якусь з справ і виводити користувачу (з використанням confirm). Якщо
+         користувач натискає на «Ок», то видаляти цю задачу.
+         <br>
+         <div class="buttons">
+            <button type="button" class="buttons__button" id="start" value="+">Start</button>
+         </div>
          <span></span>
       </div><br>
    </div>
@@ -30,6 +78,7 @@
       //Задача 5. Дано список з віком учнів. Підрахувати скільки разів кожне значення зустрічається у списку і максимальне.
 
       const pupilsAgesList = [9, 8, 17, 13, 13, 9, 9, 14, 16]
+      const resEl = document.querySelector('.task_1 span')
 
       let pupilsAgesCollection = new Map()
       let maxValue = -Infinity
@@ -39,23 +88,231 @@
          pupil > maxValue ? maxValue = pupil : maxValue
       }
 
-      function showResult(containerSelector, )
-      console.log(pupilsAgesCollection);
-      console.log(maxValue);
+      pupilsAgesCollection.forEach((value, key) => resEl.innerText += (`Age: ${key} repating ${value} times\n `))
+      resEl.innerText += `Max age: ${maxValue}`
 
       //==================================================================================================//
-         //Задача 6.  Дано масив книг (назва, рік видання, автор). Підрахувати кількість книг для кожного автора.
-         //Задача 7. Дано інформацію про відвідувачів деякого сайту (для кожного відвідувача зберігається логін). Підрахувати для кожного клієнта кількість відвідувань.
-         //Задача 8. Дано масив студентів (піб, курс, факультет). Підрахувати кількість різних факультетів, та кількість студентів кожного з курсів.
-         //Задача 9. Дано масив показів температур. Підрахувати кількість входжень кожного із показів
-         //let temperatures = [12.4, 24.9, 10.6, 12.4, 24.9, 12.4, 10.6, 11.9]
-         //Заокруглити вверх значення та підрахувати кількість різних показів.
-         //Задача 10 Дано два списки прізвищ студентів, що відвідують гуртки з математики і історії. Підрахувати скільки студентів з гуртка з історії також відвідують гурток з математики. Також підрахувати скільки всього студентів відвідують хоча б один гурток.
-         //===================
-         //Задача 11. Користувач може змінювати колір фону, що вибирає користувач з використанням
-         //<input type="color">.
-         //Зберігати цей колір і відновлювати при наступному відкритті. Також зберігати і відображати кількість змін протягом одного сеансу.
-         //Задача 12. Зберігати у пам’яті список справ, які користувачу треба виконати (зберігати у localStorage). Періодично випадковим чином вибирати якусь з справ і виводити користувачу (з використанням confirm). Якщо користувач натискає на «Ок», то видаляти цю задачу.
+      //Задача 6.  Дано масив книг (назва, рік видання, автор). Підрахувати кількість книг для кожного автора.
+
+      const booksList = [
+         { id: 1, title: 'Book Name', publicationYear: 1983, author: 'Ivan' },
+         { id: 2, title: 'Book Name', publicationYear: 1983, author: 'Stepka' },
+         { id: 3, title: 'Book Name', publicationYear: 1983, author: 'Ivan' },
+         { id: 4, title: 'Book Name', publicationYear: 1983, author: 'Alex' },
+         { id: 5, title: 'Book Name', publicationYear: 1983, author: 'Serg' },
+         { id: 5, title: 'Book Name', publicationYear: 1983, author: 'Serg' },
+         { id: 6, title: 'Book Name', publicationYear: 1983, author: 'Ivan' },
+         { id: 7, title: 'Book Name', publicationYear: 1983, author: 'Den' },
+         { id: 8, title: 'Book Name', publicationYear: 1983, author: 'Ivan' },
+      ]
+
+      const authorsCollection = new Map()
+
+      for (const book of booksList) {
+         authorsCollection.set(book.author, (authorsCollection.get(book.author) ?? 0) + 1)
+      }
+
+      authorsCollection.forEach((value, key) => document.querySelector('.task_2 span').innerText += (`${key} has: ${value} books\n `))
+
+      //==================================================================================================//
+      //Задача 7. Дано інформацію про відвідувачів деякого сайту (для кожного відвідувача зберігається логін). Підрахувати для кожного клієнта кількість відвідувань.
+
+      const dataList = [
+         { id: 1, userName: `name_1` },
+         { id: 2, userName: `name_2` },
+         { id: 3, userName: `name_3` },
+         { id: 4, userName: `name_2` },
+         { id: 5, userName: `name_3` },
+         { id: 6, userName: `name_2` },
+         { id: 7, userName: `name_7` },
+         { id: 8, userName: `name_7` },
+         { id: 9, userName: `name_9` },
+         { id: 10, userName: `name_1` },
+      ]
+
+      const usersCollection = new Map()
+
+      dataList.forEach((user) => {
+         usersCollection.set(user.userName, (usersCollection.get(user.userName) ?? 0) + 1) // вирішив ще так спробувати
+      })
+
+      usersCollection.forEach((value, key) => document.querySelector('.task_3 span').innerText += (`${key} - visits number: ${value}\n `))
+
+      //==================================================================================================//
+      //Задача 8. Дано масив студентів (піб, курс, факультет). Підрахувати кількість різних факультетів, та кількість студентів кожного з курсів.
+
+      const facultiesNumEl = document.querySelector('.task_4 span')
+
+      const studentsList = [
+         { fullName: 'Yaroslav Mudriy', course: 4, faculty: 'IT' },
+         { fullName: 'Ivanov Ivan', course: 2, faculty: 'PB' },
+         { fullName: 'Luke Skywalker', course: 1, faculty: 'CZ' },
+         { fullName: 'Tyson Fury', course: 4, faculty: 'PB' },
+         { fullName: 'Ternes Crouford', course: 1, faculty: 'CZ' },
+         { fullName: 'Garry Ford', course: 3, faculty: 'IT' },
+         { fullName: 'Lesly Mctyre', course: 1, faculty: 'CZ' },
+         { fullName: 'Jessica Alba', course: 3, faculty: 'IT' },
+         { fullName: 'Jumshut Muhmut', course: 2, faculty: 'IT' },
+      ]
+
+      const facultiesNum = new Set(studentsList.map(student => student.faculty)).size
+
+      facultiesNumEl.innerText = `Faculties num: ${facultiesNum} \n`
+
+      const studentsNumCollection = new Map()
+
+      for (const student of studentsList) {
+         studentsNumCollection.set(student.course, (studentsNumCollection.get(student.course) ?? 0) + 1)
+      }
+
+      studentsNumCollection.forEach((value, key) => facultiesNumEl.innerText += (`Course №${key} has: ${value} students\n `))
+
+      //==================================================================================================//
+      //Задача 9. Дано масив показів температур. Підрахувати кількість входжень кожного із показів
+      //let temperatures = [12.4, 24.9, 10.6, 12.4, 24.9, 12.4, 10.6, 11.9]
+      //Заокруглити вверх значення та підрахувати кількість різних показів температури.
+
+      let temperaturesList = [12.4, 24.9, 10.6, 12.4, 24.9, 12.4, 10.6, 11.9]
+      const ts5AnswEl = document.querySelector('.task_5 span')
+      const temperaturesCollection = new Map()
+
+      for (const temperature of temperaturesList) {
+         temperaturesCollection.set(temperature, (temperaturesCollection.get(temperature) ?? 0) + 1)
+      }
+
+      temperaturesCollection.forEach((value, key) => ts5AnswEl.innerText += (`Temperature (${key}) repeating ${value} times\n `))
+
+      const differentTemperaturesNumber = new Set(temperaturesList.map(temperature => Math.ceil(temperature))).size
+
+      ts5AnswEl.innerText += `Enother temperatures number: ${differentTemperaturesNumber}\n `
+
+      //==================================================================================================//
+      //Задача 10 Дано два списки прізвищ студентів, що відвідують гуртки з математики і історії. Підрахувати скільки студентів з гуртка з історії також відвідують гурток з математики. Також підрахувати скільки всього студентів відвідують хоча б один гурток.
+
+      const mathStudentsList = ['Petrov', 'Ivanov', 'Sidorov', 'Stepanenko', 'Kalinin']
+      const historyStudentsList = ['Barabash', 'Petrov', 'Alexandrov', 'Kurchenko', 'Kalinin']
+      const allStudentsList = [...mathStudentsList, ...historyStudentsList]
+
+      const studentsCollection = new Map()
+
+      for (const student of allStudentsList) {
+         studentsCollection.set(student, (studentsCollection.get(student) ?? 0) + 1)
+      }
+
+      const studentsWithSameClubNumber = Array.from(studentsCollection.values()).filter(clubsNumber => clubsNumber > 1).length
+
+      //const visitedAtLeast1Club = studentsCollection.size         //навіть не знаю що краще використати))
+      const visitedAtLeast1Club = new Set(allStudentsList).size
+
+      document.querySelector('.task_6 span').innerText = `Кількість студентів які відвідують обидва гуртки: ${studentsWithSameClubNumber} чол. \n Кількість студентів що відвідують хоча б один гурток: ${visitedAtLeast1Club} чол.`
+
+      //==================================================================================================//
+      //Задача 11. Користувач може змінювати колір фону, що вибирає користувач з використанням
+      //<input type="color">.
+      //Зберігати цей колір і відновлювати при наступному відкритті. Також зберігати і відображати кількість змін протягом одного сеансу.
+
+      function onLoad() {
+         let color = localStorage.getItem('color')
+
+         if (!color) {
+            color = '#c8c5c589'
+            localStorage.setItem('color', color)
+         }
+
+         document.getElementById('input-color').value = color
+         document.body.style.backgroundColor = color
+      }
+
+      function onChangeStorage() {
+         const userColor = localStorage.getItem('color')
+         document.getElementById('input-color').value = userColor
+         document.body.style.backgroundColor = userColor
+
+         const changeColorCounter = sessionStorage.getItem('changeColorCounter')
+         document.querySelector('.task_7 span').innerText = `Кількість змін кольору під час сесії: ${changeColorCounter}`
+      }
+
+      function onChangeColor() {
+         const userColor = document.getElementById('input-color').value
+
+         let changeColorCounter = parseInt(sessionStorage.getItem('changeColorCounter') ?? 0)
+         changeColorCounter++
+         sessionStorage.setItem('changeColorCounter', changeColorCounter)
+
+         document.body.style.background = userColor
+         localStorage.setItem('color', userColor)
+
+         window.dispatchEvent(
+            new StorageEvent('storage', {
+               key: 'color',
+               newValue: userColor,
+            })
+         )
+      }
+
+      window.onload = function () {
+         onLoad()
+         document.getElementById('input-color').oninput = onChangeColor
+         window.addEventListener('storage', onChangeStorage)
+      }
+
+      //==================================================================================================//
+      //Задача 12. Зберігати у пам’яті список справ, які користувачу треба виконати (зберігати у localStorage). Періодично випадковим чином вибирати якусь з справ і виводити користувачу (з використанням confirm). Якщо користувач натискає на «Ок», то видаляти цю задачу.
+
+      const tasksList = [
+         'Роби Дз',
+         'Випий кави',
+         'Знову роби Дз',
+         'Пообідай',
+         'Не повіриш, роби ДЗ)',
+      ]
+
+      class ToDoManager {
+
+         getRandomNumber(maxNum) {
+            return Math.floor(Math.random() * maxNum)
+         }
+
+         getList() {
+            return JSON.parse(localStorage.getItem('list')) ?? []
+         }
+
+         setList(list) {
+            localStorage.setItem('list', JSON.stringify(list))
+         }
+
+         showTask() {
+            let tasksList = this.getList()
+
+            if (tasksList.length === 0) {
+               document.querySelector('.task_8 span').innerText = 'Мої вітання всі завдання виконані, відпочивайте'
+               return
+            }
+            const randomIndex = this.getRandomNumber(tasksList.length)
+
+            let userAnswer = confirm(tasksList[randomIndex])
+
+            if (userAnswer) {
+               tasksList = tasksList.filter(
+                  task => task !== tasksList[randomIndex]
+               )
+               this.setList(tasksList)
+            }
+            //this.showTask()
+         }
+
+         run(interval){
+            setInterval(() => {
+               this.showTask()
+            }, interval);
+         }
+      }
+
+      document.getElementById('start').onclick = function(){
+         const manager = new ToDoManager()
+         manager.setList(tasksList)
+         manager.run(3000)
+      }
 
       //==================================================================================================//
    </script>

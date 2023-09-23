@@ -261,25 +261,27 @@
       //Задача 15. Користувач вводить прізвище та ім’я в одному рядку через пробіл. Замінити пробіл на дефіс.
 
       const fullNameEl = document.getElementById('name')
-
+      
       fullNameEl.onclick = function () {
-         fullNameEl.value = ''
+         document.getElementById('name').value = ''
       }
-
+      
       fullNameEl.onchange = function () {
+         const fullNameEl = document.getElementById('name')
          fullNameEl.value = fullNameEl.value.replace(' ', '-')
       }
       //==================================================================================================//
       //Задача 16. Користувач вводить дату у форматі «день.місяць.рік». Отримати рядкове представлення дати у форматі «день/місяць/рік»
-
+      
       const dateEl = document.getElementById('date')
-
+      
       dateEl.onclick = function () {
-         dateEl.value = ''
+         document.getElementById('date').value = ''
       }
-
+      
       dateEl.onchange = function () {
-         dateEl.value = date.value.replaceAll('.', '/')
+         const dateEl = document.getElementById('date')
+         dateEl.value = dateEl.value.replaceAll('.', '/')
       }
       //==================================================================================================//
       //Задача 17. Користувач вводить день (номер дня (0-6) або «sun,mon,tue,wed,thu,fri,sat»). Визначити, чи  є це день вихідним
