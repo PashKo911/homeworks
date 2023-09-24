@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      new Promise(function (resolve, reject) {
+        setTimeout(() => {
+          let month = 1 + Math.floor(Math.random() * 12)
+          if (month <= 12) resolve(month)
+          else reject(new Error('Month is incorrect'))
+        }, 3000)
+      })
+        .then((generatedMonth) => {
+          let result2
+          switch (generatedMonth) {
+            case 1:
+            case 2:
+            case 12:
+              result2 = 'winter'
+              break
+            case 3:
+            case 4:
+            case 5:
+              result2 = 'spring'
+              break
+            case 6:
+            case 7:
+            case 8:
+              result2 = 'summer'
+              break
+            case 9:
+            case 10:
+            case 11:
+              result2 = 'fall'
+              break
+          }
+          return result2
+        })
+        .then((season) => {
+          let result3
+          switch (season) {
+            case 'winter':
+              result3 = 'coat'
+              break
+            case 'spring':
+              result3 = 'jacket'
+              break
+            case 'summer':
+              result3 = 'shorts'
+              break
+            case 'fall':
+              result3 = 'jacket'
+              break
+          }
+          return result3
+        })
+        .then((dress) => {
+          console.log(dress)
+        })
+        .catch((err) => {
+          console.log(err.message)
+        })
+        .finally(() => {
+          console.log('Completed')
+        })
+
+      console.log('Next operation')
+    </script>
+  </head>
+  <body></body>
+</html>

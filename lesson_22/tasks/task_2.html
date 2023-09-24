@@ -171,7 +171,7 @@
          if (answerContainerSelector && userDateEl) {
 
             const userBirthday = new Date(userDateEl.value)
-
+            console.log(userDateEl.value);
             const userAge = (date - userBirthday) / 1000 / 60 / 60 / 24 / 365
 
             document.querySelector(answerContainerSelector).innerText = `Ваш вік: ${userAge.toFixed(1)} років`

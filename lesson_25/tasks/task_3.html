@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+
+
+</head>
+
+<body>
+
+   <h1>
+      Задача 3. Створити генератор, який би випадковим чином поступово генерував вказану кількість парних чисел.
+   </h1>
+
+   <p>Результат у консолі</p>
+
+   <div class="container">
+
+   </div>
+   <script>
+      //==================================================================================================//
+      //Задача 3. Створити генератор, який би випадковим чином поступово генерував вказану кількість парних чисел.
+
+      function* getEvenNumber(numbersCount, minRandNum, maxRandNum) {
+
+         for (let i = 0; i < numbersCount; ) {
+            let randomNumber = minRandNum + Math.floor(Math.random() * (maxRandNum - minRandNum + 1))
+
+            if (randomNumber % 2 === 0) {
+               yield randomNumber
+               i++
+            }
+         }
+      }
+
+      let array = [...getEvenNumber(10, 1, 100)]
+      console.log(array);
+
+      console.log(getEvenNumber(10, 1, 100));
+   </script>
+
+</body>
+
+</html>

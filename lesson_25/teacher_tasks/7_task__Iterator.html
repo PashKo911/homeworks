@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Задача. Дано список книг (масив об’єктів класу Book (назва, автор, ціна)). При перегляді у циклі for..of потрібно видавати
+      // рядкове значення «назва - ціна»
+      class Book {
+        constructor(title, author, price) {
+          this.title = title
+          this.author = author
+          this.price = price
+        }
+        //-- функція для перетворення у примітив
+        [Symbol.toPrimitive](hint) {
+          switch (hint) {
+            case 'string':
+              return `${this.title}-${this.price}`
+            default:
+              return this.title
+          }
+        }
+      }
+      class Library {
+        constructor(booksList) {
+          this.booksList = booksList
+          this.currentIndex = 0
+        }
+        //1) -----
+        [Symbol.iterator]() {
+          this.currentIndex = 0
+          return this
+        }
+        //2) ------
+        next() {
+          if (this.currentIndex < this.booksList.length) {
+            const currentBook = this.booksList[this.currentIndex]
+            this.currentIndex++
+            // return { done: false, value: String(currentBook) }
+            return {
+              done: false,
+              value: `${currentBook.title} - ${currentBook.price}`,
+            }
+          } else return { done: true }
+        }
+      }
+      //------------------
+      const bookList = [
+        new Book('Book1', 'Author1', 1111),
+        new Book('Book2', 'Author2', 2222),
+        new Book('Book3', 'Author3', 3333),
+        new Book('Book4', 'Author4', 444),
+      ]
+      const lib = new Library(bookList)
+      //==============
+      for (const item of lib) {
+        console.log(item)
+      }
+      let arr = [...lib]
+      console.log(arr)
+    </script>
+  </head>
+  <body></body>
+</html>

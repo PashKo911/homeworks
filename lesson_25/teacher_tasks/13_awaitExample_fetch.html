@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //--- об"єкт з шляхами до АРІ ----
+      const apiEndpoints = {
+        allBreadsList: 'https://dog.ceo/api/breeds/list/all',
+        getReadByBreedNameLink: (breedName) =>
+          `https://dog.ceo/api/breed/${breedName}/images/random`,
+      }
+      //---- Функія завантаження списку усіх порід ----
+      async function loadBreedsList() {
+        const url = apiEndpoints.allBreadsList
+        return new Promise((resolve, reject) => {
+          fetch(url)
+            .then((response) => response.json())
+            .then((data) => data.message)
+            .then((listObject) => {
+              resolve(Object.keys(listObject))
+            })
+            .catch((err) => {
+              reject(err)
+            })
+        })
+      }
+      //--- Функція вибору випадкового елемента з масиву -----
+      function getRandomListIten(list) {
+        const randomIndex = Math.floor(Math.random() * list.length)
+        return list[randomIndex]
+      }
+      //--- функція для завантаження випадкового зображення вказаної породи ---
+      async function loadBreedImage(breedName) {
+        const url = apiEndpoints.getReadByBreedNameLink(breedName)
+        return new Promise((resolve, reject) => {
+          fetch(url)
+            .then((response) => response.json())
+            .then((data) => data.message)
+            .then((imageLink) => {
+              resolve(imageLink)
+            })
+            .catch((err) => {
+              reject(err)
+            })
+        })
+      }
+      //--- функція створення елемента зображення ----
+      function createImage(imgSrc) {
+        const img = document.createElement('img')
+        img.src = imgSrc
+        return img
+      }
+      //==== головна функція виконання усіх кроків ======
+      async function go() {
+        //-- отримання списку порід ---
+        let breeedsList = await loadBreedsList()
+        //-- вибір випадкової породи ---
+        const randomBreed = getRandomListIten(breeedsList)
+        //-- отримання випадкового зорбраження собаки вказаної породи ---
+        const imageLink = await loadBreedImage(randomBreed)
+        //-- створення і додавання елемента зображення собаки ---
+        document.body.append(createImage(imageLink))
+      }
+      //========== Виклик головної функції ============
+      go()
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // let promise = new Promise(function (resolve, reject) {
+      //   setTimeout(() => {
+      //     let month = 1 + Math.floor(Math.random() * 12)
+      //     if (month <= 12) resolve(month)
+      //     else reject(new Error('Month is incorrect'))
+      //   }, 3000)
+      // })
+      // promise.then((generatedMonth) => {
+      //   console.log(`Month  = ${generatedMonth}`)
+      // })
+      // promise.catch((err) => {
+      //   console.log(err.message)
+      // })
+      // promise.finally(() => {
+      //   console.log('Completed')
+      // })
+
+      new Promise(function (resolve, reject) {
+        setTimeout(() => {
+          let month = 1 + Math.floor(Math.random() * 100)
+          if (month <= 12) resolve(month)
+          else reject(new Error('Month is incorrect'))
+        }, 3000)
+      })
+        .then((generatedMonth) => {
+          console.log(`Month  = ${generatedMonth}`)
+        })
+        .catch((err) => {
+          console.log(err.message)
+        })
+        .finally(() => {
+          console.log('Completed')
+        })
+
+      console.log('Next operation')
+    </script>
+  </head>
+  <body></body>
+</html>

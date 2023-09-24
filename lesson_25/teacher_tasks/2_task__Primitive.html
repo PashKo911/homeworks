@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //Задача. Дано клас Student (піб, масив оцінок). При приведення до рядка повертати «піб».
+      //При приведенні до числа повертати мінімальну оцінку
+      class Student {
+        constructor(name, scores) {
+          this.name = name
+          this.scores = scores
+        }
+        //-- toString + valueOf
+        [Symbol.toPrimitive](hint) {
+          let result
+          switch (hint) {
+            case 'number':
+              result = Math.min(...this.scores)
+              break
+            case 'string':
+              result = this.name
+              break
+            default:
+              result = `${this.name} : ${this.scores}`
+              break
+          }
+          return result
+        }
+      }
+      //----------------------
+      const s1 = new Student('Ivan', [9, 11, 10, 12, 5, 10])
+      //console.log(+s1)
+      console.log(String(s1))
+    </script>
+  </head>
+  <body></body>
+</html>

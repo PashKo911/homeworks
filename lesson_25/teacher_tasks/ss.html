@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      class E1 extends Error {
+        constructor() {
+          super('aaa11')
+          this.name = 'sss'
+        }
+      }
+      console.log(new E1().message)
+      
+      class Base {
+        constructor(a, b) {
+          this.a = a
+          this.b = b
+        }
+        toString() {
+          return `a=${this.a}   b=${this.b}`
+        }
+      }
+      class Child extends Base {
+        show() {
+          console.log(this.toString())
+        }
+      }
+
+      const b1 = new Child(11, 22)
+      b1.show()
+    </script>
+  </head>
+  <body></body>
+</html>

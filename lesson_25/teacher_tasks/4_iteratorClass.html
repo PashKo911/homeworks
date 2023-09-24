@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //тестовий клас, до якого будемо додавати ітератор
+      class Range {
+        constructor(from, to) {
+          this.from = from
+          this.to = to
+        }
+
+        //1)при використанні for..of спочатку викликається метод Symbol.iterator
+        [Symbol.iterator]() {
+          this.current = this.from
+          return this
+        }
+        //2) Далі for..of працює викликаючи метод next
+        next() {
+          if (this.current <= this.to) {
+            return { done: false, value: this.current++ }
+          } else {
+            return { done: true }
+          }
+        }
+      }
+      const range = new Range(1, 5)
+
+      // тепер це працює!
+
+      for (let num of range) {
+        alert(num) // 1, 2, 3, 4, 5
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

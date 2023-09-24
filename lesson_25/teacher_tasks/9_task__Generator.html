@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Задача. Створити генератор, у який передається список і генератор поступово видає випадкове значення з цього
+      // списку поки вони не закінчаться
+
+      // Задача. Створити генератор, який би передавав поступово назви пір року
+      // function* getSeasonsTitles() {
+      //   yield 'winter'
+      //   yield 'spring'
+      //   yield 'summer'
+      //   yield 'fall'
+      //   // let seasons = ['winter', 'spring', 'summer', 'fall']
+      //   // for (const season of seasons) {
+      //   //   yield season
+      //   // }
+      // }
+
+      // for (const item of getSeasonsTitles()) {
+      //   console.log(item)
+      // }
+      // Задача. Створити генератор, який би передавав поступово назви днів
+      // Задача. Створити генератор, який би генерував поступово задану кількість випадкових чисел у заданому діапазоні
+      // Задача. Створити генератор, у який передається список і генератор поступово видає випадкове знаення з цього
+      function* getRandomItems(list) {
+        const listCopy = [...list]
+        while (listCopy.length > 0) {
+          const randIndex = Math.floor(Math.random() * listCopy.length)
+          const item = listCopy[randIndex]
+          listCopy.splice(randIndex, 1)
+          yield item
+        }
+      }
+      //----------------
+      for (const item of getRandomItems(['a', 'r', 'o', 'q', 'y'])) {
+        console.log(item)
+      }
+
+      // списку поки вони не закінчаться
+      // Задача. Випадкові числа з кроком не більше 10. Створити клас, об’єкт якого можна було б використати як ітерований
+      // об’єкт і він видавав поступово випадкові числа починаючи від 1 і кожне наступне є більшим не більше ніж на 10
+    </script>
+  </head>
+  <body></body>
+</html>

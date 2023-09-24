@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //тестовий об’єкт, до якого будемо додавати ітератор
+      let range = {
+        from: 1,
+        to: 5,
+
+        //1)при використанні for..of спочатку викликається метод Symbol.iterator
+        [Symbol.iterator]() {
+          this.current = this.from
+          return this
+        },
+        //2) Далі for..of працює викликаючи метод next
+        next() {
+          if (this.current <= this.to) {
+            return { done: false, value: this.current++ }
+          } else {
+            return { done: true }
+          }
+        },
+      //  //--- функція визначення прмітива
+      //  [Symbol.toPrimitive](hint) {
+      //    let result
+      //    switch (hint) {
+      //      case 'number':
+      //        result = 5555
+      //        break
+      //      case 'string':
+      //        result = 'Hello'
+      //        break
+      //      default:
+      //        result = null
+      //    }
+      //    return result
+      //  },
+      }
+      //------------------
+       for (let num of range) {
+         console.log(num) // 1, 2, 3, 4, 5
+       }
+
+      //console.log(+range) //5555
+      //console.log(String(range)) //Hello
+    </script>
+  </head>
+  <body></body>
+</html>

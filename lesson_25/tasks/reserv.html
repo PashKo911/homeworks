@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+
+
+</head>
+
+<body>
+
+   <h1>
+
+   </h1>
+
+   <div class="container">
+
+   </div>
+   <script>
+      //==================================================================================================//
+      //Задача 1. Дано клас PhoneNumber. Створити функцію перетворення до string, при якому на основі номера виводиться оператор (050….  🡪 MTC, 096… 🡪 Kyivstar, ….)
+
+      //буду намагатись працювати з даними схожими на справжні
+
+      //const initData = '[{"id": 1, "phone": "   050-456-7890  "},{"id": 2, "phone": "099-654-3210"},{"id": 3, "phone": "093-654-3210"},{"id": 4, "phone": "063-654-3210"},{"id": 5, "phone": "095-654-3210"},{"id": 6, "phone": "067-654-3210"},{"id": 7, "phone": "068-654-3210"},{"id": 8, "phone": "098-654-3210"}]'
+
+      const initData = { id: 1, phone: '0984567890' }
+
+      const operatorCodesOdj = {
+         vodafone: ['50', '66', '95', '99'],
+         kyivstar: ['39', '67', '68', '96', '97', '98'],
+         lifecell: ['63', '93', '73'],
+      }
+
+      class PhoneNumber {
+         constructor(initData, operatorCodesOdj) {
+            Object.assign(this, initData)
+            this.operatorCodesOdj = operatorCodesOdj
+         }
+
+         getMobileOperatorCode() {
+            return this.phone.trim().substring(1, 3)
+         }
+
+         getOperator() {
+            let result = null
+            const phoneCode = this.getMobileOperatorCode()
+
+            for (const operator in this.operatorCodesOdj) {
+
+               if (this.operatorCodesOdj[operator].includes(phoneCode)) {
+                  result = operator
+                  break
+               }
+            }
+
+            if (result)
+               return result
+            else throw new Error('Оператора з таким кодом не існує')
+         }
+
+         getCodes() {
+
+         }
+
+         //[Symbol.toPrimitive](hint) {
+         //   let result
+
+         //   if (hint === 'string') {
+         //      for (const operator in this.operatorCodesOdj) {
+         //         if (operator.includes(hint))
+         //            result = operator
+
+         //      }
+         //   } else {
+
+         //   }
+         //   return `Номер телефону ${this.phone} відповідає оператору ${result}`
+         //}
+
+
+      }
+
+
+
+      const phoneNumber = new PhoneNumber(initData, operatorCodesOdj)
+      console.log(phoneNumber.getOperator());
+      console.log(phoneNumber.operatorCodesOdj);
+      console.log(phoneNumber.getMobileOperatorCode())
+
+      //class Student {
+      //  constructor(name, scores) {
+      //    this.name = name
+      //    this.scores = scores
+      //  }
+      //  //-- toString + valueOf
+      //  [Symbol.toPrimitive](hint) {
+      //    let result
+      //    switch (hint) {
+      //      case 'number':
+      //        result = Math.min(...this.scores)
+      //        break
+      //      case 'string':
+      //        result = this.name
+      //        break
+      //      default:
+      //        result = `${this.name} : ${this.scores}`
+      //        break
+      //    }
+      //    return result
+      //  }
+      //}
+      ////----------------------
+      //const s1 = new Student('Ivan', [9, 11, 10, 12, 5, 10])
+      //console.log(s1 * 1)
+      //console.log(String(s1))
+
+
+      //constructor(initData) {
+      //      this.initData = JSON.parse(initData)
+      //   }
+
+      //   getMobileOperatorCodesList() {
+      //      return  this.initData.map(
+      //         userData => userData.phone.trim().substring(0,3)
+      //      )
+      //   }
+      //==================================================================================================//
+      //Задача 2. Дано Shop  -- клас, що містить список товарів (масив об’єктів класу Product (назва, ціна, кількість одиниць). Додати можливість ітератора до класу Shop, щоб при ітеруванні для кожного елемента виводився рядок «товар-загальна вартість»
+      //Задача 3. Створити генератор, який би випадковим чином поступово генерував вказану кількість парних чисел.
+      //Задача 4. Використовуючи один з АРІ
+      //https://github.com/public-apis/public-apis#animals
+      //та функцію fetch організувати завантаження та відображення даних
+
+      //==================================================================================================//
+   </script>
+   <style>
+      .greet {
+         font-size: 20px;
+         align-self: center;
+         font-weight: bold;
+      }
+   </style>
+
+</body>
+
+</html>

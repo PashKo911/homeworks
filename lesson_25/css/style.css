@@ -1,0 +1,32 @@
+
+/*Обнуление*/
+
+/*Стилі сторінки */
+
+body {
+   padding: 40px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	background-color: #c8c5c589;
+   font-size: 20px;
+   font-weight: 500;
+}
+
+.container{
+   box-sizing: border-box;
+   width: 1000px;
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+}
+
+.image{
+display: flex;
+width: 400px;
+height: 300px;
+}
+img{
+   width: 100%;
+   height: 100%;
+}

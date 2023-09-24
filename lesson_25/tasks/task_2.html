@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+
+
+</head>
+
+<body>
+
+   <h1>
+      //Задача 2. Дано Shop -- клас, що містить список товарів (масив об’єктів класу Product (назва, ціна, кількість
+      одиниць). Додати можливість ітератора до класу Shop, щоб при ітеруванні для кожного елемента виводився рядок
+      «товар-загальна вартість»
+   </h1>
+
+   <p> Результат у консолі</p>
+
+   <div class="container">
+
+   </div>
+   <script>
+      //==================================================================================================//
+      //Задача 2. Дано Shop  -- клас, що містить список товарів (масив об’єктів класу Product (назва, ціна, кількість одиниць). Додати можливість ітератора до класу Shop, щоб при ітеруванні для кожного елемента виводився рядок «товар-загальна вартість»
+
+      class Product {
+         constructor(productData) {
+            Object.assign(this, productData)
+         }
+      }
+
+      const productsList = [
+         new Product(
+            {
+               title: 'Кавоварка',
+               price: 2000,
+               productCount: 2,
+            }
+         ),
+         new Product(
+            {
+               title: 'Праска',
+               price: 1000,
+               productCount: 1,
+            }
+         ),
+         new Product(
+            {
+               title: 'Телефон',
+               price: 20000,
+               productCount: 1,
+            }
+         ),
+         new Product(
+            {
+               title: 'Клавіатура',
+               price: 500,
+               productCount: 3,
+            }
+         ),
+      ]
+
+      class Shop {
+         constructor(productsList) {
+            this.productsList = productsList
+            this.from = 0
+            this.to = productsList.length
+         }
+
+         *[Symbol.iterator]() {
+            for (let value = this.from; value < this.to; value++) {
+               const product = this.productsList[value]
+               const totalPrice = product.price * product.productCount
+               yield `${product.title} - Total Price: ${totalPrice} UAN`
+            }
+         }
+         
+         //[Symbol.iterator]() {
+         //   this.current = 0
+         //   return this
+         //}
+
+         //next() {
+         //   if (this.current < this.to) {
+         //      const product = this.productsList[this.current]
+         //      const totalPrice = product.price * product.productCount
+         //      this.current++
+         //      return { done: false, value: `${product.title} - Total Price: ${totalPrice} UAN` }
+         //   }
+         //   else return { done: true }
+         //}
+      }
+
+      let shop = new Shop(productsList)
+
+      for (const product of shop) {
+         console.log(product);
+      }
+
+      //==================================================================================================//
+   </script>
+
+</body>
+
+</html>

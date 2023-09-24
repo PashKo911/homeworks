@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+
+
+</head>
+
+<body>
+   <h1>Задача 1. Дано клас PhoneNumber. Створити функцію перетворення до string, при якому на основі номера виводиться оператор (050….  🡪 MTC, 096… 🡪 Kyivstar, ….)</h1>
+   <p>результат у консолі</p>
+   <div class="container">
+   </div>
+   <script>
+      //==================================================================================================//
+      //Задача 1. Дано клас PhoneNumber. Створити функцію перетворення до string, при якому на основі номера виводиться оператор (050….  🡪 MTC, 096… 🡪 Kyivstar, ….)
+      
+      const initData = { id: 1, phone: '0504760198' }
+
+      const operatorCodesOdj = {
+         vodafone: ['50', '66', '95', '99'],                 // з цим нулем на початку намучився, раніше не зіштовхувався з такою проблемою
+         kyivstar: ['39', '67', '68', '96', '97', '98'],
+         lifecell: ['63', '93', '73'],
+      }
+
+      class PhoneNumber {
+         constructor(initData, operatorCodesOdj) {
+            Object.assign(this, initData)
+            this.operatorCodesOdj = operatorCodesOdj
+         }
+
+         getMobileOperatorCode() {
+            return this.phone.trim().substring(1, 3)
+         }
+
+         getOperator() {
+            let result = null
+            const phoneCode = this.getMobileOperatorCode()
+
+            for (const operator in this.operatorCodesOdj) {
+               if (this.operatorCodesOdj[operator].includes(phoneCode)) {
+                  result = operator
+                  break
+               }
+            }
+
+            if (result)
+               return result
+            else throw new Error('Оператора з таким кодом не існує')
+         }
+                                    //цей метод власне не потрібен, та залишу  для себе
+         getCodes() {              // була задумка, що якщо вводиться номер то це тип number, відображати оператора, а якщо оператор (це тип string) то відображати список кодів, та щось як завжди пішло не по плану, та і зрозумів що завдання вимагає інакшого) реалізувати це в методі [Symbol.toPrimitive] не вийшло:))
+            let result = null
+
+            for (const operator in this.operatorCodesOdj) {
+               if (operator === this.phone.trim().toLowerCase())
+                  result = this.operatorCodesOdj[operator]
+            }
+
+            if (result)
+               return result
+            else throw new Error('Оператора з таким іменем не існує')
+         }
+
+         [Symbol.toPrimitive](hint) {
+            let result
+
+            switch (hint) {
+               case 'number':
+                  result = this.phone
+                  break;
+
+               case 'string':
+                  result =  `${this.phone} - ${this.getOperator()}` 
+            }
+            return result
+         }
+      }
+
+      const phoneNumber = new PhoneNumber(initData, operatorCodesOdj)
+
+      console.log(+phoneNumber);
+      console.log(String(phoneNumber));
+      //==================================================================================================//
+      
+   </script>
+
+</body>
+
+</html>
