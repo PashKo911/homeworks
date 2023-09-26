@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 2. Створити об’єкт «Авто». 
+   </h1>
+
+   <script>
+      
+      class Car {
+         constructor(autoBrand, carTankSize, amuntOfAvailableGas, seatsNumber, passengersNumber){
+            //Властивості
+
+            this.autoBrand = autoBrand
+            this.carTankSize = carTankSize
+            this.amountOfAvailableGas = amuntOfAvailableGas
+            this.seatsNumber = seatsNumber
+            this.passengersNumber = passengersNumber
+
+         }
+            //Методи
+
+         getRandomNumber(minNumber, maxNumber){
+            return minNumber + Math.floor(Math.random() * (maxNumber - minNumber + 1))
+         }
+
+         carRefueling(gasAmount){
+            if (carTankSize < this.amountOfAvailableGas + gasAmount)
+            throw new Error ('Забагато пального вам стільки не влізе')
+
+            this.amountOfAvailableGas += gasAmount
+         }
+         toString(){
+               return `В даному автомобілі ${this.passengersNumber} пасажирів`
+         }
+
+         addPassengers (newPassengersNumber){
+
+            if (this.seatsNumber < passengersNumber + newPassengersNumber)
+            throw new Error (`Забагато пасажирів`)
+
+            this.passengersNumber += newPassengersNumber
+         }
+         passengersDecreasing(passengersDecreasingNumber){
+            if (this.passengersNumber < passengersDecreasingNumber)
+            throw new Error ('Це неможливо звідки вас стільки')
+            this.passengersNumber -= passengersDecreasingNumber
+         }
+      }
+
+      let newCar = new Car('Nissan', 60, 30, 5, 2)
+         document.write(newCar)
+
+
+   </script>
+
+</body>
+
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача. Створити клас TBankomat, який моделює роботу банкомата.
+      Клас повинен містити поля для зберігання кількості купюр кожного із номіналів від 5 до 200 гривень.
+      Реалізувати методи знаходження максимальної та мінімальної сум,
+      які може видати банкомат, та метод зняття деякої суми.
+
+   </h1>
+
+   <script>
+
+      class Bill {
+         #banknoteDenomination 
+         #banknoteDenominationNumber
+
+         static realBanknoteDenominationList = [5, 10, 20, 50, 100, 200]
+
+         constructor(banknoteDenomination, banknoteDenominationNumber) {
+            this.BanknoteDenomination = banknoteDenomination
+            this.BanknoteDenominationNumber = banknoteDenominationNumber
+
+         }
+
+         get BanknoteDenomination() {
+            return this.#banknoteDenomination
+         }
+
+         set BanknoteDenomination(value) {
+            let checker = Bill.realBanknoteDenominationList.includes(value)
+
+            if (!checker)
+               throw new Error('Такої банкноти не існує')
+
+            this.#banknoteDenomination = value
+         }
+
+         get BanknoteDenominationNumber() {
+            return this.#banknoteDenominationNumber
+         }
+
+         set BanknoteDenominationNumber(value) {
+            if (value < 0 || value > 1000) throw new Error('Введена кількість купюр не корректна')
+            this.#banknoteDenominationNumber = value
+         }
+
+      }
+
+      let bancnotesList = [
+         new Bill(5, 0),
+         new Bill(10, 40),
+         new Bill(20, 40),
+         new Bill(50, 40),
+         new Bill(100, 40),
+         new Bill(200, 20),
+      ]
+
+      class ATM {
+         constructor(bancnotesList) {
+            this.bancnotesList = bancnotesList//JSON.parse(JSON.stringify(bancnotesList))
+
+         }
+
+         minAvaliableSum() {
+
+            let minSum = this.bancnotesList.reduce(
+               (minSum, banknote) =>
+                  banknote.BanknoteDenomination < minSum && banknote.BanknoteDenominationNumber !== 0 ? banknote.BanknoteDenomination : minSum,
+               Infinity
+            )
+
+            if (minSum === Infinity)
+               throw new Error('Вибачте банкомат порожній')
+
+            return minSum
+         }
+
+         maxAvaliableSum() {
+            let maxSum = 0
+
+            for (const banknote of this.bancnotesList) {
+               maxSum += banknote.BanknoteDenomination * banknote.BanknoteDenominationNumber
+            }
+            if (maxSum === 0)
+               throw new Error('Вибачте банкомат порожній')
+            return maxSum
+         }
+
+         getNessesaryBanknotesCountList(cashNumber) {
+            let i = this.bancnotesList.length - 1
+            this.nessesaryBanknotesCountList = new Array(i)
+            this.userCashNumber = cashNumber
+
+            this.nessesaryBanknotesCountList.fill(0) //впевнений вам не сподобається) та це щоб не було порожніх комірок в масиві, ну і типу за змовченням 0
+
+            while (this.userCashNumber > 0 && i >= 0) {
+               let banknotesNumber = Math.floor(this.userCashNumber / this.bancnotesList[i].BanknoteDenomination)
+
+               if (this.bancnotesList[i].BanknoteDenominationNumber >= banknotesNumber) {
+
+                  this.nessesaryBanknotesCountList[i] = banknotesNumber
+                  this.userCashNumber -= banknotesNumber * this.bancnotesList[i].BanknoteDenomination
+
+                  console.log(this.nessesaryBanknotesCountList);
+               }
+               console.log(this.userCashNumber);
+               i--
+            }
+            return this.nessesaryBanknotesCountList
+         }
+
+         getNessesaryBanknotesCountListIfSumMore0(cashNumber) {
+            let i = this.bancnotesList.length - 1
+            this.nessesaryBanknotesCountListIfSumMore0 = new Array(i)
+            this.cashNumberIfSumMore0 = cashNumber
+
+            this.nessesaryBanknotesCountListIfSumMore0.fill(0)
+
+            while (i >= 0) {
+
+               let realBanknotesNumber = this.bancnotesList[i].BanknoteDenominationNumber,
+               nessesaryBanknotesNumber = Math.floor(this.cashNumberIfSumMore0 / this.bancnotesList[i].BanknoteDenomination)
+
+               if (realBanknotesNumber < nessesaryBanknotesNumber){
+
+                  this.nessesaryBanknotesCountListIfSumMore0[i] = realBanknotesNumber
+                  this.cashNumberIfSumMore0 -= realBanknotesNumber * this.bancnotesList[i].BanknoteDenomination
+
+               } else{
+                  this.nessesaryBanknotesCountListIfSumMore0[i] = nessesaryBanknotesNumber
+                  this.cashNumberIfSumMore0 -= nessesaryBanknotesNumber * this.bancnotesList[i].BanknoteDenomination
+               }
+               i--
+            }
+            return this.nessesaryBanknotesCountListIfSumMore0
+         }
+
+         checkingUserCashNumber(cashNumber) {
+            let avaliableSum = this.maxAvaliableSum(),
+               minBanknote = Math.min(...Bill.realBanknoteDenominationList)
+
+            if (avaliableSum < cashNumber)
+               throw new Error('Банкомат не має достатньо коштів, або введіть суму менше, або зверніться до іншого банкомату')
+
+            if (cashNumber % minBanknote !== 0) //здалось що ще така перевірка не завадить, типу якщо користувач захоче ввести 3грн
+               throw new Error('Ви ввели не коректну суму')
+
+            this.getNessesaryBanknotesCountListIfSumMore0(cashNumber)
+            if(this.cashNumberIfSumMore0 !==0)
+            throw new Error('Банкомат не може видати вказану вами суму, або введіть іншу суму, або зверніться до іншого банкомату')
+
+         }
+
+         gettingSomeMoneyFromATM(cashNumber) {
+            let nessesaryBancnotesList
+
+            this.checkingUserCashNumber(cashNumber) //Запускаю перевірку
+
+            if(this.userCashNumber === 0)
+            nessesaryBancnotesList = this.getNessesaryBanknotesCountList(cashNumber)
+            
+            else nessesaryBancnotesList = this.getNessesaryBanknotesCountListIfSumMore0(cashNumber)
+
+            this.bancnotesList.forEach((banknotesNumber, index, bancnotesList) => {
+               bancnotesList[index].BanknoteDenominationNumber -= nessesaryBancnotesList[index]
+            })
+            console.log(this.bancnotesList);
+         }
+
+         toString(){
+
+            let cashNumber = parseInt(prompt('Введіть суму для зняття готівки'))
+            this.gettingSomeMoneyFromATM(cashNumber)
+
+            return `
+               Мінімальна сумма для зняття: ${this.minAvaliableSum()}<br>
+               Максимальна доступна сума в банкоматі: ${this.maxAvaliableSum()}<br>
+            `
+         }
+      }
+
+      let newATM = new ATM(bancnotesList)
+      document.write(newATM)
+
+      //console.log(newATM.maxAvaliableSum());
+
+      //console.log(newATM.gettingSomeMoneyFromATM(7990));
+      //console.log(newATM.getNessesaryBanknotesCountListIfSumMore0(7995));
+      //document.write(newATM.maxAvaliableSum());
+      //console.log(newATM.maxAvaliableSum());
+      //console.log(newATM.getNessesaryBanknotesCountList(4000));
+      //console.log(newATM.checkingUserCashNumber(1015));
+      //console.log(newATM.checkingUserCashNumber(4090));
+
+
+   </script>
+
+</body>
+
+</html>

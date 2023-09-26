@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 0. Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.
+   </h1>
+
+
+   <script>
+
+      function showSeason(monthNumber) {
+         let result
+         if (monthNumber === 0 || monthNumber > 12)
+            result = 'Такого місяця не інує'
+         else if (monthNumber < 3 || monthNumber === 12)
+            result = `Введений місяць ${monthNumber} відповідає зимній порі`
+         else if (monthNumber < 6)
+            result = `Введений місяць ${monthNumber} відповідає весінній порі` 
+         else if (monthNumber < 9)
+            result = `Введений місяць ${monthNumber} відповідає літній порі`
+         else if (monthNumber < 11)
+            result = `Введений місяць ${monthNumber} відповідає осінній порі`
+         return result
+      }
+      
+      //Вводимо необхідні дані
+      const userMonthNumber = parseInt(prompt('Введіть номер місяця'))
+
+      //Виводимо результат
+      document.write(showSeason(userMonthNumber))
+
+   </script>
+
+</body>
+
+</html>

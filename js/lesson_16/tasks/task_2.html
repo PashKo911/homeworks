@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   
+   <h1>
+      Задача 2. Створити клас TMoney для роботи з грошовими сумами.
+      Сума повинна зберігатися у вигляді доларового еквіваленту.
+      Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу
+      долара, при якому сума у гривнях збільшиться на 100.
+      Курс долара зберігати в окремому полі.
+   </h1>
+   <script>
+  
+   
+      class TMoney {
+         #exchangeRate
+         #userUSDBalance
+
+         constructor(userBalance, exchangeRate) {
+
+            this.ExchangeRate = exchangeRate
+            this.UserBalance = userBalance
+            console.log(this.UserBalance);
+         }
+         
+         get ExchangeRate() {
+            return this.#exchangeRate
+         }
+
+         set ExchangeRate(rate) {
+            if (rate <= 0)
+               throw new Error('Курс валюти не може бути меншим за 0')
+            this.#exchangeRate = rate
+         }
+
+         get UserBalance() {
+            return this.#exchangeRate * this.#userUSDBalance
+         }
+
+         set UserBalance(UANNumber) {
+            if (UANNumber <= 0)
+               throw new Error('Некоректна сума')
+            this.#userUSDBalance = UANNumber / this.#exchangeRate
+         }
+
+         moneyIncreasing(userIncreasingSum) {
+
+            if (userIncreasingSum <= 0)
+               throw new Error('Сума поповнення не може бути меншою або дорівнювати нулю')
+            this.UserBalance += userIncreasingSum
+         }
+
+         moneyDecreasing(userDecreasingSum){
+
+            if (userDecreasingSum <= 0 || userDecreasingSum > this.UserBalance)
+            throw new Error ('Сума не може бути меншою або дорівнювати нуль та перевищувати ваш поточний баланс')
+            this.UserBalance -= userDecreasingSum
+         }
+
+         getUSDRateWithMore100UANIncreasing(){
+            return (this.UserBalance + 100) / this.#userUSDBalance
+         }
+
+         toString(){
+            return `Ваш поточний баланс: ${this.UserBalance}`
+         }
+      }
+
+      let someUserCheck = new TMoney(2000, 35)
+      
+      document.write(someUserCheck)
+
+   </script>
+
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 7. Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:
+   </h1>
+   <ul>
+      <li>
+         за весь рік;
+      </li>
+      <li>
+         у першій половині року;
+      </li>
+      <li>
+         у другій половині року;
+      </li>
+      <li>
+         за літо;
+      </li>
+      <li>
+         за ІІ квартал;
+      </li>
+      <li>
+         за парні місяці (з парними номерами);
+      </li>
+      <li>
+         за місяці, які є початковими у сезоні (весна, літо, осінь, зима).
+      </li>
+   </ul>
+
+   <script>
+      // Вирішив спробувати зробити завдання таким чином, здається так краще коли більше змінних але одна універсальна функція
+
+      const monthNumber = 12,
+            halfOfYear = 6 , 
+            lastSummerMonth = 8,
+            firstMonthOf2qurter = 3,
+            lastMonthOf2qurter = 5,
+            monthlyStep = 1,
+            evenMonthlyStep = 2,
+            thirdStep = 3,
+            startZeroRange = 1
+            
+            
+      //Функція введення даних користувачем
+//==========================================================================================================================================
+
+      function getUserMonthlyPayments(monthNumber) {
+         const paymentsArray = []
+
+         for (let i = 1; i <= monthNumber; i++) {
+            const monthlyPayment = parseFloat(prompt(`Введіть суму платіжки за ${i} місяць`,'2400'))
+            paymentsArray[i] = monthlyPayment// вирішив не пушити, щоб прирівняти номери місяців з їхнім індексом в масиві, с пушенням більше корекцій доводилось робити
+         }
+         return paymentsArray
+      }
+
+//==========================================================================================================================================
+      //Загальна функція для знаходження суми
+
+      function getPaymentsSum(paymentsArray, startRange, endRange, step) {
+         let paymentsSum = 0
+
+         for (let i = startRange; i <= endRange; i += step) {
+            paymentsSum += paymentsArray[i]
+         }
+         return paymentsSum
+      }
+
+//==========================================================================================================================================
+      //Виводимо результат
+
+      const paymentsArray = getUserMonthlyPayments(monthNumber)
+      document.write(`${paymentsArray} <br>`)
+
+      const yearPaymentsSum = getPaymentsSum(paymentsArray, startZeroRange, monthNumber, monthlyStep)
+      document.write(`Сума платіжок за рік складає - ${yearPaymentsSum.toFixed(1)}<br>`)
+
+      const halfYearPaymentsSum = getPaymentsSum(paymentsArray, startZeroRange, halfOfYear, monthlyStep)
+      document.write(`Сума платіжок за перше піврічча складає - ${halfYearPaymentsSum.toFixed(1)}<br>`)
+
+      const secondHalfYearPaymentsSum = getPaymentsSum(paymentsArray, halfOfYear + 1, monthNumber, monthlyStep)// не знаю чи можна так робити з +1, щоб не вводити додаткову змінну, та в сумму не враховувався 6й місяць, таким чином можна було ще декілька змінних прибрати та вирішив на цьому зупинитись
+      document.write(`Сума платіжок за друге піврічча складає - ${secondHalfYearPaymentsSum.toFixed(1)}<br>`)
+
+      const summerPaymentsSum = getPaymentsSum(paymentsArray, halfOfYear, lastSummerMonth, monthlyStep)
+      document.write(`Сума платіжок за літні місяці складає - ${summerPaymentsSum.toFixed(1)}<br>`)
+
+      const secondQurterPaymentsSum = getPaymentsSum(paymentsArray, firstMonthOf2qurter, lastMonthOf2qurter, monthlyStep)
+      document.write(`Сума платіжок за другий квартал складає - ${secondQurterPaymentsSum.toFixed(1)}<br>`)
+
+      const evenMonthPaymentsSum = getPaymentsSum(paymentsArray, evenMonthlyStep , monthNumber, evenMonthlyStep)//Тут використав для початку діапазону Step щоб не створювати ще одну змінну
+      document.write(`Сума платіжок за парні місяці складає - ${evenMonthPaymentsSum.toFixed(1)}<br>`)
+
+      const startSeasonMonthsPaymentsSum = getPaymentsSum(paymentsArray, thirdStep, monthNumber, thirdStep) //Тут використав для початку діапазону Step щоб не створювати ще одну змінну
+      document.write(`Сума платіжок за місяці, які є початковими у сезоні складає - ${startSeasonMonthsPaymentsSum.toFixed(1)}<br>`)
+   </script>
+
+</body>
+
+</html>

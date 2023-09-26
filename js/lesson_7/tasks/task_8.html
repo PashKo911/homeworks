@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Document</title>
+</head>
+
+<body>
+   <h1>
+      Задача 8. Створити функцію, яка виводить банер у функцію передаються: зображення, заголовок та посилання, куди
+      переходимо при кліку на зображення тег img повине знаходитись у середині тега a: </h1>
+
+   <script>
+
+      //Вводимо необхідні дані
+      const imagePath = '../img/image_5.png',
+         bannerTitle = 'Подорож на Мальдіви, тільки для чоловіків віком 18-60',
+         bannerLink = 'https://tro.mil.gov.ua/tro/novobavarskiy-rtck-ta-socialnoyi-pidtrimki/'
+
+      // Описуємо функцію
+      let showBanner = function (path, title, link) {
+         document.write('<div class="banner">')
+
+            document.write(
+               `<a href="${link}">
+                  <img src="${path}" alt="">
+               </a>`)
+
+            document.write('<div class="banner__title">')
+              
+            document.write(
+               `<a href="${link}">
+                  ${title}
+               </a>`)
+
+            document.write('</div')
+         document.write('</div>')
+      }
+
+      // Виводимо результат
+      showBanner(imagePath, bannerTitle, bannerLink)
+
+   </script>
+
+</body>
+
+</html>
