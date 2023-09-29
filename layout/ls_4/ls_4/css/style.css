@@ -13,19 +13,19 @@ img{
 /* Коменти то для себе, я дз як довідник часто використовую */
 
 /*Рівносильні між собою*/
-[fortest]{
+[data-fortest]{
 	color: green;
 }
 
-[fortest="yellow"]{
+[data-fortest="yellow"]{
 	color: yellow;
 }
 
-[fortest~="gray"]{
+[data-fortest~="gray"]{
 	color: blue;
 }
 
-[fortest|="Lorem"]{
+[data-fortest|="Lorem"]{
 	color: purple;
 }
 
