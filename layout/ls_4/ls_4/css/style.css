@@ -1,0 +1,107 @@
+/* скидання стилів*/
+
+@import url('reset.css');
+
+img{
+	max-width: 600px;
+}
+
+[class*='__container']{
+	color: black;
+}
+/*======================*/
+/* Коменти то для себе, я дз як довідник часто використовую */
+
+/*Рівносильні між собою*/
+[fortest]{
+	color: green;
+}
+
+[fortest="yellow"]{
+	color: yellow;
+}
+
+[fortest~="gray"]{
+	color: blue;
+}
+
+[fortest|="Lorem"]{
+	color: purple;
+}
+
+[class^="warning"]{
+	color: red;
+}
+
+[class$="item"]{
+	color: green;
+}
+
+/*=====================*/
+
+/* Вкладені */
+.footer .footer__item{
+	color: pink;
+}
+
+/* Аналог && */
+.page__test.test{
+	color: red;
+}
+
+/* Аналог ||*/
+footer,
+.some-div2,
+.some-div3{
+	color: green;
+}
+/*=====================*/
+/* Комбінації комбінацій*/
+
+.some-div2 div{
+	color: blue;
+}
+
+/* || */
+div.some-div3,
+p.text{
+	color: yellow;
+}
+
+/* && */
+div.some-div3 p.text{
+	color: red;
+}
+
+/*=====================*/
+/* Каскадність */
+
+/* All elements */
+.some-div4 *{
+	color: red;
+}
+
+/* all first childs */
+.some-div4>div{
+	color: blue;
+}
+
+/* next el sibling */
+.some-div4~div{
+	color: blue;
+}
+
+/* next first el sibling */
+.some-div4+div{
+	color: green;
+}
+/*=====================*/
+/* Ну і лідери хіт параду) */
+
+#testing{
+	color: black;
+}
+
+.test5{
+	color: orange !important;
+}
