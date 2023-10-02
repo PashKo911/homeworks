@@ -1,0 +1,95 @@
+/* Скидання стилів */
+
+@import url("fonts.css");
+@import url("reset.css");
+
+body {
+	font-family: "inter", sans-serif;
+	line-height: 1.46;
+	color: #7d7d7d;
+}
+
+a {
+	text-decoration: underline;
+	color: rgb(28, 28, 230);
+}
+
+h1,
+h2,
+h5 {
+	font-family: "DM Serif Text", serif;
+	color: #000;
+}
+
+h1 {
+	font-size: 59px;
+	text-shadow: 3px 3px 3px #000;
+}
+
+h2 {
+	font-style: italic;
+	font-size: 48px;
+	text-transform: capitalize;
+}
+
+h5 {
+	font-size: 24px;
+}
+
+.page p {
+	text-indent: 25px;
+	text-align: justify;
+	text-transform: lowercase;
+	letter-spacing: 1.5px;
+	word-spacing: 10px;
+	/* та це не гарно */
+	/* white-space: nowrap; */
+}
+
+footer p {
+	text-transform: uppercase;
+}
+
+img {
+	max-width: 600px;
+}
+
+.next-chapter {
+	font-family: "DM Serif Text", serif;
+	font-style: italic;
+	font-size: 38px;
+	text-decoration: underline;
+	color: rgb(10, 10, 234);
+	text-transform: uppercase;
+}
+
+/* Тут би добре було окремим файлом стилів, не було б такого гемору, ну зате потренував комбінації стилів та класів */
+
+.page-tasks h2,
+h3,
+h4 {
+	font-family: "Poppins", sans-serif;
+	color: #37393f;
+	font-size: 30px;
+	font-weight: 600;
+	line-height: 1.27;
+}
+
+.page-tasks p {
+	font-size: 18px;
+}
+
+.task-1 h4 {
+	color: #6b77e5;
+	font-size: 20px;
+}
+
+.task-2 h2 {
+	font-size: 40px;
+	font-weight: 700;
+}
+
+li {
+	font-weight: 500;
+	font-size: 18px;
+}
