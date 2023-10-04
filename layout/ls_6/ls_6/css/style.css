@@ -3,7 +3,7 @@
 @import url("reset.css");
 
 [class*="__container"] {
-	max-width: 693px;
+	max-width: 692px;
 	margin: 0 auto;
 }
 
@@ -13,13 +13,153 @@ body {
 	font-size: 18px;
 	line-height: 1.46;
 }
+
+a {
+	text-decoration: underline;
+	color: blue;
+}
+
+.menu__list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.menu__item {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+.page__consulting {
+	margin-bottom: 40px;
+}
+
 .title {
 	font-family: "Poppins", sans-serif;
 	font-weight: 600;
 	line-height: 1.27;
 }
 
+.consulting__body p {
+	/* це вигаданий мною відступ, типу може бути більше параграфів */
+	margin-bottom: 12px;
+}
 .consulting__title {
+	margin-bottom: 12.5px;
 	font-size: 30px;
 	color: #37393f;
+	text-transform: capitalize;
+}
+
+.consulting__img {
+	margin-bottom: 37px;
+	max-width: 692px;
+}
+.page__benefits {
+	margin-bottom: 40px;
+}
+
+.benefits__body {
+	font-size: 0;
+}
+.benefits__body p {
+	font-size: 18px;
+	/* так само вигаданий відступ */
+	margin-bottom: 12px;
+}
+.benefits__header {
+	margin-bottom: 40px;
+}
+.benefits__title {
+	font-size: 20px;
+	color: #6b77e5;
+	margin-bottom: 12px;
+}
+
+.benefits__img {
+	display: inline-block;
+	margin-right: 29px;
+}
+
+.benefits__scroll {
+	max-width: 332px;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 18px;
+}
+
+.scroll__title {
+	font-size: 25px;
+	color: #37393f;
+	margin-bottom: 15px;
+}
+
+.scroll__subtitle {
+	font-size: 20px;
+	color: #40ddb6;
+	margin-bottom: 23.5px;
+}
+
+.scroll__list {
+	line-height: 1.2;
+}
+
+/* Ось на цьому моменті неспівпадіння з макетом, останній li повинен бути на нижньому рівні зображення, де нестиковка щось збагнути не можу, підкажіть якщо не складно */
+.scroll__list li {
+	margin-bottom: 35px;
+}
+/* ===================================== */
+/* контейнер інший, найпростіший спосіб перевизначити на мою думку */
+
+[class*="__box"] {
+	max-width: 1169px;
+	margin: 0 auto;
+}
+
+.page__jewelry {
+	margin-bottom: 140px;
+}
+
+.jewelry {
+}
+
+.jewelry__body {
+	font-size: 0;
+}
+
+.jewelry__content {
+	display: inline-block;
+	max-width: 563px;
+	margin-right: 38px;
+	color: #474747;
+	font-size: 20px;
+	line-height: 1.8;
+	padding-top: 21px;
+}
+
+.jewelry__content h3 {
+	color: #d06b00;
+	font-size: 28px;
+	margin-bottom: 13px;
+	line-height: 1.2;
+}
+.jewelry__content h2 {
+	color: #0e333d;
+	font-family: "DM Serif Text", serif;
+	font-size: 59px;
+	line-height: 1.46;
+	margin-bottom: 25px;
+	text-transform: capitalize;
+}
+
+.jewelry__content p {
+	/* вигаданий відступ */
+	margin-bottom: 15px;
+}
+.jewelry__images {
+	display: inline-block;
+	vertical-align: top;
+}
+.jewelry__images img:not(:last-child) {
+	margin-right: 22px;
 }
