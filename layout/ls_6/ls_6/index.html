@@ -11,27 +11,40 @@
 
 <body>
 	<header class="header">
-		<div class="header__menu menu">
-			<ul class="menu__list">
-				<li class="menu__item">
-					<a href="" class="menu__link">
-
-					</a>
-				</li>
-				<li class="menu__item">
-					<a href="" class="menu__link">
-
-					</a>
-				</li>
-			</ul>
+		<div class="header__container">
+			<div class="header__menu menu">
+				<ul class="menu__list">
+					<li class="menu__item">
+						<a href="#consulting-id" class="menu__link">
+							Consulting
+						</a>
+					</li>
+					<li class="menu__item">
+						<a href="#benefits-id" class="menu__link">
+							Benefits
+						</a>
+					</li>
+					<li class="menu__item">
+						<a href="#jewelry-id" class="menu__link">
+							Jewelry
+						</a>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</header>
 
+	<style>
+		.menu__link {
+			display: inline-block;
+		}
+	</style>
+
 	<main class="page">
-		<div class="page__consulting consulting">
+		<div id="consulting-id" class="page__consulting consulting">
 			<div class="consulting__container">
 				<div class="consulting__body">
-					<img src="img/management-img.png" alt="management">
+					<img class="consulting__img" src="img/management-img.jpg" alt="management">
 					<h2 class="consulting__title title">
 						Why Us For International Business Management Consulting!
 					</h2>
@@ -46,10 +59,82 @@
 				</div>
 			</div>
 		</div>
+		<div id="benefits-id" class="page__benefits benefits">
+			<div class="benefits__container">
+				<div class="benefits__body">
+					<div class="benefits__header">
+						<h4 class="benefits__title title">
+							Proactively envisioned multimedia based expertise media growth superior collaboration.
+						</h4>
+						<p>
+							One-to-one customer service with robust ideas dynamically innovated resources for reliable
+							supply engage web services cutting-edge deliverables.
+						</p>
+					</div>
+					<div class="benefits__body">
+						<img class="benefits__img" src="img/benefits-img.jpg" alt="benefits">
+						<div class="benefits__scroll scroll">
+							<div class="scroll__header">
+								<h3 class="scroll__title title">
+									Our benefits
+								</h3>
+								<h4 class="scroll__subtitle title">
+									Incubate standards compliant
+									channels benefits.
+								</h4>
+							</div>
+							<ul class="scroll__list">
+								<li>
+									Credibly reintermediate backend
+								</li>
+								<li>
+									Holistically foster superior
+								</li>
+								<li>
+									Distinctively exploit optimal
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="jewelry-id" class="page__jewelry jewelry">
+			<div class="jewelry__box">
+				<!-- jewelry__body довелось створити, не хотів font-size: 0; вішати на контейнер -->
+				<div class="jewelry__body">
+					<div class="jewelry__content">
+						<h3>
+							WHAT WE DO
+						</h3>
+						<h2>
+							We Develop Create Custom Jewels.
+						</h2>
+						<p>
+							There are many variations of passages of Lorem Ipsum available, but the majority have
+							suffered
+							alteration in some form, by injected humour, or randomised words which don't look even
+							slightly
+							believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there
+							isn't
+							anything embarrassing hidden in the middle of text
+						</p>
+					</div>
+					<div class="jewelry__images">
+						<img src="img/jewel-1.jpg" alt="jewel-1">
+						<img src="img/jewel-2.jpg" alt="jewel-2">
+					</div>
+				</div>
+			</div>
+		</div>
 	</main>
 
 	<footer class="footer">
-
+		<div class="footer__box">
+			<p>Lorem ipsum dolor sit amet.</p>
+			<p>Lorem ipsum dolor sit amet.</p>
+			<p>Lorem ipsum dolor sit amet.</p>
+		</div>
 	</footer>
 </body>
 
