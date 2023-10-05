@@ -29,7 +29,9 @@ a {
 	display: inline-block;
 	margin-right: 10px;
 }
-
+.header {
+	margin-bottom: 30px;
+}
 .page__consulting {
 	margin-bottom: 40px;
 }
@@ -56,7 +58,7 @@ a {
 	max-width: 692px;
 }
 .page__benefits {
-	margin-bottom: 40px;
+	margin-bottom: 50px;
 }
 
 .benefits__body {
@@ -73,7 +75,7 @@ a {
 .benefits__title {
 	font-size: 20px;
 	color: #6b77e5;
-	margin-bottom: 12px;
+	margin-bottom: 15px;
 }
 
 .benefits__img {
@@ -109,7 +111,7 @@ a {
 	margin-bottom: 35px;
 }
 /* ===================================== */
-/* контейнер інший, найпростіший спосіб перевизначити на мою думку */
+/* контейнер інший, вирішив створити ще один */
 
 [class*="__box"] {
 	max-width: 1169px;
@@ -118,9 +120,6 @@ a {
 
 .page__jewelry {
 	margin-bottom: 140px;
-}
-
-.jewelry {
 }
 
 .jewelry__body {
@@ -162,4 +161,58 @@ a {
 }
 .jewelry__images img:not(:last-child) {
 	margin-right: 22px;
+}
+/* =========================== */
+/* test-block */
+
+.test__display p {
+	/* display: inline-block;
+	padding: 10px; */
+	display: inline;
+	margin: 0 10px;
+}
+.test__boxsizing {
+	max-width: 500px;
+	margin: 20px;
+	/* padding: 40px; */
+	padding: 40px 10px 5px;
+	border: 15px solid #40ddb6;
+	box-sizing: content-box;
+}
+
+.test__margin {
+	margin-bottom: 100px;
+}
+.block {
+	width: 300px;
+	height: 300px;
+	display: inline-block;
+}
+.test__block1 {
+	background-color: rgba(80, 208, 202, 0.457);
+}
+.test__block2 {
+	background-color: rgba(107, 119, 229, 0.429);
+	margin-left: -40px;
+	margin-bottom: -50px;
+}
+.test__block3 {
+	background-color: rgba(220, 217, 54, 0.443);
+	margin-left: -400px;
+}
+
+.par-1 {
+	margin-bottom: 40px;
+}
+.par-2 {
+	margin-top: 20px;
+}
+.test__over {
+	background-color: #f39c9c;
+	width: 400px;
+	height: 400px;
+	/* overflow: auto; */
+	/* overflow: hidden; */
+	/* overflow: scroll; */
+	overflow: visible;
 }
