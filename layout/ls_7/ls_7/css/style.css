@@ -17,24 +17,26 @@ body {
 	margin-bottom: 150px;
 }
 .page__licencing {
+	margin-bottom: 50px;
 }
 
 .licencing {
 }
 
-.licencing__container {
-}
-
 .licencing__header {
 	text-align: center;
+	margin-bottom: 70px;
 }
+
 .licencing__suptitle {
 	vertical-align: middle;
 }
+
 .licencing__template {
 	display: inline-block;
 	margin-bottom: 16px;
 	font-size: 0;
+	vertical-align: middle;
 }
 
 .licencing__template span {
@@ -42,28 +44,284 @@ body {
 	height: 12px;
 	border-left: 12px solid #40ddb6;
 	margin-right: 6px;
-	vertical-align: middle;
 }
 
-.licencing__suptitle {
-	display: inline-block;
+.licencing__template h5 {
 	font-size: 18px;
-	vertical-align: middle;
-	line-height: 1.2;
+	line-height: 1.21;
 	color: #37393f;
 	font-weight: 500;
-}
-
-.licencing__title {
+	text-transform: capitalize;
 }
 
 .title {
 	color: #37393f;
 	font-family: "Poppins", sans-serif;
-	font-size: 60px;
 	font-weight: 700;
-	line-height: 1.21;
+	line-height: 1.2;
 }
 
+.licencing__title {
+	font-size: 60px;
+}
+
+/* ======== licencing__body====== */
 .licencing__body {
+}
+
+.licencing__body span {
+	color: #40ddb6;
+}
+.licencing__body h4 span {
+	font-weight: 400;
+	/* здається саме в цьому випадку актуально використати margin-left */
+	margin-left: 16px;
+}
+
+.licencing__body h3 {
+	font-size: 40px;
+	margin-bottom: 11px;
+}
+
+.licencing__body h4 {
+	font-size: 30px;
+	margin-bottom: 12.5px;
+}
+
+.licencing {
+}
+
+.licencing__icons {
+	margin-bottom: 104.5px;
+}
+
+.icons {
+}
+.icons__text {
+	margin-bottom: 36.5px;
+}
+
+.icons__text p {
+	/* вигаданий відступ */
+	margin-bottom: 10px;
+}
+.icons__subtitle {
+}
+.subtitle {
+}
+.licencing__photography {
+	margin-bottom: 110px;
+}
+.photography {
+}
+
+.photography__text {
+	margin-bottom: 28.5px;
+}
+
+.photography__subtitle {
+}
+
+.photography__subtitle p {
+	margin-bottom: 38px;
+}
+
+.licencing__fonts {
+}
+
+.fonts {
+}
+.fonts__text {
+}
+/* ========== Project Information========== */
+
+[class*="__box"] {
+	max-width: 860px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+.page__information {
+	margin-bottom: 100px;
+}
+
+.page__information h2 {
+	font-size: 40px;
+	line-height: 1.27;
+	margin-bottom: 13px;
+}
+.information {
+}
+
+.information__text {
+	margin-bottom: 35px;
+}
+
+.information__list {
+	margin-bottom: 35px;
+}
+
+.information__list li {
+	margin-bottom: 30px;
+	font-weight: 500;
+	padding-left: 43px;
+}
+/* ===========  Clothing for Women Online in India =============== */
+
+/*  */
+
+.page__clothing {
+	margin-bottom: 160px;
+}
+
+.clothing {
+}
+
+.clothing__content {
+	max-width: 1270px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+.page__clothing h2,
+h3 {
+	font-family: "Core Sans C", sans-serif;
+	font-weight: 650;
+}
+
+.clothing__header {
+	margin-bottom: 30px;
+	font-size: 0;
+}
+
+.clothing__obround {
+	display: inline-block;
+	width: 6px;
+	height: 28px;
+	border-radius: 10px;
+	background-color: #8a33fd;
+	vertical-align: top;
+	margin-right: 15px;
+}
+
+.clothing__header h2 {
+	color: #3c4242;
+	font-size: 28px;
+	line-height: 1.2;
+	letter-spacing: 0.56px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.clothing__reexplore {
+	padding-left: 21px;
+	margin-bottom: 25px;
+}
+
+.clothing__reexplore h3,
+.clothing__destination h3 {
+	color: #807d7e;
+	font-size: 20px;
+	line-height: 1.67;
+	letter-spacing: 0.4px;
+	margin-bottom: 25px;
+}
+
+.clothing__text {
+	color: #807d7e;
+	font-family: "Causten", sans-serif;
+	font-size: 20px;
+	line-height: 1.67;
+	letter-spacing: 0.4px;
+}
+
+.clothing__text p {
+	margin-bottom: 20px;
+}
+
+.clothing__destination {
+	padding-left: 21px;
+}
+.clothing__link {
+	color: #807d7e;
+	font-family: Core Sans C;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 1.67;
+	letter-spacing: 0.4px;
+}
+.clothing__link {
+	display: inline-block;
+	border-bottom: 1px solid;
+}
+/* ====== Jewels ======== */
+
+.page__jewels {
+	margin-bottom: 160px;
+}
+.jewels {
+}
+.jewels__case {
+	max-width: 1133px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+.jewels__body {
+	font-family: "Cormorant Infant", serif;
+	font-weight: 700;
+	line-height: 1;
+	font-size: 0;
+}
+
+.jewels__content {
+	display: inline-block;
+	max-width: 503px;
+	padding-top: 70px;
+	margin-right: 89px;
+}
+
+.jewels__content h3 {
+	color: #d58417;
+	font-size: 20px;
+	margin-bottom: 27px;
+}
+
+.jewels__content h2 {
+	color: #000;
+	font-size: 64px;
+	margin-bottom: 31px;
+}
+.jewels__text {
+	color: #606060;
+	font-size: 30px;
+	line-height: 1.4;
+}
+
+.jewels__text p {
+	margin-bottom: 15px;
+}
+
+.jewels__images {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.jewels__img {
+	border-radius: 235px;
+	border: 1px solid #502203;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.woman-left {
+	margin: 14px 10px -20px -10px;
+}
+
+.woman-right {
+	margin: 19px 11px -13px -10px;
+}
+.jewels__img:not(:last-child) {
+	margin-right: 20px;
 }
