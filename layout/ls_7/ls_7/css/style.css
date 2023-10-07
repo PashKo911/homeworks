@@ -28,15 +28,9 @@ body {
 	margin-bottom: 70px;
 }
 
-.licencing__suptitle {
-	vertical-align: middle;
-}
-
 .licencing__template {
-	display: inline-block;
 	margin-bottom: 16px;
 	font-size: 0;
-	vertical-align: middle;
 }
 
 .licencing__template span {
