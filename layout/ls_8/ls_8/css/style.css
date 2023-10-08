@@ -15,6 +15,16 @@ body {
 	font-size: 18px;
 }
 
+h2,
+h3 {
+	color: #37393f;
+	font-family: "Poppins", sans-serif;
+}
+
+.page {
+	margin-bottom: 100px;
+}
+
 .page__care {
 }
 .care {
@@ -24,6 +34,8 @@ body {
 }
 
 .care__header {
+	margin-bottom: 20px;
+	max-width: 414px;
 }
 
 .care__header span {
@@ -34,7 +46,7 @@ body {
 	margin-right: 6px;
 }
 
-.care__header h5 {
+.care__header h4 {
 	color: #37393f;
 	font-weight: 500;
 	line-height: 1.2;
@@ -43,8 +55,6 @@ body {
 }
 
 .care__header h2 {
-	color: #37393f;
-	font-family: "Poppins", sans-serif;
 	font-size: 40px;
 	font-weight: 700;
 	line-height: 1.21;
@@ -60,7 +70,8 @@ body {
 }
 
 .care__list {
-	max-width: 391px;
+	max-width: 392px;
+	margin-bottom: 43px;
 }
 .care__item {
 	min-height: 30px;
@@ -71,4 +82,81 @@ body {
 
 .care__item span {
 	vertical-align: middle;
+	font-family: "Poppins", sans-serif;
+	font-size: 20px;
+	line-height: 1;
+}
+
+.care__content {
+	font-size: 0;
+	margin-bottom: 37px;
+}
+
+.content-care {
+}
+.content-care__body {
+	display: inline-block;
+	font-size: 0;
+	border: 1px solid #e3e3e3;
+	max-width: 297px;
+	padding: 31px 32px 32px;
+	margin-right: 21px;
+}
+
+/* .content-care__body:not(:last-child) {
+	margin-right: 21px;
+} */
+
+.content-care__img {
+	display: inline-block;
+	vertical-align: top;
+	width: 39px;
+	height: 41px;
+	margin-right: 19px;
+}
+.sertificate {
+	background: url("../img/sertificate.svg") no-repeat;
+}
+.content-care__article {
+	display: inline-block;
+	max-width: 173px;
+}
+
+.content-care__article h3 {
+	padding-top: 5px;
+	margin-bottom: 8px;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 1;
+	text-transform: capitalize;
+}
+.content-care__text p {
+	font-size: 16px;
+	line-height: 1.35;
+	margin-bottom: 10px;
+}
+
+.cup {
+	background: url("../img/cup.svg") no-repeat;
+}
+
+/* на цьому моменті подивився 9 заняття:)) */
+
+.care__button {
+	display: inline-block;
+	vertical-align: middle;
+	background-color: #6b77e5;
+	padding: 21px 27px 22px;
+	color: #fff;
+	font-weight: 600;
+	line-height: 1;
+	text-transform: capitalize;
+}
+
+.care__content > *:last-child {
+	margin-right: 0;
+}
+
+.care__body > *:last-child {
+	margin-bottom: 0;
 }
