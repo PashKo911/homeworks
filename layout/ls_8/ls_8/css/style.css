@@ -1,0 +1,74 @@
+@import url("fonts.css");
+
+@import url("reset.css");
+
+/* ======== care======== */
+[class*="__container"] {
+	max-width: 651px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+body {
+	color: #7d7d7d;
+	font-family: "Inter", sans-serif;
+	font-size: 18px;
+}
+
+.page__care {
+}
+.care {
+}
+
+.care__body {
+}
+
+.care__header {
+}
+
+.care__header span {
+	width: 12px;
+	height: 12px;
+	background-color: #40ddb6;
+	display: inline-block;
+	margin-right: 6px;
+}
+
+.care__header h5 {
+	color: #37393f;
+	font-weight: 500;
+	line-height: 1.2;
+	margin-bottom: 16px;
+	text-transform: capitalize;
+}
+
+.care__header h2 {
+	color: #37393f;
+	font-family: "Poppins", sans-serif;
+	font-size: 40px;
+	font-weight: 700;
+	line-height: 1.21;
+	text-transform: capitalize;
+}
+
+.care__text {
+	line-height: 1.46;
+	margin-bottom: 20px;
+}
+.care__text p {
+	margin-bottom: 15px;
+}
+
+.care__list {
+	max-width: 391px;
+}
+.care__item {
+	min-height: 30px;
+	background: url("../img/check.svg") no-repeat;
+	padding-left: 35px;
+	margin-bottom: 23px;
+}
+
+.care__item span {
+	vertical-align: middle;
+}
