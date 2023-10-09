@@ -239,22 +239,22 @@ h3 {
 }
 
 .projects__monitor {
-	background: url("../img/monitor.jpg") 50% / cover no-repeat;
+	background: url("../img/monitor.jpg") 50% no-repeat;
 }
 .projects__sofa {
-	background: url("../img/sofa.jpg") 50% / cover no-repeat;
+	background: url("../img/sofa.jpg") 50% no-repeat;
 }
 .projects__phone {
-	background: url("../img/phone.jpg") 50% / cover no-repeat;
+	background: url("../img/phone.jpg") 50% no-repeat;
 }
 .projects__woman {
-	background: url("../img/woman.jpg") 50% / cover no-repeat;
+	background: url("../img/woman.jpg") 50% no-repeat;
 }
 .projects__pen {
-	background: url("../img/pen.jpg") 50% / cover no-repeat;
+	background: url("../img/pen.jpg") 50% no-repeat;
 }
 .projects__coffee {
-	background: url("../img/coffee.jpg") 50% / cover no-repeat;
+	background: url("../img/coffee.jpg") 50% no-repeat;
 }
 
 .projects__info {
@@ -457,4 +457,70 @@ h3 {
 	font-weight: 650;
 	display: inline-block;
 	border-bottom: 1px solid;
+}
+/* =============== Fashion================ */
+.page__fashion {
+}
+
+.fashion {
+}
+
+.fashion__box {
+	max-width: 1270px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+.fashion__body {
+	font-size: 0;
+}
+.fashion__leaves {
+	vertical-align: top;
+	display: inline-block;
+	min-height: 640px;
+	width: 614px;
+	background: url("../img/leaves.jpg") no-repeat;
+}
+
+.fashion__leaves h2 {
+	color: #fff;
+	font-family: "Core Sans C", sans-serif;
+	font-size: 34px;
+	font-weight: 800;
+	line-height: 1.47;
+	letter-spacing: 0.208px;
+	text-transform: uppercase;
+}
+.fashion__text {
+}
+.fashion__text p {
+	color: #fff;
+	font-family: "Causten", sans-serif;
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 1.2;
+	letter-spacing: 1px;
+}
+.fashion__link {
+	display: inline-block;
+	width: 168px;
+	height: 46px;
+
+	margin-left: 50px;
+	padding: 12px 44px;
+	background-color: #fff;
+}
+.fashion__link a {
+	color: #3c4242;
+	text-align: center;
+	font-family: "Causten", sans-serif;
+	font-weight: 600;
+	line-height: 1.2;
+}
+.fashion__people {
+	vertical-align: top;
+	display: inline-block;
+	min-height: 640px;
+	width: 626px;
+	background: url("../img/people.jpg");
 }
