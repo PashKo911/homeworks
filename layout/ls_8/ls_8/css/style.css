@@ -453,14 +453,8 @@ h3 {
 
 .clothing__link {
 	color: #807d7e;
-	font-family: Core Sans C;
-	font-size: 20px;
-	font-style: normal;
-	font-weight: 600;
-	line-height: 1.67;
-	letter-spacing: 0.4px;
-}
-.clothing__link {
+	font-family: "Core Sans C", sans-serif;
+	font-weight: 650;
 	display: inline-block;
 	border-bottom: 1px solid;
 }
