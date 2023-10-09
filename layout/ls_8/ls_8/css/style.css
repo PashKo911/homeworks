@@ -20,6 +20,28 @@ h3 {
 	color: #37393f;
 	font-family: "Poppins", sans-serif;
 }
+.header {
+	margin-top: 10px;
+	margin-bottom: 100px;
+}
+.header__container {
+}
+.header__list {
+	text-align: right;
+}
+
+.header__list li {
+	color: #37393f;
+	font-family: "Poppins", sans-serif;
+	display: inline-block;
+	text-transform: uppercase;
+	border-bottom: 1px solid;
+	margin-right: 15px;
+}
+
+ul > *:last-child {
+	margin-right: 0;
+}
 
 .page {
 	margin-bottom: 100px;
@@ -116,7 +138,7 @@ h3 {
 	margin-right: 19px;
 }
 .sertificate {
-	background: url("../img/sertificate.svg") no-repeat;
+	background: url("../img/sertificate.svg") center / cover no-repeat;
 }
 .content-care__article {
 	display: inline-block;
@@ -138,7 +160,7 @@ h3 {
 }
 
 .cup {
-	background: url("../img/cup.svg") no-repeat;
+	background: url("../img/cup.svg") center / cover no-repeat;
 }
 
 /* на цьому моменті подивився 9 заняття:)) */
@@ -239,22 +261,22 @@ h3 {
 }
 
 .projects__monitor {
-	background: url("../img/monitor.jpg") 50% no-repeat;
+	background: url("../img/monitor.jpg") 50% / cover no-repeat;
 }
 .projects__sofa {
-	background: url("../img/sofa.jpg") 50% no-repeat;
+	background: url("../img/sofa.jpg") 50% / cover no-repeat;
 }
 .projects__phone {
-	background: url("../img/phone.jpg") 50% no-repeat;
+	background: url("../img/phone.jpg") 50% / cover no-repeat;
 }
 .projects__woman {
-	background: url("../img/woman.jpg") 50% no-repeat;
+	background: url("../img/woman.jpg") 50% / cover no-repeat;
 }
 .projects__pen {
-	background: url("../img/pen.jpg") 50% no-repeat;
+	background: url("../img/pen.jpg") 50% / cover no-repeat;
 }
 .projects__coffee {
-	background: url("../img/coffee.jpg") 50% no-repeat;
+	background: url("../img/coffee.jpg") 50% / cover no-repeat;
 }
 
 .projects__info {
@@ -268,7 +290,9 @@ h3 {
 	line-height: 1.27;
 	margin-bottom: 10px;
 }
-
+.projects__info a {
+	border-bottom: 1px solid;
+}
 .projects__date {
 	font-size: 14px;
 	line-height: 1.46;
@@ -280,81 +304,9 @@ h3 {
 	margin-right: 3.35px;
 	width: 22px;
 	height: 22px;
-	background: url("../img/calendar.svg");
-}
-/* =========How We Work=================== */
-.page__work {
-	margin-bottom: 100px;
-}
-.work {
-}
-.work__box {
-}
-.box {
-}
-.work__header {
-	max-width: 283px;
-	text-align: center;
-	margin: 0 auto 72px;
+	background: url("../img/calendar.svg") center / cover no-repeat;
 }
 
-.work__content {
-	font-size: 0;
-}
-
-.work__content > *:not(:last-child) {
-	margin-right: 31px;
-}
-
-.work__content h3 {
-	font-size: 25px;
-	font-weight: 600;
-	line-height: 1.27;
-	margin-bottom: 16px;
-}
-
-.work__cart {
-	padding: 58px 43px;
-	width: 386px;
-	background-color: #f4f4f4;
-	display: inline-block;
-	text-align: center;
-}
-.work__img {
-	margin-top: -90px;
-	margin-bottom: 22px;
-	height: 72px;
-}
-
-.work-calendar {
-	background: url("../img/calendar-work.svg") 50% no-repeat;
-}
-
-.work-pazle {
-	background: url("../img/pazle.svg") 50% no-repeat;
-}
-
-.work-check {
-	background: url("../img/check-work.svg") 50% no-repeat;
-}
-
-.work__text {
-	margin-bottom: 37px;
-	max-width: 300px;
-}
-
-.work__text p {
-	font-size: 18px;
-	line-height: 1.46;
-}
-.work__link {
-	color: #6b77e5;
-	font-size: 18px;
-	font-weight: 600;
-	line-height: 1.2;
-	text-transform: capitalize;
-	text-decoration: underline;
-}
 /* ===== Clothing for Women Online in India ======= */
 
 .page__clothing {
@@ -460,6 +412,7 @@ h3 {
 }
 /* =============== Fashion================ */
 .page__fashion {
+	margin-bottom: 150px;
 }
 
 .fashion {
@@ -475,11 +428,12 @@ h3 {
 	font-size: 0;
 }
 .fashion__leaves {
+	padding: 183px 74px 175px;
 	vertical-align: top;
 	display: inline-block;
 	min-height: 640px;
 	width: 614px;
-	background: url("../img/leaves.jpg") no-repeat;
+	background: url("../img/leaves.jpg") center / cover no-repeat;
 }
 
 .fashion__leaves h2 {
@@ -490,8 +444,15 @@ h3 {
 	line-height: 1.47;
 	letter-spacing: 0.208px;
 	text-transform: uppercase;
+	margin-bottom: 17px;
 }
+
+.fashion__content {
+	max-width: 466px;
+}
+
 .fashion__text {
+	margin-bottom: 48px;
 }
 .fashion__text p {
 	color: #fff;
@@ -505,22 +466,67 @@ h3 {
 	display: inline-block;
 	width: 168px;
 	height: 46px;
-
-	margin-left: 50px;
-	padding: 12px 44px;
-	background-color: #fff;
-}
-.fashion__link a {
 	color: #3c4242;
-	text-align: center;
+	font-size: 18px;
 	font-family: "Causten", sans-serif;
 	font-weight: 600;
 	line-height: 1.2;
+	padding: 12px 44px;
+	background-color: #fff;
+	border-radius: 8px;
 }
+
 .fashion__people {
 	vertical-align: top;
 	display: inline-block;
 	min-height: 640px;
-	width: 626px;
-	background: url("../img/people.jpg");
+	min-width: 626px;
+	background: url("../img/people.jpg") center / cover no-repeat;
+}
+
+/* ============== test ================= */
+
+.page__test {
+}
+.test {
+}
+.test__el1 {
+	margin: 0 auto;
+	width: 1000px;
+	height: 400px;
+	margin-bottom: 30px;
+	border: 1px dashed black;
+	background: url("../img/people.jpg") 0 0 / contain no-repeat, rgba(64, 221, 182, 0.775);
+}
+.test__el2 {
+	margin: 0 auto;
+	width: 1000px;
+	height: 400px;
+	margin-bottom: 30px;
+	border: 1px dashed black;
+	background: url("../img/people.jpg") center / cover no-repeat, rgba(64, 221, 182, 0.775);
+}
+.test__el3 {
+	margin: 0 auto;
+	width: 1000px;
+	height: 400px;
+	margin-bottom: 30px;
+	border: 1px dashed black;
+	background: url("../img/people.jpg") 20px 20px / 200px no-repeat,
+		url("../img/sofa.png") 75% 75% / 30% no-repeat, url("../img/coffee.jpg") 100% 100% / 300px fixed;
+}
+
+.test__el4 {
+	padding: 20px;
+	overflow: scroll;
+	margin: 0 auto;
+	width: 1000px;
+	height: 400px;
+	margin-bottom: 30px;
+	border: 1px dashed black;
+	background-image: url("../img/phone.jpg"), url("../img/monitor.jpg"), url("../img/pen.jpg");
+	background-repeat: no-repeat;
+	background-position: right, left, 50%;
+	background-size: 500px, auto auto, cover;
+	background-attachment: local, fixed, scroll;
 }
