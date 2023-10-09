@@ -187,8 +187,6 @@ body {
 }
 /* ===========  Clothing for Women Online in India =============== */
 
-/*  */
-
 .page__clothing {
 	margin-bottom: 160px;
 }
@@ -206,6 +204,11 @@ body {
 h3 {
 	font-family: "Core Sans C", sans-serif;
 	font-weight: 650;
+}
+
+.clothing__content span {
+	font-weight: 700;
+	letter-spacing: 0.4px;
 }
 
 .clothing__header {
