@@ -15,7 +15,9 @@ h3 {
 	color: #37393f;
 	font-family: "Poppins", sans-serif;
 }
-
+.header {
+	margin-bottom: 100px;
+}
 .page {
 	margin-bottom: 100px;
 }
@@ -50,6 +52,7 @@ h3 {
 	width: 12px;
 	height: 12px;
 	background-color: #40ddb6;
+	margin-right: 6px;
 }
 
 .title h4 {
