@@ -429,7 +429,7 @@ h2 {
 	display: inline-block;
 	vertical-align: middle;
 	max-width: 460px;
-	margin-top: 118px;
+	padding-top: 118px;
 	margin-right: 22px;
 }
 
@@ -459,21 +459,19 @@ h2 {
 }
 
 .cart-jewels {
+	max-width: 334px;
 }
 .cart-jewels__link {
 	margin-bottom: 34px;
 }
 
 .cart-jewels__img {
-	max-width: 334px;
 	border: 1px solid #000;
 }
 
 .cart-jewels__img img {
 	margin: 9px -10px -9px 10px;
 	width: 100%;
-}
-.cart-jewels__title {
 }
 
 .cart-jewels__title {
@@ -491,4 +489,15 @@ h2 {
 
 .cart-jewels__title > *:last-child {
 	margin-bottom: 0;
+}
+
+.cart-jewels__suptitle {
+	margin: -32px 0 31px;
+}
+
+.cart-jewels__suptitle h3 {
+	color: #000;
+	font-family: "Cormorant Infant", serif;
+	font-size: 46px;
+	line-height: 1.13;
 }
