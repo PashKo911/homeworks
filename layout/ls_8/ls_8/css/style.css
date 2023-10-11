@@ -13,6 +13,7 @@ body {
 	color: #7d7d7d;
 	font-family: "Inter", sans-serif;
 	font-size: 18px;
+	line-height: 1.46;
 }
 
 h2,
@@ -61,10 +62,9 @@ ul > *:last-child {
 	max-width: 414px;
 }
 
-.care__header span {
-	width: 12px;
-	height: 12px;
-	background-color: #40ddb6;
+.title h4 {
+	background: url("../img/squre.png") 0 center no-repeat;
+	padding-left: 18px;
 	display: inline-block;
 	margin-right: 6px;
 }
@@ -85,7 +85,6 @@ ul > *:last-child {
 }
 
 .care__text {
-	line-height: 1.46;
 	margin-bottom: 20px;
 }
 .care__text p {
@@ -433,6 +432,7 @@ h3 {
 	display: inline-block;
 	min-height: 640px;
 	width: 614px;
+	border-radius: 8px 0 0 8px;
 	background: url("../img/leaves.jpg") center / cover no-repeat;
 }
 
@@ -479,6 +479,7 @@ h3 {
 	display: inline-block;
 	min-height: 640px;
 	min-width: 626px;
+	border-radius: 0 8px 8px 0;
 	background: url("../img/people.jpg") center / cover no-repeat;
 }
 
