@@ -156,7 +156,7 @@ h3 {
 /* ==========Care================= */
 
 .page__care {
-	/* margin-bottom: 150px; */
+	margin-bottom: 150px;
 }
 .care {
 }
@@ -234,9 +234,18 @@ h3 {
 	text-transform: capitalize;
 	padding: 21px 35px 22px 35px;
 	background: #6b77e5;
-	margin-bottom: 38px;
 }
 /* ==============CONSULTING============== */
+
+.page__consulting {
+	margin-bottom: 120px;
+}
+
+.page__consulting h3 {
+	text-transform: capitalize;
+	font-weight: 600;
+	line-height: 1.27;
+}
 
 .consulting__container {
 	max-width: 723px;
@@ -244,51 +253,90 @@ h3 {
 	margin: 0 auto;
 }
 
-.consulting__body p {
-	/* це вигаданий мною відступ, типу може бути більше параграфів */
-	margin-bottom: 12px;
+.consulting__img {
+	background: url("../img/people-on-meeting.jpg") center / cover no-repeat;
+	margin-bottom: 37px;
+	width: 100%;
+	min-width: 380px;
+	min-height: 453px;
 }
+
 .consulting__title {
 	margin-bottom: 12.5px;
 	font-size: 30px;
-	color: #37393f;
 	text-transform: capitalize;
+	font-weight: 600;
+	line-height: 1.27;
 }
 
-.consulting__img {
-	margin-bottom: 37px;
-	max-width: 692px;
+.consulting__text {
+	margin-bottom: 15px;
 }
+.consulting__text p {
+	line-height: 1.46;
+}
+
+.consulting__text > *:not(:last-child) {
+	margin-bottom: 12px;
+}
+
+.consulting__body > *:last-child {
+	margin-bottom: 0;
+}
+
+.consulting__body {
+	margin-bottom: 42px;
+}
+
 /* ============== BENEFITS============= */
-.benefits__container {
-	max-width: 723px;
-	padding: 0 15px;
-	margin: 0 auto;
-}
-.page__benefits {
+
+.consulting__benefits {
 	margin-bottom: 50px;
 }
 
-.benefits__body {
+.benefits__content {
 	font-size: 0;
 }
-.benefits__body p {
-	font-size: 18px;
-	/* так само вигаданий відступ */
-	margin-bottom: 12px;
+
+.benefits__content > *:last-child {
+	margin-bottom: 0;
 }
+
 .benefits__header {
 	margin-bottom: 40px;
 }
+
+.benefits__header > *:not(:last-child) {
+	margin-bottom: 15px;
+}
+
 .benefits__title {
 	font-size: 20px;
 	color: #6b77e5;
+	font-weight: 600;
+	line-height: 1.27;
+}
+
+.benefits__text p {
+	font-size: 18px;
+	line-height: 1.46;
+}
+
+.benefits__text > *:not(:last-child) {
 	margin-bottom: 15px;
+}
+
+.benefits__body {
+	margin-bottom: 50px;
 }
 
 .benefits__img {
 	display: inline-block;
 	margin-right: 29px;
+	background: url("../img/desktop.jpg") center / cover no-repeat;
+	width: 47.76%;
+	min-width: 260px;
+	min-height: 261px;
 }
 
 .benefits__scroll {
@@ -300,11 +348,13 @@ h3 {
 
 .scroll__title {
 	font-size: 25px;
-	color: #37393f;
 	margin-bottom: 15px;
 }
 
 .scroll__subtitle {
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+	line-height: 1.27;
 	font-size: 20px;
 	color: #40ddb6;
 	margin-bottom: 23.5px;
@@ -314,7 +364,130 @@ h3 {
 	line-height: 1.2;
 }
 
-/* Ось на цьому моменті неспівпадіння з макетом, останній li повинен бути на нижньому рівні зображення, де нестиковка щось збагнути не можу, підкажіть якщо не складно */
+.scroll__list li:not(:last-child) {
+	margin-bottom: 30px;
+}
+
 .scroll__list li {
-	margin-bottom: 35px;
+	min-height: 27px;
+	padding-top: 2.5px;
+	padding-left: 35px;
+	background: url("../img/check.svg") no-repeat;
+}
+
+/* ============== */
+
+.consulting__questions {
+}
+.questions h3 {
+	font-size: 30px;
+	margin-bottom: 8px;
+}
+.questions__text {
+	margin-bottom: 15px;
+}
+
+.questions__text p {
+	line-height: 1.46;
+}
+
+.questions__text > *:not(:last-child) {
+	margin-bottom: 15px;
+}
+
+.consulting__questions > *:last-child {
+	margin-bottom: 0;
+}
+/* ========== JEWELS ============= */
+
+.page__jewels {
+}
+.jewels {
+}
+.jewels__container {
+	max-width: 1244px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+.jewels__body {
+	font-size: 0;
+}
+
+.jewels__body > *:last-child {
+	margin-right: 0;
+}
+
+.jewels__body,
+h2 {
+	color: #000;
+	font-family: "Cormorant Infant", serif;
+	font-weight: 700;
+}
+.jewels__header {
+	display: inline-block;
+	vertical-align: middle;
+	max-width: 460px;
+	margin-right: 22px;
+}
+
+.jewels__header h2 {
+	margin-top: 118px;
+	line-height: 1.15;
+	font-size: 60px;
+	text-transform: capitalize;
+}
+
+.jewels__header h2::after {
+	content: "";
+	width: 66%;
+	height: 3px;
+	background-color: #78473b;
+	display: block;
+	margin-top: 13px;
+}
+
+.jewels__cart {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 62px;
+}
+
+.jewels__cart > *:last-child {
+	margin-bottom: 0;
+}
+
+.cart-jewels {
+}
+.cart-jewels__link {
+	margin-bottom: 34px;
+}
+
+.cart-jewels__img {
+	max-width: 334px;
+	border: 1px solid #000;
+}
+
+.cart-jewels__img img {
+	margin: 9px -10px -9px 10px;
+	width: 100%;
+}
+.cart-jewels__title {
+}
+
+.cart-jewels__title {
+	font-size: 24px;
+	line-height: 1.4;
+	margin-bottom: 15px;
+}
+
+.title-jewels-cart__link {
+	margin-bottom: 4px;
+}
+.title-jewels-cart__price {
+	margin-bottom: 10px;
+}
+
+.cart-jewels__title > *:last-child {
+	margin-bottom: 0;
 }
