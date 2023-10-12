@@ -16,8 +16,47 @@ h3 {
 	font-family: "Poppins", sans-serif;
 }
 .header {
+	padding: 20px 0;
 	margin-bottom: 100px;
 }
+.header__container {
+	max-width: 1250px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+.header__list {
+	text-align: right;
+}
+
+.header__list li {
+	color: #37393f;
+	font-family: "Poppins", sans-serif;
+	display: inline-block;
+	text-transform: uppercase;
+	margin-right: 15px;
+}
+
+.header__list li:after {
+	content: "";
+	display: block;
+	height: 2px;
+	width: 0;
+	margin-top: 2px;
+	background-color: #37393f;
+	transition: width 0.3s ease;
+}
+
+.header__list li:hover::after {
+	width: 100%;
+}
+.header__list li:active {
+	background-color: #f8f0f0;
+}
+
+ul > *:last-child {
+	margin-right: 0;
+}
+
 .page {
 	margin-bottom: 100px;
 }
@@ -149,9 +188,29 @@ h3 {
 	margin-bottom: 15px;
 }
 
+.work__link::after {
+	content: "";
+	width: 0;
+	height: 2px;
+	display: block;
+	margin-top: 2px;
+	background-color: #6b77e5;
+	transition: all 0.3s ease;
+}
+
+.work__link:hover::after {
+	width: 100%;
+	color: #5f6bda;
+}
+
 .work__link:hover {
-	color: #40ddb6;
-	text-decoration: underline;
+	color: #5f6bda;
+}
+.work__link:active {
+	color: #313b94;
+}
+.work__link:active::after {
+	background-color: #313b94;
 }
 /* ==========Care================= */
 
@@ -226,19 +285,24 @@ h3 {
 .care__link {
 	color: #fff;
 	text-align: center;
-	font-family: Inter;
-	font-size: 18px;
-	font-style: normal;
 	font-weight: 600;
-	line-height: normal;
+	line-height: 1.2;
 	text-transform: capitalize;
 	padding: 21px 35px 22px 35px;
-	background: #6b77e5;
+	background-color: #6b77e5;
 }
+
+.care__link:hover {
+	background-color: #424fc4;
+}
+.care__link:active {
+	background-color: #152083;
+}
+
 /* ==============CONSULTING============== */
 
 .page__consulting {
-	margin-bottom: 120px;
+	margin-bottom: 152px;
 }
 
 .page__consulting h3 {
@@ -401,6 +465,7 @@ h3 {
 /* ========== JEWELS ============= */
 
 .page__jewels {
+	margin-bottom: 150px;
 }
 .jewels {
 }
@@ -418,8 +483,9 @@ h3 {
 	margin-right: 0;
 }
 
-.jewels__body,
-h2 {
+.jewels__body h2,
+.jewels__body h3,
+.jewels__body h4 {
 	color: #000;
 	font-family: "Cormorant Infant", serif;
 	font-weight: 700;
@@ -451,7 +517,7 @@ h2 {
 .jewels__cart {
 	display: inline-block;
 	vertical-align: top;
-	margin-right: 62px;
+	margin-right: 55px;
 }
 
 .jewels__cart > *:last-child {
@@ -470,6 +536,17 @@ h2 {
 }
 
 .cart-jewels__img img {
+	transition: transform 0.3s ease;
+}
+
+.cart-jewels__img img:hover {
+	transform: scale(1.1);
+}
+.cart-jewels__img img:active {
+	transform: scale(1.07);
+}
+
+.cart-jewels__img img {
 	margin: 9px -10px -9px 10px;
 	width: 100%;
 }
@@ -483,6 +560,33 @@ h2 {
 .title-jewels-cart__link {
 	margin-bottom: 4px;
 }
+
+.title-jewels-cart__link h4:hover {
+	color: #78473b;
+}
+
+.title-jewels-cart__link h4:active {
+	color: #000;
+}
+
+.title-jewels-cart__link::after {
+	content: "";
+	width: 0;
+	height: 3px;
+	background-color: #78473b;
+	display: block;
+	margin-top: 2px;
+	transition: all 0.3s ease;
+}
+
+.title-jewels-cart__link:hover::after {
+	width: 70%;
+}
+
+.title-jewels-cart__link:active::after {
+	background-color: #000;
+}
+
 .title-jewels-cart__price {
 	margin-bottom: 10px;
 }
@@ -496,8 +600,228 @@ h2 {
 }
 
 .cart-jewels__suptitle h3 {
-	color: #000;
-	font-family: "Cormorant Infant", serif;
 	font-size: 46px;
 	line-height: 1.13;
+}
+/* ====================================== */
+
+.footer__container {
+	max-width: 1244px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+.footer {
+	height: 100px;
+	padding-top: 25px;
+	background-color: #37393f;
+	text-align: center;
+}
+
+.footer p {
+	color: #fff;
+}
+.green {
+	color: #40ddb6;
+}
+.purple {
+	color: #6b77e5;
+}
+/* ============ Test Block ======== */
+
+.test__container {
+	max-width: 1244px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+/* ========= test-1 ====== */
+
+.test__container > *:not(:last-child) {
+	margin-bottom: 40px;
+}
+
+.test__block1 {
+	background-color: #000;
+	color: white;
+	font-size: 20px;
+	border: 2px solid green;
+	border-radius: 10px;
+	padding: 15px;
+	max-width: 500px;
+	margin: 0 auto;
+}
+.block-1 {
+}
+.block-1__link {
+}
+
+.block-1__link:hover {
+	color: green;
+}
+
+.block-1__child {
+	display: none;
+}
+
+.test__block1:hover .block-1__child {
+	display: block;
+}
+/* ========= test-2 ====== */
+
+.test__block2 {
+	background-color: #37393f;
+	height: 500px;
+	padding: 50px;
+}
+
+form {
+	display: flex;
+	width: 40%;
+	flex-direction: column;
+	gap: 15px;
+	margin-bottom: 15px;
+}
+
+.custom-label {
+	width: 400px;
+	margin-bottom: 8px;
+	font-size: 16px;
+	color: #333;
+}
+
+.custom-input {
+	color: #693aff;
+	text-align: center;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 5px;
+}
+
+.custom-input:focus {
+	outline: 2px dashed;
+	color: #693aff;
+	background-color: #40ddb6;
+}
+/* ============ test 3 =========== */
+.test__block3 {
+	background-color: #7a956b;
+	padding: 15px;
+	/* display: none; */
+	color: #fff;
+}
+
+.block-3 {
+}
+.block-3__link {
+}
+
+.block-3__link:hover {
+	color: green;
+}
+
+.block-3__child {
+	display: none;
+}
+
+.block-1__child:target {
+	display: block;
+}
+/* ========= test4========= */
+
+.test__block4 {
+	max-width: 400px;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td,
+tr,
+th {
+	border: 1px solid #000;
+	border-color: #624c9e;
+	height: 50px;
+}
+
+.test__block4 tr:nth-child(even) td:nth-child(odd) {
+	background-color: #58abab;
+}
+.test__block4 tr:nth-child(odd) td:nth-child(even) {
+	background-color: #58abab;
+}
+
+/* ========= test 5 ========== */
+.test__block5 {
+	max-width: 400px;
+}
+
+.test__block5 tr:nth-child(even) td:nth-child(3n + 1) {
+	background-color: #58abab;
+}
+.test__block5 tr:nth-child(odd) td:nth-child(n + 1) {
+	background-color: #58abab;
+}
+/* ============ test 6 ================ */
+
+.test__block6 {
+}
+.block-6 {
+}
+.header__container {
+}
+.block-5__list {
+	text-align: center;
+	max-width: 300px;
+	min-height: 20px;
+	background-color: #40ddb6;
+	border: 2px solid #000;
+	border-radius: 5px;
+	color: #000;
+	padding: 10px;
+}
+
+.test-list {
+	padding-top: 10px;
+	display: none;
+}
+
+.block-5__list > li a {
+}
+
+.block-5__list > li a:hover {
+	text-decoration: underline;
+}
+
+.block-5__list:hover .test-list {
+	display: block;
+}
+
+.test-list a {
+	margin-bottom: 5px;
+	width: 100%;
+	height: 30px;
+	display: inline-block;
+}
+
+.test-list a:hover {
+	text-decoration: underline;
+}
+
+.block-5__link {
+}
+/* ============== test 7 ======== */
+
+.test__block7 ol {
+	counter-reset: item 0;
+}
+
+.test__block7 ol li:before {
+	counter-increment: item;
+	content: counter(item) ".";
+	display: inline-block;
+	color: #3745c3;
+	margin-right: 5px;
 }

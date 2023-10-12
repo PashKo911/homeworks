@@ -7,14 +7,48 @@
 	<link rel="stylesheet" href="css/style.css">
 	<title>HW_9</title>
 </head>
+<!-- Контейнери всюди різні, втомився думати як реалізовувати, робив окремими класами, подекуди повторюються, розумію що повторення то погано, та вони мене втомили)) -->
 
 <body>
 	<header class="header">
-		Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, harum.
+		<div class="header__container">
+			<ul class="header__list">
+				<li>
+					<a href="#work-id" class="header__link">
+						How We Work
+					</a>
+				</li>
+				<li>
+					<a href="#care-id" class="header__link">
+						Business Plan
+					</a>
+				</li>
+				<li>
+					<a href="#consulting-id" class="header__link">
+						Business Management
+					</a>
+				</li>
+				<li>
+					<a href="#jewels-id" class="header__link">
+						Custom Jewels
+					</a>
+				</li>
+				<li>
+					<a href="#test-id" class="header__link">
+						Test Block
+					</a>
+				</li>
+				<li>
+					<a href="#jewels-id" class="header__link">
+						Play Game
+					</a>
+				</li>
+			</ul>
+		</div>
 	</header>
 
 	<main class="page">
-		<div class="page__work work">
+		<div id="work-id" class="page__work work">
 			<div class="work__container">
 				<div class="work__header title">
 					<h4>Work Process</h4>
@@ -80,7 +114,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="page__care care">
+		<div id="care-id" class="page__care care">
 			<div class="care__container">
 				<div class="care__header title">
 					<h4>Welcome Whitecollar</h4>
@@ -207,7 +241,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="page__jewels jewels">
+		<div id="jewels-id" class="page__jewels jewels">
 			<div class="jewels__container">
 				<div class="jewels__body">
 					<div class="jewels__header">
@@ -228,7 +262,9 @@
 								</h4>
 							</a>
 							<div class="title-jewels-cart__price">
-								$144.00
+								<h4>
+									$144.00
+								</h4>
 							</div>
 						</div>
 					</div>
@@ -253,9 +289,172 @@
 								</h4>
 							</a>
 							<div class="title-jewels-cart__price">
-								$144.00
+								<h4>
+									$144.00
+								</h4>
 							</div>
 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="page__test-block test" id="test-id">
+			<div class="test__container">
+				<div class="test__block1 block-1">
+					<a href="#" class="block-1__link">
+						menu
+					</a>
+					<div class="block-1__child">
+						<img src="img/desktop.jpg" alt="bla bla">
+					</div>
+				</div>
+				<div class="test__block2 block2">
+					<form action="#" class="form">
+						<input class="custom-input" type="text" id="block2-id-1" placeholder="0">
+						<input class="custom-input" type="text" id="block2-id-2" placeholder="0">
+						<input class="custom-input" type="text" id="block2-id-3" placeholder="0">
+						<input class="custom-input" type="text" id="block2-id-4" placeholder="0">
+						<input class="custom-input" type="text" id="block2-id-5" placeholder="0">
+						<input class="custom-input" type="text" id="block2-id-6" placeholder="0">
+					</form>
+				</div>
+				<div class="test__block3 block-3">
+					<a href="#id-4" class="block-3__link">
+						menu
+					</a>
+					<div class="block-1__child" id="id-4">
+						<img src="img/desktop.jpg" alt="bla bla">
+					</div>
+				</div>
+				<div class="test__block4 block-4">
+					<table>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div class="test__block5 block-5">
+					<table>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div class="test__block6 block-6">
+					<div class="header__container">
+						<ul class="block-5__list">
+							<li>
+								<a href="">MENU</a>
+								<ul class="test-list">
+									<li>
+										<a href="#work-id" class="block-5__link">
+											How We Work
+										</a>
+									</li>
+									<li>
+										<a href="#care-id" class="block-5__link">
+											Business Plan
+										</a>
+									</li>
+									<li>
+										<a href="#consulting-id" class="block-5__link">
+											Business Management
+										</a>
+									</li>
+									<li>
+										<a href="#jewels-id" class="block-5__link">
+											Custom Jewels
+										</a>
+									</li>
+									<li>
+										<a href="#test-id" class="block-5__link">
+											Test Block
+										</a>
+									</li>
+									<li>
+										<a href="#jewels-id" class="block-5__link">
+											Play Game
+										</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="test__block7 block-7">
+					<div class="header__container">
+						<ol>
+							<li>Lorem ipsum dolor sit amet.</li>
+							<li>Lorem ipsum dolor sit amet.</li>
+							<li>Lorem ipsum dolor sit amet.</li>
+							<li>Lorem ipsum dolor sit amet.</li>
+							<li>Lorem ipsum dolor sit amet.</li>
+							<li>Lorem ipsum dolor sit amet.</li>
+						</ol>
 					</div>
 				</div>
 			</div>
@@ -263,7 +462,13 @@
 	</main>
 
 	<footer class="footer">
-		Lorem.
+		<div class="footer__container">
+			<p>
+				Copyright © <span class="green">WhiteCollar</span> | Designed by <span class="purple">VictorFlow</span>
+				Templates - Powered by
+				Webflow
+			</p>
+		</div>
 	</footer>
 </body>
 

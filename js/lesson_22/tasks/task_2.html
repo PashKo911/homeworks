@@ -2,355 +2,357 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="../css/style.css">
-   <title>Document</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Document</title>
 
 
 
 </head>
 
 <body>
-   <div>
-      <p class="task_2">
-         Задача 2. Вивести дату у форматі
-         <span></span>
-      </p>
-      <p class="task_3">
-         Задача 3. Визначити поточну пору року<br>
-         <span></span>
-      </p>
-      <p class="task_4">
-         Задача 4. Вивести назву дня<br>
-         <span></span>
-      </p>
-      <p class="task_5">
-         Задача 5. Користувач вводить дату народження. Визначити, скільки йому повних років.<br>
-         <input id="userDate" type="date" value="1991-05-30"><br>
-         <span></span>
-      </p>
-      <p class="task_6">
-         Задача 6. Користувач іде у відпустку на 56 днів. Визначити дату на момент його повернення.<br>
-         <span id="ts6"></span>
-      </p>
-      <p class="task_7">
-         Задача 7. Користувач бере авто на вказану кількість годин. Визначити кінцевий час повернення <br>
-      <p>Введіть кількість годин на яку ви хочете взяти авто</p>
-      <input id="userRentDaysNumber" type="number" value="0"><br>
-      <span class="answer-rent"></span>
-      </p>
-      <div class="task_8">
-         Задача 8. Задаємо користувачу задачу з додавання двох чисел. Визначити скільки секунд було використано для
-         розв’язання задачі. <br><br>
-         Натисніть кнопку start та знайдіть розвʼязок?
-         </p>
-         <form action="#" class="form">
-            <div class="inputs">
+	<div>
+		<p class="task_2">
+			Задача 2. Вивести дату у форматі
+			<span></span>
+		</p>
+		<p class="task_3">
+			Задача 3. Визначити поточну пору року<br>
+			<span></span>
+		</p>
+		<p class="task_4">
+			Задача 4. Вивести назву дня<br>
+			<span></span>
+		</p>
+		<p class="task_5">
+			Задача 5. Користувач вводить дату народження. Визначити, скільки йому повних років.<br>
+			<input id="userDate" type="date" value="1991-05-30"><br>
+			<span></span>
+		</p>
+		<p class="task_6">
+			Задача 6. Користувач іде у відпустку на 56 днів. Визначити дату на момент його повернення.<br>
+			<span id="ts6"></span>
+		</p>
+		<p class="task_7">
+			Задача 7. Користувач бере авто на вказану кількість годин. Визначити кінцевий час повернення <br>
+		<p>Введіть кількість годин на яку ви хочете взяти авто</p>
+		<input id="userRentDaysNumber" type="number" value="0"><br>
+		<span class="answer-rent"></span>
+		</p>
+		<div class="task_8">
+			Задача 8. Задаємо користувачу задачу з додавання двох чисел. Визначити скільки секунд було використано для
+			розв’язання задачі. <br><br>
+			Натисніть кнопку start та знайдіть розвʼязок?
+			</p>
+			<form action="#" class="form">
+				<div class="inputs">
 
-               <input class="custom-input" type="number" id="firstNum" placeholder="0" value="0">
-            </div>
-            <div>&#10133;</div>
-            <div class="inputs">
+					<input class="custom-input" type="number" id="firstNum" placeholder="0" value="0">
+				</div>
+				<div>&#10133;</div>
+				<div class="inputs">
 
-               <input class="custom-input" type="number" id="secondNum" placeholder="0" value="0">
-            </div>
-            <div class="buttons">
+					<input class="custom-input" type="number" id="secondNum" placeholder="0" value="0">
+				</div>
+				<div class="buttons">
 
-               <button type="button" class="buttons__button" id="start" value="+">Start</button>
+					<button type="button" class="buttons__button" id="start" value="+">Start</button>
 
-            </div>
-            <div class="result">
-               <label class="custom-input" for="result">Result</label>
-               <input class="custom-input" type="number" id="result" placeholder="Result">
-            </div>
-         </form>
-         <span id="answer-add"></span>
-      </div>
-      <p class="task_10">
-         Задача 10 . Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності. Визначити
-         чи
-         є він придатним на даний момент.
-         <br>
-      <form action="#" class="form">
-         <label for="creating-date">Дата виробництва</label>
-         <input class="custom-input" id="creating-date" type="date" value="1991-05-30" style="width: 250px;"><br>
-      </form>
-      <div class="inputs">
-         <input class="custom-input" type="text" id="deadline" placeholder="0" style="width: 300px;"
-            value="Введіть кількість днів придатності">
-      </div>
-      <span id="ts10"></span>
-      </p>
-      <p class="task_12">
-         Задача 12. Сформувати масив з 1000 елементів від 1 до 800. Порівняти час сортування бульбашкою і вставкою. <br>
-         <span></span>
-      </p>
-   </div>
-   <script>
+				</div>
+				<div class="result">
+					<label class="custom-input" for="result">Result</label>
+					<input class="custom-input" type="number" id="result" placeholder="Result">
+				</div>
+			</form>
+			<span id="answer-add"></span>
+		</div>
+		<p class="task_10">
+			Задача 10 . Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності.
+			Визначити
+			чи
+			є він придатним на даний момент.
+			<br>
+		<form action="#" class="form">
+			<label for="creating-date">Дата виробництва</label>
+			<input class="custom-input" id="creating-date" type="date" value="1991-05-30" style="width: 250px;"><br>
+		</form>
+		<div class="inputs">
+			<input class="custom-input" type="text" id="deadline" placeholder="0" style="width: 300px;"
+				value="Введіть кількість днів придатності">
+		</div>
+		<span id="ts10"></span>
+		</p>
+		<p class="task_12">
+			Задача 12. Сформувати масив з 1000 елементів від 1 до 800. Порівняти час сортування бульбашкою і вставкою.
+			<br>
+			<span></span>
+		</p>
+	</div>
+	<script>
 
-      const date = new Date(),
-         year = date.getFullYear(),
-         month = date.getMonth(),
-         weekDay = date.getDay(),
-         currentHours = date.getHours()
+		const date = new Date(),
+			year = date.getFullYear(),
+			month = date.getMonth(),
+			weekDay = date.getDay(),
+			currentHours = date.getHours()
 
-      //console.log(date);
-      //================================================================================================================================================         
-      //Задача 2. Вивести дату у форматі
-      //“місяць – рік – вихідний/робочий”
+		//console.log(date);
+		//================================================================================================================================================         
+		//Задача 2. Вивести дату у форматі
+		//“місяць – рік – вихідний/робочий”
 
-      function showDate(year, month, day, containerSelector) {
-         const weekDay = day === 6 || day === 0 ? 'Вихідний' : 'Робочий'
+		function showDate(year, month, day, containerSelector) {
+			const weekDay = day === 6 || day === 0 ? 'Вихідний' : 'Робочий'
 
-         if (containerSelector)
-            document.querySelector(containerSelector).innerText = `
+			if (containerSelector)
+				document.querySelector(containerSelector).innerText = `
             Місяць: ${month + 1}
             Рік: ${year}
             День: ${weekDay}
             `
-      }
-      showDate(year, month, weekDay, '.task_2 span')
+		}
+		showDate(year, month, weekDay, '.task_2 span')
 
-      //================================================================================================================================================         
-      //Задача 3. Визначити поточну пору року
+		//================================================================================================================================================         
+		//Задача 3. Визначити поточну пору року
 
-      function getSeason(month, containerSelector) { 
-         let season
+		function getSeason(month, containerSelector) {
+			let season
 
-         switch (month) {
-            case 0:
-            case 1:
-            case 11:
-               season = 'Зима'
-               break;
-            case 2:
-            case 3:
-            case 4:
-               season = 'Весна'
-               break;
-            case 5:
-            case 6:
-            case 7:
-               season = 'Літо'
-               break;
-            case 8:
-            case 9:
-            case 10:
-               season = 'Осінь'
-               break;
-         }
+			switch (month) {
+				case 0:
+				case 1:
+				case 11:
+					season = 'Зима'
+					break;
+				case 2:
+				case 3:
+				case 4:
+					season = 'Весна'
+					break;
+				case 5:
+				case 6:
+				case 7:
+					season = 'Літо'
+					break;
+				case 8:
+				case 9:
+				case 10:
+					season = 'Осінь'
+					break;
+			}
 
-         if (containerSelector)
-            document.querySelector(containerSelector).innerText = `Зараз: ${season}`
-      }
+			if (containerSelector)
+				document.querySelector(containerSelector).innerText = `Зараз: ${season}`
+		}
 
-      getSeason(month, '.task_3 span')
+		getSeason(month, '.task_3 span')
 
-      //================================================================================================================================================         
-      //Задача 4. Вивести назву дня
+		//================================================================================================================================================         
+		//Задача 4. Вивести назву дня
 
 
-      function getDayName(date, locale, containerSelector) {
+		function getDayName(date, locale, containerSelector) {
 
-         const dayName = date.toLocaleDateString(locale, { weekday: 'long' })
+			const dayName = date.toLocaleDateString(locale, { weekday: 'long' })
 
-         if (containerSelector)
-            document.querySelector(containerSelector).innerText = `Сьогодні: ${dayName}`
-      }
+			if (containerSelector)
+				document.querySelector(containerSelector).innerText = `Сьогодні: ${dayName}`
+		}
 
-      getDayName(date, 'ua-UK', '.task_4 span')
+		getDayName(date, 'ua-UK', '.task_4 span')
 
-      //================================================================================================================================================         
-      //Задача 5. Користувач вводить дату народження. Визначити, скільки йому повних років.
+		//================================================================================================================================================         
+		//Задача 5. Користувач вводить дату народження. Визначити, скільки йому повних років.
 
-      const userDateEl = document.getElementById('userDate')
+		const userDateEl = document.getElementById('userDate')
 
-      function calculateUserAge(date, answerContainerSelector, userDateEl) {
-         if (answerContainerSelector && userDateEl) {
+		function calculateUserAge(date, answerContainerSelector, userDateEl) {
+			if (answerContainerSelector && userDateEl) {
 
-            const userBirthday = new Date(userDateEl.value)
-            console.log(userDateEl.value);
-            const userAge = (date - userBirthday) / 1000 / 60 / 60 / 24 / 365
+				const userBirthday = new Date(userDateEl.value)
+				console.log(userDateEl.value);
+				const userAge = (date - userBirthday) / 1000 / 60 / 60 / 24 / 365
 
-            document.querySelector(answerContainerSelector).innerText = `Ваш вік: ${userAge.toFixed(1)} років`
-         } else throw new Error('Помилка, не задано контейнер')
-      }
+				document.querySelector(answerContainerSelector).innerText = `Ваш вік: ${userAge.toFixed(1)} років`
+			} else throw new Error('Помилка, не задано контейнер')
+		}
 
-      userDateEl.onchange = function () {
-         calculateUserAge(date, '.task_5 span', userDateEl)
-      }
+		userDateEl.onchange = function () {
+			calculateUserAge(date, '.task_5 span', userDateEl)
+		}
 
-      //================================================================================================================================================
-      //Задача 6. Користувач іде у відпустку на 56 днів. Визначити дату на момент його повернення.
+		//================================================================================================================================================
+		//Задача 6. Користувач іде у відпустку на 56 днів. Визначити дату на момент його повернення.
 
-      function getFinishDate(date, daysNumber, containerId, message) {
+		function getFinishDate(date, daysNumber, containerId, message) {
 
-         const finishionDate = new Date(date)
-         const monthDay = finishionDate.getDate()
+			const finishionDate = new Date(date)
+			const monthDay = finishionDate.getDate()
 
-         finishionDate.setDate(monthDay + daysNumber)
-         if (containerId)
-            document.getElementById(containerId).innerText = `${message}: ${finishionDate.toLocaleDateString()}`
-      }
+			finishionDate.setDate(monthDay + daysNumber)
+			if (containerId)
+				document.getElementById(containerId).innerText = `${message}: ${finishionDate.toLocaleDateString()}`
+		}
 
-      getFinishDate(date, 56, 'ts6', 'Відпустка закінчиться')
-      //================================================================================================================================================
-      //Задача 7. Користувач бере авто на вказану кількість годин. Визначити кінцевий час повернення.
+		getFinishDate(date, 56, 'ts6', 'Відпустка закінчиться')
+		//================================================================================================================================================
+		//Задача 7. Користувач бере авто на вказану кількість годин. Визначити кінцевий час повернення.
 
-      const rentTimeEl = document.getElementById('userRentDaysNumber')
+		const rentTimeEl = document.getElementById('userRentDaysNumber')
 
-      function getFinishRentTime(date, currentHours, containerSelector, rentTimeEl) {
-         const finishRentTime = new Date(date)
-         const userRentHours = parseInt(rentTimeEl.value)
+		function getFinishRentTime(date, currentHours, containerSelector, rentTimeEl) {
+			const finishRentTime = new Date(date)
+			const userRentHours = parseInt(rentTimeEl.value)
 
-         finishRentTime.setHours(currentHours + userRentHours)
+			finishRentTime.setHours(currentHours + userRentHours)
 
-         if (containerSelector)
-            document.querySelector(containerSelector).innerText = `Оренда авто закінчиться: ${finishRentTime.toLocaleString()}`
-      }
+			if (containerSelector)
+				document.querySelector(containerSelector).innerText = `Оренда авто закінчиться: ${finishRentTime.toLocaleString()}`
+		}
 
-      rentTimeEl.onchange = function () {
-         getFinishRentTime(date, currentHours, '.answer-rent', rentTimeEl)
-      }
+		rentTimeEl.onchange = function () {
+			getFinishRentTime(date, currentHours, '.answer-rent', rentTimeEl)
+		}
 
-      //================================================================================================================================================         
-      //Задача 8. Задаємо користувачу задачу з додавання двох чисел. Визначити скільки секунд було використано для розв’язання задачі.
+		//================================================================================================================================================         
+		//Задача 8. Задаємо користувачу задачу з додавання двох чисел. Визначити скільки секунд було використано для розв’язання задачі.
 
-      function getRandomNumber(min = 1, max = 25) {
-         return min + Math.floor(Math.random() * (max - min + 1))
-      }
+		function getRandomNumber(min = 1, max = 25) {
+			return min + Math.floor(Math.random() * (max - min + 1))
+		}
 
-      function getTask(firstNumId = 'firstNum', secondNumId = 'secondNum') {
-         const firstNum = getRandomNumber()
-         const secondNum = getRandomNumber()
+		function getTask(firstNumId = 'firstNum', secondNumId = 'secondNum') {
+			const firstNum = getRandomNumber()
+			const secondNum = getRandomNumber()
 
-         document.getElementById(firstNumId).value = firstNum
-         document.getElementById(secondNumId).value = secondNum
+			document.getElementById(firstNumId).value = firstNum
+			document.getElementById(secondNumId).value = secondNum
 
-         return firstNum + secondNum
-      }
+			return firstNum + secondNum
+		}
 
-      const userAnswerEl = document.getElementById('result')
+		const userAnswerEl = document.getElementById('result')
 
-      function getAnswer(userAnswerEl, resultID, answer) {
-         const userAnswer = parseInt(userAnswerEl.value)
+		function getAnswer(userAnswerEl, resultID, answer) {
+			const userAnswer = parseInt(userAnswerEl.value)
 
-         if (userAnswer === answer) {
-            return true
-         } else return false
+			if (userAnswer === answer) {
+				return true
+			} else return false
 
-      }
+		}
 
-      let answer,
-         startTestTime,
-         endTestTime
+		let answer,
+			startTestTime,
+			endTestTime
 
-      document.getElementById('start').onclick = function () {
-         startTestTime = new Date()
-         answer = getTask()
-      }
+		document.getElementById('start').onclick = function () {
+			startTestTime = new Date()
+			answer = getTask()
+		}
 
-      userAnswerEl.onchange = function () {
-         endTestTime = new Date()
-         const userAnswer = getAnswer(userAnswerEl, 'answer-add', answer)
+		userAnswerEl.onchange = function () {
+			endTestTime = new Date()
+			const userAnswer = getAnswer(userAnswerEl, 'answer-add', answer)
 
-         let resEl = document.getElementById('answer-add')
+			let resEl = document.getElementById('answer-add')
 
-         if (userAnswer) {
-            const totalTime = (endTestTime - startTestTime) / 1000
-            resEl.innerText = `Мої вітання ваша відповідь вірна, Ви вирішили завдання за ${totalTime.toFixed()} секунд`
+			if (userAnswer) {
+				const totalTime = (endTestTime - startTestTime) / 1000
+				resEl.innerText = `Мої вітання ваша відповідь вірна, Ви вирішили завдання за ${totalTime.toFixed()} секунд`
 
-         } else
-            resEl.innerText = `Ви програли, спробуйте ще`
-      }
-      //================================================================================================================================================
-      //Задача  9. Користувач іде у відпустку на 56 днів. Визначити дату на момент його повернення.// Я так розумію це помилка, таке завдання вже було
+			} else
+				resEl.innerText = `Ви програли, спробуйте ще`
+		}
+		//================================================================================================================================================
+		//Задача  9. Користувач іде у відпустку на 56 днів. Визначити дату на момент його повернення.// Я так розумію це помилка, таке завдання вже було
 
-      //================================================================================================================================================
-      //Задача 10 . Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності. Визначити чи є він придатним на даний момент.
+		//================================================================================================================================================
+		//Задача 10 . Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності. Визначити чи є він придатним на даний момент.
 
-      const deadlineEl = document.getElementById('deadline')
+		const deadlineEl = document.getElementById('deadline')
 
-      deadlineEl.onclick = function () {
-         deadlineEl.value = ''
-      }
+		deadlineEl.onclick = function () {
+			deadlineEl.value = ''
+		}
 
-      deadlineEl.onchange = function () {
-         const daysNumber = parseInt(deadlineEl.value)
-         const creatingDate = document.getElementById('creating-date').value
-         getFinishDate(creatingDate, daysNumber, 'ts10', 'Придатний до')      //Від завдання відхилився зате повторно використав функцію)) користувач що не розуміє який сьгодні день)) порівняти не може))
-      }
+		deadlineEl.onchange = function () {
+			const daysNumber = parseInt(deadlineEl.value)
+			const creatingDate = document.getElementById('creating-date').value
+			getFinishDate(creatingDate, daysNumber, 'ts10', 'Придатний до')      //Від завдання відхилився зате повторно використав функцію)) користувач що не розуміє який сьгодні день)) порівняти не може))
+		}
 
-      //================================================================================================================================================
-      //Задача 12. Сформувати масив з 1000 елементів від 1 до 800. Порівняти час сортування бульбашкою і  вставкою.
-      //функції сортування можете особливо не перевіряти, я їх з заняття зкопіював, розумію що задумка дз була заодно і їх пригадати, і я їх дійсно підзабув, та в планах до них повернутись і добре пройти ще раз
+		//================================================================================================================================================
+		//Задача 12. Сформувати масив з 1000 елементів від 1 до 800. Порівняти час сортування бульбашкою і  вставкою.
+		//функції сортування можете особливо не перевіряти, я їх з заняття зкопіював, розумію що задумка дз була заодно і їх пригадати, і я їх дійсно підзабув, та в планах до них повернутись і добре пройти ще раз
 
-      function createArray(elNumber = 1000, minValue = 1, maxValue = 800) {
-         let someArray = []
+		function createArray(elNumber = 1000, minValue = 1, maxValue = 800) {
+			let someArray = []
 
-         for (let i = 0; i < elNumber; i++) {
-            someArray.push(getRandomNumber(minValue, maxValue))
-         }
-         return someArray
-      }
+			for (let i = 0; i < elNumber; i++) {
+				someArray.push(getRandomNumber(minValue, maxValue))
+			}
+			return someArray
+		}
 
-      let numbersList = createArray()
+		let numbersList = createArray()
 
-      function getBubbleSort(array) {
-         let changed
-         do {
-            changed = false
-            for (let i = 1; i < array.length; i++) {
+		function getBubbleSort(array) {
+			let changed
+			do {
+				changed = false
+				for (let i = 1; i < array.length; i++) {
 
-               if (array[i - 1] > array[i]) {
-                  let tmp = array[i - 1];
-                  array[i - 1] = array[i]
-                  array[i] = tmp
-                  changed = true;
-               }
-            }
-         }
-         while (changed)
-         return array
-      }
+					if (array[i - 1] > array[i]) {
+						let tmp = array[i - 1];
+						array[i - 1] = array[i]
+						array[i] = tmp
+						changed = true;
+					}
+				}
+			}
+			while (changed)
+			return array
+		}
 
-      function getSortWithChangeMethod(array) {
-         const prevLastIndex = array.length - 2
-         let counter = 0
-         for (let i = 0; i <= prevLastIndex; i++) {
-            for (let j = i + 1; j < array.length; j++) {
-               if (array[i] > array[j]) {
-                  let temp = array[i]
-                  array[i] = array[j]
-                  array[j] = temp
-                  counter++
-               }
-            }
-         }
-         return array
-      }
+		function getSortWithChangeMethod(array) {
+			const prevLastIndex = array.length - 2
+			let counter = 0
+			for (let i = 0; i <= prevLastIndex; i++) {
+				for (let j = i + 1; j < array.length; j++) {
+					if (array[i] > array[j]) {
+						let temp = array[i]
+						array[i] = array[j]
+						array[j] = temp
+						counter++
+					}
+				}
+			}
+			return array
+		}
 
-      function getTime(func, array, message, containerSelector) {
-         let startTestTime = new Date()
+		function getTime(func, array, message, containerSelector) {
+			let startTestTime = new Date()
 
-         func(array)
+			func(array)
 
-         let endTestTime = new Date()
+			let endTestTime = new Date()
 
-         if (containerSelector)
-            document.querySelector(containerSelector).textContent += `${message}: ${endTestTime - startTestTime} ms. `
+			if (containerSelector)
+				document.querySelector(containerSelector).textContent += `${message}: ${endTestTime - startTestTime} ms. `
 
-      }
+		}
 
-      getTime(getBubbleSort, numbersList, 'Час який пішов на сортування бульбашкою', '.task_12 span')
-      getTime(getSortWithChangeMethod, numbersList, 'Час який пішов на сортування вставкою', '.task_12 span')
+		getTime(getBubbleSort, numbersList, 'Час який пішов на сортування бульбашкою', '.task_12 span')
+		getTime(getSortWithChangeMethod, numbersList, 'Час який пішов на сортування вставкою', '.task_12 span')
 
-      //console.log(numbersList);
-      ////console.log(getBubbleSort(numbersList));
-      //console.log(getSortWithChangeMethod(numbersList));
-   </script>
+		//console.log(numbersList);
+		////console.log(getBubbleSort(numbersList));
+		//console.log(getSortWithChangeMethod(numbersList));
+	</script>
 
 
 
