@@ -2,7 +2,7 @@
 // 	constructor(animationClassName, gameFieldClassName) {
 // 		this.animationClassName = animationClassName;
 // 		this.gameFieldClassName = gameFieldClassName;
-// 		this.isInsideGameField = false; // Добавьте это свойство
+// 		this.isInsideGameField = false;
 // 	}
 
 // 	async getMousePosition() {
