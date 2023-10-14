@@ -814,7 +814,7 @@ th {
 }
 /* ============== test 7 ======== */
 
-.test__block7 ol {
+/* .test__block7 ol {
 	counter-reset: item 0;
 }
 
@@ -824,4 +824,24 @@ th {
 	display: inline-block;
 	color: #3745c3;
 	margin-right: 5px;
+} */
+
+.test__block7 ol {
+	counter-reset: item 0;
 }
+
+.test__block7 ol li {
+	counter-increment: item;
+}
+
+.test__block7 ol li:before {
+	content: counter(item);
+	display: inline-block;
+	color: #3745c3;
+	margin-right: 5px;
+}
+
+.test__block7 ol li:before {
+	content: counter(item, decimal-leading-zero);
+}
+/* ======================= GAME ============================= */

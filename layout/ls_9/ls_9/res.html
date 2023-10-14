@@ -4,92 +4,35 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/style.css">
-	<title>HW_9</title>
+	<title>Change Class on Hover</title>
+	<style>
+		/* Исходный класс элемента "div" */
+		.original-div {
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			transition: background-color 0.3s;
+		}
+
+		/* Дополнительный класс, который мы будем добавлять */
+		.hovered-div {
+			background-color: red;
+		}
+	</style>
 </head>
 
 <body>
-	<header class="header">
-		Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, harum.
-	</header>
+	<div class="original-div" onmouseover="addClass(this)" onmouseout="removeClass(this)">Hover me</div>
 
-	<main class="page">
-		<div class="page__work work">
-			<div class="work__container">
-				<div class="work__header title">
-					<h4>Work Process</h4>
-					<h2>
-						How We Work
-					</h2>
-				</div>
-				<div class="work__content">
-					<div class="work__cart">
-						<div class="work__img work-calendar">
-							<a href="#">
-								<img src="img/calendar-work.svg" alt="icon with calendar">
-							</a>
-						</div>
-						<h3>
-							Make Appointment
-						</h3>
-						<div class="work__text">
-							<p>
-								Leverage agile frameworks provide synopsishigh level overviews value proposition.
-							</p>
-						</div>
-						<a href="#" class="work__link">
-							Testimonials
-						</a>
-					</div>
-					<div class="work__cart">
-						<div class="work__img">
-							<a href="#">
-								<img src="img/pazle.svg" alt="icon with pazzle">
-							</a>
-						</div>
-						<h3>
-							Consultation
-						</h3>
-						<div class="work__text">
-							<p>
-								Leverage agile frameworks provide synopsishigh level overviews value proposition.
-							</p>
-						</div>
-						<a href="#" class="work__link">
-							Testimonials
-						</a>
-					</div>
-					<div class="work__cart">
-						<div class="work__img">
-							<a href="#">
-								<img src="img/check-work.svg" alt="icon with check sign">
-							</a>
-						</div>
-						<h3>
-							Enjoy the Service
-						</h3>
-						<div class="work__text">
-							<p>
-								Leverage agile frameworks provide synopsishigh level overviews value proposition.
-							</p>
-						</div>
-						<a href="#" class="work__link">
-							Testimonials
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="page__care care">
-			<div class="care__container">
+	<script>
+		function addClass(element) {
+			element.classList.toggle("hovered-div");
+		}
 
-			</div>
-		</div>
-	</main>
-
-	<footer class="footer">
-		Lorem.
-	</footer>
+		function removeClass(element) {
+			element.classList.remove("hovered-div");
+		}
+	</script>
 </body>
 
 </html>
