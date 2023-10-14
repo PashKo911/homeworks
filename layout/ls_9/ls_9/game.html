@@ -4,347 +4,59 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/game_styles.css">
 	<title>GAME</title>
 </head>
-<style>
-	.game__container {
-
-		position: relative;
-	}
-
-	.game-field {
-		width: 10%;
-		height: 100px;
-		background-color: rgb(106, 81, 51);
-		/* position: relative; */
-		overflow: hidden;
-	}
-
-	.horizontal {
-		background-color: rgb(106, 81, 51);
-		position: absolute;
-		height: 100%;
-	}
-
-	.horizontal_1 {
-		width: 30%;
-		left: 0;
-		top: 0;
-	}
-
-	.vertical {
-		background-color: rgb(106, 81, 51);
-		overflow: hidden;
-		position: absolute;
-		width: 7.05%;
-	}
-
-	.vertical_1 {
-		height: 400%;
-		top: 0;
-		left: 30%;
-	}
-
-	.horizontal_2 {
-		width: 30%;
-		left: 30%;
-		top: 400%;
-	}
-
-	.vertical_2 {
-		height: 400%;
-		top: 100%;
-		left: 60%;
-	}
-
-	.vertical_5 {
-		top: 100%;
-		left: 45%;
-		height: 300%;
-	}
-
-	.horizontal_3 {
-		width: 30%;
-		left: 0;
-		top: 200%;
-	}
-
-
-
-	.horizontal_4 {
-		width: 30%;
-		left: 60%;
-		top: 0;
-	}
-
-
-	.vertical_3 {
-		height: 700%;
-		top: 0;
-		left: 90%;
-	}
-
-	.horizontal_7 {
-		width: 20%;
-		left: 70%;
-		top: 350%;
-	}
-
-	.horizontal_5 {
-		width: 30%;
-		left: 67%;
-		top: 700%;
-	}
-
-	.vertical_4 {
-		height: 500%;
-		top: 600%;
-		left: 67%;
-	}
-
-	.horizontal_6 {
-		width: 60%;
-		left: 7%;
-		top: 600%;
-	}
-
-	.vertical_6 {
-		height: 300%;
-		top: 600%;
-		left: 17%;
-	}
-
-	.finish {
-		width: 300px;
-		height: 300px;
-		background-color: rgb(106, 81, 51);
-		position: absolute;
-		top: 900%;
-		left: 10%;
-
-	}
-
-	.animation {
-		height: 89px;
-		width: 147px;
-		background: url("img/sprite/drago-left.png") 0 0;
-		position: absolute;
-		animation: play 0.4s steps(3) infinite;
-		transition: transform 0.2s;
-		z-index: 10;
-	}
-
-	.animation-right {
-		background: url("img/sprite/drago-right.png") 0 0;
-	}
-
-	.animation-down {
-		background: url("img/sprite/drago-down.png") 0 0;
-	}
-
-	.animation-up {
-		background: url("img/sprite/drago-up.png") 0 0;
-	}
-
-	@keyframes play {
-		0% {
-			background-position: 0;
-		}
-
-		100% {
-			background-position: -426px;
-		}
-	}
-</style>
-<script>
-
-	// class Game {
-	// 	constructor(animationClassName, gameFieldClassName) {
-	// 		this.animationClassName = animationClassName;
-	// 		this.gameFieldClassName = gameFieldClassName;
-	// 		this.isInsideGameField = false; // Добавьте это свойство
-	// 	}
-
-	// 	async getMousePosition() {
-	// 		return new Promise((resolve) => {
-	// 			this.gameField.addEventListener("mouseenter", () => {
-	// 				this.isInsideGameField = true;
-	// 				resolve(true);
-	// 			});
-
-	// 			this.gameField.addEventListener("mouseleave", () => {
-	// 				this.isInsideGameField = false;
-	// 				resolve(false);
-	// 			});
-	// 		});
-	// 	}
-
-	// 	animationMoving() {
-	// 		let prevX = 0;
-	// 		let prevY = 0;
-
-	// 		this.gameField.addEventListener("mousemove", (e) => {
-	// 			if (this.isInsideGameField) {
-	// 				const x = e.clientX - this.gameField.getBoundingClientRect().left - this.animation.offsetWidth / 2;
-	// 				const y = e.clientY - this.gameField.getBoundingClientRect().top - this.animation.offsetHeight / 2;
-
-	// 				const deltaX = x - prevX;
-	// 				const deltaY = y - prevY;
-
-	// 				if (Math.abs(deltaX) >= 5) {
-	// 					if (deltaX > 0) {
-	// 						this.animation.classList.remove('animation-up', 'animation-down', 'animation-left');
-	// 						this.animation.classList.add('animation-right');
-	// 					} else {
-	// 						this.animation.classList.remove('animation-up', 'animation-down', 'animation-right');
-	// 						this.animation.classList.add('animation-left');
-	// 					}
-	// 				}
-
-	// 				if (Math.abs(deltaY) >= 5) {
-	// 					if (deltaY > 0) {
-	// 						this.animation.classList.remove('animation-left', 'animation-right', 'animation-up');
-	// 						this.animation.classList.add('animation-down');
-	// 					} else {
-	// 						this.animation.classList.remove('animation-left', 'animation-right', 'animation-down');
-	// 						this.animation.classList.add('animation-up');
-	// 					}
-
-	// 					prevX = x;
-	// 					prevY = y;
-
-	// 					this.animation.style.transform = `translate(${x}px, ${y}px)`;
-	// 				}
-	// 			}
-	// 		});
-	// 	}
-
-	// 	render(containerSelector) {
-	// 		this.gameField = document.createElement("div")
-	// 		this.gameField.className = "game-field"
-
-	// 		this.animation = document.createElement("div")
-	// 		this.animation.className = "animation"
-
-	// 		this.gameField.append(this.animation)
-
-	// 		if (containerSelector) {
-	// 			this.gameBody = document.querySelector(containerSelector)
-	// 			this.gameBody.append(this.gameField)
-	// 		}
-
-	// 		this.gameBody.addEventListener("mousemove", this.animationMoving.bind(this));
-	// 	}
-	// }
-
-	// let game = new Game(".animation", ".game-field")
-
-	// window.onload = async () => {
-	// 	game.render(".game__container");
-	// 	const isInside = await game.getMousePosition();
-	// 	console.log(isInside);
-	// };
-
-
-	document.addEventListener("DOMContentLoaded", function () {
-		const gameField = document.querySelector(".game-field");
-		const animation = document.querySelector(".animation");
-		let isInsideGameField = false;
-		let prevX = 0;
-		let prevY = 0;
-
-		gameField.addEventListener("mouseover", function () {
-			isInsideGameField = true;
-		});
-
-		gameField.addEventListener("mouseleave", function () {
-			isInsideGameField = false;
-		});
-
-		gameField.addEventListener("mousemove", function (e) {
-			if (isInsideGameField) {
-				const x = e.clientX - gameField.getBoundingClientRect().left - animation.offsetWidth / 2;
-				const y = e.clientY - gameField.getBoundingClientRect().top - animation.offsetHeight / 2;
-
-				const deltaX = x - prevX;
-				const deltaY = y - prevY;
-
-				if (Math.abs(deltaX) >= 5) {
-					if (deltaX > 0) {
-						animation.classList.remove('animation-up', 'animation-down', 'animation-left');
-						animation.classList.add('animation-right');
-					} else {
-						animation.classList.remove('animation-up', 'animation-down', 'animation-right');
-						animation.classList.add('animation-left');
-					}
-				}
-
-				if (Math.abs(deltaY) >= 5) {
-					if (deltaY > 0) {
-						animation.classList.remove('animation-left', 'animation-right', 'animation-up');
-						animation.classList.add('animation-down');
-					} else {
-						animation.classList.remove('animation-left', 'animation-right', 'animation-down');
-						animation.classList.add('animation-up');
-					}
-				}
-
-				prevX = x;
-				prevY = y;
-
-				animation.style.transform = `translate(${x}px, ${y}px)`;
-			}
-		});
-	});
-
-
-
-	function replaceField(element) {
-		element.className = "game-field"
-
-		const animation = document.createElement("div")
-		animation.className = "animation"
-		element.append(animation)
-	}
-
-
-	function removeField(element) {
-		element.firstElementChild.remove()
-		// element.classList.remove("game-field")
-	}
-
-	function addClass(element) {
-
-	}
-
-	function removeClass(element) {
-
-	}
-	// onmouseover="replaceField(this)" onmouseout="removeField(this)
-</script>
 
 <body>
-	<div class=" game__container">
-		<div class="game-field">
+	<div class="bubbles__container"></div>
+	<div class="game__container">
+		<div class="game-field ">
+			<h2>START</h2>
+			<div class="horizontal_1 horizontal " onmouseover="getHoveredEl(this)">
+			</div>
+			<div class="vertical_1 vertical" onmouseover="getHoveredEl(this)"></div>
+			<div class="horizontal_3 horizontal" onmouseover="getHoveredEl(this)">
+			</div>
+			<div class="horizontal_2 horizontal" onmouseover="getHoveredEl(this)">
+			</div>
+			<div class="vertical_5 vertical" onmouseover="getHoveredEl(this)"></div>
+
+			<div class="vertical_2 vertical" onmouseover="getHoveredEl(this)"></div>
+			<div class="horizontal_4 horizontal" onmouseover="getHoveredEl(this)">
+			</div>
+			<div class="vertical_3 vertical" onmouseover="getHoveredEl(this)"></div>
+			<div class="horizontal_7 horizontal" onmouseover="getHoveredEl(this)">
+			</div>
+			<div class="horizontal_5 horizontal" onmouseover="getHoveredEl(this)">
+			</div>
+			<div class="vertical_4 vertical" onmouseover="getHoveredEl(this)"></div>
+			<div class="horizontal_6 horizontal" onmouseover="getHoveredEl(this)">
+			</div>
+			<div class="vertical_6 vertical" onmouseover="getHoveredEl(this)"></div>
+			<div class="finish" onmouseover="getWinner(this)">
+				<div id="image-container">
+					<img src="img/win.gif" alt="win">
+				</div>
+				<h1>
+					FINISH
+				</h1>
+			</div>
+			<div class="lose">
+				<button id="showAlert"></button>
+
+				<div class="custom-alert" id="customAlert">
+					<div class="alert-content">
+						<span class="close-button" id="closeButton">&times;</span>
+						<h2>You Lose, Try Again???</h2>
+						<button id="okButton">TRY AGAIN</button>
+					</div>
+				</div>
+			</div>
 			<div class="animation"></div>
-
-			<div class="horizontal_1 horizontal "></div>
-			<div class="horizontal_3 horizontal "></div>
-			<div class="vertical_1 vertical "></div>
-			<div class="horizontal_2 horizontal "></div>
-			<div class="vertical_5 vertical "></div>
-
-			<div class="vertical_2 vertical "></div>
-			<div class="horizontal_4 horizontal "></div>
-			<div class="vertical_3 vertical "></div>
-			<div class="horizontal_7 horizontal "></div>
-			<div class="horizontal_5 horizontal "></div>
-			<div class="vertical_4 vertical "></div>
-			<div class="horizontal_6 horizontal "></div>
-			<div class="vertical_6 vertical "></div>
-			<div class="finish"></div>
 		</div>
 
+		<script src="js/script.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<title>Lesson 8</title>
+</head>
+
+<body>
+	<div id="burger-open"></div>
+	<div id="burger-close"></div>
+	<!-- 1 section -->
+	<div id="section-1" class="page-anchor"></div>
+	<div class="section-1 section">
+		<div class="section-1__btn">
+			<a class="open" href="#burger-open"></a>
+			<a class="close" href="#burger-close"></a>
+		</div>
+		<ul class="section-1__menu">
+			<li><span>Я пункт 1</span>
+			</li>
+			<li><span>Я пункт 2</span>
+			</li>
+			<li><span>Я пункт 3</span>
+			</li>
+			<li><span>Я пункт 4</span>
+			</li>
+			<li><span>Я пункт 5</span>
+			</li>
+			<li>Это бутафорные ссылки (не ссылки вовсе)</li>
+		</ul>
+		<div class="section__content">
+			<p>
+				Это жалкое подобие бургера. Ну и пусть, я же развиваюсь и с каждым днем я знаю больше, чем знал вчера! И
+				рано или поздно я сделаю это меню намного лучше!
+			</p>
+			<p>
+				Я тут отключил возможность скролла и вам придеться нажимать на такие кнопки, чтобы двигаться по странице
+			</p>
+			<p>
+				Хотя тут скролл есть. В каждой секции есть скролл. Ну, а вдруг у вас экран меньше, чем контент?
+			</p>
+			<a class="next-page" href="#section-2">Следующий слайд</a>
+		</div>
+	</div>
+	<!-- 2 section -->
+	<div id="tab-1"></div>
+	<div id="tab-2"></div>
+	<div id="tab-3"></div>
+	<div id="section-2" class="page-anchor"></div>
+	<div class="section-2 section">
+		<div class="section-2__btn-body">
+			<a href="#tab-1" class="section-2__btn">1</a>
+			<a href="#tab-2" class="section-2__btn">2</a>
+			<a href="#tab-3" class="section-2__btn">3</a>
+		</div>
+		<div class="section-2__content-body">
+			<div class="section-2__content">
+				<p>ПЕРВЫЙ БЛОК</p>Я просто какая-то информация. Так, без какого либо смысла
+			</div>
+			<div class="section-2__content">
+				<p>ВТОРОЙ БЛОК</p>Я просто какая-то информация. Так, без какого либо смысла
+			</div>
+			<div class="section-2__content">
+				<p>ТРЕТИЙ БЛОК</p>Я просто какая-то информация. Так, без какого либо смысла
+			</div>
+		</div>
+		<div class="section__content">
+			<p>
+				Тут я решил попробовать сделать табы. Получилось вроде неплохо.
+			</p>
+			<p><a class="remove" href="#section-2">Сбросить табы</a></p>
+			<a class="prev-page" href="#section-1">Предыдущий слайд</a>
+			<a class="next-page" href="#section-3">Следующий слайд</a>
+		</div>
+	</div>
+	<!-- 3 section -->
+	<div id="spoller-1"></div>
+	<div id="spoller-2"></div>
+	<div id="spoller-3"></div>
+	<div id="spoller-4"></div>
+	<div id="section-3" class="page-anchor"></div>
+	<div class="section-3 section">
+		<div class="section-3__btn-body">
+			<!-- Первый спойлер -->
+			<a href="#spoller-1" class="section-3__link">Первая кнопка</a>
+			<div class="section-3__spoller">Я буду первым спойлером.</div>
+			<!-- Второй спойлер -->
+			<a href="#spoller-2" class="section-3__link">Вторая кнопка</a>
+			<div class="section-3__spoller">Ну, а я второй.</div>
+			<!-- Третий спойлер -->
+			<a href="#spoller-3" class="section-3__link">Третья кнопка</a>
+			<div class="section-3__spoller">Получается, что я третий.</div>
+			<!-- Четвертый спойлер -->
+			<a href="#spoller-4" class="section-3__link">Четвертая кнопка</a>
+			<div class="section-3__spoller">Я ПЕРВЫЙ! С конца...</div>
+		</div>
+		<div class="section__content">
+			<p><a class="remove" href="#section-3">Сбросить спойлеры</a></p>
+			<p>
+				Ну а тут будут спойлеры. Правда работают только как аккордеон.
+			</p>
+			<a class="prev-page" href="#section-2">Предыдущий слайд</a>
+			<a class="next-page" href="#wrapper">Следующий слайд</a>
+		</div>
+	</div>
+	<!-- 4 section -->
+	<div id="wrapper" class="wrapper">
+		<div class="container">
+			<!-- Навигация -->
+			<div class="nav-section">
+				<p>Может быть ты хочешь вернуться? Вот тебе меню. Но ты же понимаешь, что если ты перейдешь на бургер,
+					то придеться жмякать на кнопки, чтобы вернуться сюда?</p>
+				<div class="nav-section__item">
+					<div class="nav-section__link">
+						<a href="#section-1">Вернуться к бургеру.</a>
+					</div>
+					<div class="nav-section__link">
+						<a href="#section-1"><img src="img/01.png" alt="burger link"></a>
+					</div>
+				</div>
+				<div class="nav-section__item">
+					<div class="nav-section__link">
+						<a href="#section-2">Вернуться к табам.</a>
+					</div>
+					<div class="nav-section__link">
+						<a href="#section-2"><img src="img/02.png" alt="burger link"></a>
+					</div>
+				</div>
+				<div class="nav-section__item">
+					<div class="nav-section__link">
+						<a href="#section-3" class="nav-section__link">Вернуться к спойлерам.</a>
+					</div>
+					<div class="nav-section__link">
+						<a href="#section-3"><img src="img/03.png" alt="burger link"></a>
+					</div>
+				</div>
+			</div>
+			<div class="hover">
+				<p>
+					<span>hover</span> достаточно интересное свойство. И поэтому оно чаще всего используется при
+					создании
+					сайтов. Оно добавляет частичку души.
+				</p>
+				<!-- 1 секция -->
+				<div class="hover-section-1">
+					<p>С помощью этого свойства можно столько всего придумать. Нужна лишь фантазия (как у Анастасии)</p>
+					<p>Сделать ссылку, которая исчезает при наведении? Пожалуйста.</p>
+					<div class="hover-section-1__link-1 hover-section-1__link">
+						<a>Я ссылка. У меня нет атрибута href, чтобы не прыгал экран.</a>
+					</div>
+					<p>Но эта ссылка просто исчезает с помощью opacity: 0;, а это значит, что она кликабельна. А давайте
+						попробуем сделать ей visibility: hidden;</p>
+					<div class="hover-section-1__link-2 hover-section-1__link">
+						<a>Я ссылка. У меня нет атрибута href, чтобы не прыгал экран.</a>
+					</div>
+					<p>Работает как-то плохо. А что, если...</p>
+					<div class="hover-section-1__link-3 hover-section-1__link">
+						<a>Я ссылка. У меня нет атрибута href, чтобы не прыгал
+							экран.</a>
+					</div>
+					<p>А так работает нормально! Как? Делаем эффект наведения для родителя ссылки, а самой ссылке уже
+						visibility: hidden;</p>
+					<p>А может мы увеличим размеры блока при наведении?</p>
+					<div class="hover-section-1__item-1">
+						<p>Привет!</p>
+					</div>
+					<p>О, а если сделать игру, похожую на ту сумую?.. </p>
+					<img src="img/04.jpg" alt="Лабиринт">
+					<p>Веди по линии мышкой.</p>
+					<div class="game">
+						<div class="game__line-1 game__line"></div>
+						<div class="game__line-2 game__line"></div>
+						<div class="game__line-3"></div>
+						<div class="game__line-3-1 game__line"></div>
+						<div class="game__line-4"></div>
+						<div class="game__line-4-1 game__line"></div>
+						<div class="game__line-5 game__line"></div>
+						<div class="game__line-6"></div>
+						<div class="game-text">
+							Пока делал эту игру так надоело его проверять.
+						</div>
+					</div>
+					<p>Как-то прыгает страница. Думаю приступ эпилепсии не случится!</p>
+				</div>
+				<!-- 2 секция -->
+				<div class="aft-bef">
+					<p>::after и ::before очень мощный инструмент. Но сейчас мы используем не всю мощь этого "элексира".
+					</p>
+					<div class="aft-bef__after">
+						Это ::after
+					</div>
+					<div class="aft-bef__before">
+						Это ::before
+					</div>
+					<div class="aft-bef__all">
+						Это и ::after, и ::before
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</body>
+
+</html>

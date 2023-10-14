@@ -1,0 +1,281 @@
+body {
+	background: url("../img/sea.jpeg") center / cover no-repeat;
+	height: 1400px;
+	width: 100%;
+}
+
+.game__container {
+	position: relative;
+}
+
+.bubbles__container {
+	width: 100%;
+	height: 1400px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	visibility: visible;
+}
+
+.game-field {
+	width: 10%;
+	height: 100px;
+	background-color: rgba(121, 233, 17, 0.685);
+	/* position: relative; */
+	overflow: hidden;
+}
+
+.game-field h2 {
+	left: 30px;
+	color: red;
+	visibility: visible;
+	text-align: center;
+	padding-top: 20px;
+	position: absolute;
+}
+
+.horizontal {
+	background-color: rgba(0, 140, 255, 0.579);
+	position: absolute;
+	height: 100%;
+	overflow: hidden;
+}
+
+.horizontal_1 {
+	width: 30%;
+	left: 0;
+	top: 0;
+}
+
+.vertical {
+	background-color: rgba(0, 140, 255, 0.579);
+	overflow: hidden;
+	position: absolute;
+	width: 7.05%;
+}
+
+.vertical_1 {
+	height: 400%;
+	top: 0;
+	left: 30%;
+}
+
+.horizontal_2 {
+	width: 30%;
+	left: 30%;
+	top: 400%;
+}
+
+.vertical_2 {
+	height: 400%;
+	top: 100%;
+	left: 60%;
+}
+
+.vertical_5 {
+	top: 100%;
+	left: 45%;
+	height: 300%;
+}
+
+.horizontal_3 {
+	width: 30%;
+	left: 0;
+	top: 200%;
+}
+
+.horizontal_4 {
+	width: 30%;
+	left: 60%;
+	top: 0;
+}
+
+.vertical_3 {
+	height: 700%;
+	top: 0;
+	left: 90%;
+}
+
+.horizontal_7 {
+	width: 20%;
+	left: 70%;
+	top: 350%;
+}
+
+.horizontal_5 {
+	width: 23%;
+	left: 74.05%;
+	top: 700%;
+}
+
+.vertical_4 {
+	height: 500%;
+	top: 600%;
+	left: 67%;
+}
+
+.horizontal_6 {
+	width: 60%;
+	left: 7%;
+	top: 600%;
+}
+
+.vertical_6 {
+	height: 200%;
+	top: 700%;
+	left: 17%;
+}
+
+.lose {
+}
+.custom-alert {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+}
+
+.alert-content {
+	width: 500px;
+	height: 100px;
+	background: #fff;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+	text-align: center;
+	position: relative;
+}
+
+.close-button {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+button {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background: #007bff;
+	color: #fff;
+	border: none;
+	padding: 10px 40px;
+	margin: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+#showAlert {
+	width: 50px;
+	height: 50px;
+	background-color: red;
+	margin: 20px;
+	margin-left: 500px;
+	z-index: 15;
+	position: absolute;
+	top: 0;
+	left: 500px;
+	/* visibility: visible; */
+}
+
+.finish {
+	padding: 10px;
+	min-width: 300px;
+	min-height: 300px;
+	background-color: rgba(121, 233, 17, 0.685);
+	position: absolute;
+	top: 900%;
+	left: 10%;
+	text-align: center;
+}
+
+.finish h1 {
+	display: inline-block;
+	color: red;
+}
+
+.image-container {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	visibility: visible;
+}
+
+.game-field > * {
+	visibility: hidden;
+}
+
+.animation {
+	height: 130px;
+	width: 147px;
+	background: url("../img/sprite/drago-left.png") 0 0 no-repeat;
+	position: absolute;
+	animation: play 0.4s steps(3) infinite;
+	transition: transform 0.2s;
+	z-index: 10;
+	visibility: visible;
+}
+
+.game-field:hover :nth-child(2) {
+	visibility: visible;
+}
+/* 
+.horizontal_3:hover + .vertical_1 {
+	visibility: visible;
+} */
+
+/* .horizontal_1:hover + .line {
+	visibility: visible;
+} */
+
+/* .line:hover + div,
+.line:hover,
+.horizontal_2:hover {
+	visibility: visible;
+} */
+
+.animation-right {
+	background: url("../img/sprite/drago-right.png") 0 0 no-repeat;
+}
+
+.animation-down {
+	/* height: 133px; */
+	width: 90px;
+	background: url("../img/sprite/drago-down.png") 0 0 no-repeat;
+}
+
+.animation-up {
+	/* height: 130px; */
+	width: 90px;
+	background: url("../img/sprite/drago-up.png") 0 0 no-repeat;
+}
+
+@keyframes play {
+	0% {
+		background-position: 0;
+	}
+
+	100% {
+		background-position: -426px;
+	}
+}
+.snow {
+	position: absolute;
+}
+.moon {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	opacity: 0.9;
+	background-color: #dacd44;
+	position: absolute;
+}
