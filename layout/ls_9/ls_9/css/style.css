@@ -426,10 +426,10 @@ ul > *:last-child {
 }
 
 .scroll__list li {
-	height: 27px;
+	min-height: 27px;
 	padding-top: 2.5px;
 	padding-left: 35px;
-	background: url("../img/check.svg")0 0 / contain no-repeat;
+	background: url("../img/check.svg")0 0 / 27px no-repeat;
 }
 
 /* ============== */
@@ -607,7 +607,7 @@ ul > *:last-child {
 }
 
 .footer {
-	height: 100px;
+	min-height: 100px;
 	padding: 25px 0;
 	background-color: #37393f;
 	text-align: center;
