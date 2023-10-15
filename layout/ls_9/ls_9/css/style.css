@@ -118,7 +118,7 @@ ul > *:last-child {
 
 .work__header {
 	text-align: center;
-	margin: 0 auto 72px;
+	margin: 0 auto 75px;
 }
 /* =============================== */
 
@@ -128,7 +128,6 @@ ul > *:last-child {
 
 .work__content > *:not(:last-child) {
 	margin-right: 31px;
-	margin-bottom: 60px;
 }
 
 .work__content h3 {
@@ -153,10 +152,14 @@ ul > *:last-child {
 
 .work__img {
 	margin: -94px auto 22px;
-	width: 72px;
-	height: 72px;
+	max-width: 72px;
+	max-height: 72px;
 	border-radius: 50%;
 	background-color: #40ddb6;
+}
+
+.work__img img{
+	width: 100%;
 }
 
 .work__img:hover {
@@ -221,7 +224,7 @@ ul > *:last-child {
 }
 
 .care__container {
-	max-width: 805px;
+	max-width: 705px;
 	padding: 0 15px;
 	margin: 0 auto;
 }
@@ -232,16 +235,6 @@ ul > *:last-child {
 
 .care__header h2 {
 	max-width: 414px;
-}
-
-.cart-care__text {
-}
-
-.cart-care__text {
-	line-height: 1.2;
-}
-
-.text {
 }
 
 .care__body {
@@ -255,7 +248,7 @@ ul > *:last-child {
 }
 
 .care__cart h3 {
-	margin-bottom: 12px;
+	margin-bottom: 14px;
 	font-size: 20px;
 	font-weight: 600;
 }
@@ -268,14 +261,14 @@ ul > *:last-child {
 	margin-left: -46px;
 	margin-right: 19px;
 	vertical-align: -6px;
-	background: url("../img/check.svg") 0px 0px no-repeat;
+	background: url("../img/check.svg") center / 100% no-repeat;
 }
 
 .cart {
 }
 
 .cart-care__text {
-	margin-bottom: 15px;
+	line-height: 1.46;
 }
 
 .cart-care__text p:not(:last-child) {
@@ -433,10 +426,10 @@ ul > *:last-child {
 }
 
 .scroll__list li {
-	min-height: 27px;
+	height: 27px;
 	padding-top: 2.5px;
 	padding-left: 35px;
-	background: url("../img/check.svg") no-repeat;
+	background: url("../img/check.svg")0 0 / contain no-repeat;
 }
 
 /* ============== */
@@ -537,18 +530,16 @@ ul > *:last-child {
 
 .cart-jewels__img img {
 	transition: transform 0.3s ease;
+	margin: 9px -10px -9px 10px;
+	width: 100%;
 }
 
 .cart-jewels__img img:hover {
 	transform: scale(1.1);
 }
+
 .cart-jewels__img img:active {
 	transform: scale(1.07);
-}
-
-.cart-jewels__img img {
-	margin: 9px -10px -9px 10px;
-	width: 100%;
 }
 
 .cart-jewels__title {
@@ -613,7 +604,7 @@ ul > *:last-child {
 
 .footer {
 	height: 100px;
-	padding-top: 25px;
+	padding: 25px 0;
 	background-color: #37393f;
 	text-align: center;
 }
