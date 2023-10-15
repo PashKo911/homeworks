@@ -492,6 +492,10 @@ ul > *:last-child {
 	margin-right: 22px;
 }
 
+.jewels__header > *:not(:last-child){
+	margin-bottom: 50px;
+}
+
 .jewels__header h2 {
 	line-height: 1.15;
 	font-size: 60px;
@@ -578,7 +582,7 @@ ul > *:last-child {
 	background-color: #000;
 }
 
-.title-jewels-cart__price {
+.title-jewels-cart__price > *:not(:last-child) {
 	margin-bottom: 10px;
 }
 
