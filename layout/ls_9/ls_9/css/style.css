@@ -139,11 +139,16 @@ ul > *:last-child {
 
 .work__cart {
 	vertical-align: top;
-	padding: 58px 43px;
+	
 	width: 386px;
-	background-color: #f4f4f4;
+	
 	display: inline-block;
 	text-align: center;
+}
+
+.work__body{
+	padding: 58px 43px;
+	background-color: #f4f4f4;
 }
 
 .work__cart > *:last-child {
@@ -151,12 +156,12 @@ ul > *:last-child {
 }
 
 
-
 .work__img {
-	margin: -94px auto 22px;
+	margin: 0 auto -36px;
 	max-width: 72px;
 	max-height: 72px;
 	border-radius: 50%;
+	overflow: hidden;
 	background-color: #40ddb6;
 }
 
