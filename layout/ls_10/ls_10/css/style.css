@@ -1,0 +1,131 @@
+@import url("fonts.css");
+
+@import url("reset.css");
+
+/* ================= */
+
+body {
+	color: #77c8c3;
+	font-family: "Inter", sans-serif;
+	font-size: 18px;
+	background-color: #1d2848;
+}
+
+h2{
+	font-size: 30px;
+	font-family: "Cormorant Infant", serif;
+}
+.header {
+	padding: 20px 0;
+	margin-bottom: 100px;
+	background-color: #050505;
+}
+
+[class*="__container"]{
+	max-width: 1250px;
+	margin: 0 auto;
+	padding: 20px 15px;
+}
+
+
+.header__list {
+	text-align: right;
+}
+
+.header__list li {
+	font-family: "Poppins", sans-serif;
+	display: inline-block;
+	text-transform: uppercase;
+	margin-right: 15px;
+}
+
+.header__list li:after {
+	content: "";
+	display: block;
+	height: 2px;
+	width: 0;
+	margin-top: 2px;
+	background-color:#77c8c3;
+	transition: width 0.3s ease;
+}
+
+.header__list li:hover::after {
+	width: 100%;
+}
+.header__list li:active {
+	background-color: #f8f0f0;
+}
+
+ul > *:last-child {
+	margin-right: 0;
+}
+
+.page > *:not(:last-child) {
+	margin-bottom: 60px;
+}
+
+.page{
+	margin-bottom: 100px;
+}
+
+[class*="__container"] > *:not(:last-child),
+[class*="__container"] h2:not(:last-child)
+{
+	margin-bottom: 40px;
+}
+
+[class*="__container"] p{
+	padding: 20px;
+}
+
+.icons__container img,
+.content__container img
+{
+	vertical-align: middle;
+}
+
+.icons__container img:not(:last-child),
+.content__container img:not(:last-child)
+{
+	margin-right: 15px;
+}
+
+.icons__container p{
+	border: 2px dashed #1564e4;
+}
+
+.content__container p{
+	border: 2px dashed #04c37d;
+}
+
+.content__rastr p{
+	border: 2px dashed #a32e8b;
+}
+
+.content__rastr img:not(:last-child){
+	margin-bottom: 40px;
+}
+
+.content__rastr img{
+	max-width: 600px;
+	display: block;
+}
+/* ====================================== */
+
+
+.footer {
+	min-height: 100px;
+	padding: 25px 0;
+	background-color: #050505;
+	text-align: center;
+}
+
+.footer p {
+	color: #fff;
+}
+.green {
+	color: #40ddb6;
+}
+.purple {
+	color: #6b77e5;
+}

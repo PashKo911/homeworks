@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Change Class on Hover</title>
+	<style>
+		/* Исходный класс элемента "div" */
+		.original-div {
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			transition: background-color 0.3s;
+		}
+
+		/* Дополнительный класс, который мы будем добавлять */
+		.hovered-div {
+			background-color: red;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="original-div" onmouseover="addClass(this)" onmouseout="removeClass(this)">Hover me</div>
+
+	<script>
+		function addClass(element) {
+			element.classList.toggle("hovered-div");
+		}
+
+		function removeClass(element) {
+			element.classList.remove("hovered-div");
+		}
+	</script>
+</body>
+
+</html>
