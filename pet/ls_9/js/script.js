@@ -126,10 +126,16 @@ class Sapper {
 
 					if (currentTd.getAttribute("mine") === "1") {
 						break
+					} else if (currentTd.innerText) {
+						currentTd.style.backgroundColor = "green"
+						break
 					}
 
 					while (currentTd !== null) {
 						if (currentTd.getAttribute("mine") === "1") {
+							break
+						} else if (currentTd.innerText) {
+							currentTd.style.backgroundColor = "green"
 							break
 						}
 						currentTd.style.backgroundColor = "green"
