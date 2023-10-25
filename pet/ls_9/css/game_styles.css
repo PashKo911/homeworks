@@ -1,0 +1,37 @@
+.game {
+	max-width: 1200px;
+	padding: 0 15px;
+	margin: 40px auto;
+}
+
+.game__container {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+table {
+	text-align: center;
+	border: 1px solid #000;
+	/* border-collapse: collapse; */
+}
+
+td,
+tr,
+th {
+	padding: 10px;
+	min-width: 30px;
+	height: 30px;
+	border: 1px solid #000;
+	border-color: #58abab;
+}
+
+td {
+	background-color: grey;
+}
+
+hr {
+	border: 2px dashed #000;
+	width: 100%;
+}
