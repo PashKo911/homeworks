@@ -126,10 +126,19 @@ class Sapper {
 
 					if (currentTd.getAttribute("mine") === "1") {
 						break
-					} else if (currentTd.innerText) {
-						currentTd.style.backgroundColor = "green"
-						break
 					}
+
+					while (currentTd !== null) {
+						if (currentTd.getAttribute("mine") === "1") {
+							break
+						}
+
+						currentTd.style.backgroundColor = "green"
+						currentTd = currentTd.previousElementSibling // Переходим к предыдущей ячейке в строке
+					}
+
+					tdIndex = td.cellIndex
+					currentTd = this.findCellByIndex(currentTr, tdIndex)
 
 					while (currentTd !== null) {
 						if (currentTd.getAttribute("mine") === "1") {
@@ -139,11 +148,52 @@ class Sapper {
 							break
 						}
 						currentTd.style.backgroundColor = "green"
-						currentTd = currentTd.previousElementSibling // Переходим к предыдущей ячейке в строке
+						currentTd = currentTd.nextElementSibling // Переходим к предыдущей ячейке в строке
 					}
 
 					currentTr = currentTr.previousElementSibling // Переходим к предыдущей строке
 				}
+
+				// currentTr = tr
+
+				// while (currentTr !== null) {
+				// 	let tdIndex = td.cellIndex
+				// 	let currentTd = this.findCellByIndex(currentTr, tdIndex) // Начинаем с текущей ячейки в строке
+
+				// 	if (currentTd.getAttribute("mine") === "1") {
+				// 		break
+				// 	} else if (currentTd.innerText) {
+				// 		currentTd.style.backgroundColor = "green"
+				// 		break
+				// 	}
+
+				// 	while (currentTd !== null) {
+				// 		if (currentTd.getAttribute("mine") === "1") {
+				// 			break
+				// 		} else if (currentTd.innerText) {
+				// 			currentTd.style.backgroundColor = "green"
+				// 			break
+				// 		}
+				// 		currentTd.style.backgroundColor = "green"
+				// 		currentTd = currentTd.previousElementSibling // Переходим к предыдущей ячейке в строке
+				// 	}
+
+				// 	tdIndex = td.cellIndex
+				// 	currentTd = this.findCellByIndex(currentTr, tdIndex)
+
+				// 	while (currentTd !== null) {
+				// 		if (currentTd.getAttribute("mine") === "1") {
+				// 			break
+				// 		} else if (currentTd.innerText) {
+				// 			currentTd.style.backgroundColor = "green"
+				// 			break
+				// 		}
+				// 		currentTd.style.backgroundColor = "green"
+				// 		currentTd = currentTd.nextElementSibling // Переходим к предыдущей ячейке в строке
+				// 	}
+
+				// 	currentTr = currentTr.nextElementSibling // Переходим к предыдущей строке
+				// }
 				// td = cell
 
 				// while (td.nextElementSibling !== null) {
