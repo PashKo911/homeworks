@@ -6,7 +6,6 @@
 
 body {
 	font-family: "Inter", sans-serif;
-	font-size: 18px;
 }
 
 .wrapper {
@@ -43,23 +42,25 @@ body {
 	left: 0;
 	top: 0;
 	width: 100%;
+	z-index: 50;
 }
 .header__container {
 }
 .header__logo {
 	margin-right: 195px;
 }
+
 .header__menu {
 	margin-right: 40px;
-}
-.menu {
-}
-.menu__list {
 }
 .menu__item {
 	display: inline-block;
 	vertical-align: middle;
 	font-size: 18px;
+	position: relative;
+	/* цей падінг ізза бордера у сабменю */
+	padding: 5px 0;
+	transition: color 0.3s ease;
 }
 
 .menu__item:not(:last-child) {
@@ -68,14 +69,120 @@ body {
 
 .menu__link {
 }
-.header__button {
+
+.menu__item:hover > .sub-menu {
+	opacity: 1;
+	visibility: visible;
 }
+.menu__item:hover .menu__link {
+	color: #40ddb6;
+}
+
+.sub-menu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background-color: rgba(65, 108, 133, 0.926);
+	border: 1px solid black;
+	border-radius: 0 10px 0 0;
+	width: 150px;
+	transition: all 0.3s ease;
+	visibility: hidden;
+	/* overflow: hidden; я години три просидів не розуміючи чому наступні меню не відкриваються залишу собі на памʼять*/
+	opacity: 0;
+}
+
+.sub-menu--margin {
+	/* і це все ізза бордера */
+	margin-top: -1px;
+}
+
+.sub-menu__item {
+	position: relative;
+	transition: background-color 0.3s ease;
+}
+
+.sub-menu__item .sub-menu {
+	top: 0;
+	left: 100%;
+}
+
+.sub-menu__item:not(:last-child) {
+	border-bottom: 1px solid black;
+}
+
+.sub-menu__link {
+	padding: 10px;
+}
+
+.sub-menu__item:hover {
+	background-color: #40ddb6;
+	color: black;
+}
+
+.sub-menu__item:hover > .sub-menu {
+	opacity: 1;
+	visibility: visible;
+}
+
+.arrow {
+	position: relative;
+	padding-right: 17px;
+}
+
+/* підтримка has слабенька 89% та іншого способу вийти з ситуації не знайшов */
+.menu__item:has(> .arrow):not(:last-child) {
+	margin-right: 23px;
+}
+
+/* ці танці з бубном з margin-right повʼязані з відсутністю флексу, всі розміри жорсткі і будь які зміни роблять перенос рядка, зробив гнучко наскільки це можливо для мене*/
+
+.menu__item.arrow:last-child {
+	margin-right: 0;
+}
+
+.arrow::after {
+	content: "";
+	position: absolute;
+	margin-top: -4px;
+	top: 50%;
+	right: 0;
+	width: 10px;
+	height: 8px;
+	background: url("../img/header/icons/arrow-down.svg") 50% / contain no-repeat;
+	transition: transform 0.3s ease;
+}
+
+.arrow--right::after {
+	transform: rotate(-90deg);
+}
+
+/* привʼязка саме до бем елемента мені не подобається, та по іншому задачу вирішити не вийшло */
+.menu__item:hover > ::after {
+	transform: rotate(180deg);
+}
+
+.sub-menu__item:hover > ::after {
+	transform: rotate(90deg);
+}
+
+.header__button {
+	/* відступ безпеки */
+	margin-right: 15px;
+}
+
 .button {
 	/* тут колір тексту на весь хедер заданий, але якщо цей елемент ще десь будуть використовувати де колір не буде інший вирішив перестрахувати кнопку */
 	color: #ffffff;
 	padding: 21px 35px;
 	background-color: #6b77e5;
 	font-size: 18px;
+	transition: all 0.3s ease;
+}
+
+.button:hover {
+	background-color: #40ddb6;
+	color: black;
 }
 
 /* ============== experts======== */
@@ -89,24 +196,30 @@ body {
 }
 .experts__container {
 }
-.experts__list {
-}
-.experts__item {
+.experts__team {
+	font-size: 0;
 }
 .experts__card {
+	margin: 0 31px 31px 0;
+}
+
+/* це тимчасове ліниве рішення (поки флекси не вчили) */
+.experts__card:nth-child(3n + 3) {
+	margin-right: 0;
 }
 
 .card {
 	position: relative;
-	max-width: 386px;
+	width: 31.6%;
+	min-width: 320px;
 	min-height: 532px;
-	text-align: center;
-	font-size: 0;
 	overflow: hidden;
+	display: inline-block;
 }
-.card__link {
+.card__img {
 }
-.card__link img {
+
+.card__img img {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -115,46 +228,79 @@ body {
 	object-fit: cover;
 }
 .card__social {
-}
-
-.social-item {
 	width: 100%;
 	height: 100%;
+	background-color: rgba(107, 119, 229, 0.7);
 	position: absolute;
 	top: 0;
 	left: 0;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.3s ease;
 }
+
+.card:hover .card__social {
+	visibility: visible;
+	opacity: 1;
+}
+
+.social-item {
+}
+
 .social-item__body {
 	position: absolute;
+	margin-left: -80.5px;
+	margin-top: -25px;
+	font-size: 0;
 	top: 50%;
 	left: 50%;
 }
-
 .social-item__link {
-	width: 45px;
-	height: 45px;
+	width: 50px;
+	height: 50px;
 	overflow: hidden;
+	border-radius: 50%;
+	background-color: #40ddb6;
+	transition: background-color 0.3s ease;
 }
+
+.social-item__link:not(:last-child) {
+	margin-right: 13px;
+}
+
 .social-item__link img {
 	width: 100%;
 }
 
+.social-item__link:hover {
+	background-color: #4e5cdf;
+}
+
 .card__content {
-	padding: 24px 69px;
+	padding: 24px;
+	width: 88.45%;
 	background-color: #ffffff;
 	position: absolute;
 	bottom: 22px;
-	left: 22.5px;
+	left: 5.84%;
+	text-align: center;
+	max-width: 341px;
 }
 .card__content > *:not(:last-child) {
 	margin-bottom: 8px;
 }
-.card__title {
+.card__title-link {
 	font-family: "Poppins", sans-serif;
 	font-weight: 600;
 	font-size: 25px;
 	color: #37393f;
+	transition: color 0.3s ease;
 }
+
+.card__title-link:hover {
+	color: #4e5cdf;
+}
+
 .card__subtitle {
 	color: #7d7d7d;
 	line-height: 1.35;
