@@ -1,0 +1,582 @@
+@import url("fonts.css");
+
+@import url("reset.css");
+
+/* ================= */
+
+body {
+	font-family: "Inter", sans-serif;
+}
+
+.wrapper {
+	overflow: clip;
+	min-height: 100%;
+}
+
+/* ==================  header ============ */
+.header {
+	background-color: #416c85;
+	color: #ffffff;
+	/* min-height: 130px; */
+	padding: 18px 0;
+	font-size: 0;
+}
+
+/* [class*="__container"] {
+	max-width: 1250px;
+	padding: 0 15px;
+	margin: 0 auto;
+} */
+
+.header__container > * {
+	vertical-align: middle;
+	display: inline-block;
+}
+
+.header__container > *:last-child {
+	margin-right: 0;
+}
+
+.header--fix {
+	position: sticky;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 50;
+}
+.header__container {
+}
+.header__logo {
+	margin-right: 195px;
+}
+
+.header__menu {
+	margin-right: 40px;
+}
+.menu__item {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 18px;
+	position: relative;
+	/* цей падінг ізза бордера у сабменю */
+	padding: 5px 0;
+	transition: color 0.3s ease;
+}
+
+.menu__item:not(:last-child) {
+	margin-right: 40px;
+}
+
+.menu__link {
+}
+
+.menu__item:hover > .sub-menu {
+	opacity: 1;
+	visibility: visible;
+}
+.menu__item:hover .menu__link {
+	color: #40ddb6;
+}
+
+.sub-menu,
+.sub-menu ul {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background-color: rgba(65, 108, 133, 0.926);
+	border: 1px solid black;
+	border-radius: 0 10px 0 0;
+	width: 150px;
+	transition: all 0.3s ease;
+	visibility: hidden;
+	/* overflow: hidden; я години три просидів не розуміючи чому наступні меню не відкриваються залишу собі на памʼять*/
+	opacity: 0;
+}
+
+/* .sub-menu--margin {
+	і це все ізза бордера
+	margin-top: -1px;
+} */
+
+.sub-menu__item,
+.sub-menu__item ul li {
+	position: relative;
+	transition: background-color 0.3s ease;
+}
+
+.sub-menu__item ul {
+	top: 0;
+	left: 100%;
+}
+
+.sub-menu__item:not(:last-child),
+.sub-menu__item ul li:not(:last-child) {
+	border-bottom: 1px solid black;
+}
+
+.sub-menu__link,
+.sub-menu__item ul li a {
+	padding: 10px;
+}
+
+.sub-menu__item:hover,
+.sub-menu__item ul li:hover {
+	background-color: #40ddb6;
+	color: black;
+}
+
+.sub-menu__item:hover > ul,
+.sub-menu__item ul li:hover > ul {
+	opacity: 1;
+	visibility: visible;
+}
+
+.arrow,
+.sub-menu__item ul li a.arrow {
+	position: relative;
+	padding-right: 17px;
+}
+
+/* підтримка has слабенька 89% та іншого способу вийти з ситуації не знайшов */
+.menu__item:has(> .arrow):not(:last-child) {
+	margin-right: 23px;
+}
+
+/* ці танці з бубном з margin-right повʼязані з відсутністю флексу, всі розміри жорсткі і будь які зміни роблять перенос рядка, зробив гнучко наскільки це можливо для мене*/
+
+.menu__item.arrow:last-child {
+	margin-right: 0;
+}
+
+.arrow::after {
+	content: "";
+	position: absolute;
+	margin-top: -4px;
+	top: 50%;
+	right: 0;
+	width: 10px;
+	height: 8px;
+	background: url("../img/header/icons/arrow-down.svg") 50% / contain no-repeat;
+	transition: transform 0.3s ease;
+}
+
+.arrow--right::after {
+	transform: rotate(-90deg);
+}
+
+/* привʼязка саме до бем елемента мені не подобається, та по іншому задачу вирішити не вийшло */
+.menu__item:hover > ::after {
+	transform: rotate(180deg);
+}
+
+.sub-menu__item:hover > ::after,
+.sub-menu__item ul li:hover > ::after {
+	transform: rotate(90deg);
+}
+
+.header__button {
+	/* відступ безпеки */
+	margin-right: 15px;
+}
+
+.button {
+	/* тут колір тексту на весь хедер заданий, але якщо цей елемент ще десь будуть використовувати де колір не буде інший вирішив перестрахувати кнопку */
+	color: #ffffff;
+	padding: 21px 35px;
+	background-color: #6b77e5;
+	font-size: 18px;
+	transition: all 0.3s ease;
+}
+
+.button:hover {
+	background-color: #40ddb6;
+	color: black;
+}
+
+/* tractor */
+
+.page__tractor {
+	background: url("../img/field.jpeg") center / cover no-repeat;
+}
+
+.tractor__container {
+	max-width: 1230px;
+	padding: 0 15px;
+	margin: 0 auto;
+	height: 100vh;
+	position: relative;
+}
+
+.tractor__box {
+	width: 100%;
+	position: absolute;
+	left: 50%;
+	bottom: 70px;
+	transform: translate(-47%, 0);
+}
+
+.box-tractor__area {
+	display: inline-block;
+	width: 500px;
+	height: 500px;
+	position: relative;
+}
+.box-tractor {
+}
+.box-tractor__cabin {
+	width: 100%;
+	height: 100%;
+}
+[class*="--absolute"] {
+	position: absolute;
+	background-color: #1962ff;
+	top: 0;
+	left: 0;
+}
+
+.cabin__rear {
+	width: 25px;
+	height: 280px;
+	border-radius: 10px 10px 0 0;
+}
+
+.cabin__top {
+	position: absolute;
+	width: 175px;
+	height: 30px;
+	background-color: #1962ff;
+	border-radius: 10px 10px 0 0;
+}
+
+.cabin__front {
+	top: 61px;
+	left: 112px;
+	width: 160px;
+	height: 30px;
+	transform: rotate(65deg);
+	border-radius: 10px 0 0 0;
+}
+
+.cabin__engine {
+	top: 155px;
+	left: 200px;
+	width: 220px;
+	height: 232.5px;
+	border-radius: 0 70px 20px 0;
+}
+
+.cabin__engine-alpha {
+	width: 0;
+	height: 0;
+	background-color: rgba(255, 255, 255, 0);
+	top: 124.5px;
+	left: 200px;
+	border-style: solid;
+	border-width: 32px 0 80px 165px;
+	border-color: transparent transparent transparent #1962ff;
+}
+
+.cabin__bottom {
+	top: 275px;
+	width: 205px;
+	height: 112.5px;
+}
+
+.cabin__jumper {
+	left: 67.5px;
+	width: 14px;
+	height: 275px;
+	border-radius: 10px 10px 0 0;
+}
+/* ========= Wheels =========== */
+
+.box-tractor__wheel {
+	position: absolute;
+	left: -97px;
+	bottom: -10px;
+}
+
+.wheel__tractor {
+	position: relative;
+	width: 240px;
+	height: 240px;
+}
+
+.wheel__box {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-color: black;
+	outline: dashed 15px black;
+}
+
+.wheel__axis {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: rgb(21, 181, 71);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.wheel__sup-axis {
+	width: 175px;
+	height: 175px;
+	border-radius: 50%;
+	background-color: rgb(181, 21, 40);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.screw {
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	background-color: rgb(63, 63, 64);
+	position: absolute;
+	top: 28%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.wheel__screw:nth-child(2) {
+	top: 72%;
+	left: 50%;
+}
+
+.wheel__screw:nth-child(3) {
+	top: 50%;
+	left: 28%;
+}
+
+.wheel__screw:nth-child(4) {
+	top: 50%;
+	left: 72%;
+}
+
+.wheel--small {
+	position: absolute;
+	left: 320px;
+	bottom: 0px;
+}
+
+.wheel--small .wheel__tractor {
+	width: 170px;
+	height: 170px;
+}
+
+.wheel--small .wheel__sup-axis {
+	width: 115px;
+	height: 115px;
+}
+/* ======== wing ========== */
+
+.box-tractor__wing {
+	position: absolute;
+	top: 220px;
+	left: -110px;
+}
+.wing {
+}
+.wing__tractor {
+	position: relative;
+	width: 270px;
+	height: 90px;
+	overflow: hidden;
+}
+.wing__box {
+	width: 100%;
+	height: 250px;
+	border-radius: 50%;
+	background-color: #244ea7;
+}
+/* ========= light ========== */
+
+.box-tractor__light {
+	width: 50px;
+	height: 22.5px;
+	position: absolute;
+	right: 80px;
+	top: 244px;
+	background-color: yellow;
+	border-radius: 15px 0 0 15px;
+}
+/* ========= pipe ===== */
+
+.cabin__pipe {
+	position: absolute;
+	right: 152px;
+	top: 0;
+}
+.pipe {
+}
+.pipe__box {
+	width: 40px;
+	height: 160px;
+}
+.pipe__thin {
+	width: 15px;
+	height: 100%;
+	position: absolute;
+	left: 50%;
+	top: 0;
+	transform: translate(-50%, 0);
+	background-color: rgb(81, 45, 45);
+}
+
+.pipe__fat {
+	width: 40px;
+	height: 87.5px;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translate(0, -50%);
+	background-color: rgb(81, 45, 45);
+}
+/* =========== TRAILER =========== */
+
+.box-tractor__trailer {
+	position: relative;
+	display: inline-block;
+	width: 660px;
+	height: 500px;
+}
+.trailer {
+}
+
+/* ======== TRAILER-wheel ===== */
+
+.trailer__bottom {
+	position: absolute;
+	bottom: -5px;
+	left: 20px;
+}
+
+.bottom-trailer__box {
+	width: 420px;
+	height: 144px;
+	position: relative;
+}
+
+.wheel--trailer {
+	position: absolute;
+	left: 0;
+	bottom: 0px;
+}
+.wheel--trailer:nth-child(2) {
+	left: auto;
+	right: 0;
+	bottom: 0px;
+}
+
+.wheel--trailer .wheel__tractor {
+	width: 140px;
+	height: 140px;
+}
+
+.wheel--trailer .wheel__sup-axis {
+	width: 100px;
+	height: 100px;
+	background-color: #be6037;
+}
+.wheel--trailer .wheel__axis {
+	background-color: #a89a36;
+	width: 20px;
+	height: 20px;
+}
+
+.bottom-trailer__wheel .wheel__box {
+	outline: none;
+}
+
+/* =========== bridge ======== */
+
+.bottom-trailer__bridge {
+	height: 27.5px;
+	width: 200px;
+	background-color: rgb(99, 118, 154);
+	position: absolute;
+	left: 50%;
+	bottom: 50%;
+	transform: translate(-50%, 50%);
+}
+
+/* =========== trailer__jumper ========== */
+
+.trailer__jumper {
+	height: 36px;
+	width: 150px;
+	background-color: #321405;
+	position: absolute;
+	bottom: 140px;
+	right: 40px;
+}
+
+/* ========= trailer__body =========== */
+
+.trailer__body {
+	position: absolute;
+	bottom: 140px;
+	left: 0;
+}
+
+.trailer__box {
+	width: 477px;
+	height: 215px;
+	position: relative;
+}
+
+.box__bottom {
+	width: 100%;
+	height: 36px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background: rgb(47, 45, 45) url("../img/dirty-1.png") center / contain no-repeat;
+}
+
+.box__middle {
+	width: 100%;
+	height: 72px;
+	position: absolute;
+	left: 0;
+	bottom: 36px;
+	background: #1962ff url("../img/dirty-1.png") 0 0 / contain no-repeat;
+}
+
+.box__top {
+	width: 100%;
+	height: 27.5px;
+	position: absolute;
+	left: 0;
+	bottom: 136px;
+	background-color: rgb(135, 85, 23);
+}
+
+.box__top--second {
+	background-color: rgb(135, 85, 23);
+	bottom: 188px;
+}
+
+.vertical {
+	width: 24px;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background: url("../img/wood-bg.jpeg") center / cover no-repeat;
+}
+.box__top-vertical:nth-child(4) {
+	left: 155px;
+}
+.box__top-vertical:nth-child(5) {
+	left: 312px;
+}
+.box__top-vertical:nth-child(6) {
+	left: auto;
+	right: 0;
+}
