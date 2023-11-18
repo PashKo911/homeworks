@@ -1,4 +1,13 @@
 @font-face {
+	font-family: "Core Sans C 65";
+	src: url("../fonts/CoreSansC-65Bold.woff2") format("woff2"),
+		url("../fonts/CoreSansC-65Bold.woff") format("woff");
+	font-weight: 650;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
 	font-family: "Causten";
 	src: url("../fonts/Causten-Regular.woff2") format("woff2"),
 		url("../fonts/Causten-Regular.woff") format("woff");
@@ -29,4 +38,3 @@
 	font-style: normal;
 	font-display: swap;
 }
-
