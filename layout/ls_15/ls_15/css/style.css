@@ -33,6 +33,7 @@ body {
 	min-height: 111px;
 	padding: 32px 0;
 	border-bottom: 1px solid #bebcbd;
+	background-color: #fff;
 }
 .header--fix {
 	position: sticky;
@@ -634,6 +635,7 @@ body {
 .subtitle-order--black {
 	color: #3C4242;
 }
+
 /* ================ footer ============= */
 
 .footer__container {
