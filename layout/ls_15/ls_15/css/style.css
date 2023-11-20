@@ -262,6 +262,7 @@ body {
 .products__item {
 }
 .item-product {
+	min-width: 270px;
 	flex: 0 1 calc((100% - (var(--gap) * (var(--col) - 1))) / var(--col));
 }
 .item-product__image {
@@ -546,6 +547,7 @@ body {
 	background-color: #f6f6f6;
 	display: flex;
 	justify-content: space-between;
+	gap: 15px;
 }
 .details-order__properties {
 	flex: 1 0 50%;
