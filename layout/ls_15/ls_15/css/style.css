@@ -85,6 +85,7 @@ body {
 	font-size: 18px;
 	font-weight: 500;
 	line-height: 1.2;
+	padding: 0 10px;
 	text-transform: capitalize;
 	background: url("../img/header/icons/search.svg") 40px 0 / 20px 20px no-repeat;
 }
@@ -93,7 +94,8 @@ body {
 	padding-left: 70px;
 }
 
-.header__input:focus {
+.header__input:focus,
+.header__input:valid {
 	background: none;
 }
 
