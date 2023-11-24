@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
 	<link rel="stylesheet" href="css/style.css">
-	<title>HW_15</title>
+	<title>HW_16</title>
 </head>
 
 <body>
@@ -70,11 +70,116 @@
 							Request A Call Back !
 						</h2>
 					</div>
-					<form id="consulting-form" class="contact-us__form form-contact-us" enctype="multipart/form-data" action="#">
+					<form id="consulting-form" class="contact-us__form form-contact-us" enctype="multipart/form-data"
+						action="#">
 						<div class="form-contact-us__body">
 							<div class="form-contact-us__item">
 								<input type="text" name="first-name" placeholder="Your Name" required>
 							</div>
+							<div class="form-contact-us__item">
+								<input type="email" name="email" placeholder="Email Address" required>
+							</div>
+							<div class="form-contact-us__item">
+								<input type="tel" name="phone" placeholder="Phone Number" required>
+							</div>
+							<div class="form-contact-us__item">
+								<input type="text" name="subject" placeholder="Subject" required>
+							</div>
+							<div class="form-contact-us__item form-contact-us__item--textarea">
+								<textarea name="message" autocomplete="off" placeholder="Message..."
+									required></textarea>
+							</div>
+
+						</div>
+						<button class="form-contact-us__btn" type="submit">
+							Submit
+						</button>
+					</form>
+				</div>
+			</div>
+			<div class="page__info info">
+				<div class="info__container">
+					<div class="info__title title-info">
+						<h2 class="title-info__main">
+							My Info
+						</h2>
+						<h3 class="title-info__subtitle">
+							Add Address
+						</h3>
+					</div>
+					<form action="#" id="address-form" class="info__form form-info" enctype="multipart/form-data">
+						<div class="form-info__body body-form">
+							<div class="body-form__item">
+								<label for="first-name-info" class="body-form__label">First Name*</label>
+								<input id="first-name-info" class="body-form__input" type="text" name="first-name-info"
+									required placeholder="First Name">
+							</div>
+							<div class="body-form__item">
+								<label for="second-name-info" class="body-form__label">Last Name*</label>
+								<input id="second-name-info" class="body-form__input" type="text" name="last-name-info"
+									required placeholder="Last Name">
+							</div>
+							<div class="body-form__item">
+								<label for="region-info" class="body-form__label">Country / Region*</label>
+								<input id="region-info" class="body-form__input" type="text" name="region-info" required
+									placeholder="Country / Region">
+							</div>
+							<div class="body-form__item">
+								<label for="company-info" class="body-form__label">Company Name</label>
+								<input id="company-info" class="body-form__input" type="text" name="region-info"
+									required placeholder="Company (optional)">
+							</div>
+							<div class="body-form__item">
+								<label for="adress-info" class="body-form__label">Company Name</label>
+								<input id="adress-info" class="body-form__input" type="text" name="adress-info" required
+									placeholder="House number and street name">
+							</div>
+							<div class="body-form__item">
+								<label for="apartment-info" class="body-form__label">Apt, suite, unit</label>
+								<input id="apartment-info" class="body-form__input" type="text" name="apartment-info"
+									required placeholder="apartment, suite, unit, etc. (optional)">
+							</div>
+							<div class="body-form__item">
+								<label for="city-info" class="body-form__label">City*</label>
+								<input id="city-info" class="body-form__input" type="text" name="city-info" required
+									placeholder="Town / City">
+							</div>
+							<div class="body-form__item">
+								<label for="state-info" class="body-form__label">State*</label>
+								<select id="state-info" name="state" class="body-form__select" required>
+									<option value="ukraine" disabled hidden selected>
+										Ukraine
+									</option>
+									<option value="china" >
+										China
+									</option>
+									<option value="uk">
+										UK (United Kingdom)
+									</option>
+									<option value="brasil">
+										Brasil
+									</option>
+								</select>
+							</div>
+							<div class="body-form__item">
+								<label for="phone-info" class="body-form__label">Phone*</label>
+								<input id="phone-info" class="body-form__input" type="tel" name="phone-info" required
+									placeholder="Phone">
+							</div>
+							<div class="body-form__item">
+								<label for="postal-info" class="body-form__label">Postal Code*</label>
+								<input id="postal-info" class="body-form__input" type="tel" name="postal-info" required
+									placeholder="Postal Code">
+							</div>
+							<div class="body-form__textarea-item">
+								<label class="body-form__label" for="delivery-info">Delivery Instruction</label>
+								<textarea class="body-form__textarea" name="delivery-info" id="delivery-info" required
+									autocomplete="off" placeholder="Delivery Instruction"></textarea>
+							</div>
+						</div>
+						<div class="form-info__checkbox checkbox">
+							<input id="set-adress" type="checkbox" class="checkbox-info" name="shipping-adress">
+							<label for="set-adress"></label>
 						</div>
 					</form>
 				</div>
