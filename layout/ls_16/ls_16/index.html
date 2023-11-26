@@ -312,14 +312,16 @@
 								<div class="item-details__body">
 									<input id="shipping-address-radio" name="shipping-address-radio" value="same-adress"
 										type="radio" required class="item-details__radio ">
-									<label for="shipping-address-radio" class="item-details__label title-details">
+									<label for="shipping-address-radio"
+										class="item-details__label item-details__label--title-details">
 										Same as Billing address
 									</label>
 								</div>
 								<div class="item-details__body">
 									<input id="different-address-radio" name="shipping-address-radio"
 										value="different-adress" type="radio" class="item-details__radio radio-input">
-									<label for="different-address-radio" class="item-details__label title-details ">
+									<label for="different-address-radio"
+										class="item-details__label item-details__label--title-details ">
 										Use a different shipping address
 									</label>
 								</div>
@@ -333,20 +335,20 @@
 							</div>
 							<div class="body-details__item item-details">
 								<div class="item-details__body">
-									<h4 class="item-details__title title-details">
+									<h4 class="item-details__title item-details__label--title-details">
 										Arrives by Monday, June 7
 									</h4>
 								</div>
 								<div class="item-details__body">
 									<div class="item-details__left">
-										<h4 class="item-details__title title-details">
+										<h4 class="item-details__title item-details__label--title-details">
 											Delivery Charges
 										</h4>
 										<div class="item-details__text text text--gray">
 											Additional fess may apply
 										</div>
 									</div>
-									<h4 class="item-details__price title-details">
+									<h4 class="item-details__price item-details__label--title-details">
 										$5.00
 									</h4>
 								</div>
@@ -363,22 +365,54 @@
 							</div>
 							<div class="body-details__item item-details item-details--big">
 								<div class="item-details__body">
-									<input id="payment-radio" name="payment-radio" value="credit-card"
-										type="radio" required class="item-details__radio">
-									<label for="payment-radio" class="item-details__label item-details__label--column title-details">
+									<input id="payment-radio" name="payment-radio" value="credit-card" type="radio"
+										required class="item-details__radio">
+									<label for="payment-radio"
+										class="item-details__label item-details__label--column item-details__label--title-details">
 										Credit Card
-										<div class="text">We accept all major credit cards.</div>
+										<span class="text">We accept all major credit cards.</span>
 									</label>
-									<!-- <div class="item-details__methods methods">
-										<div class="methods__title text">
-											We accept all major credit cards.
+									<div class="item-details__methods methods">
+										<div class="methods__images">
+											<div class="methods__img">
+												<img src="img/icons/pay.svg" alt="img with pay method">
+											</div>
+											<div class="methods__img">
+												<img src="img/icons/visa.svg" alt="img with pay method">
+											</div>
+											<div class="methods__img">
+												<img src="img/icons/pay-pal.svg" alt="img with pay method">
+											</div>
+											<div class="methods__img">
+												<img src="img/icons/pay-pass.svg" alt="img with pay method">
+											</div>
 										</div>
-									</div> -->
+										<div class="methods__inputs">
+											<div class="methods__input">
+												<input placeholder="Card number" id="card-number-method" type="number"
+													name="card-number" required>
+											</div>
+											<div class="methods__input">
+												<input placeholder="Name of card" id="card-name-method" type="text"
+													name="card-number" required>
+											</div>
+											<div class="methods__input">
+												<input placeholder="Expiration date (MM/YY)" id="card-date-method" type="number"
+													name="card-date" required>
+											</div>
+											<div class="methods__input">
+												<input placeholder="Security Code" id="card-code-method" type="number"
+													name="card-code" required>
+											</div>
+										</div>
+									</div>
+
 								</div>
 								<div class="item-details__body">
-									<input id="dif-payment-radio" name="payment-radio"
-										value="different-adress" type="radio" class="item-details__radio radio-input">
-									<label for="dif-payment-radio" class="item-details__label title-details ">
+									<input id="dif-payment-radio" name="payment-radio" value="different-adress"
+										type="radio" class="item-details__radio radio-input">
+									<label for="dif-payment-radio"
+										class="item-details__label item-details__label--title-details ">
 										Use a different shipping address
 									</label>
 								</div>
