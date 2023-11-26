@@ -99,59 +99,59 @@
 			</div>
 			<div class="page__info info">
 				<div class="info__container">
-					<div class="info__title title-info">
-						<h2 class="title-info__main">
+					<div class="info__title title">
+						<h2 class="title__main">
 							My Info
 						</h2>
-						<h3 class="title-info__subtitle">
+						<h3 class="title__subtitle subtitle">
 							Add Address
 						</h3>
 					</div>
 					<form action="#" id="address-form" class="info__form form-info" enctype="multipart/form-data">
 						<div class="form-info__body body-form">
-							<div class="body-form__item">
-								<label for="first-name-info" class="body-form__label">First Name*</label>
-								<input id="first-name-info" class="body-form__input" type="text" name="first-name-info"
+							<div class="body-form__item item-form">
+								<label for="first-name-info" class="item-form__label label">First Name*</label>
+								<input id="first-name-info" class="item-form__input" type="text" name="first-name-info"
 									required placeholder="First Name">
 							</div>
-							<div class="body-form__item">
-								<label for="second-name-info" class="body-form__label">Last Name*</label>
-								<input id="second-name-info" class="body-form__input" type="text" name="last-name-info"
+							<div class="body-form__item item-form">
+								<label for="second-name-info" class="item-form__label label">Last Name*</label>
+								<input id="second-name-info" class="item-form__input" type="text" name="last-name-info"
 									required placeholder="Last Name">
 							</div>
-							<div class="body-form__item">
-								<label for="region-info" class="body-form__label">Country / Region*</label>
-								<input id="region-info" class="body-form__input" type="text" name="region-info" required
+							<div class="body-form__item item-form">
+								<label for="region-info" class="item-form__label label">Country / Region*</label>
+								<input id="region-info" class="item-form__input" type="text" name="region-info" required
 									placeholder="Country / Region">
 							</div>
-							<div class="body-form__item">
-								<label for="company-info" class="body-form__label">Company Name</label>
-								<input id="company-info" class="body-form__input" type="text" name="region-info"
+							<div class="body-form__item item-form">
+								<label for="company-info" class="item-form__label label">Company Name</label>
+								<input id="company-info" class="item-form__input" type="text" name="region-info"
 									required placeholder="Company (optional)">
 							</div>
-							<div class="body-form__item">
-								<label for="adress-info" class="body-form__label">Company Name</label>
-								<input id="adress-info" class="body-form__input" type="text" name="adress-info" required
+							<div class="body-form__item item-form">
+								<label for="adress-info" class="item-form__label label">Street Address*</label>
+								<input id="adress-info" class="item-form__input" type="text" name="adress-info" required
 									placeholder="House number and street name">
 							</div>
-							<div class="body-form__item">
-								<label for="apartment-info" class="body-form__label">Apt, suite, unit</label>
-								<input id="apartment-info" class="body-form__input" type="text" name="apartment-info"
+							<div class="body-form__item item-form">
+								<label for="apartment-info" class="item-form__label label">Apt, suite, unit</label>
+								<input id="apartment-info" class="item-form__input" type="text" name="apartment-info"
 									required placeholder="apartment, suite, unit, etc. (optional)">
 							</div>
-							<div class="body-form__item">
-								<label for="city-info" class="body-form__label">City*</label>
-								<input id="city-info" class="body-form__input" type="text" name="city-info" required
+							<div class="body-form__item item-form">
+								<label for="city-info" class="item-form__label label">City*</label>
+								<input id="city-info" class="item-form__input" type="text" name="city-info" required
 									placeholder="Town / City">
 							</div>
-							<div class="body-form__item">
-								<label for="state-info" class="body-form__label">State*</label>
-								<select id="state-info" name="state" class="body-form__select" required>
-									<option value="ukraine" disabled hidden selected>
-										Ukraine
-									</option>
-									<option value="china" >
+							<div class="body-form__item item-form">
+								<label for="state-info" class="item-form__label label">State*</label>
+								<select id="state-info" name="state" class="item-form__select" required>
+									<option value="china">
 										China
+									</option>
+									<option selected value="ukraine">
+										Ukraine
 									</option>
 									<option value="uk">
 										UK (United Kingdom)
@@ -161,27 +161,231 @@
 									</option>
 								</select>
 							</div>
-							<div class="body-form__item">
-								<label for="phone-info" class="body-form__label">Phone*</label>
-								<input id="phone-info" class="body-form__input" type="tel" name="phone-info" required
+							<div class="body-form__item item-form">
+								<label for="phone-info" class="item-form__label label">Phone*</label>
+								<input id="phone-info" class="item-form__input" type="tel" name="phone-info" required
 									placeholder="Phone">
 							</div>
-							<div class="body-form__item">
-								<label for="postal-info" class="body-form__label">Postal Code*</label>
-								<input id="postal-info" class="body-form__input" type="tel" name="postal-info" required
-									placeholder="Postal Code">
+							<div class="body-form__item item-form">
+								<label for="postal-info" class="item-form__label label">Postal Code*</label>
+								<input id="postal-info" class="item-form__input" type="number" name="postal-info"
+									required placeholder="Postal Code">
 							</div>
 							<div class="body-form__textarea-item">
-								<label class="body-form__label" for="delivery-info">Delivery Instruction</label>
+								<label class="body-form__label label" for="delivery-info">Delivery Instruction</label>
 								<textarea class="body-form__textarea" name="delivery-info" id="delivery-info" required
 									autocomplete="off" placeholder="Delivery Instruction"></textarea>
 							</div>
 						</div>
 						<div class="form-info__checkbox checkbox">
-							<input id="set-adress" type="checkbox" class="checkbox-info" name="shipping-adress">
-							<label for="set-adress"></label>
+							<div class="checkbox__body">
+								<input id="shipping-adress" type="checkbox" class="checkbox__input"
+									name="shipping-adress">
+								<label for="shipping-adress" class="checkbox__label">Set as default shipping
+									address</label>
+							</div>
+							<div class="checkbox__body">
+								<input id="billing-adress" type="checkbox" class="checkbox__input"
+									name="billing-adress">
+								<label for="billing-adress" class="checkbox__label">Set as default billing
+									address</label>
+							</div>
+						</div>
+						<div class="form-info__buttons buttons">
+							<button type="submit" class="buttons__button button button--small">
+								Save
+							</button>
+							<button type="submit" class="buttons__button button button--small" disabled>
+								Cancel
+							</button>
 						</div>
 					</form>
+				</div>
+			</div>
+			<div class="page__check-out check-out">
+				<div class="check-out__container">
+					<div class="check-out__title title">
+						<h2 class="title__main title__main--decor">
+							Check Out
+						</h2>
+						<h3 class="title__subtitle subtitle">
+							Billing Details
+						</h3>
+					</div>
+					<form action="#" id="address-form-check" class="check-out__form form-check-out"
+						enctype="multipart/form-data">
+						<div class="form-check-out__body body-form body-form--left">
+							<div class="body-form__item item-form item-form--fz14">
+								<label for="first-name" class="item-form__label label label--fz16">First
+									Name*</label>
+								<input id="first-name" class="item-form__input" type="text" name="first-name-info"
+									required placeholder="First Name">
+							</div>
+							<div class="body-form__item item-form item-form--fz14">
+								<label for="second-name" class="item-form__label label label--fz16">Last
+									Name*</label>
+								<input id="second-name" class="item-form__input" type="text" name="last-name-info"
+									required placeholder="Last Name">
+							</div>
+							<div class="body-form__item item-form item-form--fz14">
+								<label for="region" class="item-form__label label label--fz16">Country /
+									Region*</label>
+								<input id="region" class="item-form__input" type="text" name="region-info" required
+									placeholder="Country / Region">
+							</div>
+							<div class="body-form__item item-form item-form--fz14">
+								<label for="company" class="item-form__label label label--fz16">Company
+									Name</label>
+								<input id="company" class="item-form__input" type="text" name="region-info" required
+									placeholder="Company (optional)">
+							</div>
+							<div class="body-form__item item-form item-form--fz14">
+								<label for="adress" class="item-form__label label label--fz16">Street Address*</label>
+								<input id="adress" class="item-form__input" type="text" name="adress-info" required
+									placeholder="House number and street name">
+							</div>
+							<div class="body-form__item item-form item-form--fz14">
+								<label for="apartment" class="item-form__label label label--fz16">Apt, suite,
+									unit</label>
+								<input id="apartment" class="item-form__input" type="text" name="apartment-info"
+									required placeholder="apartment, suite, unit, etc. (optional)">
+							</div>
+							<div class="body-form__three-col ">
+								<div class="body-form__item item-form item-form--fz14 item-form--triple">
+									<label for="city" class="item-form__label label label--fz16">City*</label>
+									<input id="city" class="item-form__input" type="text" name="city-info" required
+										placeholder="Town / City">
+								</div>
+								<div class="body-form__item item-form item-form--fz14 item-form--triple">
+									<label for="state" class="item-form__label label label--fz16">State*</label>
+									<select id="state" name="state" class="item-form__select" required>
+										<option value="china">
+											China
+										</option>
+										<option selected value="ukraine">
+											Ukraine
+										</option>
+										<option value="uk">
+											UK (United Kingdom)
+										</option>
+										<option value="brasil">
+											Brasil
+										</option>
+									</select>
+								</div>
+								<div class="body-form__item item-form item-form--fz14 item-form--triple">
+									<label for="postal" class="item-form__label label label--fz16">Postal Code*</label>
+									<input id="postal" class="item-form__input" type="number" name="postal-info"
+										required placeholder="Postal Code">
+								</div>
+							</div>
+							<div class="body-form__item item-form item-form--fz14">
+								<label for="phone" class="item-form__label label label--fz16">Phone*</label>
+								<input id="phone" class="item-form__input" type="tel" name="phone-info" required
+									placeholder="Phone">
+							</div>
+						</div>
+						<button type="submit" class="form-check-out__button button button--smallest">
+							Continue to delivery
+						</button>
+						<div class="form-check-out__checkbox checkbox">
+							<div class="checkbox__body">
+								<input id="pers-info" name="pers-info" type="checkbox" class="checkbox__input">
+								<label for="pers-info" class="checkbox__label checkbox__label--fz-18">
+									Save my information for a faster checkout
+								</label>
+							</div>
+						</div>
+					</form>
+					<form action="#" id="shipping-details" enctype="multipart/form-data"
+						class="check-out__shipping-details shipping-details">
+						<div class="shipping-details__body body-details">
+							<div class="body-details__header">
+								<h3 class="body-details__title">
+									Shipping Address
+								</h3>
+								<div class="body-details__text text">
+									Select the address that matches your card or payment method.
+								</div>
+							</div>
+							<div class="body-details__item item-details">
+								<div class="item-details__body">
+									<input id="shipping-address-radio" name="shipping-address-radio" value="same-adress"
+										type="radio" required class="item-details__radio ">
+									<label for="shipping-address-radio" class="item-details__label title-details">
+										Same as Billing address
+									</label>
+								</div>
+								<div class="item-details__body">
+									<input id="different-address-radio" name="shipping-address-radio"
+										value="different-adress" type="radio" class="item-details__radio radio-input">
+									<label for="different-address-radio" class="item-details__label title-details ">
+										Use a different shipping address
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="shipping-details__body body-details">
+							<div class="body-details__header">
+								<h3 class="body-details__title">
+									Shipping Method
+								</h3>
+							</div>
+							<div class="body-details__item item-details">
+								<div class="item-details__body">
+									<h4 class="item-details__title title-details">
+										Arrives by Monday, June 7
+									</h4>
+								</div>
+								<div class="item-details__body">
+									<div class="item-details__left">
+										<h4 class="item-details__title title-details">
+											Delivery Charges
+										</h4>
+										<div class="item-details__text text text--gray">
+											Additional fess may apply
+										</div>
+									</div>
+									<h4 class="item-details__price title-details">
+										$5.00
+									</h4>
+								</div>
+							</div>
+						</div>
+						<div class="shipping-details__body body-details">
+							<div class="body-details__header">
+								<h3 class="body-details__title">
+									Payment Method
+								</h3>
+								<div class="body-details__text text">
+									All transactions are secure and encrypted.
+								</div>
+							</div>
+							<div class="body-details__item item-details item-details--big">
+								<div class="item-details__body">
+									<input id="payment-radio" name="payment-radio" value="credit-card"
+										type="radio" required class="item-details__radio">
+									<label for="payment-radio" class="item-details__label item-details__label--column title-details">
+										Credit Card
+										<div class="text">We accept all major credit cards.</div>
+									</label>
+									<!-- <div class="item-details__methods methods">
+										<div class="methods__title text">
+											We accept all major credit cards.
+										</div>
+									</div> -->
+								</div>
+								<div class="item-details__body">
+									<input id="dif-payment-radio" name="payment-radio"
+										value="different-adress" type="radio" class="item-details__radio radio-input">
+									<label for="dif-payment-radio" class="item-details__label title-details ">
+										Use a different shipping address
+									</label>
+								</div>
+							</div>
+						</div>
+					</form>
+
 				</div>
 			</div>
 		</main>
