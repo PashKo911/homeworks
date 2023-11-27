@@ -18,10 +18,18 @@
 				</a>
 				<div class="header__body">
 					<div class="header__services">
-						<form action="#" method="get" class="header__search">
+						<form action="#" id="header-search" method="get" class="header__search" enctype="multipart/form-data">
 							<input type="search" required placeholder="Search" class="header__input">
 						</form>
-						<ul class="header__language language">
+						<div class="header__language language">
+							<select name="language" id="header-language" class="language__select">
+								<option value="english">English (united States)</option>
+								<option value="korean">Korean</option>
+								<option value="datch">Datch</option>
+							</select>
+						</div>
+						
+						<!-- <ul class="header__language language">
 							<li class="language__current">
 								<a href="#" class="language__link">
 									English (united States)
@@ -49,7 +57,11 @@
 									</li>
 								</ul>
 							</li>
-						</ul>
+						</ul> -->
+					</div>
+					<div class="header__color">
+						<label for="input-color" class="header__label">Body color</label>
+						<input id="input-color" type="color" class="header__input-color">
 					</div>
 					<div class="header__buttons">
 						<a href="#" class="header__button button">Login</a>
@@ -60,7 +72,7 @@
 		</header>
 
 		<main class="page">
-			<div class="page__contact-us contact-us">
+			<!-- <div class="page__contact-us contact-us">
 				<div class="contact-us__container">
 					<div class="contact-us__title title-contact">
 						<h3 class="title-contact__suptitle">
@@ -201,7 +213,7 @@
 						</div>
 					</form>
 				</div>
-			</div>
+			</div> -->
 			<div class="page__check-out check-out">
 				<div class="check-out__container">
 					<div class="check-out__title title">
@@ -310,15 +322,15 @@
 							</div>
 							<div class="body-details__item item-details">
 								<div class="item-details__body">
-									<input id="shipping-address-radio" name="shipping-address-radio" value="same-adress"
-										type="radio" required class="item-details__radio ">
+									<input id="shipping-address-radio"  name="shipping-address-radio" value="same-adress"
+										type="radio"  class="item-details__radio ">
 									<label for="shipping-address-radio"
 										class="item-details__label item-details__label--title-details">
 										Same as Billing address
 									</label>
 								</div>
 								<div class="item-details__body">
-									<input id="different-address-radio" name="shipping-address-radio"
+									<input id="different-address-radio"  name="shipping-address-radio"
 										value="different-adress" type="radio" class="item-details__radio radio-input">
 									<label for="different-address-radio"
 										class="item-details__label item-details__label--title-details ">
@@ -339,7 +351,7 @@
 										Arrives by Monday, June 7
 									</h4>
 								</div>
-								<div class="item-details__body">
+								<div class="item-details__body item-details__body--inline">
 									<div class="item-details__left">
 										<h4 class="item-details__title item-details__label--title-details">
 											Delivery Charges
@@ -365,60 +377,98 @@
 							</div>
 							<div class="body-details__item item-details item-details--big">
 								<div class="item-details__body">
-									<input id="payment-radio" name="payment-radio" value="credit-card" type="radio"
-										required class="item-details__radio">
+									<input id="payment-radio"  name="payment-radio" value="credit-card" type="radio"
+										 class="item-details__radio">
 									<label for="payment-radio"
 										class="item-details__label item-details__label--column item-details__label--title-details">
 										Credit Card
 										<span class="text">We accept all major credit cards.</span>
 									</label>
 									<div class="item-details__methods methods">
-										<div class="methods__images">
-											<div class="methods__img">
+										<div class="methods__images radio-methods">
+
+											<input class="radio-methods__input"  id="pay-radio" type="radio"
+												name="pay-radio" value="pay">
+											<label class="radio-methods__label" for="pay-radio" name="pay-radio">
 												<img src="img/icons/pay.svg" alt="img with pay method">
-											</div>
-											<div class="methods__img">
-												<img src="img/icons/visa.svg" alt="img with pay method">
-											</div>
-											<div class="methods__img">
-												<img src="img/icons/pay-pal.svg" alt="img with pay method">
-											</div>
-											<div class="methods__img">
-												<img src="img/icons/pay-pass.svg" alt="img with pay method">
-											</div>
+											</label>
+
+											<input class="radio-methods__input" checked  id="visa-radio" type="radio"
+												name="pay-radio" value="visa">
+											<label class="radio-methods__label" for="visa-radio" name="pay-radio">
+												<img src="img/icons/visa.svg" alt="img with visa method">
+											</label>
+
+											<input class="radio-methods__input"  id="pay-pal-radio" type="radio"
+												name="pay-radio" value="pay-pal">
+											<label class="radio-methods__label" for="pay-pal-radio" name="pay-radio">
+												<img src="img/icons/pay-pal.svg" alt="img with pay-pal method">
+											</label>
+
+											<input class="radio-methods__input"  id="pay-pass-radio" type="radio"
+												name="pay-radio" value="pay-pass">
+											<label class="radio-methods__label" for="pay-pass-radio" name="pay-radio">
+												<img src="img/icons/pay-pass.svg" alt="img with pay-pass method">
+											</label>
+
+
 										</div>
-										<div class="methods__inputs">
-											<div class="methods__input">
-												<input placeholder="Card number" id="card-number-method" type="number"
-													name="card-number" required>
+										<div class="methods__body">
+											<div class="methods__item">
+												<input class="methods__input"  placeholder="Card number"
+													id="card-number-method" required type="number" name="card-number" >
 											</div>
-											<div class="methods__input">
-												<input placeholder="Name of card" id="card-name-method" type="text"
-													name="card-number" required>
+											<div class="methods__item">
+												<input class="methods__input" placeholder="Name of card"
+													id="card-name-method" required type="text" name="card-number" >
 											</div>
-											<div class="methods__input">
-												<input placeholder="Expiration date (MM/YY)" id="card-date-method" type="number"
-													name="card-date" required>
+											<div class="methods__item">
+												<input class="methods__input" placeholder="Expiration date (MM/YY)"
+													id="card-date-method" required type="number" name="card-date" >
 											</div>
-											<div class="methods__input">
-												<input placeholder="Security Code" id="card-code-method" type="number"
-													name="card-code" required>
+											<div class="methods__item methods__item--security">
+												<input class="methods__input" placeholder="Security Code"
+													id="card-code-method" required type="number" name="card-code" >
+												<button class="methods__button">
+													<svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+														xmlns="http://www.w3.org/2000/svg">
+														<path
+															d="M2.42442 10.9764C2.13978 10.3572 2.13978 9.64275 2.42442 9.02349C3.742 6.15698 6.63866 4.16663 10.0002 4.16663C13.3617 4.16663 16.2584 6.15698 17.576 9.02349C17.8606 9.64276 17.8606 10.3572 17.576 10.9764C16.2584 13.8429 13.3617 15.8333 10.0002 15.8333C6.63866 15.8333 3.74201 13.8429 2.42442 10.9764Z"
+															stroke="#807D7E" stroke-width="1.5" />
+														<path
+															d="M12.5002 9.99996C12.5002 11.3807 11.3809 12.5 10.0002 12.5C8.61948 12.5 7.50019 11.3807 7.50019 9.99996C7.50019 8.61925 8.61948 7.49996 10.0002 7.49996C11.3809 7.49996 12.5002 8.61925 12.5002 9.99996Z"
+															stroke="#807D7E" stroke-width="1.5" />
+													</svg>
+												</button>
 											</div>
 										</div>
 									</div>
 
 								</div>
+
 								<div class="item-details__body">
-									<input id="dif-payment-radio" name="payment-radio" value="different-adress"
+									<input id="payment-radio-delivery" name="payment-radio" value="cash-delivery" type="radio"
+										 class="item-details__radio">
+									<label for="payment-radio-delivery"
+										class="item-details__label item-details__label--column item-details__label--title-details">
+										Cash on delivery
+										<span class="text">Pay with cash upon delivery.</span>
+									</label>
+								</div>
+								<div class="item-details__body">
+									<input id="paypal-radio"  name="payment-radio" value="paypal"
 										type="radio" class="item-details__radio radio-input">
-									<label for="dif-payment-radio"
+									<label for="paypal-radio"
 										class="item-details__label item-details__label--title-details ">
-										Use a different shipping address
+										Paypal
 									</label>
 								</div>
 							</div>
 						</div>
 					</form>
+					<button form="shipping-details" type="submit" class="check-out__button button button--smallest">
+						Pay Now
+					</button>
 
 				</div>
 			</div>
@@ -435,6 +485,6 @@
 		</footer>
 	</div>
 </body>
-<!-- <script src="js/script.js"></script> -->
+<script src="js/script.js"></script>
 
 </html>

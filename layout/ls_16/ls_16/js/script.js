@@ -1,44 +1,38 @@
 "use strict"
+function onLoad() {
+	let color = localStorage.getItem("color")
 
-function setZIndex(parentContainerSelector) {
-	const parent = document.querySelector(parentContainerSelector)
-	const children = Array.from(parent.children)
-
-	for (let i = 0; i < children.length; i++) {
-		children[i].style.zIndex = children.length - i
+	if (!color) {
+		color = "#c8c5c589"
+		localStorage.setItem("color", color)
 	}
+
+	document.getElementById("input-color").value = color
+	document.body.style.backgroundColor = color
 }
 
-function pagesFlipping(e, nextButtonClassName, switcher, markAttribute, pageSelector) {
-	const currentEl = e.target
-	const parent = currentEl.parentElement.parentElement.parentElement
-	console.log(parent);
-
-	if (currentEl.classList.contains(nextButtonClassName)) {
-
-		const previousSibling = parent.previousElementSibling
-		parent.classList.toggle(switcher)
-
-		if (previousSibling) {
-			const currentIndex = parseInt(parent.style.zIndex)
-			const prevIndex = parseInt(previousSibling.style.zIndex)
-
-			if (parent.hasAttribute(markAttribute)) {
-				parent.style.zIndex = currentIndex - prevIndex
-				parent.removeAttribute(markAttribute)
-
-			} else{
-				parent.style.zIndex = prevIndex + currentIndex
-				parent.setAttribute(markAttribute, 1)
-			}
-		}
-	}
+function onChangeStorage() {
+	const userColor = localStorage.getItem("color")
+	document.getElementById("input-color").value = userColor
+	document.body.style.backgroundColor = userColor
 }
 
-window.onload = () => {
-	const container = document.querySelector(".practice__book")
-	setZIndex(".page__body")
-	container.onclick = (e) => {
-		pagesFlipping(e, "button__link", "transform-next", 'open', '.page__content')
-	}
+function onChangeColor() {
+	const userColor = document.getElementById("input-color").value
+
+	document.body.style.background = userColor
+	localStorage.setItem("color", userColor)
+
+	window.dispatchEvent(
+		new StorageEvent("storage", {
+			key: "color",
+			newValue: userColor,
+		})
+	)
+}
+
+window.onload = function () {
+	onLoad()
+	document.getElementById("input-color").oninput = onChangeColor
+	window.addEventListener("storage", onChangeStorage)
 }

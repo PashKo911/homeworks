@@ -27,6 +27,18 @@ body {
 	margin: 0 auto;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
 /* ==================  header ============ */
 
 .header {
@@ -59,8 +71,8 @@ body {
 
 .header__body {
 	display: flex;
-	justify-content: space-between;
-	flex: 0 1 79.51%;
+	justify-content: space-evenly;
+	flex: 0 0 1050px;
 	column-gap: 60px;
 	row-gap: 15px;
 }
@@ -110,10 +122,16 @@ body {
 	align-self: center;
 }
 .language {
-	color: #333;
-	font-weight: 400;
-	line-height: 1.2;
+
 }
+
+.language__select {
+	width: 100%;
+	font-size: 18px;
+	color: #333333;
+}
+
+
 .language__current {
 	position: relative;
 }
@@ -174,6 +192,25 @@ body {
 
 .language__item:not(:last-child) {
 	margin-bottom: 10px;
+}
+
+.header__label{
+	color: #333333;
+}
+
+.header__color {
+	width: 25px;
+	height: 25px;
+	flex: 0 0 120px;
+	align-self: center;
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.header__input-color {
+	flex: 0 0 25px;
 }
 
 .header__buttons {
@@ -627,6 +664,7 @@ body {
 /* ================ shipping details ============= */
 
 .check-out__shipping-details {
+	margin-bottom: 50px;
 }
 .shipping-details {
 }
@@ -676,6 +714,7 @@ body {
 	border-bottom: 1px solid #bebcbd;
 	margin-bottom: 25px;
 	padding-bottom: 25px;
+	row-gap: 30px;
 }
 
 .item-details {
@@ -694,6 +733,12 @@ body {
 	gap: 15px;
 	position: relative;
 }
+
+.item-details__body--inline {
+	display: flex;
+	flex-direction: row;
+}
+
 .item-details__radio {
 	position: absolute;
 	top: 0;
@@ -703,17 +748,16 @@ body {
 	opacity: 0;
 }
 
-[class*='--title-details']{
+[class*="--title-details"] {
 	color: #3c4242;
 	font-size: 20px;
 	font-weight: 700;
 }
 
-
 .item-details__label {
 	display: flex;
 	cursor: pointer;
-	gap: 20px;
+	column-gap: 20px;
 }
 
 .item-details__label--column {
@@ -763,13 +807,6 @@ body {
 	margin-bottom: 8px;
 }
 
-.item-details__title {
-}
-.title-details {
-}
-.title-details__text {
-}
-
 .text--gray {
 	color: #807d7e;
 	font-weight: 500;
@@ -780,6 +817,107 @@ body {
 	text-align: right;
 }
 
+.item-details__methods {
+	padding-left: 37px;
+}
+.methods {
+}
+.methods__images {
+	display: flex;
+	gap: 20px;
+	margin-bottom: 31px;
+	flex-wrap: wrap;
+}
+
+.radio-methods__input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	opacity: 0;
+}
+.radio-methods__label {
+	display: inline-block;
+	max-width: 80px;
+	max-height: 46px;
+	overflow: hidden;
+	border-radius: 8px;
+	border: 1px solid transparent;
+	cursor: pointer;
+	transition: border-color 0.2s ease;
+}
+
+.radio-methods__label img {
+	width: 100%;
+}
+
+.radio-methods__input:focus-visible + .radio-methods__label {
+	outline: 1px solid #6b77e5;
+}
+
+.radio-methods__input:focus + .radio-methods__label {
+	border: 2px solid #6b77e5;
+}
+
+/* 
+.form-contact-us__body {
+	display: flex;
+	flex-wrap: wrap;
+	--col-gap: 35px;
+	row-gap: 28px;
+	column-gap: var(--col-gap);
+	justify-content: center;
+	margin-bottom: 50px;
+}
+
+.form-contact-us__item {
+	color: #37393f;
+	font-family: "Inter", sans-serif;
+	min-width: 290px;
+	flex: 0 1 calc((100% - (var(--col-gap) * (var(--col) - 1))) / var(--col));
+} */
+
+.methods__body {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 702px;
+	flex: 0 1 702px;
+	--col-gap: 30px;
+	row-gap: 25px;
+	column-gap: var(--col-gap);
+	justify-content: center;
+}
+.methods__item {
+	min-width: 290px;
+	flex: 0 1 calc((100% - (var(--col-gap) * (var(--col) - 1))) / var(--col));
+	position: relative;
+}
+
+.methods__button {
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	width: 20px;
+	height: 20px;
+	transform: translateY(-50%);
+}
+
+.methods__button:hover path {
+	stroke: #3a3839;
+}
+
+.methods__input {
+	width: 100%;
+	padding: 16px 20px;
+	background-color: transparent;
+	border-radius: 8px;
+	border: 1px solid #3c4242;
+}
+
+.methods__input::placeholder {
+	font-size: 14px;
+}
 /* ================ footer ============= */
 
 .footer__container {
