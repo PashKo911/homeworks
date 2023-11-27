@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
 	<link rel="stylesheet" href="css/style.css">
+	<script src="js/script.js"></script>
 	<title>HW_16</title>
 </head>
 
@@ -72,7 +73,7 @@
 		</header>
 
 		<main class="page">
-			<!-- <div class="page__contact-us contact-us">
+			<div class="page__contact-us contact-us">
 				<div class="contact-us__container">
 					<div class="contact-us__title title-contact">
 						<h3 class="title-contact__suptitle">
@@ -213,7 +214,7 @@
 						</div>
 					</form>
 				</div>
-			</div> -->
+			</div>
 			<div class="page__check-out check-out">
 				<div class="check-out__container">
 					<div class="check-out__title title">
@@ -270,11 +271,14 @@
 								</div>
 								<div class="body-form__item item-form item-form--fz14 item-form--triple">
 									<label for="state" class="item-form__label label label--fz16">State*</label>
-									<select id="state" name="state" class="item-form__select" required>
+									<select id="state" name="state" class="item-form__select"  required>
+										<option value="" disabled selected hidden>
+											Choose State
+										</option>
 										<option value="china">
 											China
 										</option>
-										<option selected value="ukraine">
+										<option value="ukraine">
 											Ukraine
 										</option>
 										<option value="uk">
@@ -322,7 +326,7 @@
 							</div>
 							<div class="body-details__item item-details">
 								<div class="item-details__body">
-									<input id="shipping-address-radio"  name="shipping-address-radio" value="same-adress"
+									<input id="shipping-address-radio" checked name="shipping-address-radio" value="same-adress"
 										type="radio"  class="item-details__radio ">
 									<label for="shipping-address-radio"
 										class="item-details__label item-details__label--title-details">
@@ -447,7 +451,7 @@
 								</div>
 
 								<div class="item-details__body">
-									<input id="payment-radio-delivery" name="payment-radio" value="cash-delivery" type="radio"
+									<input id="payment-radio-delivery" checked name="payment-radio" value="cash-delivery" type="radio"
 										 class="item-details__radio">
 									<label for="payment-radio-delivery"
 										class="item-details__label item-details__label--column item-details__label--title-details">
@@ -485,6 +489,6 @@
 		</footer>
 	</div>
 </body>
-<script src="js/script.js"></script>
+
 
 </html>

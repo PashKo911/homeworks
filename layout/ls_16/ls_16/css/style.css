@@ -512,6 +512,10 @@ input[type="number"] {
 	color: #3c4242;
 }
 
+.item-form__select{
+	/* color: #313a8d; */
+}
+
 .body-form__textarea-label {
 	display: flex;
 	flex-direction: column;
@@ -860,23 +864,10 @@ input[type="number"] {
 	border: 2px solid #6b77e5;
 }
 
-/* 
-.form-contact-us__body {
-	display: flex;
-	flex-wrap: wrap;
-	--col-gap: 35px;
-	row-gap: 28px;
-	column-gap: var(--col-gap);
-	justify-content: center;
-	margin-bottom: 50px;
+.radio-methods__input:checked + .radio-methods__label {
+	border: 2px solid #6b77e5;
 }
 
-.form-contact-us__item {
-	color: #37393f;
-	font-family: "Inter", sans-serif;
-	min-width: 290px;
-	flex: 0 1 calc((100% - (var(--col-gap) * (var(--col) - 1))) / var(--col));
-} */
 
 .methods__body {
 	display: flex;
