@@ -327,7 +327,8 @@ input[type="number"] {
 	width: 100%;
 	border: 1px solid #ddd;
 	background-color: #f8f8f8;
-	padding: 21px 40px 20px;
+	padding: 0 20px;
+	min-height: 65px;
 	border-radius: 0 !important;
 }
 
@@ -462,9 +463,18 @@ input[type="number"] {
 	flex: 1 1 calc((100% - (var(--col-gap) * (var(--col) - 1))) / var(--col));
 }
 
+.item-form--triple .item-form__select{
+	min-height: 50px;
+}
+
+
 .item-form--fz14 {
 	min-width: 246px;
 	font-size: 14px;
+}
+
+.item-form--fz14 .item-form__input{
+	min-height: 50px;
 }
 
 .item-form__label {
@@ -493,7 +503,8 @@ input[type="number"] {
 	width: 100%;
 	border-radius: 8px;
 	background-color: #f6f6f6;
-	padding: 16px 20px;
+	padding: 0 20px;
+	min-height: 55px;
 }
 
 .item-form__item input:focus {
@@ -504,7 +515,8 @@ input[type="number"] {
 	width: 100%;
 	border-radius: 8px;
 	background-color: #f6f6f6;
-	padding: 16px 20px;
+	padding: 0 20px;
+	min-height: 55px;
 	color: #3c4242;
 }
 
@@ -636,10 +648,6 @@ input[type="number"] {
 
 .check-out__form > *:last-child {
 	margin-bottom: 0;
-}
-
-.body-form--left {
-	justify-content: start;
 }
 
 .form-check-out__body {
@@ -888,6 +896,7 @@ input[type="number"] {
 	column-gap: var(--col-gap);
 	justify-content: center;
 }
+
 .methods__item {
 	min-width: 290px;
 	flex: 0 1 calc((100% - (var(--col-gap) * (var(--col) - 1))) / var(--col));
