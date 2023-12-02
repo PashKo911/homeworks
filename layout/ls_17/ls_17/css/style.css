@@ -167,8 +167,10 @@ input[type="number"] {
 	visibility: hidden;
 }
 
-.language__current:hover .language__link {
-	background-color: #f6f6f6;
+@media (any-hover: hover) {
+	.language__current:hover .language__link {
+		background-color: #f6f6f6;
+	}
 }
 
 .language__current:hover .language__list {
@@ -231,9 +233,11 @@ input[type="number"] {
 	transition: background-color 0.3s ease;
 }
 
-.button:hover {
-	background: #6620c1;
-	box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.1);
+@media (any-hover: hover) {
+	.button:hover {
+		background: #6620c1;
+		box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.1);
+	}
 }
 
 .button--white {
@@ -242,20 +246,31 @@ input[type="number"] {
 	color: #8a33fd;
 }
 
-.button--white:hover {
-	border: 1px solid #3c4242;
-	background: rgba(102, 32, 193, 0.03);
+@media (any-hover: hover) {
+	.button--white:hover {
+		border: 1px solid #3c4242;
+		background: rgba(102, 32, 193, 0.03);
+	}
 }
 
 .page {
-	
 }
 /* ================ RINGS ============= */
 
 .page__rings {
 	padding: 75px 0;
 	background-color: #fefaf4;
+
 }
+
+
+
+@media (min-width: 1420px) {
+	.page__rings {
+		background: url("../img/rings/flower-decor.webp") 100.5% 113% / 175px 388px no-repeat, #fefaf4;
+	}
+}
+
 .rings {
 }
 .rings__container {
@@ -294,7 +309,7 @@ input[type="number"] {
 .rings__products {
 	display: flex;
 	column-gap: var(--col-gap);
-	row-gap: 30px;
+	row-gap: 48px;
 	flex-wrap: wrap;
 }
 .products-rings__item {
@@ -305,7 +320,7 @@ input[type="number"] {
 	flex: var(--flex-col);
 }
 
-.item-ring >*:last-child{
+.item-ring > *:last-child {
 	margin-bottom: 0;
 }
 
@@ -319,40 +334,80 @@ input[type="number"] {
 	height: 100%;
 	aspect-ratio: 357 / 240;
 	object-fit: cover;
+	transition: transform 0.3s ease;
 }
+
+@media (any-hover: hover) {
+	.item-ring__img:hover {
+		transform: scale(1.05);
+	}
+}
+
 .item-ring__title {
 	font-family: "DM Serif Text", serif;
 	font-size: 24px;
 	margin-bottom: 16px;
 }
-.item-ring__title-link {
+
+@media (any-hover: hover) {
+	.item-ring__title:hover .item-ring__title-link {
+		text-decoration-color: black;
+	}
 }
+
+.item-ring__title-link {
+	transition: all 0.3s ease;
+	text-decoration: underline 2px solid transparent;
+}
+
 .item-ring__text {
 	line-height: 1.6;
+	margin-bottom: 12px;
+}
+
+.item-ring__text p:not(:last-child) {
 	margin-bottom: 8px;
 }
 
-.item-ring__text p:not(:last-child){
-	margin-bottom: 8px;
-}
-
-.item-ring__link {
-	color: #F55529;
+.item-ring__links {
 	padding-left: 4px;
-	font-weight: 800;
-	line-height: 1.5;
 	margin-bottom: 8px;
 	display: flex;
 	justify-content: space-between;
 	gap: 15px;
 }
 
-.item-ring__link::after{
-	content: '';
+.item-ring__more {
+	color: #f55529;
+	font-weight: 800;
+	line-height: 1.5;
+}
+
+.item-ring__more::after {
+	content: "";
+	display: block;
+	height: 2px;
+	width: 0;
+	background-color: #f55529;
+	transition: width 0.3s;
+}
+
+.item-ring__btn {
+	cursor: pointer;
 	width: 24px;
 	height: 24px;
-	background: url('../img/rings/icon/iconarrow-ring.svg') center no-repeat;
+	background: url("../img/rings/icon/iconarrow-ring.svg") center no-repeat;
 	flex: 0 0 24px;
+	transition: transform 0.3s;
+}
+
+@media (any-hover: hover) {
+	.item-ring__btn:hover {
+		transform: scale(1.15);
+	}
+	.item-ring__more:hover::after {
+		width: 100%;
+	}
 }
 
 /* ================ footer ============= */
