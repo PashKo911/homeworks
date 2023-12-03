@@ -27,231 +27,6 @@ body {
 	margin: 0 auto;
 }
 
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
-}
-
-/* Firefox */
-input[type="number"] {
-	-moz-appearance: textfield;
-}
-
-/* ==================  header ============ */
-
-.header {
-	min-height: 111px;
-	padding: 32px 0;
-	border-bottom: 1px solid #bebcbd;
-	background-color: #fff;
-}
-.header--fix {
-	position: sticky;
-	top: 0;
-	left: 0;
-	width: 100%;
-	z-index: 50;
-}
-.header__container {
-	display: flex;
-	justify-content: space-between;
-	gap: 15px;
-	flex-wrap: wrap;
-}
-.header__logo {
-	flex: 0 0 91px;
-	align-self: center;
-}
-
-.header__logo img {
-	width: 100%;
-}
-
-.header__body {
-	display: flex;
-	justify-content: space-evenly;
-	flex: 0 0 1050px;
-	column-gap: 60px;
-	row-gap: 15px;
-}
-.header__services {
-	display: flex;
-	justify-content: space-between;
-	flex: 0 1 66.93%;
-	/* flex: 0 1 610px; */
-	column-gap: 15px;
-}
-.header__search {
-	align-self: center;
-
-	flex: 0 0 184px;
-}
-
-.header__input {
-	width: 100%;
-	padding: 12px 12px;
-	border-radius: 8px;
-	font-weight: 500;
-	line-height: 1.2;
-	text-transform: capitalize;
-	background: url("../img/header/icons/search.svg") 48px center / 20px 20px no-repeat, #f6f6f6;
-}
-
-.header__input::placeholder {
-	padding-left: 70px;
-}
-
-.header__input:focus,
-.header__input:valid {
-	background: #f6f6f6;
-	outline: 2px solid #8a33fd;
-}
-
-.header__input:focus::placeholder {
-	padding-left: 0px;
-}
-
-.header__input::-webkit-search-cancel-button {
-	display: none;
-}
-
-.header__language {
-	flex: 0 0 221px;
-	align-self: center;
-}
-.language {
-}
-
-.language__select {
-	width: 100%;
-	min-height: 47px;
-	font-size: 18px;
-	color: #333333;
-}
-
-.language__current {
-	position: relative;
-}
-
-.language__link {
-	width: 100%;
-	padding: 12px 30px 12px 15px;
-	border-radius: 8px 8px 0 0;
-	transition: all 0.3s ease;
-}
-
-.language__link::after {
-	content: "";
-	position: absolute;
-	top: 19px;
-	right: 5px;
-	width: 10px;
-	height: 5px;
-	background: url("../img/header/icons/arr-down.svg") 0 0 no-repeat;
-	transition: transform 0.3s ease;
-}
-
-.language__list {
-	position: absolute;
-	width: 100%;
-	transform: translate(0, 25%);
-	top: 100%;
-	left: 0;
-	opacity: 0;
-	border-radius: 0 0 8px 8px;
-	background-color: #f6f6f6;
-	transition: all 0.4s ease;
-	overflow: hidden;
-	visibility: hidden;
-}
-
-@media (any-hover: hover) {
-	.language__current:hover .language__link {
-		background-color: #f6f6f6;
-	}
-}
-
-.language__current:hover .language__list {
-	transform: translate(0, 0);
-	visibility: visible;
-	opacity: 1;
-}
-
-.language__current:hover .language__link::after {
-	transform: rotate(180deg);
-}
-
-.language__item {
-	padding: 5px 15px;
-}
-
-.language__item:hover {
-	background-color: #bababa;
-}
-
-.language__item:not(:last-child) {
-	margin-bottom: 10px;
-}
-
-.header__label {
-	color: #333333;
-}
-
-.header__color {
-	width: 25px;
-	height: 25px;
-	flex: 0 0 120px;
-	align-self: center;
-	display: flex;
-	gap: 10px;
-	align-items: center;
-	justify-content: space-between;
-}
-
-.header__input-color {
-	flex: 0 0 25px;
-}
-
-.header__buttons {
-	display: flex;
-	column-gap: 30px;
-	flex: 1 0 auto;
-	max-width: 327px;
-}
-.header__button {
-	align-self: center;
-}
-.button {
-	padding: 12px 47px;
-	border-radius: 8px;
-	text-align: center;
-	background-color: #8a33fd;
-	color: #fff;
-	font-weight: 500;
-	transition: background-color 0.3s ease;
-}
-
-@media (any-hover: hover) {
-	.button:hover {
-		background: #6620c1;
-		box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.1);
-	}
-}
-
-.button--white {
-	border: 1px solid #3c4242;
-	background-color: #fff;
-	color: #8a33fd;
-}
-
-@media (any-hover: hover) {
-	.button--white:hover {
-		border: 1px solid #3c4242;
-		background: rgba(102, 32, 193, 0.03);
-	}
-}
 
 .page {
 }
@@ -395,6 +170,7 @@ input[type="number"] {
 @media (max-width: 991.98px) {
 	.page__rings {
 		padding: 60px 0;
+		margin-bottom: 80px;
 	}
 
 	.rings__products {
@@ -418,6 +194,7 @@ input[type="number"] {
 @media (max-width: 767.98px) {
 	.page__rings {
 		padding: 40px 0;
+		margin-bottom: 60px;
 	}
 	.title-rings__main {
 		font-size: 38px;
@@ -428,9 +205,7 @@ input[type="number"] {
 	.rings__title {
 		margin-bottom: 20px;
 	}
-	.item-ring {
-		flex: 0 0 100%;
-	}
+
 
 	.item-ring__content {
 		row-gap: 10px;
@@ -440,6 +215,18 @@ input[type="number"] {
 	}
 	.item-ring:last-child {
 		padding-bottom: 0;
+		border-bottom: none;
+	}
+}
+
+@media (max-width: 575.98px) {
+	.item-ring {
+		flex: 0 0 100%;
+		border-bottom: 1px dashed #f55529;
+		border-radius: 0;
+	}
+	.page__rings {
+		margin-bottom: 40px;
 	}
 }
 
@@ -474,19 +261,25 @@ input[type="number"] {
 /* ================ earrings-products ============= */
 
 .earrings__products {
+	margin-bottom: 76px;
+}
+
+[class*="--four-col"] {
 	display: flex;
 	--col: 4;
 	--col-gap: 30px;
 	gap: var(--col-gap);
 	flex-wrap: wrap;
-	margin-bottom: 76px;
 }
+
 .earrings__item {
+}
+
+[class*="--quarter"] {
 	flex: 0 0 calc((100% - (var(--col-gap) * (var(--col) - 1))) / var(--col));
 	display: flex;
 	flex-direction: column;
 }
-
 
 .earrings__item > *:last-child {
 	margin-bottom: 0;
@@ -496,16 +289,18 @@ input[type="number"] {
 }
 
 .item-earrings__img {
+	margin-bottom: 17px;
+}
+
+[class*="--new-ibg"] {
 	width: 100%;
 	/* height: 100%; */
 	aspect-ratio: 271/270;
 	object-fit: cover;
 	transition: all 0.5s;
-	margin-bottom: 17px;
 	outline: 1px solid transparent;
 	border-radius: 5px;
 }
-
 
 .item-earrings__title {
 	margin-bottom: 4px;
@@ -532,7 +327,7 @@ input[type="number"] {
 	text-align: center;
 	text-transform: capitalize;
 	background-color: #ff7a49;
-	transition:background-color 0.3s ;
+	transition: background-color 0.3s;
 	color: #fff;
 	font-weight: 500;
 	line-height: 1.87;
@@ -549,13 +344,219 @@ input[type="number"] {
 	.earrings__item:hover .item-earrings__title {
 		text-decoration-color: #000;
 	}
-	.button-earrings:hover{
+	.button-earrings:hover {
 		background-color: #cd4c1d;
 	}
 }
 
-/* ================ footer ============= */
+/* ================ embossed-earrings ============= */
 
+.page__embossed-earrings {
+	padding: 94px 0;
+	background-color: #0e333d;
+	color: #fff;
+}
+.embossed-earrings {
+}
+.embossed-earrings__container {
+	max-width: 1200px;
+}
+
+.embossed-earrings__container > *:last-child {
+	margin-bottom: 0;
+}
+
+.embossed-earrings__title {
+	margin-bottom: 34px;
+	text-align: center;
+}
+
+.embossed-earrings__title > *:not(:last-child) {
+	margin-bottom: 23px;
+}
+
+.embossed-earrings__main-title {
+	font-family: "DM Serif Text", sans-serif;
+	font-size: 48px;
+	line-height: 1.27;
+}
+.embossed-earrings__subtitle {
+	color: #ebebeb;
+	font-family: "Raleway", serif;
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 1.27;
+}
+.embossed-earrings__actions {
+	display: flex;
+	justify-content: center;
+	column-gap: 41px;
+	flex-wrap: wrap;
+	row-gap: 30px;
+	margin-bottom: 77px;
+}
+.embossed-earrings__link {
+	font-family: "Raleway", serif;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 1.27;
+}
+
+.embossed-earrings__link::after {
+	content: "";
+	display: block;
+	height: 2px;
+	width: 0;
+	background-color: #fff;
+	transition: width 0.3s;
+}
+
+.embossed-earrings__link--active::after {
+	width: 100%;
+}
+
+/* ================ embossed-earrings__products ============= */
+
+.embossed-earrings__products {
+}
+.embossed-earrings__item {
+	font-family: "Cormorant Infant", serif;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+.embossed-earrings__item > *:last-child {
+	margin-bottom: 0;
+}
+
+.item-embossed {
+}
+.item-embossed__img {
+	margin-bottom: 17px;
+}
+
+.item-embossed__title {
+	margin-bottom: 4px;
+	flex-grow: 1;
+	transition: all 0.3s;
+	text-decoration: underline 2px transparent;
+}
+.item-embossed__price {
+	margin-bottom: 4px;
+}
+
+@media (any-hover: hover) {
+	.embossed-earrings__link:hover::after {
+		width: 100%;
+	}
+	.embossed-earrings__item:hover .item-embossed__img {
+		transform: scale(1.02);
+	}
+	.embossed-earrings__item:hover .item-embossed__title {
+		text-decoration-color: #fff;
+	}
+}
+
+@media (max-width: 991.98px) {
+	.page__earrings {
+		margin-bottom: 80px;
+	}
+	.page__embossed-earrings{
+		padding: 80px 0;
+	}
+	[class*="--quarter"] {
+		--col: 3;
+	}
+	.earrings__title {
+		margin-bottom: 50px;
+	}
+	.embossed-earrings__title {
+		margin-bottom: 30px;
+	}
+	.earrings__title > *:not(:last-child) {
+		margin-bottom: 20px;
+	}
+	.embossed-earrings__title > *:not(:last-child) {
+		margin-bottom: 20px;
+	}
+	.embossed-earrings__actions {
+		column-gap: 41px;
+		margin-bottom: 60px;
+	}
+}
+@media (max-width: 767.98px) {
+	.page__earrings {
+		margin-bottom: 60px;
+	}
+
+	.page__embossed-earrings{
+		padding: 60px 0;
+	}
+	.earrings__products {
+		--col-gap: 20px;
+	}
+	[class*="--quarter"] {
+		--col: 2;
+	}
+	.earrings__title {
+		margin-bottom: 30px;
+	}
+	.earrings__title-main {
+		font-size: 40px;
+	}
+	.embossed-earrings__main-title {
+		font-size: 40px;
+	}
+	.earrings__title > *:not(:last-child) {
+		margin-bottom: 15px;
+	}
+
+	.embossed-earrings__title > *:not(:last-child) {
+		margin-bottom: 15px;
+	}
+
+	.earrings__subtitle {
+		font-size: 26px;
+	}
+	.embossed-earrings__actions {
+		column-gap: 41px;
+		margin-bottom: 50px;
+	}
+	
+}
+@media (max-width: 575.98px) {
+	.page__earrings {
+		margin-bottom: 40px;
+	}
+	.page__embossed-earrings{
+		padding: 40px 0;
+	}
+	[class*="--four-col"] {
+		--col-gap: 30px;
+	}
+	.earrings__products {
+		margin-bottom: 50px;
+	}
+	[class*="--quarter"] {
+		--col: 1;
+		border-bottom: 1px solid #291403;
+	}
+	.item-embossed--br-white {
+		border-color: #fff;
+	}
+	.earrings__title-main {
+		font-size: 38px;
+	}
+	.earrings__title {
+		margin-bottom: 40px;
+	}
+	.earrings__subtitle {
+		font-size: 24px;
+	}
+}
+
+/* ================ footer ============= */
 .footer__container {
 }
 
