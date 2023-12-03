@@ -260,14 +260,11 @@ input[type="number"] {
 .page__rings {
 	padding: 75px 0;
 	background-color: #fefaf4;
-
 }
 
-
-
-@media (min-width: 1420px) {
+@media (min-width: 1399.8px) {
 	.page__rings {
-		background: url("../img/rings/flower-decor.webp") 100.5% 113% / 175px 388px no-repeat, #fefaf4;
+		background: url("../img/rings/flower-decor.webp") 100.5% 104% / 175px 388px no-repeat, #fefaf4;
 	}
 }
 
@@ -277,7 +274,7 @@ input[type="number"] {
 	max-width: 1197px;
 }
 .rings__title {
-	margin-bottom: 53px;
+	margin-bottom: 29px;
 }
 .title-rings {
 	text-transform: capitalize;
@@ -300,34 +297,40 @@ input[type="number"] {
 
 /* ================ item-rings ============= */
 
-:root {
-	--col: 3;
-	--col-gap: 48px;
-	--flex-col: 0 0 calc((100% - (var(--col-gap) * (var(--col) - 1))) / var(--col));
-}
-
 .rings__products {
 	display: flex;
-	column-gap: var(--col-gap);
-	row-gap: 48px;
+	margin: 0 -24px;
 	flex-wrap: wrap;
 }
+
 .products-rings__item {
 }
+
 .item-ring {
+	padding: 24px 24px;
+	flex: 0 0 33.333%;
+	transition: all 0.3s;
+	border-radius: 5px;
+}
+
+.item-ring__box {
 	display: flex;
 	flex-direction: column;
-	flex: var(--flex-col);
+	row-gap: 12px;
 }
 
-.item-ring > *:last-child {
-	margin-bottom: 0;
+.item-ring__content{
+	display: flex;
+	flex-direction: column;
+	row-gap: 16px;
 }
 
-.item-ring__link-img {
-	overflow: hidden;
-	margin-bottom: 16px;
+@media (any-hover: hover) {
+	.item-ring:hover {
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+	}
 }
+
 
 .item-ring__img {
 	width: 100%;
@@ -337,22 +340,9 @@ input[type="number"] {
 	transition: transform 0.3s ease;
 }
 
-@media (any-hover: hover) {
-	.item-ring__img:hover {
-		transform: scale(1.05);
-	}
-}
-
 .item-ring__title {
 	font-family: "DM Serif Text", serif;
 	font-size: 24px;
-	margin-bottom: 16px;
-}
-
-@media (any-hover: hover) {
-	.item-ring__title:hover .item-ring__title-link {
-		text-decoration-color: black;
-	}
 }
 
 .item-ring__title-link {
@@ -362,17 +352,16 @@ input[type="number"] {
 
 .item-ring__text {
 	line-height: 1.6;
-	margin-bottom: 12px;
 }
 
 .item-ring__text p:not(:last-child) {
 	margin-bottom: 8px;
 }
 
-.item-ring__links {
+.item-ring__more {
 	padding-left: 4px;
-	margin-bottom: 8px;
 	display: flex;
+	align-items: center;
 	justify-content: space-between;
 	gap: 15px;
 }
@@ -385,30 +374,73 @@ input[type="number"] {
 
 .item-ring__more::after {
 	content: "";
-	display: block;
-	height: 2px;
-	width: 0;
-	background-color: #f55529;
-	transition: width 0.3s;
-}
-
-.item-ring__btn {
-	cursor: pointer;
 	width: 24px;
 	height: 24px;
-	background: url("../img/rings/icon/iconarrow-ring.svg") center no-repeat;
 	flex: 0 0 24px;
+	background: url("../img/rings/icon/iconarrow-ring.svg") center / cover no-repeat;
 	transition: transform 0.3s;
 }
 
-@media (any-hover: hover) {
-	.item-ring__btn:hover {
-		transform: scale(1.15);
+
+@media (max-width: 991.98px) {
+	.page__rings {
+		padding: 40px 0;
 	}
-	.item-ring__more:hover::after {
-		width: 100%;
+
+	.rings__products {
+		margin: 0 -15px;
+	}
+
+	.item-ring {
+		padding: 24px 15px;
+		flex: 0 0 50%;
+	}
+
+	.title-rings__main {
+		font-size: 48px;
+	}
+
+	.title-rings > *:not(:last-child) {
+		margin-bottom: 15px;
+	}
+
+	.rings__title {
+		margin-bottom: 35px;
+	}
+
+	.title-rings__text {
+		color: #606060;
+		font-size: 18px;
+		line-height: 1.2;
 	}
 }
+
+@media (max-width: 767.98px) {
+	.title-rings__main {
+		font-size: 38px;
+	}
+	.title-rings > *:not(:last-child) {
+		margin-bottom: 10px;
+	}
+	.rings__title {
+		margin-bottom: 20px;
+	}
+	.item-ring {
+		flex: 0 0 100%;
+	}
+	.item-ring__content{
+		row-gap: 10px;
+	}
+	.item-ring__title {
+		font-size: 22px;
+	}
+	
+}
+
+@media (max-width: 767.98px) {
+
+}
+
 
 /* ================ footer ============= */
 
