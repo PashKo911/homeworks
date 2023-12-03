@@ -258,7 +258,8 @@ input[type="number"] {
 /* ================ RINGS ============= */
 
 .page__rings {
-	padding: 75px 0;
+	padding: 100px 0;
+	margin-bottom: 100px;
 	background-color: #fefaf4;
 }
 
@@ -277,7 +278,6 @@ input[type="number"] {
 	margin-bottom: 29px;
 }
 .title-rings {
-	text-transform: capitalize;
 }
 
 .title-rings > *:not(:last-child) {
@@ -285,14 +285,27 @@ input[type="number"] {
 }
 
 .title-rings__main {
+}
+
+.main-title {
 	font-family: "DM Serif Text", serif;
 	font-size: 58px;
 	line-height: 1;
+	text-transform: capitalize;
 }
-.title-rings__text {
+
+[class*="--dark-brown"] {
+	color: #291403;
+}
+[class*="--center"] {
+	text-align: center;
+}
+
+.title-rings__subtitle {
 	color: #606060;
 	font-size: 20px;
 	line-height: 1.8;
+	text-transform: capitalize;
 }
 
 /* ================ item-rings ============= */
@@ -311,15 +324,17 @@ input[type="number"] {
 	flex: 0 0 33.333%;
 	transition: all 0.3s;
 	border-radius: 5px;
+	display: flex;
 }
 
 .item-ring__box {
 	display: flex;
 	flex-direction: column;
 	row-gap: 12px;
+	justify-content: space-between;
 }
 
-.item-ring__content{
+.item-ring__content {
 	display: flex;
 	flex-direction: column;
 	row-gap: 16px;
@@ -330,7 +345,6 @@ input[type="number"] {
 		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 	}
 }
-
 
 .item-ring__img {
 	width: 100%;
@@ -364,9 +378,6 @@ input[type="number"] {
 	align-items: center;
 	justify-content: space-between;
 	gap: 15px;
-}
-
-.item-ring__more {
 	color: #f55529;
 	font-weight: 800;
 	line-height: 1.5;
@@ -381,10 +392,9 @@ input[type="number"] {
 	transition: transform 0.3s;
 }
 
-
 @media (max-width: 991.98px) {
 	.page__rings {
-		padding: 40px 0;
+		padding: 60px 0;
 	}
 
 	.rings__products {
@@ -403,19 +413,12 @@ input[type="number"] {
 	.title-rings > *:not(:last-child) {
 		margin-bottom: 15px;
 	}
-
-	.rings__title {
-		margin-bottom: 35px;
-	}
-
-	.title-rings__text {
-		color: #606060;
-		font-size: 18px;
-		line-height: 1.2;
-	}
 }
 
 @media (max-width: 767.98px) {
+	.page__rings {
+		padding: 40px 0;
+	}
 	.title-rings__main {
 		font-size: 38px;
 	}
@@ -428,19 +431,128 @@ input[type="number"] {
 	.item-ring {
 		flex: 0 0 100%;
 	}
-	.item-ring__content{
+
+	.item-ring__content {
 		row-gap: 10px;
 	}
 	.item-ring__title {
-		font-size: 22px;
+		font-size: 20px;
 	}
-	
+	.item-ring:last-child {
+		padding-bottom: 0;
+	}
 }
 
-@media (max-width: 767.98px) {
+/* ================ earrings ============= */
 
+.page__earrings {
+	font-family: "Cormorant Infant", serif;
+	margin-bottom: 100px;
+}
+.earrings {
+}
+.earrings__container {
+	max-width: 1203px;
+}
+.earrings__title {
+	margin-bottom: 62px;
 }
 
+.earrings__title > *:not(:last-child) {
+	margin-bottom: 27px;
+}
+
+.earrings__subtitle {
+	color: #818181;
+	text-align: center;
+	font-size: 30px;
+	font-weight: 700;
+	line-height: 1.4;
+	text-transform: capitalize;
+}
+
+/* ================ earrings-products ============= */
+
+.earrings__products {
+	display: flex;
+	--col: 4;
+	--col-gap: 30px;
+	gap: var(--col-gap);
+	flex-wrap: wrap;
+	margin-bottom: 76px;
+}
+.earrings__item {
+	flex: 0 0 calc((100% - (var(--col-gap) * (var(--col) - 1))) / var(--col));
+	display: flex;
+	flex-direction: column;
+}
+
+
+.earrings__item > *:last-child {
+	margin-bottom: 0;
+}
+
+.item-earrings {
+}
+
+.item-earrings__img {
+	width: 100%;
+	/* height: 100%; */
+	aspect-ratio: 271/270;
+	object-fit: cover;
+	transition: all 0.5s;
+	margin-bottom: 17px;
+	outline: 1px solid transparent;
+	border-radius: 5px;
+}
+
+
+.item-earrings__title {
+	margin-bottom: 4px;
+	transition: all 0.3s;
+	flex-grow: 1;
+	text-decoration: underline 2px rgba(255, 255, 255, 0);
+}
+
+.earrings-text {
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 1.4;
+}
+.item-earrings__price {
+	margin-bottom: 4px;
+}
+
+.earrings__button {
+}
+.button-earrings {
+	min-width: 165px;
+	font-family: "Inter", sans-serif;
+	padding: 12px 12px;
+	text-align: center;
+	text-transform: capitalize;
+	background-color: #ff7a49;
+	transition:background-color 0.3s ;
+	color: #fff;
+	font-weight: 500;
+	line-height: 1.87;
+}
+
+.earrings__more {
+	text-align: center;
+}
+
+@media (any-hover: hover) {
+	.earrings__item:hover .item-earrings__img {
+		outline: 1px solid #291403;
+	}
+	.earrings__item:hover .item-earrings__title {
+		text-decoration-color: #000;
+	}
+	.button-earrings:hover{
+		background-color: #cd4c1d;
+	}
+}
 
 /* ================ footer ============= */
 
