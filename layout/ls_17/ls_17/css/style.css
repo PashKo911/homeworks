@@ -27,14 +27,13 @@ body {
 	margin: 0 auto;
 }
 
-
 .page {
 }
+
 /* ================ RINGS ============= */
 
 .page__rings {
 	padding: 100px 0;
-	margin-bottom: 100px;
 	background-color: #fefaf4;
 }
 
@@ -167,74 +166,14 @@ body {
 	transition: transform 0.3s;
 }
 
-@media (max-width: 991.98px) {
-	.page__rings {
-		padding: 60px 0;
-		margin-bottom: 80px;
-	}
-
-	.rings__products {
-		margin: 0 -15px;
-	}
-
-	.item-ring {
-		padding: 24px 15px;
-		flex: 0 0 50%;
-	}
-
-	.title-rings__main {
-		font-size: 48px;
-	}
-
-	.title-rings > *:not(:last-child) {
-		margin-bottom: 15px;
-	}
-}
-
-@media (max-width: 767.98px) {
-	.page__rings {
-		padding: 40px 0;
-		margin-bottom: 60px;
-	}
-	.title-rings__main {
-		font-size: 38px;
-	}
-	.title-rings > *:not(:last-child) {
-		margin-bottom: 10px;
-	}
-	.rings__title {
-		margin-bottom: 20px;
-	}
-
-
-	.item-ring__content {
-		row-gap: 10px;
-	}
-	.item-ring__title {
-		font-size: 20px;
-	}
-	.item-ring:last-child {
-		padding-bottom: 0;
-		border-bottom: none;
-	}
-}
-
 @media (max-width: 575.98px) {
-	.item-ring {
-		flex: 0 0 100%;
-		border-bottom: 1px dashed #f55529;
-		border-radius: 0;
-	}
-	.page__rings {
-		margin-bottom: 40px;
-	}
 }
 
 /* ================ earrings ============= */
 
 .page__earrings {
 	font-family: "Cormorant Infant", serif;
-	margin-bottom: 100px;
+	padding: 100px 0;
 }
 .earrings {
 }
@@ -459,11 +398,33 @@ body {
 }
 
 @media (max-width: 991.98px) {
-	.page__earrings {
-		margin-bottom: 80px;
-	}
-	.page__embossed-earrings{
+}
+@media (max-width: 991.98px) {
+	.page__rings {
 		padding: 80px 0;
+	}
+	.page__earrings {
+		padding: 80px 0;
+	}
+	.page__embossed-earrings {
+		padding: 80px 0;
+	}
+
+	.rings__products {
+		margin: 0 -15px;
+	}
+
+	.item-ring {
+		padding: 24px 15px;
+		flex: 0 0 50%;
+	}
+
+	.title-rings__main {
+		font-size: 48px;
+	}
+
+	.title-rings > *:not(:last-child) {
+		margin-bottom: 15px;
 	}
 	[class*="--quarter"] {
 		--col: 3;
@@ -487,11 +448,33 @@ body {
 }
 @media (max-width: 767.98px) {
 	.page__earrings {
-		margin-bottom: 60px;
+		padding: 60px 0;
+	}
+	.page__embossed-earrings {
+		padding: 60px 0;
+	}
+	.page__rings {
+		padding: 60px 0;
+	}
+	.title-rings__main {
+		font-size: 38px;
+	}
+	.title-rings > *:not(:last-child) {
+		margin-bottom: 10px;
+	}
+	.rings__title {
+		margin-bottom: 20px;
 	}
 
-	.page__embossed-earrings{
-		padding: 60px 0;
+	.item-ring__content {
+		row-gap: 10px;
+	}
+	.item-ring__title {
+		font-size: 20px;
+	}
+	.item-ring:last-child {
+		padding-bottom: 0;
+		border-bottom: none;
 	}
 	.earrings__products {
 		--col-gap: 20px;
@@ -523,15 +506,25 @@ body {
 		column-gap: 41px;
 		margin-bottom: 50px;
 	}
-	
 }
 @media (max-width: 575.98px) {
 	.page__earrings {
-		margin-bottom: 40px;
-	}
-	.page__embossed-earrings{
 		padding: 40px 0;
 	}
+	.page__embossed-earrings {
+		padding: 40px 0;
+	}
+
+	.page__rings {
+		padding: 40px 0;
+	}
+
+	.item-ring {
+		flex: 0 0 100%;
+		border-bottom: 1px dashed #f55529;
+		border-radius: 0;
+	}
+
 	[class*="--four-col"] {
 		--col-gap: 30px;
 	}
@@ -554,6 +547,162 @@ body {
 	.earrings__subtitle {
 		font-size: 24px;
 	}
+}
+
+/* ================ solutions ============= */
+
+.page__solutions {
+	/* display: flex;
+	align-items: center; */
+	background-color: #37393f;
+}
+.solutions {
+}
+.solutions__content {
+}
+.solutions__container {
+	max-width: 1250px;
+}
+.solutions__body {
+	color: #fff;
+	font-family: "Inter", sans-serif;
+	font-size: 18px;
+	padding: 138px 0;
+	max-width: 610px;
+}
+
+.solutions__body > *:not(:last-child) {
+	margin-bottom: 36px;
+}
+
+.solutions__header {
+	max-width: 572px;
+}
+
+.solutions__header > *:not(:last-child) {
+	margin-bottom: 13px;
+}
+
+.solutions__label {
+}
+
+.label-solutions {
+	font-weight: 500;
+	display: flex;
+	align-items: center;
+	column-gap: 6px;
+	text-transform: capitalize;
+}
+
+.label-solutions::before {
+	content: "";
+	width: 12px;
+	height: 12px;
+	flex: 0 0 12px;
+	background-color: #40ddb6;
+}
+.solutions__title {
+	font-family: "Poppins", sans-serif;
+	font-size: 30px;
+	font-weight: 600;
+	text-transform: capitalize;
+	max-width: 370px;
+}
+.solutions__text {
+}
+
+.solutions__text p {
+	line-height: 1.46;
+}
+
+.solutions__rating {
+}
+.rating {
+	display: flex;
+	--col-gap: 15px;
+	--col: 2;
+	gap: var(--col-gap);
+	flex-wrap: wrap;
+}
+.rating__item {
+	display: flex;
+	align-items: center;
+	padding: 27px 29px;
+	background-color: #2e2f34;
+	gap: 12px;
+	flex: 1 0 calc((100% - (var(--col-gap) * (var(--col) - 1))) / var(--col));
+}
+.rating__img {
+	flex: 0 0 79px;
+}
+
+.rating__img img {
+	width: 100%;
+}
+
+.rating__label {
+	flex: 1 1 auto;
+}
+.rating__suptitle {
+	font-size: 16px;
+	line-height: 1.35;
+}
+.rating__title {
+	color: #fff;
+	font-family: "Poppins", sans-serif;
+	font-weight: 600;
+}
+
+.solutions__info {
+}
+.info {
+	display: flex;
+	--col-gap: 37px;
+	--col: 2;
+	column-gap: var(--col-gap);
+	row-gap: 28px;
+	flex-wrap: wrap;
+}
+.info__item {
+	flex: 0 0 calc((100% - (var(--col-gap) * (var(--col) - 1))) / var(--col));
+}
+
+.info__item--check {
+	column-gap: 8px;
+	font-family: "Poppins", sans-serif;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 1.6;
+	display: flex;
+	align-items: center;
+}
+
+.info__item--check span {
+	font-weight: 400;
+}
+
+.yellow{
+	color: #FFB342;
+}
+
+.yellow span::after{
+	content: '';
+	width: 17px;
+	height: 17px;
+	flex: 0 0 17px;
+	background: url('../img/solutions/star.svg') 0 0 / contain no-repeat;
+}
+
+.info__item--check::before {
+	content: "";
+	width: 27px;
+	height: 27px;
+	flex: 0 0 27px;
+	background: url("../img/solutions/check.svg") 0 0 / contain no-repeat;
+
+}
+
+.info__link {
 }
 
 /* ================ footer ============= */
