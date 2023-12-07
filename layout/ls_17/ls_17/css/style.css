@@ -667,30 +667,45 @@ body {
 	flex: 0 0 calc((100% - (var(--col-gap) * (var(--col) - 1))) / var(--col));
 }
 
+.info__item span {
+	white-space: nowrap;
+}
+
 .info__item--check {
 	column-gap: 8px;
-	font-family: "Poppins", sans-serif;
-	font-size: 20px;
-	font-weight: 700;
-	line-height: 1.6;
 	display: flex;
 	align-items: center;
 }
 
-.info__item--check span {
+.info__text {
+	font-family: "Poppins", sans-serif;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 1.6;
+}
+
+.yellow {
+	color: #ffb342;
+	font-weight: 400;
+	display: flex;
+	align-items: center;
+	column-gap: 5px;
+}
+
+
+.info__text-thin {
 	font-weight: 400;
 }
 
-.yellow{
-	color: #FFB342;
-}
 
-.yellow span::after{
-	content: '';
+.yellow span::after {
+	content: "";
+	margin-left: 5px;
 	width: 17px;
 	height: 17px;
+	vertical-align: middle;
 	flex: 0 0 17px;
-	background: url('../img/solutions/star.svg') 0 0 / contain no-repeat;
+	background: url("../img/solutions/star.svg") center / cover no-repeat;
 }
 
 .info__item--check::before {
@@ -699,7 +714,6 @@ body {
 	height: 27px;
 	flex: 0 0 27px;
 	background: url("../img/solutions/check.svg") 0 0 / contain no-repeat;
-
 }
 
 .info__link {
