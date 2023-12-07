@@ -692,17 +692,15 @@ body {
 	column-gap: 5px;
 }
 
-
 .info__text-thin {
 	font-weight: 400;
 }
 
-
 .yellow span::after {
 	content: "";
-	margin-left: 5px;
 	width: 17px;
 	height: 17px;
+	margin-left: 5px;
 	vertical-align: middle;
 	flex: 0 0 17px;
 	background: url("../img/solutions/star.svg") center / cover no-repeat;
@@ -717,6 +715,24 @@ body {
 }
 
 .info__link {
+	color: #40ddb6;
+	font-size: 18px;
+	font-weight: 600;
+	text-transform: capitalize;
+}
+
+.info__link::after{
+	content: '';
+	display: block;
+	width: 100%;
+	height: 2px;
+	transition: all 0.4s;
+	background-color: #40ddb6;
+}
+
+.info__link:hover::after{
+	width: 0;
+	transform: translateX(200%);
 }
 
 /* ================ footer ============= */
