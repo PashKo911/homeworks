@@ -603,7 +603,7 @@ body {
 }
 .solutions__title {
 	font-family: "Poppins", sans-serif;
-	font-size: 30px;
+	font-size: 5%;
 	font-weight: 600;
 	text-transform: capitalize;
 	max-width: 370px;
@@ -664,7 +664,7 @@ body {
 	flex-wrap: wrap;
 }
 .info__item {
-	flex: 0 0 calc((100% - (var(--col-gap) * (var(--col) - 1))) / var(--col));
+	flex: 0 1 calc((100% - (var(--col-gap) * (var(--col) - 1))) / var(--col));
 }
 
 .info__item span {
@@ -718,6 +718,7 @@ body {
 	color: #40ddb6;
 	font-size: 18px;
 	font-weight: 600;
+	transition: all 0.4s;
 	text-transform: capitalize;
 }
 
@@ -730,10 +731,16 @@ body {
 	background-color: #40ddb6;
 }
 
-.info__link:hover::after{
-	width: 0;
-	transform: translateX(200%);
+@media(any-hover:hover){
+	.info__link:hover::after{
+		width: 0;
+		transform: translateX(200%);
+	}
+	.info__link:hover{
+		color: #fff;
+	}
 }
+
 
 /* ================ footer ============= */
 .footer__container {
