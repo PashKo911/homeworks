@@ -1,38 +1,56 @@
 "use strict"
-function onLoad() {
-	let color = localStorage.getItem("color")
 
-	if (!color) {
-		color = "#c8c5c589"
-		localStorage.setItem("color", color)
+function getLengthEl(svgElement) {
+	if (!svgElement) {
+		console.error("SVG element not provided.")
+		return
 	}
 
-	document.getElementById("input-color").value = color
-	document.body.style.backgroundColor = color
+	const circleElement = svgElement.querySelector("circle")
+	if (!circleElement) {
+		console.error("Circle element not found.")
+		return
+	}
+
+	const totalLength = circleElement.getTotalLength()
+	return { totalLength, circleElement }
 }
 
-function onChangeStorage() {
-	const userColor = localStorage.getItem("color")
-	document.getElementById("input-color").value = userColor
-	document.body.style.backgroundColor = userColor
+function changeCounter(numberElement) {
+	if (numberElement) {
+		const valueAttribute = numberElement.getAttribute("value")
+		const value = valueAttribute ? parseInt(valueAttribute) : 0
+		const duration = numberElement.getAttribute("duration")
+		const counterInterval = (duration * 1000) / value
+		let counter = 0
+
+		const intervalId = setInterval(() => {
+			if (counter === value) clearInterval(intervalId)
+			else {
+				counter += 1
+				numberElement.innerHTML = counter + "%"
+			}
+		}, counterInterval)
+
+		return { value, duration }
+	}
+}
+function setAnimationProperties(numberElement, svgElement) {
+	const { totalLength, circleElement } = getLengthEl(svgElement)
+	const { value, duration } = changeCounter(numberElement)
+
+	const offsetValue = totalLength - (totalLength * value) / 100
+	circleElement.style.setProperty("--custom-stroke-dashoffset", offsetValue)
+
+	circleElement.style.animationDuration = duration + "s"
 }
 
-function onChangeColor() {
-	const userColor = document.getElementById("input-color").value
+document.addEventListener("DOMContentLoaded", function () {
+	const numberElements = document.querySelectorAll(".number")
+	const svgElements = document.querySelectorAll(".circle")
 
-	document.body.style.background = userColor
-	localStorage.setItem("color", userColor)
-
-	window.dispatchEvent(
-		new StorageEvent("storage", {
-			key: "color",
-			newValue: userColor,
-		})
-	)
-}
-
-window.onload = function () {
-	onLoad()
-	document.getElementById("input-color").oninput = onChangeColor
-	window.addEventListener("storage", onChangeStorage)
-}
+	numberElements.forEach((numberElement, index) => {
+		const svgElement = svgElements[index]
+		setAnimationProperties(numberElement, svgElement)
+	})
+})

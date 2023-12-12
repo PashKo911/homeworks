@@ -6,43 +6,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
 	<link rel="stylesheet" href="css/style.css">
-	<!-- <script src="js/script.js"></script> -->
+	<script src="js/script.js"></script>
 	<title>HW_17</title>
 </head>
 
 <body>
 	<div class="wrapper">
-		<!-- <header class="header header--fix">
+		<header class="header">
 			<div class="header__container">
-				<a href="#" class="header__logo">
-					<img src="img/header/logo.svg" alt="website logo">
-				</a>
-				<div class="header__body">
-					<div class="header__services">
-						<form action="#" id="header-search" method="get" class="header__search"
-							enctype="multipart/form-data">
-							<input type="search" required placeholder="Search" class="header__input">
-						</form>
-						<div class="header__language language">
-							<select name="language" id="header-language" class="language__select">
-								<option value="english">English (united States)</option>
-								<option value="korean">Korean</option>
-								<option value="datch">Datch</option>
-							</select>
-						</div>
-					</div>
-					<div class="header__color">
-						<label for="input-color" class="header__label">Body color</label>
-						<input id="input-color" type="color" class="header__input-color">
-					</div>
-					<div class="header__buttons">
-						<a href="#" class="header__button button">Login</a>
-						<a href="#" class="header__button button button--white">Sign Up</a>
-					</div>
-				</div>
+				<h1 class="header__main">Тут буде гарний хедер, колись:))</h1>
 			</div>
-		</header> -->
-
+		</header>
+		<!-- перші три сторінки була ціль попрацювати з зображеннями без обгортки, з їх подальшим адаптивом і тд, для себе зробив висновок що з обгорткой все таки краще -->
+		<!-- Також була ціль попрацювати зі змінними css, адаптив флексових колонок на змінних зроблений  -->
 		<main class="page">
 			<div class="page__rings rings">
 				<div class="rings__container">
@@ -275,7 +251,14 @@
 							<div class="solutions__rating rating">
 								<div class="rating__item">
 									<div class="rating__img">
-										<img src="img/solutions/solutions-1.svg" alt="rate img">
+										<span class="rating__text number" value="95" duration="1"></span>
+
+										<div class="rating__img-box">
+											<svg width="80" height="80" class="circle">
+												<circle cx="40" cy="40" r="38" stroke-linecap="round"></circle>
+											</svg>
+										</div>
+
 									</div>
 									<div class="rating__label">
 										<div class="rating__suptitle">
@@ -288,7 +271,14 @@
 								</div>
 								<div class="rating__item">
 									<div class="rating__img">
-										<img src="img/solutions/solutions-2.svg" alt="rate img">
+										<span class="rating__text number" value="80" duration="1"></span>
+
+										<div class="rating__img-box">
+											<svg width="80" height="80" class="circle">
+												<circle cx="40" cy="40" r="38" stroke-linecap="round"></circle>
+											</svg>
+										</div>
+
 									</div>
 									<div class="rating__label">
 										<div class="rating__suptitle">
@@ -302,7 +292,7 @@
 							</div>
 							<div class="solutions__info info">
 								<div class="info__item info__item--check">
-									<span class="info__text">2,800+</span> 
+									<span class="info__text">2,800+</span>
 									Active clients
 								</div>
 								<div class="info__item info__item--check">
@@ -311,7 +301,8 @@
 								<div class="info__item info__item--check">
 									<span class="info__text">1,670 +</span>
 									<span class="info__text yellow">
-										<span>5</span>
+										5
+										<img class="yellow__img-star" src="img/solutions/star.svg" alt="star icon">
 										stars
 									</span>
 									reviews
@@ -326,7 +317,7 @@
 					</div>
 				</div>
 				<div class="solutions__image">
-
+					<img src="img/solutions/solutions-decor.webp" alt="woman with laptop decor image">
 				</div>
 			</div>
 		</main>
@@ -340,6 +331,31 @@
 				</div>
 			</div>
 		</footer>
+		<!-- <div class="test">
+			<div class="test__skill">
+				<div class="test__outer">
+					<div class="test__inner">
+						<div id="number">
+							65%
+						</div>
+					</div>
+				</div>
+				<svg class="circle">
+					<circle cx="40" cy="40" r="38" stroke-linecap="round"></circle>
+				</svg>
+
+				<svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+					<defs>
+						<linearGradient id="GradientColor">
+							<stop offset="0%" stop-color="#40DDB6"/>
+							<stop offset="100%" stop-color="#40DDB6"/>
+						</linearGradient>
+					</defs>
+					<circle cx="80" cy="80" r="70" stroke-linecap="round" />
+				</svg>
+			</div>
+
+		</div> -->
 	</div>
 </body>
 
