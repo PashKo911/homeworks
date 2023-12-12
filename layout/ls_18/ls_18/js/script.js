@@ -18,9 +18,9 @@ function getLengthEl(svgElement) {
 
 function changeCounter(numberElement) {
 	if (numberElement) {
-		const valueAttribute = numberElement.getAttribute("some-value")
+		const valueAttribute = numberElement.getAttribute("value")
 		const value = valueAttribute ? parseInt(valueAttribute) : 0
-		const duration = numberElement.getAttribute("data-duration")
+		const duration = numberElement.getAttribute("duration")
 		const counterInterval = (duration * 1000) / value
 		let counter = 0
 
