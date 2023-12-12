@@ -2,12 +2,12 @@
 
 @import url("reset.css");
 
+@import url('common.css');
 /* ================= */
 
 body {
 	font-family: "Inter", sans-serif;
-	font-size: 16px;
-	color: #000;
+	color: #6d6d6d;
 }
 
 .wrapper {
@@ -22,7 +22,7 @@ body {
 }
 
 [class*="__container"] {
-	max-width: 1270px;
+	max-width: 1200px;
 	padding: 0 15px;
 	margin: 0 auto;
 }
