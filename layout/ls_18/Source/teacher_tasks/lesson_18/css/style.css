@@ -80,7 +80,7 @@ body {
 	font-family: "Merriweather";
 	font-size: 20px;
 	color: #000;
-	transition: color 0.3s;
+	transition: all 0.3s;
 }
 @media (any-hover: hover) {
 	.menu__item:hover .menu__link {
