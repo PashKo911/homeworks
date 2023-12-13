@@ -518,24 +518,23 @@ body {
 	font-weight: 600;
 }
 
-
-
-circle {
+.circle {
 	fill: #37393f;
 	stroke: #40ddb6;
 	stroke-width: 3px;
 	stroke-dasharray: 239;
 	stroke-dashoffset: 239;
-	animation: anim  linear forwards;
 }
 
+.circle .animate {
+	animation: anim linear forwards;
+}
 
 @keyframes anim {
 	100% {
 		stroke-dashoffset: var(--custom-stroke-dashoffset);
 	}
 }
-
 
 .rating__label {
 	flex: 1 1 auto;
