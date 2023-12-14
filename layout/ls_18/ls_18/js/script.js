@@ -6,15 +6,9 @@ function toggleClassOnElement(elClassName, addClassName) {
 
 document.addEventListener("DOMContentLoaded", function () {
 	const iconMenu = document.querySelector(".icon-menu")
-	const menuItem = document.querySelector(".menu__item--parent")
-
 
 	iconMenu.addEventListener("click", function () {
 		toggleClassOnElement(".icon-menu", "menu-open")
 		toggleClassOnElement(".menu__body", "menu-open")
-	})
-
-	menuItem.addEventListener('click', function(){
-		toggleClassOnElement(".sub-menu", ".sub-menu-open")
 	})
 })

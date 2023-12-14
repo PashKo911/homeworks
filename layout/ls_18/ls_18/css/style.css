@@ -291,16 +291,14 @@ body:has(.menu-open) {
 	.sub-menu {
 		position: relative;
 		height: 0;
-		visibility: hidden;
 		transform: translateX(-100%);
-		opacity: 0;
 		padding-top: 10px;
 	}
 
-	.sub-menu.sub-menu-open {
+	.menu__item--parent:hover .sub-menu {
+		visibility: visible;
 		height: auto;
 		opacity: 1;
-		visibility: visible;
 		transform: translateX(0);
 	}
 
