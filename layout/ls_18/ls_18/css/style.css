@@ -7,7 +7,6 @@
 
 body {
 	font-family: "Inter", sans-serif;
-	color: #6d6d6d;
 }
 
 body:has(.menu-open) {
@@ -78,6 +77,7 @@ body:has(.menu-open) {
 }
 .menu__list {
 	display: flex;
+	align-items: center;
 	justify-content: center;
 	column-gap: 36px;
 	row-gap: 8px;
@@ -153,6 +153,7 @@ body:has(.menu-open) {
 	padding: 15px;
 	min-width: 150px;
 	border-radius: 0 8px 8px 8px;
+	box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.5);
 }
 .sub-menu__item {
 }
@@ -162,12 +163,13 @@ body:has(.menu-open) {
 }
 
 .sub-menu__link {
-	color: #f4e4cf;
+	color: #fff;
 	font-family: "Cormorant Infant", serif;
 	font-weight: 500;
 	font-size: 20px;
 	line-height: 1;
 	padding: 5px 0;
+	transition: color 0.3s;
 	position: relative;
 }
 
@@ -175,7 +177,6 @@ body:has(.menu-open) {
 	content: "";
 	position: absolute;
 	bottom: 0;
-	left: 50%;
 	width: 0;
 	height: 1px;
 	background-color: #fff;
@@ -187,10 +188,10 @@ body:has(.menu-open) {
 	.sub-menu__link:hover::after {
 		width: 100%;
 		left: 0;
-		background-color: #ffd500;
+		background-color: #f4e4cf;
 	}
 	.sub-menu__link:hover {
-		color: #ffd500;
+		color: #f4e4cf;
 	}
 }
 
@@ -273,6 +274,7 @@ body:has(.menu-open) {
 
 	.menu__list {
 		flex-direction: column;
+		align-items: stretch;
 		text-align: right;
 		row-gap: 25px;
 	}
@@ -285,8 +287,6 @@ body:has(.menu-open) {
 		justify-content: end;
 	}
 
-	.menu__item--parent .menu__link::after {
-	}
 
 	.sub-menu {
 		position: relative;
@@ -298,12 +298,10 @@ body:has(.menu-open) {
 	.menu__item--parent:hover .sub-menu {
 		visibility: visible;
 		height: auto;
-		opacity: 1;
 		transform: translateX(0);
 	}
 
 	.sub-menu__list {
-		width: 100%;
 		border-radius: 0;
 	}
 
@@ -390,6 +388,7 @@ body:has(.menu-open) {
 	color: #fff;
 	font-family: "Cormorant Infant", serif;
 	min-height: 100vh;
+	position: relative;
 }
 .hero__container {
 	max-width: 1220px;
@@ -683,11 +682,12 @@ body:has(.menu-open) {
 	padding: 25px 0;
 	display: flex;
 	align-items: center;
-	background-color: #416c85;
+	background-color: #fefbf7;
+	text-align: center;
 }
 
 .footer-text {
-	color: #fff;
+	color: #000;
 }
 .green {
 	color: #40ddb6;
