@@ -14,9 +14,10 @@ body:has(.menu-open) {
 .wrapper {
 	display: flex;
 	flex-direction: column;
-	min-height: 100%;
+	/* min-height: 100%; до того моменту як додам ще блок щоб гне було полоси */
 	overflow: clip;
 }
+
 
 .wrapper > main {
 	flex: 1 1 auto;
@@ -210,9 +211,9 @@ body:has(.menu-open) {
 /* =============== IDIVIDUAL ============= */
 
 .page__individual {
-	background-color: #fff9f4;
 	padding: 100px 0;
-	height: 100%;
+	background-color: #fff9f4;
+
 }
 .individual {
 }
@@ -329,7 +330,6 @@ body:has(.menu-open) {
 	padding: 25px 0;
 	display: flex;
 	align-items: center;
-	background-color: #fefbf7;
 	text-align: center;
 	background-color: #fff9f4;
 	border-top: 1px solid rgba(131, 131, 131, 0.21);
