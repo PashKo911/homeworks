@@ -336,7 +336,27 @@ body:has(.menu-open) {
 
 .footer-text {
 	color: #000;
+	margin-bottom: 30px;
 }
+
+
+.footer__link{
+	font-family: "Merriweather", serif;
+	font-size: 30px;
+	font-style: italic;
+	color: #000;
+	font-weight: 700;
+	text-decoration-line: underline;
+	text-decoration-color: transparent;
+	transition: text-decoration-color 0.3s;
+}
+
+@media(any-hover: hover){
+	.footer__link:hover{
+		text-decoration-color: #000;
+	}
+}
+
 .green {
 	color: #40ddb6;
 }
