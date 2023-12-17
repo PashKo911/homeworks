@@ -212,6 +212,7 @@ body:has(.menu-open) {
 .page__individual {
 	background-color: #fff9f4;
 	padding: 100px 0;
+	height: 100%;
 }
 .individual {
 }
