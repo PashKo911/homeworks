@@ -2,13 +2,13 @@
 
 @import url("reset.css");
 
-@import url("common.css");
+
 /* ================= */
 
 body {
 }
 
-body:has(.menu-open) {
+.menu-open body {
 	overflow: hidden;
 }
 
@@ -258,11 +258,11 @@ body:has(.menu-open) {
 		background-color: #fefbf7;
 	}
 
-	.menu-open.menu__body {
+	.menu-open .menu__body {
 		left: 0;
 	}
 
-	.menu-open.menu__body::before {
+	.menu-open .menu__body::before {
 		left: 0;
 	}
 
@@ -341,16 +341,16 @@ body:has(.menu-open) {
 		margin-top: -1px;
 	}
 
-	.icon-menu.menu-open span {
+	.icon-menu .menu-open span {
 		transform: scale(0);
 	}
 
-	.icon-menu.menu-open::before {
+	.icon-menu .menu-open::before {
 		transform: rotate(-45deg);
 		top: 50%;
 		margin-top: -1px;
 	}
-	.icon-menu.menu-open::after {
+	.icon-menu .menu-open::after {
 		transform: rotate(45deg);
 		bottom: 50%;
 		margin-bottom: -1px;
@@ -384,7 +384,7 @@ body:has(.menu-open) {
 }
 .products__container {
 }
-.product__items {
+.products__items {
 }
 .items-products {
 	display: grid;
