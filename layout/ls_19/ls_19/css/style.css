@@ -681,11 +681,44 @@ body:has(.menu-open) {
 	padding: 34px 20px;
 	border-radius: 12px;
 	overflow: hidden;
+	color: #fff;
+	font-family: "Causten", sans-serif;
 }
-.item-saving--right {
+
+@media (any-hover: hover) {
+	.item-saving:hover .item-saving__arr {
+		animation: arrmove 1s ease infinite alternate;
+	}
 }
+
+@keyframes arrmove {
+	0% {
+		transform: translateY(0%);
+	}
+	100% {
+		transform: translateY(50%);
+	}
+}
+
+.item-saving--left .item-saving__body {
+	align-items: flex-start;
+	margin-right: auto;
+	margin-left: 0;
+	text-align: left;
+}
+
+.item-saving--left .item-saving__content{
+	align-items: flex-start;
+}
+
 .item-saving--black {
+	color: #3c4242;
 }
+
+.item-saving--black .item-saving__arr svg {
+	stroke: #3c4242;
+}
+
 .item-saving__img {
 	position: absolute;
 	top: 0;
@@ -696,9 +729,7 @@ body:has(.menu-open) {
 }
 
 .item-saving__label {
-	color: #fff;
 	text-align: center;
-	font-family: "Causten", sans-serif;
 	font-size: 12px;
 	font-weight: 700;
 	padding: 10px 16px;
@@ -711,7 +742,6 @@ body:has(.menu-open) {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
-	justify-content: space-between;
 	flex: 1 1 auto;
 	gap: 10px;
 }
@@ -723,27 +753,27 @@ body:has(.menu-open) {
 	display: flex;
 	flex-direction: column;
 	row-gap: 30px;
+	height: 100%;
 	align-items: flex-end;
 	margin-left: auto;
 }
 .item-saving__title {
-	color: #fff;
 	font-family: "Core Sans C", sans-serif;
 	font-size: 28px;
 	font-weight: 600;
 	line-height: 1.36;
 	letter-spacing: 0.56px;
-	max-width: 105px;
 }
+
+.item-saving__content:first-child{
+	padding-top: 64.4px;
+}
+
 .item-saving__text {
-	color: #fff;
-	font-family: "Causten", sans-serif;
 	font-size: 14px;
 	font-weight: 600;
 }
 .item-saving__discount {
-	color: #fff;
-	font-family: "Causten", sans-serif;
 	font-size: 18px;
 	font-weight: 700;
 }
@@ -758,15 +788,19 @@ body:has(.menu-open) {
 }
 
 .item-saving__button span {
-	display: inline-block;
 	padding: 10px 25px;
 	border-radius: 4px;
-	border: 1px solid #fff;
-	color: #fff;
+	border: 1px solid;
 	text-align: center;
-	font-family: "Causten", sans-serif;
 	font-size: 12px;
 	font-weight: 500;
+	transition: background-color 0.3s;
+}
+
+@media (any-hover: hover) {
+	.item-saving__button:hover span {
+		background-color: #0000002e;
+	}
 }
 
 /* ================ footer ============= */
