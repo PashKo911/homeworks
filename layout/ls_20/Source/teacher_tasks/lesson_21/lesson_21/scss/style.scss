@@ -1,0 +1,422 @@
+@use "sass:math";
+
+// Шрифти
+@import "_fonts.scss";
+// Обнулення
+@import "_reset.scss";
+// Компоненти
+@import "_common.scss";
+// Функції
+// @import "_functions.scss";
+
+body {
+	background-color: #333;
+}
+
+.wrapper {
+	overflow: clip;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+.wrapper main {
+	flex-grow: 1;
+}
+
+// SASS - Назва препроцесора
+// SCSS - Це варіант синтаксису препроцесора SASS
+
+// Синтаксис SASS
+/*
+body
+	color: red
+	font-size: 20px
+.block
+	color: green
+	// ....
+*/
+
+// Синтаксис SСSS
+/*
+body {
+	color: red;
+	font-size: 20px;
+}
+.block {
+	color: green;
+	// ....
+}
+*/
+
+// Супер сила №1
+// Коментарі
+
+/* я потраплю в CSS  */
+// я не потраплю в CSS
+
+// Повідомлення для себе
+// .block {
+// 	color: red;
+// }
+
+// Супер сила №2*
+// Змінні
+// *CSS теж має можливість
+// використовувати змінні
+
+// $mainColor: #666;
+/*
+body {
+	background-color: $mainColor;
+}
+.block {
+	color: $mainColor;
+}
+*/
+
+// Супер сила №3 **
+// Вкладеність
+// ** Наразі, CSS теж рухається
+// до цього синтаксису
+
+// Синтаксис CSS
+// .text span {
+// 	color: green;
+// }
+// .text {
+// 	font-size: 20px;
+// 	color: red;
+// }
+// .text.page__text {
+//		color: green;
+// 	font-size: 40px;
+// }
+// .page .text {
+// 	color: orange;
+// }
+
+// Синтаксис SCSS
+.text {
+	// об'єкт(и) span вкладений(ні) в .text
+	span {
+		color: green;
+	}
+	font-size: 20px;
+	color: red;
+	// Клас .text з класом .footer__text
+	&.footer__text {
+		color: green;
+		font-size: 40px;
+	}
+	// якщо батьківський елемент має клас .page
+	.page & {
+		color: orange;
+	}
+}
+
+// CSS
+.block {
+}
+.block__container {
+}
+.block__title {
+}
+.block__body {
+}
+.block__image {
+}
+.block__image--big {
+}
+.block__content {
+}
+.title {
+}
+
+// SCSS
+// & - це амперсанд (and)
+.block {
+	// .block__container
+	&__container {
+	}
+	// .block__title
+	&__title {
+	}
+	// .block__body
+	&__body {
+	}
+	// .block__image
+	&__image {
+		// .block__image--big
+		&--big {
+		}
+	}
+	// .block__content
+	&__content {
+	}
+}
+.title {
+}
+
+// Вкладеність псевдоелементів,
+// псевдокласів і т.д.
+
+// CSS
+// .text::before {
+// }
+// .text::after {
+// }
+// .text:hover {
+// }
+// .text:hover::before {
+// }
+
+// SCSS
+.text {
+	&::before {
+		content: "";
+	}
+	&::after {
+	}
+	&:hover {
+		&::before {
+			content: "Hover";
+		}
+	}
+	&:last-child {
+	}
+	&:not(:last-child) {
+	}
+	&:nth-child(5) {
+	}
+}
+
+// Вкладеність медіазапитів
+
+// CSS
+.text {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+// ...
+@media (max-width: 867px) {
+	.text {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+// SCSS
+.text {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	@media (max-width: 867px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+// Все разом по вкладеності
+.block {
+	.page & {
+		// ...
+	}
+	&--active {
+		// ...
+	}
+	// .block__container
+	&__container {
+		&:hover {
+		}
+		span {
+		}
+	}
+	// .block__title
+	&__title {
+		&::before {
+		}
+	}
+	// .block__body
+	&__body {
+		@media (max-width: 850px) {
+			//   ....
+		}
+	}
+	// .block__image
+	&__image {
+		// .block__image--big
+		&--big {
+		}
+	}
+	// .block__content
+	&__content {
+		&:last-child {
+			// ....
+		}
+	}
+}
+
+.text {
+	.page {
+		color: red;
+	}
+}
+// Дорівнює
+.page {
+	.text & {
+		color: red;
+	}
+}
+
+// Супер сила №4
+// @extend, шаблони %
+// Перевикористання коду, використання шаблону коду
+
+// CSS
+.button,
+.page__button {
+	padding: 10px 20px;
+	font-size: 20px;
+	background-color: green;
+}
+
+// SCSS
+.button {
+	padding: 10px 20px;
+	font-size: 20px;
+	background-color: green;
+}
+
+.page__button {
+	@extend .button;
+}
+
+// Шаблони
+%button {
+	padding: 10px 20px;
+	font-size: 20px;
+	background-color: green;
+}
+
+.page__button {
+	@extend %button;
+}
+
+// Супер сила №5
+// @mixin та @include
+// Міксіни
+
+@mixin box($width: 500px, $height: 500px, $bgColor: green, $borderColor: red) {
+	width: $width;
+	height: $height;
+	background-color: $bgColor;
+	border: 1px solid $borderColor;
+}
+
+.page__box {
+	@include box;
+}
+.about__box {
+	@include box(100px, 300px, blue, orange);
+}
+
+// Функція
+// Створюємо
+
+@function percent($num1, $num2) {
+	$rez: math.div($num1, $num2) * 100%;
+	@return $rez;
+}
+
+.test {
+	width: percent(300, 1200);
+	width: 25%; /* 300/1200 */
+}
+
+// Супер сила №6*
+// Оператори
+// Вверху файл обов'язково треба додати @use "sass:math";
+// *CSS теж має можливість використання операторів (calc)
+
+// Більше інформації
+// https://sass-lang.com/documentation/operators/string
+
+// Множення *
+// Додавання +
+// Віднімання -
+// Ділення math.div(num 1, num 2)
+
+.test {
+	width: 100px - 50px;
+}
+
+// Інші можливості
+// @if / @else - умовне вітвлення
+// @for - цликл
+
+// ...та багато іншого https://sass-lang.com/documentation
+
+.page {
+	padding: 50px;
+}
+
+// Приклад
+// CSS
+/*
+.list {
+	color: #fff;
+}
+.list__item {
+	font-size: 20px;
+	visibility: hidden;
+	transform: translate(-100%, 0);
+	opacity: 0;
+	animation: show-items 1s ease forwards;
+}
+.list__item:not(:last-child) {
+	margin-bottom: 20px;
+}
+.list__item:nth-child(1) {
+	animation-delay: 0s;
+}
+.list__item:nth-child(2) {
+	animation-delay: 0.2s;
+}
+.list__item:nth-child(3) {
+	animation-delay: 0.4s;
+}
+.list__item:nth-child(4) {
+	animation-delay: 0.6s;
+}
+.list__item:nth-child(5) {
+	animation-delay: 0.8s;
+}
+*/
+// SCSS
+.list {
+	color: #fff;
+	// .list__item
+	&__item {
+		font-size: 20px;
+		visibility: hidden;
+		transform: translate(-100%, 0);
+		opacity: 0;
+		animation: show-items 1s ease forwards;
+		&:not(:last-child) {
+			margin-bottom: 20px;
+		}
+		@for $i from 1 through 6 {
+			&:nth-child(#{$i}) {
+				$delay: ($i - 1) * 0.2;
+				animation-delay: #{$delay}s;
+			}
+		}
+	}
+}
+
+@keyframes show-items {
+	0% {
+	}
+	100% {
+		opacity: 1;
+		visibility: visible;
+		transform: translate(0px, 0%);
+	}
+}

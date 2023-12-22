@@ -1,0 +1,52 @@
+// @use "sass:math";
+
+@import "_fonts.scss";
+@import "_reset.scss";
+@import "_temple.scss";
+@import "_common.scss";
+@import "_header.scss";
+
+// HERO
+
+.page {
+	// .page__hero
+	&__hero {
+	}
+}
+.hero {
+	position: relative;
+	padding: 200px 100px;
+
+	// .hero__container
+	&__container {
+		height: 100svh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	// .hero__title
+	&__title {
+		position: relative;
+	}
+}
+
+.footer {
+	&__container {
+	}
+}
+.footer-text {
+}
+.green {
+}
+.purple {
+}
