@@ -19,6 +19,7 @@
 
 		@media (max-width: $tablet) {
 			min-height: 54px;
+			gap: 15px;
 		}
 	}
 
@@ -55,7 +56,7 @@
 			left: -100%;
 			transition: left 0.3s;
 			padding: 80px 15px 30px;
-			background-color: #31302eda;
+			background-color: #31302ef0;
 
 			&::before {
 				content: "";
@@ -105,11 +106,15 @@
 		line-height: 1;
 		text-decoration-line: underline;
 		text-decoration-color: transparent;
-		transition: text-decoration-color 0.3s;
+		transition: all 0.3s;
 
+		@media (max-width: $tablet) {
+			font-size: 26px;
+		}
 		@media (any-hover: hover) {
 			.menu__item:hover & {
-				text-decoration-color: #fff;
+				color: $gold;
+				text-decoration-color: $gold;
 			}
 			.menu__item--parent:hover &::after {
 				transform: rotate(180deg);
@@ -169,11 +174,11 @@
 	}
 
 	&__list {
-		background-color: #fefaf4;
+		background-color: $goldTitle;
 		padding: 15px;
 		min-width: 150px;
 		border-radius: 0 8px 8px 8px;
-		box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.5);
+		box-shadow: 3px 3px 5px 0 rgba(23, 8, 8, 0.5);
 
 		@media (max-width: $tablet) {
 			border-radius: 0;
@@ -189,7 +194,7 @@
 	}
 
 	&__link {
-		color: #000;
+		color: #fff;
 		font-size: 18px;
 		line-height: 1;
 		padding: 5px 0;
@@ -205,7 +210,6 @@
 			&:hover::after {
 				width: 100%;
 				left: 0;
-				background-color: #000;
 			}
 		}
 
@@ -215,7 +219,7 @@
 			bottom: 0;
 			width: 0;
 			height: 1px;
-			background-color: #000;
+			background-color: #fff;
 			transition: all 0.3s;
 			left: 50%;
 		}
@@ -239,7 +243,7 @@
 			content: "";
 			height: 2px;
 			width: 100%;
-			background-color: #fff;
+			background-color: $gold;
 			position: absolute;
 			left: 0;
 			transition: all 0.3s;

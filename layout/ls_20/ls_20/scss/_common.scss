@@ -1,15 +1,18 @@
 .title {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 30px;
+	& > *:not(:last-child) {
+		margin-bottom: 30px;
 
-	@media (max-width: $phone) {
-		gap: 40px;
+		@media (max-width: $phone) {
+			margin-bottom: 40px;
+		}
 	}
+
+	&.hero__title {
+		position: relative;
+	}
+	
 	// .title--center
 	&--center {
-		align-items: center;
 		text-align: center;
 	}
 	// .title__main
@@ -26,8 +29,6 @@
 			font-size: 38px;
 		}
 
-		.title--center & {
-		}
 		// .title__main--big
 		&--big {
 			line-height: 1.39;
@@ -38,9 +39,19 @@
 		}
 	}
 	&__text {
-		max-width: 605px;
 		color: #fff;
 		line-height: 1.8;
+		max-width: 605px;
+
+		& > *:not(:last-child) {
+			margin-bottom: 15px;
+		}
+
+		.title--center & {
+			margin-right: auto;
+			margin-left: auto;
+		}
+
 		@media (max-width: $phone) {
 			line-height: 1.4;
 		}
@@ -54,16 +65,30 @@
 	& > *:not(:last-child) {
 		margin-bottom: 13px;
 	}
+	
+	@media (max-width: $phoneMin) {
+		text-align: center;
+	}
 	// .title-label__sup
 	&__sup {
-		color: #fac70f;
+		color: $goldTitle;
 		font-size: 28px;
+		@media (max-width:$tablet) {
+			font-size: 24px;
+		}
 	}
 	// .title-label__main
 	&__main {
 		font-family: $dmSerif, serif;
 		font-size: 64px;
 		line-height: 1.46;
+		@media (max-width:$tablet) {
+			font-size: 50px;
+		}
+		@media (max-width:$phone) {
+			font-size: 40px;
+		}
+		
 	}
 }
 
@@ -74,7 +99,7 @@
 	line-height: 1;
 	padding: 12px 25px;
 	border-radius: 2px;
-	background-color: #f7a428;
+	background-color: $gold;
 	transition: background-color 0.3s;
 	flex-shrink: 0;
 	position: relative;
