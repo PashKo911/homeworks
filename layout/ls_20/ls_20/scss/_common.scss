@@ -10,7 +10,7 @@
 	&.hero__title {
 		position: relative;
 	}
-	
+
 	// .title--center
 	&--center {
 		text-align: center;
@@ -65,7 +65,7 @@
 	& > *:not(:last-child) {
 		margin-bottom: 13px;
 	}
-	
+
 	@media (max-width: $phoneMin) {
 		text-align: center;
 	}
@@ -73,22 +73,21 @@
 	&__sup {
 		color: $goldTitle;
 		font-size: 28px;
-		@media (max-width:$tablet) {
+		@media (max-width: $tablet) {
 			font-size: 24px;
 		}
 	}
 	// .title-label__main
 	&__main {
 		font-family: $dmSerif, serif;
-		font-size: 64px;
+		font-size: clamp(2.5rem, 1.115rem + 2.885vw, 4rem);
 		line-height: 1.46;
-		@media (max-width:$tablet) {
-			font-size: 50px;
+		@media (max-width: $tablet) {
+			line-height: 1.2;
 		}
-		@media (max-width:$phone) {
-			font-size: 40px;
-		}
-		
+		// @media (max-width:$phone) {
+		// 	font-size: 40px;
+		// }
 	}
 }
 
