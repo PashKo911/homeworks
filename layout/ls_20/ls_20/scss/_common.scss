@@ -10,10 +10,32 @@
 	&.hero__title {
 		position: relative;
 	}
-
+	&.popular__title {
+		margin-bottom: 87px;
+		text-transform: capitalize;
+		@media (max-width: $pcMin) {
+			margin-bottom: 67px;
+		}
+		@media (max-width: $tablet) {
+			margin-bottom: 50px;
+		}
+		@media (max-width: $phone) {
+			margin-bottom: 40px;
+		}
+		@media (max-width: $phoneMin) {
+			margin-bottom: 30px;
+		}
+	}
+	&.products__title{
+		margin-bottom: 66px;
+	}
 	// .title--center
 	&--center {
 		text-align: center;
+		.title__main {
+			margin-left: auto;
+			margin-right: auto;
+		}
 	}
 	// .title__main
 	&__main {
@@ -28,7 +50,14 @@
 		@media (max-width: $phone) {
 			font-size: 38px;
 		}
-
+		@media (max-width: $phoneMin) {
+			font-size: 26px;
+		}
+		.popular__title & {
+			@media (max-width: $tablet) {
+				margin-bottom: 20px;
+			}
+		}
 		// .title__main--big
 		&--big {
 			line-height: 1.39;
@@ -46,7 +75,17 @@
 		& > *:not(:last-child) {
 			margin-bottom: 15px;
 		}
+		&--gray{
+			color: #bcbcbc;
+			font-family: $cormorant, serif;
+			font-size: 30px;
+			font-weight: 700;
+			line-height: 1.4;
 
+			@media (max-width: $phoneMin) {
+				font-size: 24px;
+			}
+		}
 		.title--center & {
 			margin-right: auto;
 			margin-left: auto;
@@ -69,6 +108,23 @@
 	@media (max-width: $phoneMin) {
 		text-align: center;
 	}
+
+	&.custom__title {
+		padding-top: 31px;
+
+		@media (max-width: $phoneMin) {
+			margin-bottom: 30px;
+			padding-top: 0;
+		}
+	}
+	&.sourced__title {
+		margin-bottom: 50px;
+		max-width: 614px;
+		@media (max-width: $phoneMin) {
+			max-width: none;
+			margin-bottom: 30px;
+		}
+	}
 	// .title-label__sup
 	&__sup {
 		color: $goldTitle;
@@ -76,18 +132,26 @@
 		@media (max-width: $tablet) {
 			font-size: 24px;
 		}
+		@media (max-width: $phoneMin) {
+			font-size: 20px;
+		}
 	}
 	// .title-label__main
 	&__main {
 		font-family: $dmSerif, serif;
 		font-size: clamp(2.5rem, 1.115rem + 2.885vw, 4rem);
 		line-height: 1.46;
+		text-transform: capitalize;
+
+		&--uppercase {
+			text-transform: uppercase;
+		}
 		@media (max-width: $tablet) {
 			line-height: 1.2;
 		}
-		// @media (max-width:$phone) {
-		// 	font-size: 40px;
-		// }
+		@media (max-width: $phoneMin) {
+			font-size: 30px;
+		}
 	}
 }
 
