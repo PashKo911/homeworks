@@ -28,6 +28,16 @@
 	}
 	&.products__title{
 		margin-bottom: 66px;
+		@media (max-width:$tablet){
+			margin-bottom: 50px;
+		}
+		@media (max-width:$phone){
+			  margin-bottom: 40px;
+			  text-align: center;
+		}
+		@media (max-width:$phoneMin){
+			  margin-bottom: 30px;
+		}
 	}
 	// .title--center
 	&--center {
@@ -53,7 +63,9 @@
 		@media (max-width: $phoneMin) {
 			font-size: 26px;
 		}
-		.popular__title & {
+		.popular__title &,
+		.products__title &
+		{
 			@media (max-width: $tablet) {
 				margin-bottom: 20px;
 			}
@@ -82,6 +94,12 @@
 			font-weight: 700;
 			line-height: 1.4;
 
+			@media (max-width: $phone) {
+				.products__title &{
+					margin-left: auto;
+					margin-right: auto;
+				}
+			}
 			@media (max-width: $phoneMin) {
 				font-size: 24px;
 			}
