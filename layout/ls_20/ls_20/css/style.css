@@ -863,7 +863,6 @@ body {
 }
 
 .popular {
-  background-color: #04011F;
   background: url("../img/popular/decor.svg") center right no-repeat, #04011F;
   padding: clamp(50px, 6.25vw, 100px) 0;
 }
@@ -1014,7 +1013,7 @@ body {
 }
 
 .products {
-  background: url("../img/products/decor-left.svg") left bottom no-repeat, url("../img/products/decor-right.svg") right top no-repeat #04011F;
+  background: url("../img/products/decor-right.svg") right top no-repeat #04011F;
   padding: clamp(50px, 6.25vw, 100px) 0;
 }
 @media (min-width: 991.98px) {
@@ -1127,16 +1126,11 @@ body {
 }
 .item-products__title {
   font-family: "DM Serif Text", serif;
-  -webkit-transition: text-decoration-color 0.3s ease;
-  transition: text-decoration-color 0.3s ease;
-  text-decoration-line: underline;
-  text-decoration-color: transparent;
-  height: 100%;
-}
-@media (any-hover: hover) {
-  .item-products:hover .item-products__title {
-    text-decoration-color: #fac70f;
-  }
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .item-products__body {
   display: -webkit-box;
@@ -1183,9 +1177,116 @@ body {
 @media (any-hover: hover) {
   .item-products:hover .item-products__link {
     text-decoration-color: #fac70f;
+    color: #fac70f;
   }
 }
 
 .footer {
-  background-color: #04011F;
+  background: url("../img/footer/decor.svg") left bottom no-repeat, #04011F;
+  padding: 40px 0;
+  border-top: 1px solid rgba(249, 249, 249, 0.22);
+  text-align: center;
+  line-height: 1.4;
+}
+@media (max-width: 767.98px) {
+  .footer {
+    line-height: 1.2;
+  }
+}
+.footer__content {
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 52px;
+  font-family: "Cormorant Infant", serif;
+}
+.footer__content > *:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 991.98px) {
+  .footer__content {
+    margin-bottom: 30px;
+  }
+}
+@media (max-width: 767.98px) {
+  .footer__content {
+    margin-bottom: 15px;
+    max-width: none;
+  }
+}
+.footer__number {
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 7px;
+}
+@media (max-width: 767.98px) {
+  .footer__number {
+    font-size: 24px;
+  }
+}
+.footer__mail {
+  font-size: 40px;
+  font-style: italic;
+  font-weight: 700;
+  margin-bottom: 17px;
+}
+@media (max-width: 767.98px) {
+  .footer__mail {
+    font-size: 26px;
+  }
+}
+.footer__text {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  margin-bottom: 21px;
+}
+.footer__social {
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 18px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+@media (any-hover: hover) {
+  .footer__link:hover svg {
+    fill: #fff;
+  }
+}
+.footer__link svg {
+  fill: #fac70f;
+  -webkit-transition: fill 0.3s ease;
+  transition: fill 0.3s ease;
+}
+.footer__links {
+  font-weight: 500;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-column-gap: 50px;
+     -moz-column-gap: 50px;
+          column-gap: 50px;
+  row-gap: 25px;
+}
+.footer__links a {
+  text-decoration-line: underline;
+  text-decoration-color: #fff;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+@media (any-hover: hover) {
+  .footer__links a:hover {
+    text-decoration-color: #fac70f;
+    color: #fac70f;
+  }
 }
