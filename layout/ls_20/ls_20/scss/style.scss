@@ -72,7 +72,8 @@
 .item-offers {
 	max-width: 290px;
 	text-align: center;
-	margin: 0 auto;
+	// margin: 0 auto;
+	justify-self: center;
 
 	& > *:last-child {
 		margin-bottom: 0;
@@ -178,7 +179,7 @@
 	// .custom__img
 	&__img {
 		aspect-ratio: 397/506;
-		margin-left: auto;
+		// margin-left: auto;
 		// .custom__img--big
 		&--big {
 			@media (min-width: $minWPhoneMin) {
@@ -189,9 +190,11 @@
 		// .custom__img--left
 		&--left {
 			display: none;
+
 			@media (min-width: $minWPhoneMin) {
 				max-width: 397px;
 				display: block;
+				justify-self: end;
 			}
 		}
 		img {

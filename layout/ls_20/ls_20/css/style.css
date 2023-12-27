@@ -709,7 +709,7 @@ body {
 .item-offers {
   max-width: 290px;
   text-align: center;
-  margin: 0 auto;
+  justify-self: center;
 }
 .item-offers > *:last-child {
   margin-bottom: 0;
@@ -820,7 +820,6 @@ body {
 }
 .custom__img {
   aspect-ratio: 397/506;
-  margin-left: auto;
 }
 .custom__img--big {
   margin-bottom: 39px;
@@ -837,6 +836,7 @@ body {
   .custom__img--left {
     max-width: 397px;
     display: block;
+    justify-self: end;
   }
 }
 .custom__img img {
