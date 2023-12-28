@@ -12,7 +12,6 @@ $containerPadding: 30;
 // Ширина спрацьовування першого брейкпоінту
 $containerWidth: $maxWidthContainer + $containerPadding;
 
-
 @import "_fonts.scss";
 @import "_reset.scss";
 @import "_functions.scss";
@@ -20,3 +19,147 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 @import "_common.scss";
 @import "_header.scss";
 
+// HERO
+
+.page {
+	margin-top: toRem(108);
+	@media (max-width: $tablet) {
+		margin-top: toRem(56);
+	}
+	// .page__hero
+	&__hero {
+	}
+}
+.hero {
+	position: relative;
+	// min-height: toRem(716);
+	min-height: calc(100svh - toRem(108));
+	display: flex;
+	// align-items: center;
+	@include adaptiveValue("padding-top", 100, 40);
+	@include adaptiveValue("padding-bottom", 100, 40);
+	@media (max-width: $tablet) {
+		min-height: calc(100svh - toRem(56));
+	}
+	// .hero__container
+	&__container {
+		padding-left: toRem(89);
+		width: 100%;
+		position: relative;
+		min-height: 100%;
+	}
+	// .hero__img
+	&__img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		aspect-ratio: 1449/716;
+		object-position: right top;
+		@media (max-width: $pc) {
+			object-position: 55%;
+		}
+		@media (max-width: $tablet) {
+			object-position: 65%;
+		}
+		@media (max-width: $mobile) {
+			object-position: 75%;
+		}
+	}
+	// .hero__button
+	&__button {
+	}
+	// .hero__title
+	&__title {
+		position: relative;
+		color: $white;
+		font-family: $sansC, sans-serif;
+		max-width: toRem(450);
+		& > *:last-child {
+			margin-bottom: 0;
+		}
+	}
+	// .hero__label
+	&__label {
+		@include adaptiveValue("font-size", 32, 22);
+		font-weight: 500;
+		margin-bottom: toEm(40, 32);
+		letter-spacing: toRem(0.157);
+		text-transform: capitalize;
+	}
+	// .hero__main-title
+	&__main-title {
+		@include adaptiveValue("font-size", 78, 38);
+		font-weight: 800;
+		letter-spacing: toRem(0.315);
+		margin-bottom: toEm(40, 78);
+	}
+	// .hero__text
+	&__text {
+		@include adaptiveValue("font-size", 32, 22);
+		font-weight: 500;
+		line-height: 1.47;
+		letter-spacing: toRem(0.315);
+		margin-bottom: toEm(40, 32);
+	}
+	// .hero__link
+	&__link {
+		color: $dark;
+		text-align: center;
+		@include adaptiveValue("font-size", 24, 18);
+		font-weight: 700;
+		padding: toRem(16) toRem(72);
+		border-radius: 8px;
+		background: #fff;
+		transition: all 0.2s ease 0s;
+		margin-bottom: toEm(40, 24);
+
+		@media (any-hover: hover) {
+			&:hover {
+				background: $purple;
+				box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.1);
+				color: $white;
+			}
+		}
+	}
+	// .hero__slide-position
+	&__slide-position {
+	}
+}
+.button-hero {
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	left: toRem(15);
+
+	@media (min-width: toRem(1450)) {
+		left: toRem(-64);
+	}
+	@media (max-width:$mobileSmall){
+		 top: auto; 
+		 bottom: 0;
+	}
+	@media (any-hover: hover) {
+		&:hover svg {
+			fill: $purple;
+		}
+	}
+
+	svg {
+		fill: $white;
+		transition: fill 0.3s ease 0s;
+	}
+
+	// .button-hero--right
+	&--right {
+		left: auto;
+		right: toRem(15);
+		transform: translate(0, -50%) rotate(180deg);
+
+		@media (min-width: toRem(1450)) {
+			right: toRem(-64);
+		}
+	}
+}
