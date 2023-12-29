@@ -5,16 +5,16 @@ $purple: #8a33fd;
 
 $sansC: "Core Sans C";
 
-$pc: 1399.98px;
-$pcMin: 1199.98px;
-$tablet: 991.98px;
-$mobile: 767.98px;
-$mobileSmall: 575.98px;
-$minMobileSmall: 576px;
+$pc: toEm(1399.98);
+$pcMin: toEm(1199.98);
+$tablet: toEm(991.98);
+$mobile: toEm(767.98);
+$mobileSmall: toEm(575.98);
+$minMobileSmall: toEm(576);
 
 [class*="__container"] {
-	max-width: $maxWidthContainer + px;
-	padding: 0 15px;
+	max-width: toRem($maxWidthContainer);
+	padding: 0 toRem(15);
 	margin: 0 auto;
 }
 
@@ -24,12 +24,11 @@ $minMobileSmall: 576px;
 
 body {
 	font-family: "Causten", sans-serif;
-	font-size: 16px;
-	@media (any-hover: hover){
+	font-size: toRem(16);
+	@media (any-hover: hover) {
 		& *:focus {
-			outline: 2px solid $purple;
-			color: $purple;
-			border-radius: 3px;
+			outline: toRem(2) solid $purple;
+			border-radius: toRem(3);
 		}
 	}
 }
