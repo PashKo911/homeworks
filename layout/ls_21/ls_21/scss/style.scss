@@ -46,6 +46,9 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	// .page__fashion
 	&__fashion {
 	}
+	// .page__categories
+	&__categories {
+	}
 }
 
 .hero {
@@ -330,7 +333,6 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	}
 	// .arrival__title
 	&__title {
-		@include adaptiveValue("margin-bottom", 70, 30);
 	}
 	// .arrival__items
 	&__items {
@@ -424,7 +426,6 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	}
 	// .saving__title
 	&__title {
-		@include adaptiveValue("margin-bottom", 70, 30);
 	}
 	// .saving__items
 	&__items {
@@ -660,6 +661,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	// .fashion__container
 	&__container {
 		display: flex;
+		@include adaptiveValue("min-height", 640, 320);
 	}
 	// .fashion__content
 	&__content {
@@ -668,7 +670,11 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	&__img {
 		flex: 1 1 50.483871%; /* 626/1240 */
 		img {
-			@include img(626, 639, "center", "cover");
+			@include img(626, 640);
+			border-radius: 0 toRem(12) toRem(12) 0;
+		}
+		@media (max-width: $mobile) {
+			display: none;
 		}
 	}
 }
@@ -676,28 +682,149 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	position: relative;
 	flex: 1 1 49.516129%; /* 614/1240 */
 	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: toRem(20);
 	// .content-fashion__img
 	&__img {
 		position: absolute;
 		top: 0;
 		left: 0;
-		@include img(613, 639, "center", "cover");
+		border-radius: toRem(12) 0 0 toRem(12);
+		@include img(613, 640);
+		@media (max-width: $mobile) {
+			border-radius: toRem(12);
+		}
 	}
 	// .content-fashion__body
 	&__body {
+		position: relative;
+		color: $white;
+		max-width: toRem(466);
+
+		& > *:last-child {
+			margin-bottom: 0;
+		}
+
+		@media (max-width: $mobile) {
+			text-align: center;
+		}
 	}
 	// .content-fashion__title
 	&__title {
+		font-family: $sansC, sans-serif;
+		@include adaptiveValue("font-size", 34, 20);
+		font-weight: 800;
+		line-height: 1.5;
+		letter-spacing: toRem(0.208);
+		margin-bottom: toEm(30, 34);
+		text-transform: uppercase;
 	}
 	// .content-fashion__text
 	&__text {
+		@include adaptiveValue("font-size", 20, 16);
+		font-weight: 300;
+		letter-spacing: toRem(1);
+		@include adaptiveValue("margin-bottom", 50, 30);
+
+		& > *:not(:last-child) {
+			margin-bottom: toRem(15);
+		}
 	}
 	// .content-fashion__link
 	&__link {
+		margin-bottom: 30px;
 	}
 }
-.button {
-	// .button--small
-	&--small {
+
+// CATEGORIES
+
+.categories {
+	// .categories__container
+	&__container {
+	}
+	// .categories__title
+	&__title {
+	}
+	// .categories__items
+	&__items {
+	}
+}
+
+.items-categories {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(toRem(270), 1fr));
+	@include adaptiveValue("gap", 50, 20);
+	// .items-categories__article
+	&__article {
+	}
+}
+.article-categories {
+
+	// .article-categories__link
+	&__link {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		gap: toRem(20);
+	}
+	// .article-categories__img
+	&__img {
+		border-radius: toRem(10);
+		overflow: hidden;
+
+		img {
+			@include img(270, 393);
+			transition: transform 0.3s ease 0s;
+			@media (any-hover: hover) {
+				.article-categories__link:hover & {
+					transform: scale(1.02);
+				}
+			}
+		}
+	}
+	// .article-categories__content
+	&__content {
+		display: flex;
+	}
+	// .article-categories__body
+	&__body {
+		height: 100%;
+		flex-grow: 1;
+	}
+	// .article-categories__title
+	&__title {
+		color: #2a2f2f;
+		font-size: toRem(18);
+		font-weight: 700;
+		margin-bottom: toEm(5, 18);
+		transition: color 0.3s ease 0s;
+		text-transform: capitalize;
+		@media (any-hover: hover) {
+			.article-categories__link:hover & {
+				color: $purple;
+			}
+		}
+	}
+	// .article-categories__text
+	&__text {
+		color: #7f7f7f;
+		font-size: toRem(14);
+		font-weight: 500;
+		margin-bottom: toEm(5, 14);
+		text-transform: capitalize;
+	}
+	&__arr {
+		align-self: center;
+		fill: #7f7f7f;
+		transition: fill 0.3s ease 0s;
+		flex: 0 0 toRem(18);
+		@media (any-hover: hover) {
+			.article-categories__link:hover & {
+				fill: $purple;
+			}
+		}
 	}
 }
