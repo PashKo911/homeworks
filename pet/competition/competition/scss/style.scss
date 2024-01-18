@@ -81,7 +81,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 
 		@media (min-width: toEm(700)) {
 			display: block;
-			min-height: toRem(183);
+			min-height: toRem(195);
 		}
 	}
 
@@ -197,11 +197,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	}
 	// .test__content
 	&__content {
-		@media (min-width: toEm(700)) {
-			&:not(:last-child) {
-				margin-bottom: toRem(10);
-			}
-		}
+
 	}
 	// .test__img
 	&__img {
