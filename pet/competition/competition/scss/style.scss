@@ -197,7 +197,6 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	}
 	// .test__content
 	&__content {
-
 	}
 	// .test__img
 	&__img {
@@ -635,6 +634,9 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		line-height: 120%; /* 32.4px */
 		margin-bottom: toEm(24, 27);
 
+		@media (max-width: $mobileSmall) {
+			max-width: toRem(280);
+		}
 		@media (max-width: toEm(440)) {
 			max-width: toRem(250);
 		}

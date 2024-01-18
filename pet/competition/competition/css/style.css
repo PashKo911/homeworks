@@ -569,6 +569,11 @@ body {
   line-height: 120%; /* 32.4px */
   margin-bottom: 0.8888888889em;
 }
+@media (max-width: 35.99875em) {
+  .item__title {
+    max-width: 17.5rem;
+  }
+}
 @media (max-width: 27.5em) {
   .item__title {
     max-width: 15.625rem;
