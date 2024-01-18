@@ -1,12 +1,11 @@
 "use strict"
 
 function animateCounter(element, attributeName) {
-	const target = parseInt(element.textContent)
-	let time = parseInt(element.getAttribute(attributeName))
-
-	time = time || 1000
+	const value = parseInt(element.textContent)
+	const time = parseInt(element.getAttribute(attributeName)) || 1000
 
 	let current = 0
+	let start
 
 	function updateCounter(timestamp) {
 		// !start ? start = timestamp : null
@@ -14,18 +13,17 @@ function animateCounter(element, attributeName) {
 		if (!start) start = timestamp
 
 		const progress = timestamp - start
-		const increment = target / time
+		const increment = value / time
 
-		if (current < target) {
+		if (current < value) {
 			current += increment * (progress / 1000)
 			element.textContent = Math.floor(current)
 			requestAnimationFrame(updateCounter)
 		} else {
-			element.textContent = target
+			element.textContent = value
 		}
 	}
 
-	let start
 	requestAnimationFrame(updateCounter)
 }
 
@@ -39,7 +37,7 @@ function setWidth(element) {
 window.onload = () => {
 	const counters = document.querySelectorAll("[data-counter]")
 
-	if (counters) {
+	if (counters.length) {
 		counters.forEach(setWidth)
 		counters.forEach((element) => animateCounter(element, "data-counter"))
 	}
