@@ -1924,6 +1924,11 @@ body {
   transition: transform 0.3s ease 0s;
   transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
 }
+@media (max-width: 35.99875em) {
+  .article-categories__img img {
+    aspect-ratio: 1/1;
+  }
+}
 @media (any-hover: hover) {
   .article-categories__link:hover .article-categories__img img {
     -webkit-transform: scale(1.02);
@@ -1977,4 +1982,84 @@ body {
   .article-categories__link:hover .article-categories__arr {
     fill: #8a33fd;
   }
+}
+
+.brands__container {
+  padding: 2.75rem 2.75rem 3.75rem 2.75rem;
+  border-radius: 0.75rem;
+  background-color: #3c4242;
+}
+.brands__title {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 60%;
+}
+@media (min-width: 81.25em) {
+  .brands__title {
+    margin-bottom: 4.1875rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 81.25em) {
+  @supports (margin-bottom: clamp( 1.875rem , 1.1198979592rem  +  3.7755102041vw , 4.1875rem )) {
+    .brands__title {
+      margin-bottom: clamp( 1.875rem , 1.1198979592rem  +  3.7755102041vw , 4.1875rem );
+    }
+  }
+  @supports not (margin-bottom: clamp( 1.875rem , 1.1198979592rem  +  3.7755102041vw , 4.1875rem )) {
+    .brands__title {
+      margin-bottom: calc(1.875rem + 2.3125 * (100vw - 20rem) / 61.25);
+    }
+  }
+}
+@media (max-width: 20em) {
+  .brands__title {
+    margin-bottom: 1.875rem;
+  }
+}
+.brands__main-title {
+  color: #fff;
+  text-align: center;
+  font-family: "Core Sans C", sans-serif;
+  font-size: 3.125rem;
+  font-weight: 800;
+  text-transform: capitalize;
+  margin-bottom: 0.52em;
+}
+.brands__subtitle {
+  color: #fff;
+  text-align: center;
+  font-size: 1.375rem;
+}
+.brands__subtitle em {
+  color: #FBD103;
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+.brands__content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11.0625rem, 1fr));
+  gap: 1.5625rem;
+  max-width: 61.625rem;
+  margin: 0 auto;
+}
+.brands__link {
+  aspect-ratio: 177/85;
+  padding: 0.5rem;
+  background-color: #fff;
+  border-radius: 0.75rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.brands__link img {
+  max-width: 100%;
+  max-height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }

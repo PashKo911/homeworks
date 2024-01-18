@@ -1,10 +1,5 @@
-$dark: #3c4242;
-$gray: #807d7e;
-$white: #fff;
-$purple: #8a33fd;
-$yellow: #FBD103;
 
-$sansC: "Core Sans C";
+$white: #fff;
 
 $pc: toEm(1399.98);
 $pcMin: toEm(1199.98);
@@ -24,14 +19,8 @@ $minMobileSmall: toEm(576);
 }
 
 body {
-	font-family: "Causten", sans-serif;
-	font-size: toRem(16);
-	@media (any-hover: hover) {
-		& *:focus {
-			outline: toRem(2) solid $purple;
-			border-radius: toRem(3);
-		}
-	}
+	font-family: "Montserrat", sans-serif;
+	font-size: toRem(12);
 }
 
 .wrapper {
