@@ -30,7 +30,7 @@ function animateCounter(element, attributeName) {
 function setWidth(element) {
 	const width = element.offsetWidth
 	element.style.minWidth = width + 4 + "px"
-	console.log(width)
+
 	return width
 }
 

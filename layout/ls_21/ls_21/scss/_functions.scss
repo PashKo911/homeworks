@@ -7,6 +7,12 @@
 	$rez: math.div($num1, $num2) + rem;
 	@return $rez;
 }
+
+@function flBasis($columns: 3, $colGap: 15){
+	$rez: calc((100% - toRem($colGap) * ($columns - 1)) / $columns);
+	@return $rez;
+}
+
 @function toEm($num1, $num2: 16) {
 	$rez: math.div($num1, $num2) + em;
 	@return $rez;
