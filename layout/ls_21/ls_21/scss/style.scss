@@ -1161,15 +1161,22 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 }
 
 .swiper {
-	padding-bottom: toRem(13);
+	// padding-bottom: toRem(13);
+	// position: relative;
 }
 .swiper-wrapper {
-
+	&:not(:last-child) {
+		margin-bottom: toRem(20);
+	}
 }
 .swiper-slide {
 	padding: toRem(23);
 	border: toRem(1.8) solid #bebcbd;
 	border-radius: toRem(10);
+
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
 
 	& > *:not(:last-child) {
 		margin-bottom: toRem(20);
@@ -1208,6 +1215,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		color: $gray;
 		font-size: toRem(14);
 		letter-spacing: 0.28px;
+		flex: 1 1 auto;
 
 		& > *:not(:last-child) {
 			margin-bottom: toRem(10);
@@ -1251,34 +1259,29 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 
 // SWIPER
 
-.swiper-button-prev{
- 
-	.reviews__swiper &::after{
+.swiper-button-prev {
+	.reviews__swiper &::after {
 		// стили стрелок
 	}
 }
 
-.swiper-button-next{
-	
-	.reviews__swiper &::after{
+.swiper-button-next {
+	.reviews__swiper &::after {
 		// стили стрелок
 	}
 }
 
 .swiper-pagination {
-	position: relative;
-	.reviews__swiper &{
-		bottom: 0;
-	}
-	
+	position: relative !important;
+	// .reviews__swiper & {
+	// 	bottom: 0;
+	// }
 }
 
-.swiper-pagination-bullet{
-
-	.swiper-pagination &{
+.swiper-pagination-bullet {
+	.swiper-pagination & {
 		background-color: $dark;
 		width: toRem(8);
 		height: toRem(8);
 	}
-
 }

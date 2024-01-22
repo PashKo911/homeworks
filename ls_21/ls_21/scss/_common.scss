@@ -1,0 +1,51 @@
+.title {
+	color: $dark;
+	font-size: toRem(34);
+	@include adaptiveValue("font-size", 34, 28);
+	font-weight: 600;
+	line-height: 1.1;
+	letter-spacing: toRem(0.68);
+	text-transform: capitalize;
+	display: flex;
+	align-items: start;
+	gap: toEm(20, 34);
+
+	&[class*="__title"] {
+		@include adaptiveValue("margin-bottom", 70, 30);
+	}
+
+	&::before {
+		content: "";
+		width: toRem(6);
+		height: toEm(30, 34);
+		flex: 0 0 toRem(6);
+		margin-top: toEm(2, 34);
+		border-radius: toRem(10);
+		background-color: #8a33fd;
+	}
+}
+
+.button {
+	color: $dark;
+	text-align: center;
+	@include adaptiveValue("font-size", 24, 18);
+	font-weight: 700;
+	padding: toRem(16) toRem(72);
+	border-radius: toRem(8);
+	background: #fff;
+	transition: all 0.2s ease 0s;
+
+	@media (any-hover: hover) {
+		&:hover {
+			background: $purple;
+			box-shadow: 0 toRem(3) toRem(4) 0 rgba(0, 0, 0, 0.1);
+			color: $white;
+		}
+	}
+
+	&--small {
+		padding: toRem(12) toRem(44);
+		font-size: toRem(18);
+		font-weight: 600;
+	}
+}

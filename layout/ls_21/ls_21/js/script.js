@@ -239,42 +239,42 @@ window.onload = () => {
 		},
 
 		// Включение, отключение свайпа, перетаскивания
-		simulateTouch: true,
+		// simulateTouch: true,
 		// Чувствительность свайпа
 		// touchRatio: 1,
 		// Угол срабатывания свайпа перетаскивания
 		// touchAngle: 45,
 		// Курсор перетаскивания
-		grabCursor: true,
+		// grabCursor: true,
 
 		// Переключение при клике на слайд
-		slideToClickedSlide: true,
+		// slideToClickedSlide: true,
 
 		// Управление клавиатурой
-		keyboard: {
+		// keyboard: {
 			// Включить / выключить
-			enabled: true,
+			// enabled: true,
 			// Включить / выключить управление клавишамитолько когда слайдер в пределах вьюпорта
-			onlyInViewPort: true,
+			// onlyInViewPort: true,
 			// Включить / выключить управление клавишами PG UP PG DOWN
-			pageUpDown: true,
-		},
+			// pageUpDown: true,
+		// },
 
 		// Управление колесом мыши
-		mousewheel: {
+		// mousewheel: {
 		// Чувствительность колеса мыши
-		sensitivity: 1,
+		// sensitivity: 1,
 		// класс обьекта на котором будет срабатывать прокрутка мышью
 		// если много слайдеров, стоит отключать
-		eventsTarget: '.reviews__swiper'
-		},
+		// eventsTarget: '.reviews__swiper'
+		// },
 
 		// Количество слайдов для показа
 		slidesPerView: 3.1,
 
 		// Отключение функционала
 		// Если слайдов меньше чем нужно
-		watchOverflow: true,
+		// watchOverflow: true,
 
 		// Отступ между слайдами
 		spaceBetween: 23,
@@ -301,17 +301,17 @@ window.onload = () => {
 		// Ширина екрана
 		// По принципу mobile-first
 
-		breakpoints: {
-			320: {
-				slidesPerView: 1.1,
-			},
-			480: {
-				slidesPerView: 2.1,
-			},
-			992: {
-				slidesPerView: 3.1,
-			},
-		},
+		// breakpoints: {
+		// 	320: {
+		// 		slidesPerView: 1.1,
+		// 	},
+		// 	480: {
+		// 		slidesPerView: 2.1,
+		// 	},
+		// 	992: {
+		// 		slidesPerView: 3.1,
+		// 	},
+		// },
 
 		// Отключить предзагрузку картинок
 		// !!! ОЧЕНЬ СИЛЬНО ОПТИМИЗИРУЕТ ЗАГРУЗКУ САЙТА
@@ -335,21 +335,21 @@ window.onload = () => {
 		// watchSlidesVisibility: true,
 
 		// Доступность
-		a11y: {
-			// Включить / выключить
-			enabled: true,
-			// Сообщения
-			prevSlideMessage: "Previous slide",
-			nextSlideMessage: "Next slide",
-			firstSlideMessage: "This is the first slide",
-			firslastSlideMessage: "This is the last slide",
-			paginationBulletMessage: "Go to slide {{index}}",
-			notificationClass: "swiper-notification",
-			containerMessage: "",
-			containerRoleDescriptionMessage: "",
-			itemRoleDescriptionMessage: "",
-			// и тд
-		},
+		// a11y: {
+		// 	// Включить / выключить
+		// 	enabled: true,
+		// 	// Сообщения
+		// 	prevSlideMessage: "Previous slide",
+		// 	nextSlideMessage: "Next slide",
+		// 	firstSlideMessage: "This is the first slide",
+		// 	firslastSlideMessage: "This is the last slide",
+		// 	paginationBulletMessage: "Go to slide {{index}}",
+		// 	notificationClass: "swiper-notification",
+		// 	containerMessage: "",
+		// 	containerRoleDescriptionMessage: "",
+		// 	itemRoleDescriptionMessage: "",
+		// 	// и тд
+		// },
 	})
 
 	const icon = document.querySelector(".icon-menu")

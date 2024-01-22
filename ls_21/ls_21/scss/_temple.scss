@@ -1,0 +1,47 @@
+$dark: #3c4242;
+$gray: #807d7e;
+$white: #fff;
+$purple: #8a33fd;
+$yellow: #FBD103;
+
+$sansC: "Core Sans C";
+
+$pc: toEm(1399.98);
+$pcMin: toEm(1199.98);
+$tablet: toEm(991.98);
+$mobile: toEm(767.98);
+$mobileSmall: toEm(575.98);
+$minMobileSmall: toEm(576);
+
+[class*="__container"] {
+	max-width: toRem($maxWidthContainer);
+	padding: 0 toRem(15);
+	margin: 0 auto;
+}
+
+.menu-open body {
+	overflow: hidden;
+}
+
+body {
+	font-family: "Causten", sans-serif;
+	font-size: toRem(16);
+
+	@media (any-hover: hover) {
+		& * input:focus {
+			outline: toRem(2) solid $purple;
+			border-radius: toRem(3);
+		}
+	}
+}
+
+.wrapper {
+	overflow: clip;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+
+	& > main {
+		flex: 1 1 auto;
+	}
+}
