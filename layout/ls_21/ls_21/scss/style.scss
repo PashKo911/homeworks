@@ -378,8 +378,12 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		margin-bottom: toRem(33);
 
 		img {
-			@include img(263, 263, "center", "cover");
+			aspect-ratio: 263 / 263;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
 			transition: transform 0.3s ease 0s;
+
 			.item-arrival:hover & {
 				transform: scale(1.02);
 			}
@@ -1073,7 +1077,6 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		display: flex;
 		justify-content: space-between;
 		gap: toRem(15);
-		align-items: top;
 	}
 	// .item-reviews__img
 	&__img {
