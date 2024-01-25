@@ -57,6 +57,9 @@
 	// .menu__body
 	&__body {
 		@media (max-width: $tablet) {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
 			position: fixed;
 			width: 100%;
 			height: 100%;
@@ -144,11 +147,9 @@
 
 	@media (max-width: $tablet) {
 		flex-shrink: 1;
+		flex-grow: 1;
 	}
-	// тут бі в ідеалі в бургер перенести, не став вигадувати велосипед, дійдемо до цього функціоналу реалізую
-	@media (max-width: toEm(480)) {
-		display: none;
-	}
+	
 	// .search__input
 	&__input {
 		border-radius: toRem(8);
@@ -179,8 +180,11 @@
 	gap: toRem(12);
 	position: relative;
 	align-items: center;
+	align-self: flex-end;
+	justify-content: space-between;
 
 	&__link {
+		flex-grow: 1;
 		padding: toRem(12);
 		align-self: center;
 		border-radius: toRem(8);
@@ -197,11 +201,6 @@
 			}
 		}
 
-		&--favorite {
-			@media (max-width: toEm(340)) {
-				display: none;
-			}
-		}
 	}
 }
 

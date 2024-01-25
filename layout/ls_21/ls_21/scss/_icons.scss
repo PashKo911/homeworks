@@ -9,16 +9,23 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
-._icon-fill-stars-1:before {
+._icon-arriv-arr-left:before {
 	content: "\e900";
-  }
-  ._icon-fill-stars:before {
+}
+._icon-arriv-arr-right:before {
 	content: "\e901";
-  }
-  ._icon-stars-1:before {
+}
+._icon-hero-arr-left:before {
 	content: "\e902";
-  }
-  ._icon-stars:before {
+}
+._icon-hero-arr-right:before {
 	content: "\e903";
-  }
+}
+._icon-fill-stars-1:before {
+	content: "\e904";
+
+}
+._icon-stars-1:before {
+	content: "\e905";
+
+}

@@ -5,11 +5,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
-	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+	<link rel="stylesheet" href="css/style.css">
 
+	<script type="module" src="js/script.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-	<script src="js/script.js"></script>
 	<title>HW_21</title>
 </head>
 
@@ -86,7 +86,7 @@
 						enctype="multipart/form-data">
 						<input type="search" required placeholder="Search" class="search__input">
 					</form>
-					<div class="menu__actions actions">
+					<div data-da=".menu__body, 530" class="menu__actions actions">
 						<a href="#" class="actions__link actions__link--favorite" aria-label="favorite">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
 								fill="none">
@@ -111,66 +111,68 @@
 									stroke-width="1.5" stroke-linecap="round" />
 							</svg>
 						</a>
-						<button class="icon-menu" type="button" aria-label="open / close menu">
-							<span></span>
-						</button>
 					</div>
+					<button class="icon-menu" type="button" aria-label="open / close menu">
+						<span></span>
+					</button>
 
 				</div>
 			</div>
 		</header>
 
 		<main class="page">
-			<!-- <section class="page__hero hero">
-				<img src="img/hero/hero-bg.webp" alt="girl with bags" class="hero__img">
-				<div class="hero__container">
-					<button class="hero__button button-hero" aria-label="previous slide">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="45" viewBox="0 0 24 45" fill="none">
-							<g clip-path="url(#clip0_134_249)">
-								<path fill-rule="evenodd" clip-rule="evenodd"
-									d="M23.4992 43.7723C23.3409 43.9302 23.1528 44.0554 22.9457 44.1408C22.7386 44.2263 22.5166 44.2702 22.2924 44.2702C22.0682 44.2702 21.8462 44.2263 21.6391 44.1408C21.432 44.0554 21.2439 43.9302 21.0856 43.7723L0.631046 23.4352C0.472307 23.2778 0.346367 23.0907 0.260435 22.8848C0.174505 22.6789 0.130272 22.4582 0.130272 22.2353C0.130272 22.0124 0.174505 21.7916 0.260435 21.5857C0.346367 21.3799 0.472307 21.1928 0.631046 21.0354L21.0856 0.698246C21.4057 0.380012 21.8398 0.201233 22.2924 0.201233C22.7451 0.201233 23.1792 0.380012 23.4992 0.698246C23.8193 1.01648 23.9991 1.44809 23.9991 1.89814C23.9991 2.34818 23.8193 2.7798 23.4992 3.09803L4.24809 22.2353L23.4992 41.3726C23.658 41.53 23.7839 41.717 23.8698 41.9229C23.9558 42.1288 24 42.3495 24 42.5725C24 42.7954 23.9558 43.0161 23.8698 43.222C23.7839 43.4279 23.658 43.6149 23.4992 43.7723Z" />
-							</g>
-							<defs>
-								<clipPath id="clip0_134_249">
-									<rect width="24" height="44.4706" fill="white"
-										transform="translate(24 44.4706) rotate(-180)" />
-								</clipPath>
-							</defs>
-						</svg>
-					</button>
-					<div class="hero__title">
-						<h3 class="hero__label">
-							T-shirt / Tops
-						</h3>
-						<h1 class="hero__main-title">
-							Summer Value Pack
-						</h1>
-						<div class="hero__text">
-							cool / colorful / comfy
+			<section class="page__hero hero">
+				<div class="hero__body swiper">
+					<div class="hero__inner swiper-wrapper">
+						<div class="hero__item swiper-slide">
+							<img src="img/hero/hero-bg.webp" alt="girl with bags" class="hero__img">
+							<div class="hero__container">
+
+								<div class="hero__title">
+									<h3 class="hero__label">
+										T-shirt / Tops
+									</h3>
+									<h1 class="hero__main-title">
+										Summer Value Pack
+									</h1>
+									<div class="hero__text">
+										cool / colorful / comfy
+									</div>
+									<a href="#" class="hero__link button">
+										Shop Now
+									</a>
+								</div>
+
+							</div>
 						</div>
-						<a href="#" class="hero__link button" aria-label="shop now">
-							Shop Now
-						</a>
+						<div class="hero__item swiper-slide">
+							<img src="img/hero/hero-bg.webp" alt="girl with bags" class="hero__img">
+							<div class="hero__container">
+								<div class="hero__title">
+									<h3 class="hero__label">
+										T-shirt / Tops
+									</h3>
+									<h1 class="hero__main-title">
+										Summer Value Pack
+									</h1>
+									<div class="hero__text">
+										cool / colorful / comfy
+									</div>
+									<a href="#" class="hero__link button" >
+										Shop Now
+									</a>
+								</div>
+							</div>
+						</div>
 					</div>
-					<button class="hero__button button-hero button-hero--right" aria-label="previous slide">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="45" viewBox="0 0 24 45" fill="none">
-							<g clip-path="url(#clip0_134_249)">
-								<path fill-rule="evenodd" clip-rule="evenodd"
-									d="M23.4992 43.7723C23.3409 43.9302 23.1528 44.0554 22.9457 44.1408C22.7386 44.2263 22.5166 44.2702 22.2924 44.2702C22.0682 44.2702 21.8462 44.2263 21.6391 44.1408C21.432 44.0554 21.2439 43.9302 21.0856 43.7723L0.631046 23.4352C0.472307 23.2778 0.346367 23.0907 0.260435 22.8848C0.174505 22.6789 0.130272 22.4582 0.130272 22.2353C0.130272 22.0124 0.174505 21.7916 0.260435 21.5857C0.346367 21.3799 0.472307 21.1928 0.631046 21.0354L21.0856 0.698246C21.4057 0.380012 21.8398 0.201233 22.2924 0.201233C22.7451 0.201233 23.1792 0.380012 23.4992 0.698246C23.8193 1.01648 23.9991 1.44809 23.9991 1.89814C23.9991 2.34818 23.8193 2.7798 23.4992 3.09803L4.24809 22.2353L23.4992 41.3726C23.658 41.53 23.7839 41.717 23.8698 41.9229C23.9558 42.1288 24 42.3495 24 42.5725C24 42.7954 23.9558 43.0161 23.8698 43.222C23.7839 43.4279 23.658 43.6149 23.4992 43.7723Z" />
-							</g>
-							<defs>
-								<clipPath id="clip0_134_249">
-									<rect width="24" height="44.4706" fill="white"
-										transform="translate(24 44.4706) rotate(-180)" />
-								</clipPath>
-							</defs>
-						</svg>
+					<div class="hero__pagination swiper-pagination">
+					</div>
+					<button class="hero__button swiper-button-next" aria-label="next slide">
+					</button>
+					<button class="hero__button swiper-button-prev" aria-label="previous slide">
 					</button>
 				</div>
-				<div class="hero__slide-position">
-					<span class="slide"></span>
-					<span class="slide slide--right"></span>
-				</div>
+
 			</section>
 			<section class="page__products products">
 				<div class="products__container">
@@ -214,70 +216,98 @@
 			</section>
 			<section class="page__arrival arrival">
 				<div class="arrival__container">
-					<h2 class="arrival__title title">
+					<h2 class="arrival__title title ">
 						New Arrival
 					</h2>
-					<div class="arrival__items items-arrival">
-						<button type="button" class="items-arrival__button" aria-label="next image">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14"
-								fill="none">
-								<path
-									d="M14.5857 7L1.58569 7M6.58569 13L1.2928 7.70711C0.902277 7.31658 0.902277 6.68342 1.2928 6.29289L6.58569 0.999999"
-									stroke-width="1.6" stroke-linecap="round" />
-							</svg>
-						</button>
-						<button type="button" class="items-arrival__button items-arrival__button--right"
-							aria-label="previous image">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 16 14"
-								fill="none">
-								<path
-									d="M14.5857 7L1.58569 7M6.58569 13L1.2928 7.70711C0.902277 7.31658 0.902277 6.68342 1.2928 6.29289L6.58569 0.999999"
-									stroke-width="1.6" stroke-linecap="round" />
-							</svg>
-						</button>
-						<article class="items-arrival__item item-arrival">
-							<a href="#" class="item-arrival__link" aria-label="Knitted Joggers">
-								<div class="item-arrival__img">
-									<img src="img/arrival/black-pants.webp" alt="man in black pants">
-								</div>
-								<h3 class="item-arrival__title">
-									Knitted Joggers
-								</h3>
-							</a>
-						</article>
-						<article class="items-arrival__item item-arrival">
-							<a href="#" class="item-arrival__link" aria-label="Knitted Joggers">
-								<div class="item-arrival__img">
-									<img src="img/arrival/brown-sweater.webp" alt="man in black pants">
-								</div>
-								<h3 class="item-arrival__title">
-									Full Sleeve
-								</h3>
-							</a>
-						</article>
-						<article class="items-arrival__item item-arrival">
-							<a href="#" class="item-arrival__link" aria-label="Knitted Joggers">
-								<div class="item-arrival__img">
-									<img src="img/arrival/black-tshirt.webp" alt="man in black T-Shirt">
-								</div>
-								<h3 class="item-arrival__title">
-									Active T-Shirts
-								</h3>
-							</a>
-						</article>
-						<article class="items-arrival__item item-arrival">
-							<a href="#" class="item-arrival__link" aria-label="Knitted Joggers">
-								<div class="item-arrival__img">
-									<img src="img/arrival/white-tshirt.webp" alt="girl in Urban Shirt">
-								</div>
-								<h3 class="item-arrival__title">
-									Urban Shirts
-								</h3>
-							</a>
-						</article>
+					<div class="arrival__inner">
+						<div class="arrival__body swiper">
+							<div class="arrival__items swiper-wrapper">
 
+								<article class="arrival__item item-arrival swiper-slide">
+									<a href="#" class="item-arrival__link">
+										<div class="item-arrival__img">
+											<img src="img/arrival/black-pants.webp" alt="man in black pants">
+										</div>
+										<h3 class="item-arrival__title">
+											Knitted Joggers
+										</h3>
+									</a>
+								</article>
+								<article class="arrival__item item-arrival swiper-slide">
+									<a href="#" class="item-arrival__link">
+										<div class="item-arrival__img">
+											<img src="img/arrival/brown-sweater.webp" alt="man in black pants">
+										</div>
+										<h3 class="item-arrival__title">
+											Full Sleeve
+										</h3>
+									</a>
+								</article>
+								<article class="arrival__item item-arrival swiper-slide">
+									<a href="#" class="item-arrival__link" >
+										<div class="item-arrival__img">
+											<img src="img/arrival/black-tshirt.webp" alt="man in black T-Shirt">
+										</div>
+										<h3 class="item-arrival__title">
+											Active T-Shirts
+										</h3>
+									</a>
+								</article>
+								<article class="arrival__item item-arrival swiper-slide">
+									<a href="#" class="item-arrival__link" >
+										<div class="item-arrival__img">
+											<img src="img/arrival/white-tshirt.webp" alt="girl in Urban Shirt">
+										</div>
+										<h3 class="item-arrival__title">
+											Urban Shirts
+										</h3>
+									</a>
+								</article>
+								<article class="arrival__item item-arrival swiper-slide">
+									<a href="#" class="item-arrival__link">
+										<div class="item-arrival__img">
+											<img src="img/arrival/black-pants.webp" alt="man in black pants">
+										</div>
+										<h3 class="item-arrival__title">
+											Knitted Joggers
+										</h3>
+									</a>
+								</article>
+								<article class="arrival__item item-arrival swiper-slide">
+									<a href="#" class="item-arrival__link">
+										<div class="item-arrival__img">
+											<img src="img/arrival/brown-sweater.webp" alt="man in black pants">
+										</div>
+										<h3 class="item-arrival__title">
+											Full Sleeve
+										</h3>
+									</a>
+								</article>
+								<article class="arrival__item item-arrival swiper-slide">
+									<a href="#" class="item-arrival__link" >
+										<div class="item-arrival__img">
+											<img src="img/arrival/black-tshirt.webp" alt="man in black T-Shirt">
+										</div>
+										<h3 class="item-arrival__title">
+											Active T-Shirts
+										</h3>
+									</a>
+								</article>
+								<article class="arrival__item item-arrival swiper-slide">
+									<a href="#" class="item-arrival__link">
+										<div class="item-arrival__img">
+											<img src="img/arrival/white-tshirt.webp" alt="girl in Urban Shirt">
+										</div>
+										<h3 class="item-arrival__title">
+											Urban Shirts
+										</h3>
+									</a>
+								</article>
+							</div>
+						</div>
+						<button type="button" class="swiper-button-prev" aria-label="previous slide"></button>
+						<button type="button" class="swiper-button-next" aria-label="next slide"></button>
 					</div>
-
 				</div>
 			</section>
 			<section class="page__saving saving">
@@ -301,7 +331,7 @@
 										UPTO 50% OFF
 									</h4>
 								</div>
-								<a href="#" class="item-saving__button" aria-label="SHOP NOW">
+								<a href="#" class="item-saving__button">
 									<div class="item-saving__arr">
 										<img src="img/saving/arrow.svg" alt="arrow icon">
 									</div>
@@ -327,7 +357,7 @@
 										UPTO 40% OFF
 									</h4>
 								</div>
-								<a href="#" class="item-saving__button " aria-label="SHOP NOW">
+								<a href="#" class="item-saving__button ">
 									<div class="item-saving__arr">
 										<img src="img/saving/arrow.svg" alt="arrow icon">
 									</div>
@@ -350,7 +380,7 @@
 										UPTO 50% OFF
 									</h4>
 								</div>
-								<a href="#" class="item-saving__button" aria-label="SHOP NOW">
+								<a href="#" class="item-saving__button">
 									<div class="item-saving__arr">
 										<svg xmlns="http://www.w3.org/2000/svg" width="23" height="26"
 											viewBox="0 0 23 26" fill="none">
@@ -377,7 +407,7 @@
 										UPTO 60% OFF
 									</h4>
 								</div>
-								<a href="#" class="item-saving__button" aria-label="SHOP NOW">
+								<a href="#" class="item-saving__button">
 									<div class="item-saving__arr">
 										<svg xmlns="http://www.w3.org/2000/svg" width="23" height="26"
 											viewBox="0 0 23 26" fill="none">
@@ -405,7 +435,7 @@
 										UPTO 60% OFF
 									</h4>
 								</div>
-								<a href="#" class="item-saving__button" aria-label="SHOP NOW">
+								<a href="#" class="item-saving__button">
 									<div class="item-saving__arr">
 										<svg xmlns="http://www.w3.org/2000/svg" width="23" height="26"
 											viewBox="0 0 23 26" fill="none">
@@ -435,7 +465,7 @@
 									Comfortable & Affordable fashion 24/7
 								</p>
 							</div>
-							<a href="#" class="content-fashion__link button button--small" aria-label="shop now">
+							<a href="#" class="content-fashion__link button button--small">
 								Shop Now
 							</a>
 						</div>
@@ -452,7 +482,7 @@
 					</h2>
 					<div class="categories__items items-categories">
 						<article class="items-categories__article article-categories">
-							<a href="#" class="article-categories__link" aria-label="shirts">
+							<a href="#" class="article-categories__link">
 								<div class="article-categories__img">
 									<img src="img/categories/shirts.webp" alt="man in shirt">
 								</div>
@@ -474,7 +504,7 @@
 							</a>
 						</article>
 						<article class="items-categories__article article-categories">
-							<a href="#" class="article-categories__link" aria-label="shirts">
+							<a href="#" class="article-categories__link">
 								<div class="article-categories__img">
 									<img src="img/categories/printed-t-shirts.webp" alt="man in printed t-shirt">
 								</div>
@@ -496,7 +526,7 @@
 							</a>
 						</article>
 						<article class="items-categories__article article-categories">
-							<a href="#" class="article-categories__link" aria-label="shirts">
+							<a href="#" class="article-categories__link">
 								<div class="article-categories__img">
 									<img src="img/categories/plain-t-shirt.webp" alt="man in plain t-shirt">
 								</div>
@@ -518,7 +548,7 @@
 							</a>
 						</article>
 						<article class="items-categories__article article-categories">
-							<a href="#" class="article-categories__link" aria-label="shirts">
+							<a href="#" class="article-categories__link">
 								<div class="article-categories__img">
 									<img src="img/categories/polo-t-shirt.webp" alt="man in polo t-shirt">
 								</div>
@@ -540,7 +570,7 @@
 							</a>
 						</article>
 						<article class="items-categories__article article-categories">
-							<a href="#" class="article-categories__link" aria-label="shirts">
+							<a href="#" class="article-categories__link">
 								<div class="article-categories__img">
 									<img src="img/categories/hoodies-sweetshirt.webp" alt="man in hoodies sweetshirt">
 								</div>
@@ -562,7 +592,7 @@
 							</a>
 						</article>
 						<article class="items-categories__article article-categories">
-							<a href="#" class="article-categories__link" aria-label="shirts">
+							<a href="#" class="article-categories__link">
 								<div class="article-categories__img">
 									<img src="img/categories/jeans.webp" alt="jeans img">
 								</div>
@@ -584,7 +614,7 @@
 							</a>
 						</article>
 						<article class="items-categories__article article-categories">
-							<a href="#" class="article-categories__link" aria-label="shirts">
+							<a href="#" class="article-categories__link">
 								<div class="article-categories__img">
 									<img src="img/categories/activewear.webp" alt="man in activewear">
 								</div>
@@ -606,7 +636,7 @@
 							</a>
 						</article>
 						<article class="items-categories__article article-categories">
-							<a href="#" class="article-categories__link" aria-label="shirts">
+							<a href="#" class="article-categories__link">
 								<div class="article-categories__img">
 									<img src="img/categories/boxers.webp" alt="man in boxers">
 								</div>
@@ -637,7 +667,7 @@
 					</h2>
 					<div class="categories__items items-categories">
 						<article class="items-categories__article article-categories">
-							<a href="#" class="article-categories__link" aria-label="hoodies sweetshirt">
+							<a href="#" class="article-categories__link">
 								<div class="article-categories__img">
 									<img src="img/women-categories/hoodies-sweetshirt.webp"
 										alt="girl hoodies sweetshirt">
@@ -660,7 +690,7 @@
 							</a>
 						</article>
 						<article class="items-categories__article article-categories">
-							<a href="#" class="article-categories__link" aria-label="coats parkas">
+							<a href="#" class="article-categories__link">
 								<div class="article-categories__img">
 									<img src="img/women-categories/coats-parkas.webp" alt="girl in coats parkas">
 								</div>
@@ -682,7 +712,7 @@
 							</a>
 						</article>
 						<article class="items-categories__article article-categories">
-							<a href="#" class="article-categories__link" aria-label="tees t-shirt">
+							<a href="#" class="article-categories__link">
 								<div class="article-categories__img">
 									<img src="img/women-categories/tees-t-shirt.webp" alt=" girl in tees t-shirt">
 								</div>
@@ -704,7 +734,7 @@
 							</a>
 						</article>
 						<article class="items-categories__article article-categories">
-							<a href="#" class="article-categories__link" aria-label="boxers">
+							<a href="#" class="article-categories__link">
 								<div class="article-categories__img">
 									<img src="img/women-categories/boxers.webp" alt="girl boxers">
 								</div>
@@ -727,7 +757,7 @@
 						</article>
 					</div>
 				</div>
-			</section> -->
+			</section>
 			<section class="page__brands brands">
 				<div class="brands__container">
 					<div class="brands__title">
@@ -881,128 +911,319 @@
 					<h2 class="reviews__title title">
 						Feedback
 					</h2>
-					<div class="reviews__swiper swiper">
-						<div class="swiper-wrapper">
-							<article class="swiper-slide">
-								<div class="swiper-slide__header">
-									<div class="swiper-slide__img ">
-										<img src="img/rating/floyd-miles.webp" class="swiper-lazy" alt="user picture">
-									</div>
-									<div data-rate-value="3.5" class="swiper-slide__rate rate _icon-stars">
-										<div class="rate__active _icon-fill-stars"></div>
-									</div>
-								</div>
-								<h3 class="swiper-slide__title">
-									Floyd Miles
-								</h3>
-								<div class="swiper-slide__text">
-									<p>
-										Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit
-										officia consequat duis enim velit mollit.
-									</p>
-								</div>
-							</article>
-							<article class="swiper-slide">
-								<div class="swiper-slide__header">
-									<div class="swiper-slide__img">
+					<div class="reviews__body swiper">
+						<div class="reviews__items swiper-wrapper">
+							<article class="reviews__item item-reviews swiper-slide">
+								<div class="item-reviews__header">
+									<div class="item-reviews__img ">
 										<img src="img/rating/floyd-miles.webp" alt="user picture">
 									</div>
-									<div data-rate-value="3.5" class="swiper-slide__rate rate _icon-stars">
-										<div class="rate__active _icon-fill-stars"></div>
+									<div data-rate-value="3.5" class="item-reviews__rate rate _icon-stars-1">
+										<div class="rate__active _icon-fill-stars-1"></div>
 									</div>
 								</div>
-								<h3 class="swiper-slide__title">
+								<h3 class="item-reviews__title">
 									Floyd Miles
 								</h3>
-								<div class="swiper-slide__text">
+								<div class="item-reviews__text">
 									<p>
 										Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit
-										officia consequat duis enim velit mollit.
+										officia consequat duis enim velit mollit. <br>
 										Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt
-										
+										ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim
+										velit mollit. Exercitation veniam consequat sunt nostrud amet.
 									</p>
 								</div>
 							</article>
-							<article class="swiper-slide">
-								<div class="swiper-slide__header">
-									<div class="swiper-slide__img">
-										<img src="img/rating/floyd-miles.webp" alt="user picture">
+							<article class="reviews__item item-reviews swiper-slide">
+								<div class="item-reviews__header">
+									<div class="item-reviews__img ">
+										<img src="img/rating/ronald-richards.webp" alt="user picture">
 									</div>
-									<div data-rate-value="3.5" class="swiper-slide__rate rate _icon-stars">
-										<div class="rate__active _icon-fill-stars"></div>
+									<div data-rate-value="5" class="item-reviews__rate rate _icon-stars-1">
+										<div class="rate__active _icon-fill-stars-1"></div>
 									</div>
 								</div>
-								<h3 class="swiper-slide__title">
-									Floyd Miles
+								<h3 class="item-reviews__title">
+									Ronald Richards
 								</h3>
-								<div class="swiper-slide__text">
+								<div class="item-reviews__text">
+									<p>
+										ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim
+										velit mollit. Exercitation veniam consequat sunt nostrud amet.
+									</p>
+								</div>
+							</article>
+							<article class="reviews__item item-reviews swiper-slide">
+								<div class="item-reviews__header">
+									<div class="item-reviews__img ">
+										<img src="img/rating/savannah-nguyen.webp" alt="user picture">
+									</div>
+									<div data-rate-value="3" class="item-reviews__rate rate _icon-stars-1">
+										<div class="rate__active _icon-fill-stars-1"></div>
+									</div>
+								</div>
+								<h3 class="item-reviews__title">
+									Savannah Nguyen
+								</h3>
+								<div class="item-reviews__text">
 									<p>
 										Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit
 										officia consequat duis enim velit mollit.
 										Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt
 										ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim
-										velit
-										mollit. Exercitation veniam consequat sunt nostrud amet.
+										velit mollit. Exercitation veniam consequat sunt nostrud amet.
 									</p>
 								</div>
 							</article>
-							<article class="swiper-slide">
-								<div class="swiper-slide__header">
-									<div class="swiper-slide__img">
+							<article class="reviews__item item-reviews swiper-slide">
+								<div class="item-reviews__header">
+									<div class="item-reviews__img ">
 										<img src="img/rating/floyd-miles.webp" alt="user picture">
 									</div>
-									<div data-rate-value="3.5" class="swiper-slide__rate rate _icon-stars">
-										<div class="rate__active _icon-fill-stars"></div>
+									<div data-rate-value="3.5" class="item-reviews__rate rate _icon-stars-1">
+										<div class="rate__active _icon-fill-stars-1"></div>
 									</div>
 								</div>
-								<h3 class="swiper-slide__title">
+								<h3 class="item-reviews__title">
 									Floyd Miles
 								</h3>
-								<div class="swiper-slide__text">
+								<div class="item-reviews__text">
+									<p>
+										Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit
+										officia consequat duis enim velit mollit. <br>
+										Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt
+										ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim
+										velit mollit. Exercitation veniam consequat sunt nostrud amet.
+									</p>
+								</div>
+							</article>
+							<article class="reviews__item item-reviews swiper-slide">
+								<div class="item-reviews__header">
+									<div class="item-reviews__img ">
+										<img src="img/rating/ronald-richards.webp" alt="user picture">
+									</div>
+									<div data-rate-value="5" class="item-reviews__rate rate _icon-stars-1">
+										<div class="rate__active _icon-fill-stars-1"></div>
+									</div>
+								</div>
+								<h3 class="item-reviews__title">
+									Ronald Richards
+								</h3>
+								<div class="item-reviews__text">
+									<p>
+										ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim
+										velit mollit. Exercitation veniam consequat sunt nostrud amet.
+									</p>
+								</div>
+							</article>
+							<article class="reviews__item item-reviews swiper-slide">
+								<div class="item-reviews__header">
+									<div class="item-reviews__img ">
+										<img src="img/rating/savannah-nguyen.webp" alt="user picture">
+									</div>
+									<div data-rate-value="3" class="item-reviews__rate rate _icon-stars-1">
+										<div class="rate__active _icon-fill-stars-1"></div>
+									</div>
+								</div>
+								<h3 class="item-reviews__title">
+									Savannah Nguyen
+								</h3>
+								<div class="item-reviews__text">
 									<p>
 										Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit
 										officia consequat duis enim velit mollit.
 										Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt
 										ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim
-										velit
-										mollit. Exercitation veniam consequat sunt nostrud amet.
-									</p>
-								</div>
-							</article>
-							<article class="swiper-slide">
-								<div class="swiper-slide__header">
-									<div class="swiper-slide__img">
-										<img src="img/rating/floyd-miles.webp" alt="user picture">
-									</div>
-									<div data-rate-value="3.5" class="swiper-slide__rate rate _icon-stars">
-										<div class="rate__active _icon-fill-stars"></div>
-									</div>
-								</div>
-								<h3 class="swiper-slide__title">
-									Floyd Miles
-								</h3>
-								<div class="swiper-slide__text">
-									<p>
-										Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit
-										officia consequat duis enim velit mollit.
-										Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt
-										ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim
-										velit
-										mollit. Exercitation veniam consequat sunt nostrud amet.
+										velit mollit. Exercitation veniam consequat sunt nostrud amet.
 									</p>
 								</div>
 							</article>
 						</div>
-						<div class="swiper-pagination">
+						<div class="reviews__pagination swiper-pagination">
 						</div>
-						
 					</div>
 				</div>
 			</section>
 		</main>
 		<footer class="footer">
+			<!-- Тут колись буде купа акордеонів, баянів і тд)) -->
 			<div class="footer__container">
+				<div class="footer__box">
+					<nav class="footer__nav">
+						<ul class="footer__list">
+							<li class="footer__item">
+								<h2 class="footer__title-nav footer-title">
+									Need Help
+								</h2>
 
+								<ul class="footer__sub-list sub-footer">
+									<li class="sub-footer__item">
+										<a href="#" class="sub-footer__link">
+											Contact Us
+										</a>
+									</li>
+									<li class="sub-footer__item">
+										<a href="#" class="sub-footer__link">
+											Track Order
+										</a>
+									</li>
+									<li class="sub-footer__item">
+										<a href="#" class="sub-footer__link">
+											Returns & Refunds
+										</a>
+									</li>
+									<li class="sub-footer__item">
+										<a href="#" class="sub-footer__link">
+											FAQ's
+										</a>
+									</li>
+									<li class="sub-footer__item">
+										<a href="#" class="sub-footer__link">
+											Career
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="footer__item">
+								<h2 class="footer__title-nav footer-title">
+									Company
+								</h2>
+								<ul class="footer__sub-list sub-footer">
+									<li class="sub-footer__item">
+										<a href="#" class="sub-footer__link">
+											About Us
+										</a>
+									</li>
+									<li class="sub-footer__item">
+										<a href="#" class="sub-footer__link">
+											euphoria Blog
+										</a>
+									</li>
+									<li class="sub-footer__item">
+										<a href="#" class="sub-footer__link">
+											euphoriastan
+										</a>
+									</li>
+									<li class="sub-footer__item">
+										<a href="#" class="sub-footer__link">
+											Collaboration
+										</a>
+									</li>
+									<li class="sub-footer__item">
+										<a href="#" class="sub-footer__link">
+											Media
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="footer__item">
+								<h2 class="footer__title-nav footer-title">
+									More Info
+								</h2>
+								<ul class="footer__sub-list sub-footer">
+									<li class="sub-footer__item">
+										<a href="#" class="sub-footer__link">
+											Term and Conditions
+										</a>
+									</li>
+									<li class="sub-footer__item">
+										<a href="#" class="sub-footer__link">
+											Privacy Policy
+										</a>
+									</li>
+									<li class="sub-footer__item">
+										<a href="#" class="sub-footer__link">
+											Shipping Policy
+										</a>
+									</li>
+									<li class="sub-footer__item">
+										<a href="#" class="sub-footer__link">
+											Sitemap
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="footer__item">
+								<h2 class="footer__title-nav footer-title">
+									Location
+								</h2>
+								<ul class="footer__sub-list sub-footer">
+									<li class="sub-footer__item">
+										<address class="sub-footer__adress">
+											<a class="sub-footer__link-adress" href="mailto:support@euphoria.in">
+												support@euphoria.in
+											</a>
+										</address>
+									</li>
+									<li class="sub-footer__item">
+										Eklingpura Chouraha, Ahmedabad Main Road
+									</li>
+									<li class="sub-footer__item">
+										(NH 8- Near Mahadev Hotel) Udaipur, India- 313002
+									</li>
+								</ul>
+							</li>
+
+						</ul>
+					</nav>
+					<div class="footer__connection">
+						<div class="footer__social">
+							<a href="#" class="footer__img-social">
+								<img src="img/footer/fb.svg" alt="facebook icon">
+							</a>
+							<a href="#" class="footer__img-social">
+								<img src="img/footer/inst.svg" alt="instagram icon">
+							</a>
+							<a href="#" class="footer__img-social">
+								<img src="img/footer/twt.svg" alt="twitter icon">
+							</a>
+							<a href="#" class="footer__img-social">
+								<img src="img/footer/lnk.svg" alt="link din icon">
+							</a>
+						</div>
+						<div class="footer__apps">
+							<h2 class="footer__title-app footer-title">Download The App</h2>
+							<div class="footer__body-apps">
+								<a class="footer__link-apps" href="#">
+									<img src="img/footer/play.svg" alt="google play icon">
+								</a>
+								<a class="footer__link-apps" href="#">
+									<img src="img/footer/store.svg" alt="app store icon">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer__box footer__box--bottom">
+					<ul class="footer__categories categories-footer">
+						<li class="categories-footer__item">
+							<h2 class="categories-footer footer-title">
+								Popular Categories
+							</h2>
+							<ul class="categories-footer__sub sub-categories">
+								<li class="sub-categories__item">
+									<a href="#" class="sub-categories__link">
+										Shop
+									</a>
+								</li>
+								<li class="sub-categories__item">
+									<a href="#" class="sub-categories__link">
+										Man
+									</a>
+								</li>
+								<li class="sub-categories__item">
+									<a href="#" class="sub-categories__link">
+										Women
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="footer__copyright">
+					Copyright © 2023 Euphoria Folks Pvt Ltd. All rights reserved.
+				</div>
 			</div>
 		</footer>
 

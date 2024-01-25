@@ -25,6 +25,14 @@
 	}
 }
 
+.footer-title {
+	font-size: toRem(29);
+	@include adaptiveValue("font-size", 29, 22);
+	font-weight: 700;
+	line-height: 1.4;
+	text-transform: capitalize;
+}
+
 .button {
 	color: $dark;
 	text-align: center;
@@ -47,5 +55,90 @@
 		padding: toRem(12) toRem(44);
 		font-size: toRem(18);
 		font-weight: 600;
+	}
+}
+
+// SWIPER
+
+.swiper-pagination {
+	position: relative;
+	.reviews__body & {
+		bottom: 0;
+	}
+	.hero__body & {
+		bottom: toRem(50);
+	}
+}
+
+.swiper-pagination-bullet {
+	.reviews__pagination & {
+		background-color: $dark;
+		width: toRem(8);
+		height: toRem(8);
+	}
+	.hero__pagination & {
+		width: toRem(63);
+		height: toRem(10);
+		background-color: $white;
+		border-radius: toRem(5) 0 0 toRem(5);
+
+		&.swiper-pagination-bullet {
+			margin: 0 toRem(1) 0 0;
+		}
+
+		&:last-child {
+			border-radius: 0 toRem(5) toRem(5) 0;
+		}
+	}
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+	.hero__body & {
+		@media (max-width: $mobileSmall) {
+			top: auto;
+			bottom: toRem(20.5);
+		}
+	}
+
+	.arrival__inner &::after {
+		font-family: "icons";
+		content: "\e900";
+		font-size: toRem(13.6);
+		color: $dark;
+		transition: color 0.3s ease 0s;
+	}
+
+	.hero__body &::after {
+		font-family: "icons";
+		content: "\e902";
+		color: $white;
+		transition: color 0.3s ease 0s;
+	}
+
+	@media (any-hover: hover) {
+		&:hover::after {
+			color: $purple;
+		}
+	}
+}
+
+.swiper-button-next {
+	transform: rotate(180deg);
+
+	.arrival__inner & {
+		right: 0;
+	}
+	.hero__body & {
+		right: 3%;
+	}
+}
+
+.swiper-button-prev {
+	.arrival__inner & {
+		left: 0;
+	}
+	.hero__body & {
+		left: 3%;
 	}
 }
