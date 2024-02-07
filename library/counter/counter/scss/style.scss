@@ -1,0 +1,440 @@
+@use "sass:math";
+
+// Мінімальна ширина сторінки
+$minWidth: 320;
+// Ширина полотна (макету)
+$maxWidth: 1920;
+// Ширина обмежуючого контейнера (0 = немає обмеження)
+$maxWidthContainer: 1250;
+// Загальний відступ у контейнера
+// (30 = по 15px ліворуч і праворуч, 0 = немає відступу)
+$containerPadding: 20;
+// Ширина спрацьовування першого брейкпоінту
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+@import "_functions.scss";
+@import "_temple.scss";
+@import "_fonts.scss";
+@import "_icons.scss";
+@import "_reset.scss";
+@import "_common.scss";
+
+// HERO
+
+.page {
+
+
+	// .page__solutions
+	&__solutions {
+		@include adaptiveValue("margin-bottom", 131, 40);
+	}
+
+	// .page__next
+	&__next {
+	}
+}
+
+// SOLUTION
+
+.solutions {
+	@media (min-width: toEm(1200)) {
+		display: flex;
+	}
+	// .solutions__content
+	&__content {
+		flex: 0 0 100%;
+		background-color: $dark;
+	}
+	// .solutions__container
+	&__container {
+		@media (min-width: toEm(1200)) {
+			display: flex;
+			align-items: center;
+			min-height: 100%;
+		}
+	}
+	// .solutions__body
+	&__body {
+		color: $white;
+		padding: toRem(100) 0 toRem(100) 0;
+		@include adaptiveValue("padding-top", 100, 40);
+		@include adaptiveValue("padding-bottom", 100, 40);
+
+		& > *:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 36, 20);
+		}
+
+		@media (min-width: toEm(1200)) {
+			width: 57.45%; //!!! цей відсоток необхідно рахувати від контейнера 1220
+			padding-right: toRem(40);
+		}
+	}
+	// .solutions__title
+	&__title {
+	}
+	// .solutions__text
+
+	// .solutions__rating
+	&__rating {
+	}
+	// .solutions__info
+	&__info {
+	}
+	// .solutions__image
+	&__image {
+		display: none;
+
+		@media (min-width: toEm(1200)) {
+			flex: 0 0 calc(((100vw - toRem(30)) * 0.4255) + toRem(15));
+			position: relative;
+			transform: translate(-100%, 0);
+			display: block;
+		}
+
+		@media (min-width: toEm(1250)) {
+			flex: 0 0 calc(50vw - (0.5745 - 0.5) * toRem(1220));
+		}
+		img {
+			max-width: 100%;
+			@media (min-width: toEm(1200)) {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+}
+
+.rating {
+	display: flex;
+	flex-wrap: wrap;
+	gap: toRem(15);
+
+	// .rating__item
+	&__item {
+		min-width: toRem(270);
+		display: flex;
+		gap: toRem(12);
+		align-items: center;
+		padding: 27px 15px 27px 30px;
+		padding: toRem(27) toRem(15) toRem(27) toRem(30);
+		background-color: #2e2f34;
+		flex: 1 0 flBasis(2, 15);
+	}
+	// .rating__img
+	&__img {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex: 0 0 toRem(80);
+		width: toRem(80);
+		height: toRem(80);
+		position: relative;
+	}
+	// .rating__text
+	&__text,
+	&__perc {
+		z-index: 10;
+		@extend %PS;
+		font-size: toRem(20);
+		font-weight: 600;
+	}
+	// .rating__perc
+	&__perc {
+		z-index: 5;
+	}
+	// .rating__img-box
+	&__img-box {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	// .rating__label
+	&__label {
+		flex: 1 1 auto;
+	}
+	// .rating__suptitle
+	&__suptitle {
+		font-size: toRem(16);
+		line-height: 1.35;
+	}
+	// .rating__title
+	&__title {
+		@extend %PS;
+		font-weight: 600;
+	}
+}
+
+
+.info {
+	display: flex;
+	flex-wrap: wrap;
+	gap: toRem(18);
+
+	@media (min-width: toEm(1200)) {
+		column-gap: toRem(37);
+		row-gap: toRem(28);
+	}
+
+	@media (max-width: $mobileSmall) {
+		flex-direction: column;
+	}
+	// .info__item
+	&__item {
+		flex: 0 1 flBasis(2, 18);
+		@include adaptiveValue("font-size", 20, 18);
+		display: flex;
+		align-items: center;
+		gap: toRem(8);
+
+		@media (min-width: toEm(1200)) {
+			flex: 0 1 flBasis(2, 37);
+		}
+
+		&::before {
+			color: $green;
+			font-size: toRem(27);
+			flex: 0 0 toRem(27);
+		}
+	}
+	// .info__text
+	&__text {
+		@extend %PS;
+		font-weight: 700;
+	}
+	// .info__link
+	&__link {
+		color: $green;
+		font-size: toRem(18);
+		font-weight: 600;
+		transition: all 0.4s;
+		text-transform: capitalize;
+
+		@media (any-hover: hover) {
+			&:hover::after {
+				width: 0;
+				transform: translateX(200%);
+			}
+			&:hover {
+				color: #fff;
+			}
+		}
+		&::after {
+			content: "";
+			display: block;
+			width: 100%;
+			height: toRem(2);
+			transition: all 0.4s;
+			background-color: $green;
+		}
+	}
+}
+
+.yellow {
+	color: #ffb342;
+	font-weight: 400;
+	// .yellow__img-star
+
+	&__img-star {
+		vertical-align: middle;
+		width: 0.85em;
+		height: 0.85em;
+	}
+}
+
+
+//========================================================================================================================================================
+// NEXT
+
+.next {
+	@include adaptiveValue("padding-bottom", 123, 40);
+	@include adaptiveValue("padding-top", 123, 40);
+	background-color: $blue;
+	color: $white;
+
+	// .next__container
+	&__container {
+		display: flex;
+		@include adaptiveValue("gap", 53, 30);
+
+		@media (max-width: $tablet) {
+			flex-direction: column;
+		}
+	}
+	// .next__work
+	&__work {
+	}
+	// .next__book
+	&__book {
+	}
+}
+.work {
+	flex: 0 0 flBasis(2, 53);
+	// .work__title
+	&__title {
+	}
+	// .work__card
+	&__card {
+	}
+	// .work__list
+	&__list {
+	}
+}
+
+.card-work {
+	display: flex;
+	align-items: center;
+	gap: toRem(23);
+	@include adaptiveValue("padding", 35, 25);
+	background-color: $green;
+	@include adaptiveValue("margin-bottom", 50, 30);
+
+	@media (max-width: toEm(450)) {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	// .card-work__img
+	&__img {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: toRem(5);
+		justify-content: center;
+		flex: 0 0 toRem(124);
+		width: toRem(124);
+		height: toRem(124);
+	}
+	// .card-work__top
+	&__top {
+		display: flex;
+		align-items: center;
+		@extend %PS;
+		@include adaptiveValue("font-size", 35, 28);
+		font-weight: 700;
+		line-height: 1;
+		position: relative;
+	}
+	// .card-work__text
+	&__text {
+		@extend %PS;
+		@include adaptiveValue("font-size", 25, 18);
+		line-height: 1.27;
+	}
+	// .card-work__perc
+	&__perc {
+	}
+	// .card-work__bottom
+	&__bottom {
+		z-index: 3;
+		line-height: 1;
+	}
+	// .card-work__img-box
+	&__img-box {
+	}
+}
+
+.list-work {
+	@include adaptiveValue("padding-right", 73, 0, 0, $maxWidthContainer, 992);
+	// .list-work__item
+	&__item {
+		position: relative;
+		padding-left: toEm(43.6, 22);
+		@include adaptiveValue("font-size", 22, 18);
+
+		&:not(:last-child) {
+			border-bottom: toRem(1) solid $white;
+			@include adaptiveValue("padding-bottom", 21, 15);
+			@include adaptiveValue("margin-bottom", 18, 15);
+		}
+
+		&::before {
+			position: absolute;
+			top: 0;
+			left: 0;
+			font-size: toEm(27, 22);
+			color: $green;
+		}
+	}
+	// .list-work__title
+	&__title {
+		@extend %PS;
+		font-weight: 600;
+	}
+	// .list-work__text
+	&__text {
+		@include adaptiveValue("font-size", 18, 16);
+		line-height: 1.46;
+		display: grid;
+		gap: toRem(15);
+	}
+}
+
+.book {
+	// .book__title
+	&__title {
+	}
+	// .book__form
+	&__form {
+	}
+}
+.form-book {
+	@include adaptiveValue("padding", 58, 30, 0, $maxWidthContainer, 992);
+	background-color: $white;
+	display: grid;
+	@include adaptiveValue("gap", 30, 20);
+
+	@media (max-width: $mobileSmall) {
+		padding: toRem(20);
+	}
+
+	// .form-book__input
+	&__input {
+		height: toRem(65);
+		background-color: #f8f8f8;
+		border: toRem(1) solid #ddd;
+		color: $dark;
+		border-radius: 0 !important;
+		padding: 0 toRem(20) 0 toRem(33);
+
+		-webkit-datetime-edit{
+			-webkit-user-modify: read-write !important;
+			display: none;
+		}
+	}
+	// .form-book__box
+	&__box {
+		display: flex;
+		gap: toRem(23);
+
+		@media (max-width: $mobileSmall) {
+			flex-direction: column;
+		}
+		input[type="time" i]::-webkit-calendar-picker-indicator {
+			// opacity: 0;
+			// overflow: hidden;
+		}
+
+		input[type="date" i]::-webkit-calendar-picker-indicator {
+			background-image: url("../img/next/calendar.svg");
+		}
+	}
+	// .form-book__textarea
+	&__textarea {
+		background-color: #f8f8f8;
+		border: toRem(1) solid #ddd;
+		min-height: toRem(139);
+		padding: toRem(10) toRem(33);
+		resize: vertical;
+		color: $dark;
+		border-radius: 0 !important;
+	}
+	// .form-book__btn
+	&__btn {
+		justify-self: start;
+		padding: toRem(21) toRem(61);
+	}
+}

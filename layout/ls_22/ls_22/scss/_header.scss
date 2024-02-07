@@ -1,0 +1,367 @@
+@import "_temple.scss";
+
+.header {
+	// .header--fix
+	&--fix {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 50;
+	}
+	// .header__container
+	&__container {
+		display: flex;
+		align-items: center;
+		position: relative;
+		@include adaptiveValue("column-gap", 40, 20, 0, 1920, 992);
+		@include adaptiveValue("min-height", 130, 70, 0, 1920, 992);
+	}
+	// .header__top
+	&__top {
+	}
+	// .header__bottom
+	&__bottom {
+		background-color: $white;
+	}
+	// .header__logo
+	&__logo {
+		flex-shrink: 0;
+		position: relative;
+		z-index: 2;
+		width: toRem(200);
+		height: toRem(39);
+
+		img{
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+		}
+
+		@media (max-width: $tablet){
+			 flex-grow: 1; 
+		}
+	}
+	// .header__menu
+	&__menu {
+		flex-grow: 1;
+		display: flex;
+		justify-content: flex-end;
+	}
+	// .header__button
+	&__button {
+	}
+}
+.top-header {
+	background-color: $dark;
+	color: $white;
+	min-height: toRem(60);
+	padding: toRem(5) 0;
+	display: flex;
+	position: relative;
+	z-index: 2;
+
+	// .top-header__container
+	&__container {
+		align-self: center;
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		flex-basis: 100%;
+		@include adaptiveValue("column-gap", 50, 20, 0, 1920, 992);
+		row-gap: toRem(10);
+
+		@media (max-width: toEm(825)) {
+			justify-content: center;
+		}
+	
+	}
+
+	// .top-header__contacts
+	&__contacts {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		column-gap: toRem(15);
+		row-gap: toRem(10);
+		justify-content: space-between;
+		flex-grow: 1;
+
+		.header__menu & {
+			flex-grow: 0;
+			justify-content: center;
+		}
+	}
+	// .top-header__left
+	&__left {
+		flex-wrap: wrap;
+		display: flex;
+		align-items: center;
+		@include adaptiveValue("column-gap", 42, 20, 0, 1920, 992);
+		row-gap: toRem(10);
+
+		.header__menu & {
+			justify-content: center;
+		}
+	}
+	// .top-header__link
+	&__link {
+		font-size: toRem(14);
+		line-height: normal;
+		font-style: normal;
+		transition: color 0.3s ease 0s;
+		display: flex;
+		align-items: center;
+		gap: toRem(6);
+
+		@media (any-hover: hover) {
+			&:hover {
+				color: $green;
+			}
+		}
+		&::before {
+			color: $green;
+		}
+	}
+	// .top-header__right
+	&__right {
+	}
+	// .top-header__time
+	&__time {
+		font-size: toRem(14);
+		line-height: normal;
+
+		&::before {
+			color: $green;
+		}
+	}
+	// .top-header__social
+	&__social {
+	}
+}
+
+.menu {
+	flex-direction: column;
+	justify-content: space-between;
+
+	@media (max-width: $tablet) {
+		background-color: $white;
+		position: fixed;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		overflow: auto;
+		transition: left 0.3s;
+		padding: toRem(166) toRem(15) toRem(30);
+
+		.menu-open & {
+			left: 0;
+		}
+
+		&::before {
+			content: "";
+			position: fixed;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			flex-basis: 100%;
+			height: toRem(130);
+			background-color: $white;
+			transition: left 0.3s ease 0s;
+			z-index: 5;
+
+			.menu-open & {
+				left: 0;
+			}
+		}
+	}
+	// .menu__body
+	&__body {
+		.menu-open & {
+			left: 0;
+		}
+	}
+	// .menu__list
+	&__list {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		@include adaptiveValue("column-gap", 40, 17, 0, 1920, 992);
+		flex-wrap: wrap;
+		row-gap: toRem(15);
+
+		@media (max-width: $tablet) {
+			flex-direction: column;
+			row-gap: toRem(25);
+			align-items: stretch;
+		}
+	}
+	// .menu__item
+	&__item {
+		// .menu__item--active
+		&--active {
+			position: relative;
+		}
+	}
+
+	// .menu__sub
+	&__sub {
+	}
+
+	// .menu__link
+	&__link {
+		display: flex;
+		flex-direction: row-reverse;
+		gap: toRem(7);
+		align-items: center;
+		transition: color 0.3s ease 0s;
+
+		@media (max-width: $tablet) {
+			font-size: toRem(22);
+		}
+		@media (any-hover: hover) {
+			.menu__item:hover &{
+				color: $blue;
+			}
+		}
+		&::before {
+			font-size: toEm(10, 18);
+			transition: transform 0.3s ease 0s;
+			@media (any-hover: hover) {
+				.menu__item:hover & {
+					transform: rotate(180deg);
+				}
+			}
+
+			@media (max-width: $tablet) {
+				display: none;
+			}
+		}
+	}
+	// .menu__button
+	&__button {
+	}
+}
+
+.sub-menu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	padding-top: toRem(20);
+	opacity: 0;
+	overflow: hidden;
+	transform: translate(-20%, 20%);
+	pointer-events: none;
+	transition: all 0.3s;
+
+	@media (any-hover: hover) {
+		.menu__item:hover & {
+			opacity: 1;
+			overflow: visible;
+			transform: translate(0, 0);
+			pointer-events: all;
+		}
+	}
+
+	@media (max-width: $tablet) {
+		top: 0;
+		left: 0;
+		opacity: 1;
+		overflow: visible;
+		position: relative;
+		transform: translate(0, 0);
+		text-align: right;
+	}
+	// .sub-menu__list
+	&__list {
+		background-color: $blue;
+		color: $white;
+		min-width: toRem(170);
+		padding: toRem(15);
+	}
+
+	// .sub-menu__item
+	&__item {
+		&:not(:last-child) {
+			margin-bottom: toEm(15, 18);
+		}
+	}
+	// .sub-menu__link
+	&__link {
+		@media (any-hover: hover) {
+			&:hover::after {
+				width: 100%;
+				transform: translateX(0);
+			}
+		}
+		&::after {
+			content: "";
+			display: block;
+			height: toRem(2);
+			width: 0;
+			transform: translateX(50%);
+			background-color: $white;
+			margin-top: toRem(2);
+			transition: all 0.3s ease 0s;
+		}
+	}
+}
+
+.icon-menu {
+	display: none;
+
+	@media (max-width: $tablet) {
+		background-color: $green;
+		padding: toRem(10) toRem(5) toRem(10) toRem(5);
+		width: toRem(50);
+		height: toRem(40);
+		display: block;
+		flex: 0 0 toRem(50);
+		position: relative;
+
+		&::before,
+		&::after,
+		& span {
+			content: "";
+			height: toRem(3);
+			width: toRem(30);
+			background-color: $dark;
+			position: absolute;
+			left: toRem(10);
+			transition: all 0.3s;
+			.menu-open & {
+				background-color: $white;
+			}
+		}
+
+		&::before {
+			top: toRem(10);
+		}
+
+		&::after {
+			bottom: toRem(10);
+		}
+
+		& span {
+			top: 50%;
+			margin-top: toRem(-1.5);
+		}
+
+		.menu-open & {
+			span {
+				transform: scale(0);
+			}
+			&::before {
+				transform: rotate(-45deg);
+				top: 50%;
+				margin-top: toRem(-1.5);
+			}
+			&::after {
+				transform: rotate(45deg);
+				bottom: 50%;
+				margin-bottom: toRem(-1.5);
+			}
+		}
+	}
+}

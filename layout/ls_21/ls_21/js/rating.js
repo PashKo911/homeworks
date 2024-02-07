@@ -5,7 +5,7 @@ export function setRating(el, attribute, childClass) {
 
 	if (ratingValue) {
 		if (childEl) {
-			childEl.style.width = `${ratingValue / 0.05}%`
+			childEl.style.width = `${ratingValue / 0.0498}%`
 		}
 	} else {
 		el.style.opacity = 0.4
