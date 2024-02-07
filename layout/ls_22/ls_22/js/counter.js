@@ -78,7 +78,8 @@ export class Counter {
 						counterEl.hasAttribute(this.svgAtrName) &&
 						counterEl.closest(`[${this.parentAtrName}]`)
 					) {
-						counter.setAnimationProperties()
+						console.log(counterEl);
+						// counter.setAnimationProperties()
 					}
 					counter.animateCounter()
 					if (!counter.repeat) counter.repeat = 17
@@ -174,7 +175,7 @@ class CounterInstance {
 
 			// тут логіка привласнення унікального імені для кожної анімації
 			// метод не стовідсотковий, та вірогідність повторення імен не висока
-			this.uniqueAnimationName = `anim-${Math.random().toString(36).substring(2, 11)}`
+			this.uniqueAnimationName = `anim-${Math.floor(Math.random() * 10000000)} `
 
 			this.circleElement.style.strokeDashoffset = this.totalLength
 

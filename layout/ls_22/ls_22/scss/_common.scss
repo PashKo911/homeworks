@@ -278,13 +278,15 @@
 		margin-right: auto;
 		min-width: toRem(185);
 	}
-
 	&.experience__link,
-	&.right-whitecollar__link
-	{
-		max-width: toRem(185);
-		margin-left: auto;
-		margin-right: auto;
+	&.right-whitecollar__link {
+		display: inline-flex;
+		min-width: toRem(185);
+
+		@media (max-width: $tablet) {
+			margin-left: auto;
+			margin-right: auto;
+		}
 	}
 }
 
