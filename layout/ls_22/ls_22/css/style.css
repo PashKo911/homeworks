@@ -603,24 +603,24 @@ textarea {
   }
 }
 @media (any-hover: hover) and (min-width: 79.375em) {
-  .button.item-expertise__button {
+  .button.expertise__button {
     font-size: 1.5625rem;
   }
 }
 @media (any-hover: hover) and (min-width: 20em) and (max-width: 79.375em) {
   @supports (font-size: clamp( 1.25rem , 1.1447368421rem  +  0.5263157895vw , 1.5625rem )) {
-    .button.item-expertise__button {
+    .button.expertise__button {
       font-size: clamp( 1.25rem , 1.1447368421rem  +  0.5263157895vw , 1.5625rem );
     }
   }
   @supports not (font-size: clamp( 1.25rem , 1.1447368421rem  +  0.5263157895vw , 1.5625rem )) {
-    .button.item-expertise__button {
+    .button.expertise__button {
       font-size: calc(1.25rem + 0.3125 * (100vw - 20rem) / 59.375);
     }
   }
 }
 @media (any-hover: hover) and (max-width: 20em) {
-  .button.item-expertise__button {
+  .button.expertise__button {
     font-size: 1.25rem;
   }
 }

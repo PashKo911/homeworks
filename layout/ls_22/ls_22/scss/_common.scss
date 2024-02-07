@@ -215,7 +215,7 @@
 		&:active {
 			box-shadow: none;
 		}
-		&.item-expertise__button {
+		&.expertise__button {
 			@include adaptiveValue("font-size", 25, 20);
 		}
 	}
