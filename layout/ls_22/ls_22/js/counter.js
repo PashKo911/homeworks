@@ -79,7 +79,7 @@ export class Counter {
 						counterEl.closest(`[${this.parentAtrName}]`)
 					) {
 						console.log(counterEl);
-						// counter.setAnimationProperties()
+						counter.setAnimationProperties()
 					}
 					counter.animateCounter()
 					if (!counter.repeat) counter.repeat = 17
@@ -173,8 +173,6 @@ class CounterInstance {
 			const styleElement = document.createElement("style")
 			const offsetValue = this.totalLength - (this.totalLength * this.value) / this.maxValue
 
-			// тут логіка привласнення унікального імені для кожної анімації
-			// метод не стовідсотковий, та вірогідність повторення імен не висока
 			this.uniqueAnimationName = `anim-${Math.floor(Math.random() * 10000000)} `
 
 			this.circleElement.style.strokeDashoffset = this.totalLength
