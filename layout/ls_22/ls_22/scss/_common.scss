@@ -217,6 +217,8 @@
 		}
 		&.expertise__button {
 			@include adaptiveValue("font-size", 25, 20);
+			justify-self: center;
+			min-width: toRem(180);
 		}
 	}
 
@@ -248,7 +250,7 @@
 			}
 		}
 		@media (max-width: $mobileSmall) {
-			width: 100%;
+			min-width: toRem(185);
 			padding: toRem(15);
 		}
 	}
@@ -280,12 +282,14 @@
 	}
 	&.experience__link,
 	&.right-whitecollar__link {
-		display: inline-flex;
+		display: inline-block;
 		min-width: toRem(185);
 
 		@media (max-width: $tablet) {
+			display: block;
 			margin-left: auto;
 			margin-right: auto;
+			max-width: toRem(185);
 		}
 	}
 }

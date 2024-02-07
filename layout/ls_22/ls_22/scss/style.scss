@@ -37,7 +37,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 
 	// .page__brands
 	&__brands {
-		@include adaptiveValue("margin-bottom", 82, 40);
+		@include adaptiveValue("margin-bottom", 82, 60);
 	}
 
 	// .page__expertise
@@ -212,9 +212,11 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 
 .whitecollar {
 	@include adaptiveValue("padding-top", 150, 40);
-	@include adaptiveValue("padding-bottom", 150, 40);
 	position: relative;
 
+	@media (min-width: toEm(1400)) {
+		@include adaptiveValue("padding-bottom", 150, 40);
+	}
 	// .whitecollar__bg
 	&__bg {
 		position: absolute;
@@ -500,7 +502,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		justify-content: center;
 		align-items: center;
 
-		svg{
+		svg {
 			max-width: toRem(49);
 			max-height: toRem(49);
 		}
@@ -608,7 +610,6 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		}
 	}
 }
-
 
 .rating {
 	display: flex;
@@ -968,7 +969,8 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	// .next__container
 	&__container {
 		display: flex;
-		@include adaptiveValue("gap", 53, 30);
+		@include adaptiveValue("column-gap", 53, 25);
+		row-gap: toRem(40);
 
 		@media (max-width: $tablet) {
 			flex-direction: column;
@@ -1149,7 +1151,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		justify-self: start;
 		padding: toRem(21) toRem(61);
 
-		@media (max-width: $mobileSmall) {
+		@media (max-width: $tablet) {
 			justify-self: center;
 		}
 	}
