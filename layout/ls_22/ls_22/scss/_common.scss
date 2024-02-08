@@ -217,7 +217,6 @@
 		}
 		&.expertise__button {
 			@include adaptiveValue("font-size", 25, 20);
-			justify-self: center;
 			min-width: toRem(180);
 		}
 	}
