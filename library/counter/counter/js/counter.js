@@ -2,90 +2,89 @@
 
 // Інструкція з використання модулю
 
-// 1) Час виконання анімації в секундах за змовченням = 1s
-// 2) Відступ безпеки якщо поруч є текст і його трясе за змовченням = 0
-// 3) Якщо є svg анфмація і треба заповнення її не на 100%, вказуємо максимальне значення, за змовченням заповнюється повністю
-// 4) Дозволяємо або забороняємо анімації повторюватись при кожному попаданні в зону видимості, за змовченням повторюватись не буде, пишемо будь яке число яке дасть true окрім (17)
-
 // Просто добавляємо необхідний атрибут до вашого коду html і працює як звичайний лічильник
 // Приклад запису
-//											 1)  2)   3)   4)
-/* <span class="rating__text" data-counter=" 1 , 1 , 100 , 2 ">30</span> */
+//						1)    2)
+/* <span data-counter=" 1s , 2px">30</span> */
+
+// Де:
+
+// 1) Час виконання анімації в секундах за змовченням = 1s
+// 2) Відступ безпеки якщо поруч є текст і його трясе за змовченням = 0
 
 // Приклад запису якщо якийсь із параметрів вказувати не треба
 
-/* <span class="rating__text" data-counter="  , 1 ,  , 2 ">30</span> */
+/* <span data-counter="  ,1px">30</span> */
 
 // ну або якщо підходять всі значення за змовченням вказуємо просто атрибут
 
-/* <span class="rating__text" data-counter >30</span> */
+/* <span data-counter >30</span> */
 
 //========================================================================================================================================================
 
-// Приклад запису якщо треба ще використання свг анімації
+// Додаткові опції
 
-// Для батьківського елементу задати атрибут data-circle-wrap
-// <div class="rating__img" data-circle-wrap>
+// 1)Лічильник з розділовим знаком
 
-// І для того ж лічильника просто добавляємо атрибут data-circle
-//																	  1)        2)    3)
-/* <span class="rating__text" data-counter="1,1 , 100" data-circle='#37393F, #40DDB6, 4 '>30</span> */
+// Добавляємо атрибут data-separator
+
+/* <span data-separator data-counter=" 1s , 2px">16537</span> */
+
+// За змовченням цей метод визначає регіон в якому знаходиться користувач, та підставляє той розділовий знак який використовується в цьому регіоні
+
+// Є можливість підставити власний розділовий знак
+//												    †
+/* <span data-separator data-counter=" 1s , 2px">165,37</span> */
+
+// Просто в значення лічильника підставляємо розділовий знак в будь яке місце 165,37 або 16.537 будь який знак
+
+//========================================================================================================================================================
+
+// 2) Повторення анімації при повторній появі елементу у вʼюпорті
+
+// За змовченням анімація відбудеться тільки один раз при появі елементу
+// Добавляємо атрибут data-repeat
+
+/* <span data-counter data-repeat>30</span> */
+//========================================================================================================================================================
+// 3) Лічильник із свг
+
+// Для батьківського елементу куди хочемо вставити свг задати атрибут data-circle-wrap
+
+//						     1)        2)    3)    4)
+/* <div data-circle-wrap="#40DDB6, #6B77E5, 3px, full"> */
 
 // Де:
 
 // 1) Колір stroke для свг
 // 2) Колір fill для свг
 // 3) Товщина stroke для свг
+// 4) Якщо треба заповнення свг на 100%, пишемо full або будь що, що поверне true, за змовченням буде заповнюватись на вказане значення у відсотках
 
-
-export class Counter {
-	constructor(counterAtr = "data-counter", svgAtrName = "data-circle", parentAtrName = "data-circle-wrap") {
+class Counter {
+	constructor(counterAtr = "data-counter") {
 		this.counterAtr = counterAtr
-		this.svgAtrName = svgAtrName
-		this.parentAtrName = parentAtrName
-		this.counters = []
 	}
 
-	// Створення екземпляру для кожного лічильника, перевірка щоб не створити однакові
-	getCounterInstance(counterEl) {
-		const existingCounter = this.counters.find((counter) => counter.counterEl === counterEl)
-
-		if (existingCounter) {
-			return existingCounter
-		} else {
-			const newCounter = new CounterInstance(counterEl, this)
-
-			// Якщо поруч з лічильникм є текст задаємо відступ безпеки, за змовченням 0
-			newCounter.setWidth()
-
-			this.counters.push(newCounter)
-			return newCounter
-		}
-	}
 	// Функція callback для observer
-	counterInit(entries) {
+	callBackFunc(entries) {
 		entries.forEach((entry) => {
 			const counterEl = entry.target
-			const counter = this.getCounterInstance(counterEl)
+			const counter = this.counters.find((counter) => counter.counterEl === counterEl)
 
 			if (entry.isIntersecting) {
-				// не вийшло використати observser.unobserve для того щоб з атрибуту можна було керувати чи буде запускатись анімація при кожній появі у viewport
-				// тому зробив такий перемикач з чслом 17, тобто будь яке число окрім 17 в атрибуті data-counter, в четвертій позиції буде дозволяти анімації запускатись заново
+				if (!counter.isAnimated) {
+					counter.startCounter()
 
-				if (counter.repeat !== 17) {
-					if (
-						// Тут власне перевірка, якщо окрім звичайного лічильника там е ще свг то запускажмо обидві анімації, якщо атрибуту для свг нема то клас працює в режимі звичайного лічильника без свг
-						counterEl.hasAttribute(this.svgAtrName) &&
-						counterEl.closest(`[${this.parentAtrName}]`)
-					) {
-						counter.setAnimationProperties()
+					if (!counter.repeat) {
+						counter.isAnimated = true
+						this.observer.unobserve(counterEl)
 					}
-					counter.animateCounter()
-					if (!counter.repeat) counter.repeat = 17
 				}
 			}
 		})
 	}
+
 	// Стврення observer
 	observe(element) {
 		const options = {
@@ -94,25 +93,47 @@ export class Counter {
 			threshold: 0.5,
 		}
 
-		const observer = new IntersectionObserver((entries) => this.counterInit(entries), options)
+		this.observer = new IntersectionObserver((entries) => this.callBackFunc(entries), options)
 
-		observer.observe(element)
+		this.observer.observe(element)
+	}
+
+	// ініціалізація лічильника
+	counterInit() {
+		const counterElements = document.querySelectorAll(`[${this.counterAtr}]`)
+		this.counters = []
+
+		if (counterElements) {
+			counterElements.forEach((counter) => {
+				const newCounter = new CounterInstance(counter, this.counterAtr)
+				this.counters.push(newCounter)
+				newCounter.initCounter()
+
+				this.observe(counter)
+			})
+		}
 	}
 }
 
 //========================================================================================================================================================
 
 class CounterInstance {
-	constructor(counterEl, initData) {
-		// Приймаємо дані з основного класу Counter та зберігаємо
-		Object.assign(this, initData)
+	constructor(
+		counterEl,
+		counterAtr,
+		parentAtrName = "data-circle-wrap",
+		repeatAtrName = "data-repeat",
+		separatorAtrName = "data-separator"
+	) {
+		this.counterAtr = counterAtr
+		this.parentAtrName = parentAtrName
+		this.repeatAtrName = repeatAtrName
+		this.separatorAtrName = separatorAtrName
 		this.counterEl = counterEl
 
-		// ці методи тут ініціюються для збереження контексту this який привласнюється всередині методу, щоб можна було використати в основному класі Counter
-		this.svgInit()
-		this.animateCounter()
-		this.setWidth()
-		this.setAnimationProperties()
+		// Змінна для роботи логіки з повторною анімацією
+		this.isAnimated = false
+		this.parentEl = this.counterEl.closest(`[${this.parentAtrName}]`)
 	}
 
 	// Метод для обчислення ширини лічильника, та якщо потрібно, задання відстані безпеки з переводом у rem
@@ -121,30 +142,50 @@ class CounterInstance {
 		this.counterEl.style.minWidth = (width + this.range) / 16 + "rem"
 	}
 
-	// Метод ініціалізації лічильника
-	animateCounter() {
+	// Метод отримання неохідних для роботи лічильника значень
+	getCounterValues() {
 		const counterValues = this.counterEl.getAttribute(this.counterAtr)
 
-		// Приймаємо дані з атрибуту, перевіряємо, та привласнюємо значення за змовченням якщо дані не визначені
-		const [customTime, customRange, customMax, repeat] = counterValues
+		// Приймаємо значення самого лічильника
+		let custValue = this.counterEl.textContent || "0"
+
+		// Приймаємо дані з атрибуту, перевіряємо, та привласнюємо значення за змовченням, якщо дані не визначені
+		const [customTime, customRange] = counterValues
 			.split(",")
-			.map((value) => parseInt(value.trim(), 10))
+			.map((value) => parseFloat(value.trim(), 10))
 
 		this.time = customTime * 1000 || 1000
 
 		this.range = customRange || 0
 
-		// Приймаємо значення самого лічильника
-		this.value = parseInt(this.counterEl.textContent) || 0
-
-		// Якщо лічильник з свг і треба відсоткове значення, щоб свг заповнювався не повністю, а на відповідний відсоток
-		// то нам необхідно макисмальне значення від яякого будемо рахувати відсоток, це значення задається в атрибуті data-counter в третій позиції
-		this.maxValue = customMax || this.value
+		if (this.counterEl.hasAttribute(this.separatorAtrName)) {
+			// Для лічильника з розділовим знаком своя логіка отримання цього значення, для цього і умова
+			this.initSeparator(custValue)
+		} else this.value = parseInt(custValue)
 
 		// Змінна для роботи повторення анімації
-		this.repeat = repeat
+		this.repeat = this.counterEl.hasAttribute(this.repeatAtrName) ? true : false
+	}
 
-		// безпосередньо логіка лічильника
+	// Метод отримання значень для лічильника з розділовим знаком
+	initSeparator(custValue) {
+		// Логіка знаходження розділового знаку відповідно до регіону користувача, або задання знаку який вказав користувач
+		const formatter = new Intl.NumberFormat()
+		const parts = formatter.formatToParts(1000)
+		const localSeparator = parts.find((part) => part.type === "group")
+		const matchResult = custValue.match(/[^\d]/)
+
+		let separator
+
+		if (matchResult) {
+			separator = matchResult[0]
+			this.value = custValue.split(separator).join("")
+		} else this.value = custValue
+
+		this.separator = separator || localSeparator.value
+	}
+
+	animateCounter() {
 		// деталі у відео Жені https://www.youtube.com/watch?v=MSP-MP_TVf4
 		let current = 0
 		let start = null
@@ -152,44 +193,70 @@ class CounterInstance {
 		const step = (timestamp) => {
 			if (!start) start = timestamp
 			const progress = Math.min((timestamp - start) / this.time, 1)
-			this.counterEl.textContent = Math.floor(progress * (current + this.value))
+
+			if (this.counterEl.hasAttribute(this.separatorAtrName)) {
+				this.counterEl.textContent = this.formatNumberWithSeparator(progress * (current + this.value))
+			} else this.counterEl.textContent = Math.floor(progress * (current + this.value))
 
 			if (progress < 1) {
 				requestAnimationFrame(step)
 			}
 		}
+
 		requestAnimationFrame(step)
 	}
 
-	// метод привласнення властивостей анімації, загалом один недолік
-	// якщо анімація викликається по колу при спрацюванні observer, то ці стилі перезіписуються для елементу
+	// Отримуємо число з лічильника і перед його записом в html вставляємо розділовий знак в число
+	formatNumberWithSeparator(number) {
+		const integerPart = number.toFixed(0)
+
+		// легенький регулярний вираз :))
+		return integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, this.separator)
+	}
+
+	// Перевірка лічильник з свг чи ні
+	startCounter() {
+		if (this.parentEl) {
+			this.setAnimationProperties()
+		}
+
+		this.animateCounter()
+	}
+	// метод привласнення властивостей анімації
 
 	setAnimationProperties() {
-		if (
-			this.counterEl.hasAttribute(this.svgAtrName) &&
-			this.counterEl.closest(`[${this.parentAtrName}]`)
-		) {
-			const styleElement = document.createElement("style")
-			const offsetValue = this.totalLength - (this.totalLength * this.value) / this.maxValue
+		this.offsetValue = this.totalLength - (this.totalLength * this.value) / this.maxValue
 
-			// тут логіка привласнення унікального імені для кожної анімації
-			// метод не стовідсотковий, та вірогідність повторення імен не висока
-			this.uniqueAnimationName = `anim-${Math.random().toString(36).substring(2, 11)}`
-
-			this.circleElement.style.strokeDashoffset = this.totalLength
-
-			styleElement.innerHTML = `
-					@keyframes ${this.uniqueAnimationName} {
-						100% {
-							stroke-dashoffset: ${offsetValue}; 
-						}
+		// перезапис offsetValue svg при адаптиві
+		if (this.styleElement) {
+			this.styleElement.innerText = `@keyframes ${this.animName} {
+					100% {
+					  stroke-dashoffset: ${this.offsetValue}; 
 					}
-				`
+				  }`
+			this.circleElement.style.animation = ""
 
-			this.circleElement.appendChild(styleElement)
-			this.circleElement.style.animation = `${this.uniqueAnimationName} linear forwards`
-			this.circleElement.style.animationDuration = `${this.time}ms`
+			setTimeout(() => {
+				this.circleElement.style.animation = `${this.animName} ${this.time}ms linear forwards`
+			}, 20)
+			return
 		}
+
+		// Створення унікального імені для анімації та елементу стилів
+		this.animName = `anim-${Math.floor(Math.random() * 1e6)}`
+
+		const keyframesRule = `@keyframes ${this.animName} {
+				100% {
+				  stroke-dashoffset: ${this.offsetValue}; 
+				}
+			  }`
+
+		this.styleElement = document.createElement("style")
+		this.styleElement.append(keyframesRule)
+		this.styleElement.classList.add(this.animName)
+		document.head.appendChild(this.styleElement)
+
+		this.circleElement.style.animation = `${this.animName} ${this.time}ms linear forwards`
 	}
 
 	// Ну тут просто запис стилів з переводом в rem
@@ -198,19 +265,19 @@ class CounterInstance {
 		this.svgElement.style.position = "absolute"
 		this.svgElement.style.top = "0"
 		this.svgElement.style.left = "0"
-		this.svgElement.style.width = this.parentElWidth / 16 + "rem"
-		this.svgElement.style.height = this.parentElWidth / 16 + "rem"
+		this.svgElement.style.width = "100%"
+		this.svgElement.style.height = "100%"
 		this.svgElement.style.fill = this.fill
 		this.svgElement.style.stroke = this.stroke
 		this.svgElement.style.strokeWidth = this.strokeWidth / 16 + "rem"
 		this.circleElement.style.strokeDasharray = this.totalLength
+		this.circleElement.style.strokeDashoffset = this.totalLength
 	}
 
 	// Метод задання розмірів для свг зображення відносно батьківського елементу з переводом в rem
 	setSvgSize() {
 		const attributes = ["cx", "cy", "r"]
 		this.parentElWidth = this.parentEl.offsetWidth
-		console.log(this.strokeWidth)
 
 		attributes.forEach((attr) => {
 			if (attr === "r") {
@@ -226,20 +293,24 @@ class CounterInstance {
 
 	// Метод отримання параметрів з атрибуту для свг, з усіма перевірками та привласненні значень за змовченням
 	getSvgParams() {
-		const svgValues = this.counterEl.getAttribute(this.svgAtrName)
+		const svgValues = this.parentEl.getAttribute(this.parentAtrName)
 
-		const [custFill, custStroke, custStrokeWidth] = svgValues.split(",").map((value) => value.trim())
+		const [custFill, custStroke, custStrokeWidth, fullFilling] = svgValues
+			.split(",")
+			.map((value) => value.trim())
 
 		// Отримуємо параметри з атрибуту, якщо не задані, присвоюємо значення за змовченням
 		this.fill = custFill || "#000"
 		this.stroke = custStroke || "#ff0000"
-		this.strokeWidth = parseInt(custStrokeWidth, 10) || 3
+		this.strokeWidth = parseFloat(custStrokeWidth, 10) || 3
+
+		// визначаємо тип заповнення свг, повний чи на певний відсоток
+		this.maxValue = fullFilling ? this.value : 100
 	}
 
 	// Метод безпосередньо створення свг зображення
 	svgCreator() {
 		this.svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg")
-		this.svgElement.setAttribute("data-svg-circle", "")
 
 		this.circleElement = document.createElementNS("http://www.w3.org/2000/svg", "circle")
 		this.svgElement.appendChild(this.circleElement)
@@ -251,21 +322,29 @@ class CounterInstance {
 
 	// Ну і власне ініціалізація створення свг
 	svgInit() {
-		this.parentEl = this.counterEl.closest(`[${this.parentAtrName}]`)
+		this.parentEl.style.position = "relative"
+		this.getSvgParams()
+		this.svgCreator()
 
-		if (this.parentEl && this.counterEl.hasAttribute(this.svgAtrName)) {
-			this.parentEl.style.position = "relative"
-			this.getSvgParams()
-			this.svgCreator()
+		// Иніціалізація Resize Observer
+		const resizeObserver = new ResizeObserver(() => {
 			this.setSvgSize()
 			this.setStyles()
+			this.setAnimationProperties()
+		})
+
+		resizeObserver.observe(this.parentEl)
+	}
+
+	// Ініціалізація лічильників та свг при створенні екземпляру класу
+	initCounter() {
+		this.getCounterValues()
+		this.setWidth()
+
+		if (this.parentEl) {
+			this.svgInit()
 		}
 	}
 }
 
 export const counter = new Counter()
-
-// Якщо не подобаються назви атрибутів можна вказати свої при виклику
-
-// Таким чином							лічильник		свг				батько свг
-// export const counter = new Counter("data-counter", "data-circle", 'data-circle-wrap')

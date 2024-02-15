@@ -972,7 +972,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		display: flex;
 		@include adaptiveValue("column-gap", 53, 25);
 		row-gap: toRem(40);
-
+		animation: name duration timing-function delay iteration-count direction fill-mode;
 		@media (max-width: $tablet) {
 			flex-direction: column;
 		}
