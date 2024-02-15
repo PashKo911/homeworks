@@ -97,11 +97,17 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	background-color: #2e2f34;
 	flex-wrap: wrap;
 
+	@media (max-width:$mobileSmall){
+		 justify-content: center; 
+		 text-align: center;
+	}
+
 
 	// .item-svg__box
 	&__box {
 		aspect-ratio: 1 / 1;
 		width: toRem(124);
+		flex-basis: toRem124;
 		display: flex;
 		align-items: center;
 		justify-content: center;

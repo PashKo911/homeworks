@@ -747,9 +747,19 @@ textarea {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
+@media (max-width: 35.99875em) {
+  .item-svg {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+  }
+}
 .item-svg__box {
   aspect-ratio: 1/1;
   width: 7.75rem;
+  -ms-flex-preferred-size: toRem124;
+      flex-basis: toRem124;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
