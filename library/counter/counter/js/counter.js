@@ -1,11 +1,9 @@
-"use strict"
-
 // Інструкція з використання модулю
 
 // Просто добавляємо необхідний атрибут до вашого коду html і працює як звичайний лічильник
 // Приклад запису
 //						1)    2)
-/* <span data-counter=" 1s , 2px">30</span> */
+/* <span data-counter=" 1s , 2em">30</span> */
 
 // Де:
 
@@ -14,7 +12,7 @@
 
 // Приклад запису якщо якийсь із параметрів вказувати не треба
 
-/* <span data-counter="  ,1px">30</span> */
+/* <span data-counter="  ,1em">30</span> */
 
 // ну або якщо підходять всі значення за змовченням вказуємо просто атрибут
 
@@ -28,13 +26,13 @@
 
 // Добавляємо атрибут data-separator
 
-/* <span data-separator data-counter=" 1s , 2px">16537</span> */
+/* <span data-separator data-counter>16537</span> */
 
 // За змовченням цей метод визначає регіон в якому знаходиться користувач, та підставляє той розділовий знак який використовується в цьому регіоні
 
 // Є можливість підставити власний розділовий знак
 //												    †
-/* <span data-separator data-counter=" 1s , 2px">165,37</span> */
+/* <span data-separator data-counter>165,37</span> */
 
 // Просто в значення лічильника підставляємо розділовий знак в будь яке місце 165,37 або 16.537 будь який знак
 
@@ -61,13 +59,13 @@
 // 3) Товщина stroke для свг
 // 4) Якщо треба заповнення свг на 100%, пишемо full або будь що, що поверне true, за змовченням буде заповнюватись на вказане значення у відсотках
 
-class Counter {
-	constructor(counterAtr = "data-counter") {
-		this.counterAtr = counterAtr
+export class Counter {
+	constructor(counterAtr) {
+		this.counterAtr = counterAtr || "data-counter"
 	}
 
 	// Функція callback для observer
-	callBackFunc(entries) {
+	callBack(entries) {
 		entries.forEach((entry) => {
 			const counterEl = entry.target
 			const counter = this.counters.find((counter) => counter.counterEl === counterEl)
@@ -93,7 +91,7 @@ class Counter {
 			threshold: 0.5,
 		}
 
-		this.observer = new IntersectionObserver((entries) => this.callBackFunc(entries), options)
+		this.observer = new IntersectionObserver(this.callBack.bind(this), options)
 
 		this.observer.observe(element)
 	}
@@ -103,7 +101,7 @@ class Counter {
 		const counterElements = document.querySelectorAll(`[${this.counterAtr}]`)
 		this.counters = []
 
-		if (counterElements) {
+		if (counterElements.length) {
 			counterElements.forEach((counter) => {
 				const newCounter = new CounterInstance(counter, this.counterAtr)
 				this.counters.push(newCounter)
@@ -118,28 +116,24 @@ class Counter {
 //========================================================================================================================================================
 
 class CounterInstance {
-	constructor(
-		counterEl,
-		counterAtr,
-		parentAtrName = "data-circle-wrap",
-		repeatAtrName = "data-repeat",
-		separatorAtrName = "data-separator"
-	) {
+	constructor(counterEl, counterAtr, parentAtrName, repeatAtrName, separatorAtrName) {
 		this.counterAtr = counterAtr
-		this.parentAtrName = parentAtrName
-		this.repeatAtrName = repeatAtrName
-		this.separatorAtrName = separatorAtrName
+		this.parentAtrName = parentAtrName || "data-circle-wrap"
+		this.repeatAtrName = repeatAtrName || "data-repeat"
+		this.separatorAtrName = separatorAtrName || "data-separator"
 		this.counterEl = counterEl
+
+		this.parentEl = this.counterEl.closest(`[${this.parentAtrName}]`)
 
 		// Змінна для роботи логіки з повторною анімацією
 		this.isAnimated = false
-		this.parentEl = this.counterEl.closest(`[${this.parentAtrName}]`)
 	}
 
-	// Метод для обчислення ширини лічильника, та якщо потрібно, задання відстані безпеки з переводом у rem
+	// Метод для обчислення та присвоєння ширини лічильника, та якщо потрібно, задання відстані безпеки з переводом у rem
 	setWidth() {
 		const width = this.counterEl.offsetWidth
-		this.counterEl.style.minWidth = (width + this.range) / 16 + "rem"
+		const fontSize = parseFloat(getComputedStyle(this.counterEl).fontSize)
+		this.counterEl.style.minWidth = (width + this.range) / fontSize + "em"
 	}
 
 	// Метод отримання неохідних для роботи лічильника значень
@@ -147,7 +141,7 @@ class CounterInstance {
 		const counterValues = this.counterEl.getAttribute(this.counterAtr)
 
 		// Приймаємо значення самого лічильника
-		let custValue = this.counterEl.textContent || "0"
+		let custValue = this.counterEl.textContent.trim() || 0
 
 		// Приймаємо дані з атрибуту, перевіряємо, та привласнюємо значення за змовченням, якщо дані не визначені
 		const [customTime, customRange] = counterValues
@@ -155,34 +149,40 @@ class CounterInstance {
 			.map((value) => parseFloat(value.trim(), 10))
 
 		this.time = customTime * 1000 || 1000
-
 		this.range = customRange || 0
 
+		// Отримання розділового знаку та числа без нього
+		this.value = parseInt(this.initSeparator(custValue))
+
+		// Якщо є розділовий знак, запишемо число в правильному форматі для визначення його розміру перед анімуванням
 		if (this.counterEl.hasAttribute(this.separatorAtrName)) {
-			// Для лічильника з розділовим знаком своя логіка отримання цього значення, для цього і умова
-			this.initSeparator(custValue)
-		} else this.value = parseInt(custValue)
+			this.counterEl.textContent = this.formatNumberWithSeparator(this.value)
+		}
 
 		// Змінна для роботи повторення анімації
-		this.repeat = this.counterEl.hasAttribute(this.repeatAtrName) ? true : false
+		this.repeat = this.counterEl.hasAttribute(this.repeatAtrName)
 	}
 
 	// Метод отримання значень для лічильника з розділовим знаком
 	initSeparator(custValue) {
 		// Логіка знаходження розділового знаку відповідно до регіону користувача, або задання знаку який вказав користувач
-		const formatter = new Intl.NumberFormat()
-		const parts = formatter.formatToParts(1000)
-		const localSeparator = parts.find((part) => part.type === "group")
-		const matchResult = custValue.match(/[^\d]/)
 
-		let separator
+		if (this.counterEl.hasAttribute(this.separatorAtrName)) {
+			const matchResult = custValue.match(/[^\d]/)
 
-		if (matchResult) {
-			separator = matchResult[0]
-			this.value = custValue.split(separator).join("")
-		} else this.value = custValue
+			if (matchResult) {
+				this.separator = matchResult[0]
 
-		this.separator = separator || localSeparator.value
+				return (this.value = custValue.split(this.separator).join(""))
+			} else {
+				const formatter = new Intl.NumberFormat()
+				const parts = formatter.formatToParts(1000)
+				const localSeparator = parts.find((part) => part.type === "group")
+				this.separator = localSeparator.value
+			}
+		} else this.separator = ""
+
+		return (this.value = custValue)
 	}
 
 	animateCounter() {
@@ -194,9 +194,9 @@ class CounterInstance {
 			if (!start) start = timestamp
 			const progress = Math.min((timestamp - start) / this.time, 1)
 
-			if (this.counterEl.hasAttribute(this.separatorAtrName)) {
-				this.counterEl.textContent = this.formatNumberWithSeparator(progress * (current + this.value))
-			} else this.counterEl.textContent = Math.floor(progress * (current + this.value))
+			this.counterEl.textContent = this.formatNumberWithSeparator(
+				progress * (current + parseInt(this.value))
+			)
 
 			if (progress < 1) {
 				requestAnimationFrame(step)
@@ -210,7 +210,6 @@ class CounterInstance {
 	formatNumberWithSeparator(number) {
 		const integerPart = number.toFixed(0)
 
-		// легенький регулярний вираз :))
 		return integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, this.separator)
 	}
 
@@ -281,12 +280,9 @@ class CounterInstance {
 
 		attributes.forEach((attr) => {
 			if (attr === "r") {
-				this.circleElement.setAttribute(
-					attr,
-					(this.parentElWidth - this.strokeWidth) / 2 / 16 + "rem"
-				)
+				this.circleElement.setAttribute(attr, (this.parentElWidth - this.strokeWidth) / 2)
 			} else {
-				this.circleElement.setAttribute(attr, this.parentElWidth / 2 / 16 + "rem")
+				this.circleElement.setAttribute(attr, this.parentElWidth / 2)
 			}
 		})
 	}
@@ -347,4 +343,4 @@ class CounterInstance {
 	}
 }
 
-export const counter = new Counter()
+// const counter = new Counter()

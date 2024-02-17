@@ -43,7 +43,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	}
 	// .counters__title
 	&__title {
-		font-size: 24px;
+		font-size: toRem(24);
 		font-weight: 600;
 		margin-bottom: toRem(5);
 	}
@@ -57,8 +57,13 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		align-items: center;
 		padding: toRem(30);
 		font-size: toRem(30);
+
 		border: toRem(2) rgb(146, 146, 36) dashed;
 		background-color: #2e2f34;
+		
+		@media (max-width:$mobile){
+			 font-size: toRem(10); 
+		}
 	}
 
 	code {
@@ -88,6 +93,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		flex: 1 1 auto;
 	}
 }
+
 .item-svg {
 	display: flex;
 	gap: toRem(15);
@@ -95,36 +101,33 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	padding: toRem(30);
 	border: toRem(2) solid $blue;
 	background-color: #2e2f34;
+	min-width: toRem(420);
 	flex-wrap: wrap;
 
-	@media (max-width:$mobileSmall){
-		 justify-content: center; 
-		 text-align: center;
+	@media (max-width: $mobileSmall) {
+		justify-content: center;
+		text-align: center;
+		min-width: toRem(290);
 	}
-
 
 	// .item-svg__box
 	&__box {
 		aspect-ratio: 1 / 1;
 		width: toRem(124);
-		flex-basis: toRem124;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 
-			// item-svg__box--big--big
-			&--big{
-				width: 40%;
-				// width: toRem(424);
-				
-				// @media (max-width:$pc){
-				// 	width: toRem(324);
-				// }
-			}
+		// item-svg__box--big
+		&--big {
+			width: 40%;
 
-
+			// @media (max-width:$pc){
+			// 	width: toRem(324);
+			// }
+		}
 	}
-	
+
 	// .item-svg__count
 	&__count {
 		position: relative;

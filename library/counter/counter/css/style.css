@@ -689,7 +689,7 @@ textarea {
   margin-bottom: 0.9375rem;
 }
 .counters__title {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 0.3125rem;
 }
@@ -708,6 +708,11 @@ textarea {
   font-size: 1.875rem;
   border: 0.125rem rgb(146, 146, 36) dashed;
   background-color: #2e2f34;
+}
+@media (max-width: 47.99875em) {
+  .content-item__box {
+    font-size: 0.625rem;
+  }
 }
 .content-item code {
   margin-bottom: 0.3125rem;
@@ -744,6 +749,7 @@ textarea {
   padding: 1.875rem;
   border: 0.125rem solid #6B77E5;
   background-color: #2e2f34;
+  min-width: 26.25rem;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
@@ -753,13 +759,12 @@ textarea {
         -ms-flex-pack: center;
             justify-content: center;
     text-align: center;
+    min-width: 18.125rem;
   }
 }
 .item-svg__box {
   aspect-ratio: 1/1;
   width: 7.75rem;
-  -ms-flex-preferred-size: toRem124;
-      flex-basis: toRem124;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
