@@ -343,4 +343,4 @@ class CounterInstance {
 	}
 }
 
-// const counter = new Counter()
+export const counter = new Counter()
