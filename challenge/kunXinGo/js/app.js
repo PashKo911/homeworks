@@ -3598,7 +3598,6 @@
             }));
         }
     };
-    window["FLS"] = true;
     isWebp();
     addLoadedClass();
     menuInit();

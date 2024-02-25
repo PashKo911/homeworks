@@ -134,9 +134,6 @@ h6 {
   margin: 0 auto;
   padding: 0 .9375rem
 }
-.menu__phone-link {
-  display: none
-}
 .menu__list {
   display: flex;
   row-gap: .625rem;
@@ -324,6 +321,9 @@ h6 {
 .header__img {
   width: 7.25rem;
   height: 1.6875rem
+}
+.header__phone-link {
+  display: none
 }
 .header__icon-box {
   display: flex;
@@ -1228,7 +1228,7 @@ h6 {
   }
 }
 @media (max-width:38.24875em) {
-  .menu__phone-link {
+  .header__phone-link {
     display: block;
     width: 2rem;
     height: 2rem;
