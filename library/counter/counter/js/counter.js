@@ -115,7 +115,7 @@ export class Counter {
 
 //========================================================================================================================================================
 
-class CounterInstance {
+export class CounterInstance {
 	constructor(counterEl, counterAtr, parentAtrName, repeatAtrName, separatorAtrName) {
 		this.counterAtr = counterAtr
 		this.parentAtrName = parentAtrName || "data-circle-wrap"
@@ -343,4 +343,4 @@ class CounterInstance {
 	}
 }
 
-export const counter = new Counter()
+// const counter = new Counter()
