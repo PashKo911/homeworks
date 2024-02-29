@@ -263,6 +263,7 @@ textarea.input {
 .card--img {
   flex: 1 1 51.086957%;
   padding: 0;
+  display: block;
   position: relative;
   min-height: auto
 }

@@ -421,7 +421,6 @@
             observer.observe(element);
         }));
     };
-    window["FLS"] = true;
     isWebp();
     formFieldsInit({
         viewPass: false,
