@@ -260,31 +260,6 @@ textarea.input {
 .card--red h2 {
   color: var(--red)
 }
-.card--img {
-  flex: 1 1 51.086957%;
-  padding: 0;
-  display: block;
-  position: relative;
-  min-height: auto
-}
-.card--img::before {
-  content: "";
-  position: absolute;
-  aspect-ratio: 1/1;
-  -webkit-clip-path: polygon(100% 0,0 100%,100% 100%);
-  clip-path: polygon(100% 0,0 100%,100% 100%);
-  background-color: var(--main-bg)
-}
-.card--img img {
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 940/1127;
-  -o-object-fit: cover;
-  object-fit: cover
-}
-.hero .card--img {
-  aspect-ratio: 940/800
-}
 .card p {
   line-height: 1.4;
   letter-spacing: -.01875rem
@@ -292,23 +267,34 @@ textarea.input {
 .card p:not(:last-child) {
   margin-bottom: .9375rem
 }
-.card--img-right-bottom::before {
+.card-img {
+  flex: 1 1 51.086957%;
+  position: relative;
+  min-height: auto
+}
+.card-img::before {
+  content: "";
+  position: absolute;
+  aspect-ratio: 1/1;
+  -webkit-clip-path: polygon(100% 0,0 100%,100% 100%);
+  clip-path: polygon(100% 0,0 100%,100% 100%);
+  background-color: var(--main-bg)
+}
+.card-img img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 940/1127;
+  -o-object-fit: cover;
+  object-fit: cover
+}
+.hero .card-img {
+  aspect-ratio: 940/800
+}
+.card-img--right-bottom::before {
   bottom: 0;
   right: 0
 }
-.card--img-right-top::before {
-  top: 0;
-  right: 0;
-  -webkit-transform: rotate(-90deg);
-  transform: rotate(-90deg)
-}
-.card--img-left-top::before {
-  top: 0;
-  left: 0;
-  -webkit-transform: rotate(-180deg);
-  transform: rotate(-180deg)
-}
-.card--img-left-bottom::before {
+.card-img--left-bottom::before {
   bottom: 0;
   left: 0;
   -webkit-transform: rotate(90deg);
@@ -523,11 +509,11 @@ textarea.input {
   .card h3:not(:last-child) {
     margin-bottom: 1.25rem
   }
-  .card--img::before {
-    width: 23rem
-  }
   .card p {
     font-size: 1.875rem
+  }
+  .card-img::before {
+    width: 23rem
   }
   .footer {
     padding: 3.75rem
@@ -663,11 +649,11 @@ textarea.input {
   .card h3:not(:last-child) {
     margin-bottom: .625rem
   }
-  .card--img::before {
-    width: 4.375rem
-  }
   .card p {
     font-size: 1.25rem
+  }
+  .card-img::before {
+    width: 4.375rem
   }
   .footer {
     padding: 1.25rem
@@ -745,20 +731,20 @@ textarea.input {
   .hero__top .card {
     flex-basis: auto
   }
-  .card--img img {
+  .card-img img {
     aspect-ratio: 340/289
   }
-  .benefits__top .card--img img {
+  .benefits__top .card-img img {
     -o-object-position: top;
     object-position: top
   }
-  .card--img-right-bottom::before {
+  .card-img--right-bottom::before {
     top: 0;
     right: 0;
     -webkit-transform: rotate(-90deg);
     transform: rotate(-90deg)
   }
-  .card--img-left-bottom::before {
+  .card-img--left-bottom::before {
     top: 0;
     left: 0;
     -webkit-transform: rotate(-180deg);
@@ -794,7 +780,7 @@ textarea.input {
   .card--small {
     min-height: 18.75rem
   }
-  .hero .card--img {
+  .hero .card-img {
     min-height: auto
   }
   .footer__items {
@@ -965,16 +951,6 @@ textarea.input {
       margin-bottom: calc(.625rem + .625 * (100vw - 20rem)/ 96.875)
     }
   }
-  @supports (width:clamp(4.375rem ,0.5298387097rem + 19.2258064516vw ,23rem)) {
-    .card--img::before {
-      width: clamp(4.375rem ,.5298387097rem + 19.2258064516vw ,23rem)
-    }
-  }
-  @supports not (width:clamp(4.375rem ,0.5298387097rem + 19.2258064516vw ,23rem)) {
-    .card--img::before {
-      width: calc(4.375rem + 18.625 * (100vw - 20rem)/ 96.875)
-    }
-  }
   @supports (font-size:clamp(1.25rem ,1.1209677419rem + 0.6451612903vw ,1.875rem)) {
     .card p {
       font-size: clamp(1.25rem ,1.1209677419rem + .6451612903vw ,1.875rem)
@@ -983,6 +959,16 @@ textarea.input {
   @supports not (font-size:clamp(1.25rem ,1.1209677419rem + 0.6451612903vw ,1.875rem)) {
     .card p {
       font-size: calc(1.25rem + .625 * (100vw - 20rem)/ 96.875)
+    }
+  }
+  @supports (width:clamp(4.375rem ,0.5298387097rem + 19.2258064516vw ,23rem)) {
+    .card-img::before {
+      width: clamp(4.375rem ,.5298387097rem + 19.2258064516vw ,23rem)
+    }
+  }
+  @supports not (width:clamp(4.375rem ,0.5298387097rem + 19.2258064516vw ,23rem)) {
+    .card-img::before {
+      width: calc(4.375rem + 18.625 * (100vw - 20rem)/ 96.875)
     }
   }
   @supports (padding:clamp(1.25rem ,0.7338709677rem + 2.5806451613vw ,3.75rem)) {
