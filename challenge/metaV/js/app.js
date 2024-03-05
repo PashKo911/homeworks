@@ -13,6 +13,27 @@
             document.documentElement.classList.add(className);
         }));
     }
+    let isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows();
+        }
+    };
+    function addTouchClass() {}
     let _slideUp = (target, duration = 500, showmore = 0) => {
         if (!target.classList.contains("_slide")) {
             target.classList.add("_slide");
@@ -3522,27 +3543,41 @@
     const counter = new Counter;
     counter.counterInit();
     function toggleVideo(e) {
-        const videoContainer = e.target.closest(".activity__video");
-        if (videoContainer) {
-            const video = videoContainer.querySelector("video");
-            if (video) if (video.paused) {
+        const parentEl = e.target.closest(".activity__video");
+        const mobile = isMobile.any();
+        if (parentEl) {
+            const button = parentEl.querySelector(".play-btn");
+            const video = parentEl.querySelector("video");
+            const playBtn = e.target.closest(".play-btn");
+            if (playBtn) if (video.paused) {
                 video.play();
-                videoContainer.classList.add("_playing");
+                video.setAttribute("controls", "");
+                parentEl.classList.add("_playing");
+                button.style.opacity = 0;
             } else {
                 video.pause();
-                videoContainer.classList.remove("_playing");
+                parentEl.classList.remove("_playing");
+                video.removeAttribute("controls", "");
+            } else if (mobile) {
+                setTimeout((() => {
+                    button.style.opacity = 1;
+                }), 300);
+                setTimeout((() => {
+                    button.style.opacity = 0;
+                }), 2800);
             }
         }
     }
     window.onload = () => {
-        const videos = document.querySelectorAll(".bg-video");
-        document.addEventListener("click", (function(e) {
-            if (e.target.closest(".activity__btn")) toggleVideo(e);
+        const eventListener = isMobile.any() ? "touchend" : "click";
+        document.addEventListener(eventListener, (function(e) {
+            const videoParent = e.target.closest(".activity__video");
+            if (videoParent) toggleVideo(e, videoParent);
         }));
-        console.log(videos);
     };
     window["FLS"] = true;
     isWebp();
+    addTouchClass();
     menuInit();
     showMore();
     headerScroll();

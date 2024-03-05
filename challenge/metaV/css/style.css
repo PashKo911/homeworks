@@ -106,9 +106,6 @@ h6 {
   margin: 0 auto;
   padding: 0 .9375rem
 }
-.menu {
-  display: flex
-}
 .menu__list {
   display: flex;
   flex-wrap: wrap;
@@ -180,8 +177,7 @@ h6 {
 .activity__video {
   position: relative;
   overflow: hidden;
-  height: 0;
-  padding-bottom: 55%
+  height: 0
 }
 .activity__video embed,
 .activity__video iframe,
@@ -315,24 +311,19 @@ h6 {
   justify-self: end
 }
 .header {
-  position: relative;
   width: 100%;
   top: 0;
   left: 0;
   position: fixed;
   z-index: 50;
-  transition: -webkit-transform 1.5s;
-  transition: transform 1.5s;
-  transition: transform 1.5s,-webkit-transform 1.5s
+  transition: top 1.5s
 }
 .header._header-scroll {
-  -webkit-transform: translateY(-100%);
-  transform: translateY(-100%);
+  top: -200%;
   background-color: rgba(0,0,0,.65)
 }
 .header._header-show {
-  -webkit-transform: translateY(0);
-  transform: translateY(0)
+  top: 0
 }
 .header__container {
   min-height: var(--headH);
@@ -349,6 +340,9 @@ h6 {
   font-weight: 700;
   position: relative;
   z-index: 3
+}
+.footer {
+  background-color: var(--bg-third)
 }
 .footer__items {
   display: flex;
@@ -426,7 +420,8 @@ h6 {
   top: 0;
   left: 0;
   border-radius: 50%;
-  background: var(--bg-secondary)
+  background: var(--bg-secondary);
+  pointer-events: none
 }
 .hero {
   min-height: 100svh;
@@ -589,66 +584,51 @@ h6 {
   transform: translate(30%,-20%)
 }
 .activity__slide {
-  aspect-ratio: 1182/650;
-  -webkit-filter: drop-shadow(0 -.125rem 0 #d10ed1) drop-shadow(0 .125rem 0 #d10ed1) drop-shadow(.125rem 0 0 #10a3da) drop-shadow(-.125rem 0 0 #10a3da);
-  filter: drop-shadow(0 -.125rem 0 #d10ed1) drop-shadow(0 .125rem 0 #d10ed1) drop-shadow(.125rem 0 0 #10a3da) drop-shadow(-.125rem 0 0 #10a3da)
+  position: relative;
+  aspect-ratio: 1182/650
 }
 .activity__video {
   border-radius: 1.5625rem;
-  overflow: hidden;
-  height: 100%
-}
-.activity__pad {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  width: 100%;
   height: 100%;
-  top: 0;
-  left: 0
+  display: flex
 }
 .activity__video-title {
+  align-self: flex-end;
+  flex-basis: 100%;
   font-weight: 600;
-  background: rgba(0,0,0,.5);
-  -webkit-backdrop-filter: blur(.3125rem);
-  backdrop-filter: blur(.3125rem);
+  background-color: rgba(0,0,0,.5);
+  position: relative;
   transition: opacity .3s
 }
 ._playing .activity__video-title {
   overflow: hidden;
-  opacity: 0
+  opacity: 0;
+  pointer-events: none
 }
 .play-btn {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  transition: opacity .25s
 }
 ._playing .play-btn {
   opacity: 0
 }
 .play-btn span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%,-25%);
-  transform: translate(-50%,-25%);
   display: flex;
   justify-content: center;
   align-items: center;
-  align-self: center;
   aspect-ratio: 1/1;
   border-radius: 50%;
-  background: rgba(255,255,255,.5);
-  -webkit-backdrop-filter: blur(.3125rem);
-  backdrop-filter: blur(.3125rem);
-  border: .125rem solid var(--bg-fourth);
+  background-color: rgba(255,255,255,.7);
+  border: .125rem solid #10a3da;
   transition: border-color .3s
 }
 .play-btn span svg {
   aspect-ratio: 39/50;
-  fill: var(--bg-fourth);
+  fill: #10a3da;
   transition: fill .3s
 }
 ._playing .play-btn span svg {
@@ -1403,14 +1383,8 @@ h6 {
     -webkit-transform: scale(1.05);
     transform: scale(1.05)
   }
-  ._playing .play-btn:hover {
+  .activity__slide:hover ._playing .play-btn {
     opacity: 1
-  }
-  .play-btn:hover svg {
-    fill: #10a3da
-  }
-  .play-btn:hover span {
-    border-color: #10a3da
   }
   .play-btn:active svg {
     fill: #d10ed1
