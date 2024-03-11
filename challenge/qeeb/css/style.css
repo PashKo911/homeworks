@@ -597,15 +597,18 @@ textarea.input {
 .tranding__title {
   padding-left: 1.25rem
 }
-.categories__button-next,
 .categories__button-prev,
-.tranding__button-next,
 .tranding__button-prev {
   display: none
 }
 .categories__button-next,
 .tranding__button-next {
-  left: auto;
+  display: block;
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  -webkit-transform: translate(0,-50%);
+  transform: translate(0,-50%);
   right: 0
 }
 .item-categories {
@@ -890,7 +893,7 @@ textarea.input {
   flex-wrap: wrap
 }
 .hero {
-  padding-top: calc(var(--headH) + 2.5rem);
+  padding-top: calc(var(--headH) + 1.25rem);
   padding-bottom: 2.5rem;
   min-height: 100svh;
   display: flex;
@@ -900,6 +903,9 @@ textarea.input {
   display: grid;
   grid-template-columns: .43581fr .56419fr;
   row-gap: 1.25rem;
+  -webkit-column-gap: .9375rem;
+  -moz-column-gap: .9375rem;
+  column-gap: .9375rem;
   align-items: center
 }
 .hero__label {
@@ -1275,9 +1281,7 @@ textarea.input {
     padding-right: 2.1875rem;
     position: relative
   }
-  .categories__button-next,
   .categories__button-prev,
-  .tranding__button-next,
   .tranding__button-prev {
     display: block;
     position: absolute;
