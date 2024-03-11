@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20240311091456">
+	<link rel="stylesheet" href="css/style.min.css?_v=20240311164026">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,10 +77,10 @@
 								<div class="actions__icon">
 									<picture><source srcset="img/hero/03.webp" type="image/webp"><img class="actions__img ibg" src="img/hero/03.png" alt="Image"></picture>
 								</div>
-								<div class="actions__arrow">
+								<div data-watch-threshold="1" data-watch-once data-watch class="actions__arrow">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 146 120" fill="none">
-										<path d="M119.666 91.423C120.698 72.7245 116.768 53.9602 102.376 40.065C89.3859 27.5231 71.762 25.1597 63.3776 43.6589C59.4085 52.416 60.8412 65.2717 69.7115 70.8408C79.5937 77.0453 87.3225 67.4889 87 60C86.2469 42.5088 56.6781 44.2536 36.5 43.6589C12.6044 42.9547 0.852925 21.698 0.999961 21.6289" stroke="white" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round" />
-										<path d="M136.351 77.7485C134.253 78.321 132.627 79.6527 130.933 80.9029C125.372 85.0077 120.748 91.107 119.633 97.8446C118.38 90.5722 114.171 81.552 106.601 78.7139" stroke="white" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round" />
+										<path id="path1" d="M119.666 91.423C120.698 72.7245 116.768 53.9602 102.376 40.065C89.3859 27.5231 71.762 25.1597 63.3776 43.6589C59.4085 52.416 60.8412 65.2717 69.7115 70.8408C79.5937 77.0453 87.3225 67.4889 87 60C86.2469 42.5088 56.6781 44.2536 36.5 43.6589C12.6044 42.9547 0.852925 21.698 0.999961 21.6289" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round" />
+										<path id="path2" d="M136.351 77.7485C134.253 78.321 132.627 79.6527 130.933 80.9029C125.372 85.0077 120.748 91.107 119.633 97.8446C118.38 90.5722 114.171 81.552 106.601 78.7139" stroke="white" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round" />
 									</svg>
 								</div>
 							</div>
@@ -88,7 +88,7 @@
 						<div class="actions__progress progress">
 							<div class="progress__item">
 								<div class="progress__number">
-									<span data-counter="3, 20">
+									<span data-counter="3, 20, 3">
 										50
 									</span>
 									<span>
@@ -101,7 +101,7 @@
 							</div>
 							<div class="progress__item">
 								<div class="progress__number">
-									<span data-counter="3, 20">
+									<span data-counter="3, 20, 3">
 										35
 									</span>
 									<span>
@@ -114,7 +114,7 @@
 							</div>
 							<div class="progress__item">
 								<div class="progress__number">
-									<span data-counter="3, 20">
+									<span data-counter="3, 20, 3">
 										23
 									</span>
 									<span>
@@ -128,8 +128,25 @@
 						</div>
 					</div>
 					<div class="hero__main-img img-hero">
-						<div class="img-hero__wrapper">
-							<picture><source data-srcset="img/hero/man.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="img-hero__img ibg" data-src="img/hero/man.jpg" alt="Image"></picture>
+						<div class="img-hero__box">
+							<div class="img-hero__slider swiper">
+								<div class="img-hero__wrapper swiper-wrapper">
+									<div class="img-hero__slide swiper-slide">
+
+										<picture><source data-srcset="img/hero/man.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="img-hero__img ibg" data-src="img/hero/man.jpg" alt="Image"></picture>
+									</div>
+									<div class="img-hero__slide swiper-slide">
+
+										<picture><source data-srcset="img/hero/mountines.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="img-hero__img ibg" data-src="img/hero/mountines.jpg" alt="Image"></picture>
+									</div>
+									<div class="img-hero__slide swiper-slide">
+										<picture><source data-srcset="img/hero/man.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="img-hero__img ibg" data-src="img/hero/man.jpg" alt="Image"></picture>
+									</div>
+									<div class="img-hero__slide swiper-slide">
+										<picture><source data-srcset="img/hero/mountines.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="img-hero__img ibg" data-src="img/hero/mountines.jpg" alt="Image"></picture>
+									</div>
+								</div>
+							</div>
 							<a href="#" class="img-hero__btn ">
 								<div data-circle-text="nft marketplace qeeb" class="circle-wrqpper _icon-play">
 
@@ -140,15 +157,16 @@
 				</div>
 			</section>
 
+
 			<section class="page__categories categories">
 				<div class="categories__container">
 					<h2 class="categories__title title">
 						popular categories
 					</h2>
 					<div class="categories__box">
-						<div pagination="true" pagination-dynamic-bullets="true" class="categories__slider swiper">
+						<div class="categories__slider swiper">
 							<div class="categories__wrapper swiper-wrapper">
-								<div lazy="true" class="categories__slide swiper-slide">
+								<div class="categories__slide swiper-slide">
 									<article class="categories__item item-categories">
 										<a href="#" class="item-categories__link">
 											<picture><source data-srcset="img/categories/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-categories__img ibg" data-src="img/categories/01.jpg" alt="Image"></picture>
@@ -158,7 +176,7 @@
 										</a>
 									</article>
 								</div>
-								<div lazy="true" class="categories__slide swiper-slide">
+								<div class="categories__slide swiper-slide">
 									<article class="categories__item item-categories">
 										<a href="#" class="item-categories__link">
 											<picture><source data-srcset="img/categories/02.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-categories__img ibg" data-src="img/categories/02.jpg" alt="Image"></picture>
@@ -168,7 +186,7 @@
 										</a>
 									</article>
 								</div>
-								<div lazy="true" class="categories__slide swiper-slide">
+								<div class="categories__slide swiper-slide">
 									<article class="categories__item item-categories">
 										<a href="#" class="item-categories__link">
 											<picture><source data-srcset="img/categories/03.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-categories__img ibg" data-src="img/categories/03.jpg" alt="Image"></picture>
@@ -178,7 +196,7 @@
 										</a>
 									</article>
 								</div>
-								<div lazy="true" class="categories__slide swiper-slide">
+								<div class="categories__slide swiper-slide">
 									<article class="categories__item item-categories">
 										<a href="#" class="item-categories__link">
 											<picture><source data-srcset="img/categories/04.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-categories__img ibg" data-src="img/categories/04.jpg" alt="Image"></picture>
@@ -188,7 +206,7 @@
 										</a>
 									</article>
 								</div>
-								<div lazy="true" class="categories__slide swiper-slide">
+								<div class="categories__slide swiper-slide">
 									<article class="categories__item item-categories">
 										<a href="#" class="item-categories__link">
 											<picture><source data-srcset="img/categories/05.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-categories__img ibg" data-src="img/categories/05.jpg" alt="Image"></picture>
@@ -198,7 +216,7 @@
 										</a>
 									</article>
 								</div>
-								<div lazy="true" class="categories__slide swiper-slide">
+								<div class="categories__slide swiper-slide">
 									<article class="categories__item item-categories">
 										<a href="#" class="item-categories__link">
 											<picture><source data-srcset="img/categories/06.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-categories__img ibg" data-src="img/categories/06.jpg" alt="Image"></picture>
@@ -208,7 +226,7 @@
 										</a>
 									</article>
 								</div>
-								<div lazy="true" class="categories__slide swiper-slide">
+								<div class="categories__slide swiper-slide">
 									<article class="categories__item item-categories">
 										<a href="#" class="item-categories__link">
 											<picture><source data-srcset="img/categories/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-categories__img ibg" data-src="img/categories/01.jpg" alt="Image"></picture>
@@ -218,7 +236,7 @@
 										</a>
 									</article>
 								</div>
-								<div lazy="true" class="categories__slide swiper-slide">
+								<div class="categories__slide swiper-slide">
 									<article class="categories__item item-categories">
 										<a href="#" class="item-categories__link">
 											<picture><source data-srcset="img/categories/02.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-categories__img ibg" data-src="img/categories/02.jpg" alt="Image"></picture>
@@ -228,7 +246,7 @@
 										</a>
 									</article>
 								</div>
-								<div lazy="true" class="categories__slide swiper-slide">
+								<div class="categories__slide swiper-slide">
 									<article class="categories__item item-categories">
 										<a href="#" class="item-categories__link">
 											<picture><source data-srcset="img/categories/03.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-categories__img ibg" data-src="img/categories/03.jpg" alt="Image"></picture>
@@ -242,14 +260,13 @@
 
 							</div>
 						</div>
-						<div aria-label="pugination buttons" class="categories__swiper-pagination swiper-pagination">
-						</div>
 						<button type="button" aria-label="previous slide" class="categories__button-prev swiper-button-prev _icon-arr-left"></button>
 						<button type="button" aria-label="next slide" class="categories__button-next swiper-button-next _icon-arr-right"></button>
+						<div class="categories__swiper-pagination swiper-pagination">
+						</div>
 					</div>
 				</div>
 			</section>
-
 
 			<section class="page__collections collections">
 				<div class="collections__container">
@@ -264,9 +281,9 @@
 							</nav>
 						</div>
 						<div data-tabs-body class="tabs__content">
-							<div data-showmore="items" data-showmore-media="320,min" class="tabs__body">
-								<div data-showmore-content="4" class="tabs__items">
-									<article data-showmore-content class="tabs__item item-tabs">
+							<div class="tabs__body">
+								<div class="tabs__items">
+									<article class="tabs__item item-tabs">
 										<a href="#" class="item-tabs__link">
 											<div class="item-tabs__img-box">
 												<picture><source data-srcset="img/collections/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/01.jpg" alt="Image"></picture>
@@ -440,7 +457,7 @@
 											</div>
 										</a>
 									</article>
-									<article data-showmore-content class="tabs__item item-tabs">
+									<article class="tabs__item item-tabs">
 										<a href="#" class="item-tabs__link">
 											<div class="item-tabs__img-box">
 												<picture><source data-srcset="img/collections/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/01.jpg" alt="Image"></picture>
@@ -614,365 +631,11 @@
 											</div>
 										</a>
 									</article>
-									<article data-showmore-content class="tabs__item item-tabs">
-										<a href="#" class="item-tabs__link">
-											<div class="item-tabs__img-box">
-												<picture><source data-srcset="img/collections/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/01.jpg" alt="Image"></picture>
-												<span class="item-tabs__counter">10</span>
-											</div>
-											<div class="item-tabs__body">
-												<div class="item-tabs__content">
-													<h3 class="item-tabs__title">
-														NFT Worlds
-													</h3>
-													<div class="item-tabs__subtitle">
-														Floor: 0.80ETH
-													</div>
-												</div>
-												<div class="item-tabs__stat">
-													<div class="item-tabs__price">
-														5.8k ETH
-													</div>
-													<div class="item-tabs__price item-tabs__price--gray">
-														$8.4M
-													</div>
-													<div class="item-tabs__price item-tabs__price--green item-tabs__price--fz-14">
-														$8.4M
-													</div>
-												</div>
-											</div>
-										</a>
-									</article>
-									<article class="tabs__item item-tabs">
-										<a href="#" class="item-tabs__link">
-											<div class="item-tabs__img-box">
-												<picture><source data-srcset="img/collections/02.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/02.jpg" alt="Image"></picture>
-												<span class="item-tabs__counter">5</span>
-											</div>
-											<div class="item-tabs__body">
-												<div class="item-tabs__content">
-													<h3 class="item-tabs__title">
-														Etherpilots
-													</h3>
-													<div class="item-tabs__subtitle">
-														Floor: 0.05ETH
-													</div>
-												</div>
-												<div class="item-tabs__stat">
-													<div class="item-tabs__price">
-														5.8k ETH
-													</div>
-													<div class="item-tabs__price item-tabs__price--gray">
-														$8.4M
-													</div>
-													<div class="item-tabs__price item-tabs__price--green item-tabs__price--fz-14">
-														$8.4M
-													</div>
-												</div>
-											</div>
-										</a>
-									</article>
-									<article class="tabs__item item-tabs">
-										<a href="#" class="item-tabs__link">
-											<div class="item-tabs__img-box">
-												<picture><source data-srcset="img/collections/03.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/03.jpg" alt="Image"></picture>
-												<span class="item-tabs__counter">9</span>
-											</div>
-											<div class="item-tabs__body">
-												<div class="item-tabs__content">
-													<h3 class="item-tabs__title">
-														Mineblowings
-													</h3>
-													<div class="item-tabs__subtitle">
-														Floor: 0.07ETH
-													</div>
-												</div>
-												<div class="item-tabs__stat">
-													<div class="item-tabs__price">
-														5.8k ETH
-													</div>
-													<div class="item-tabs__price item-tabs__price--gray">
-														$8.4M
-													</div>
-													<div class="item-tabs__price item-tabs__price--green item-tabs__price--fz-14">
-														$8.4M
-													</div>
-												</div>
-											</div>
-										</a>
-									</article>
-									<article class="tabs__item item-tabs">
-										<a href="#" class="item-tabs__link">
-											<div class="item-tabs__img-box">
-												<picture><source data-srcset="img/collections/04.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/04.jpg" alt="Image"></picture>
-												<span class="item-tabs__counter">2</span>
-											</div>
-											<div class="item-tabs__body">
-												<div class="item-tabs__content">
-													<h3 class="item-tabs__title">
-														Super Worlds
-													</h3>
-													<div class="item-tabs__subtitle">
-														Floor: 0.70ETH
-													</div>
-												</div>
-												<div class="item-tabs__stat">
-													<div class="item-tabs__price">
-														5.8k ETH
-													</div>
-													<div class="item-tabs__price item-tabs__price--gray">
-														$8.4M
-													</div>
-													<div class="item-tabs__price item-tabs__price--green item-tabs__price--fz-14">
-														$8.4M
-													</div>
-												</div>
-											</div>
-										</a>
-									</article>
-									<article class="tabs__item item-tabs">
-										<a href="#" class="item-tabs__link">
-											<div class="item-tabs__img-box">
-												<picture><source data-srcset="img/collections/05.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/05.jpg" alt="Image"></picture>
-												<span class="item-tabs__counter">6</span>
-											</div>
-											<div class="item-tabs__body">
-												<div class="item-tabs__content">
-													<h3 class="item-tabs__title">
-														Kive Core
-													</h3>
-													<div class="item-tabs__subtitle">
-														Floor: 0.06ETH
-													</div>
-												</div>
-												<div class="item-tabs__stat">
-													<div class="item-tabs__price">
-														5.8k ETH
-													</div>
-													<div class="item-tabs__price item-tabs__price--gray">
-														$8.4M
-													</div>
-													<div class="item-tabs__price item-tabs__price--green item-tabs__price--fz-14">
-														$8.4M
-													</div>
-												</div>
-											</div>
-										</a>
-									</article>
-									<article class="tabs__item item-tabs">
-										<a href="#" class="item-tabs__link">
-											<div class="item-tabs__img-box">
-												<picture><source data-srcset="img/collections/06.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/06.jpg" alt="Image"></picture>
-												<span class="item-tabs__counter">10</span>
-											</div>
-											<div class="item-tabs__body">
-												<div class="item-tabs__content">
-													<h3 class="item-tabs__title">
-														NFT Flow
-													</h3>
-													<div class="item-tabs__subtitle">
-														Floor: 0.50ETH
-													</div>
-												</div>
-												<div class="item-tabs__stat">
-													<div class="item-tabs__price">
-														5.8k ETH
-													</div>
-													<div class="item-tabs__price item-tabs__price--gray">
-														$8.4M
-													</div>
-													<div class="item-tabs__price item-tabs__price--green item-tabs__price--fz-14">
-														$8.4M
-													</div>
-												</div>
-											</div>
-										</a>
-									</article>
-
 								</div>
-								<div class="tabs__more-wrapper">
-									<button hidden data-showmore-button type="button" class=" tabs__more button"><span>See All
-											Collection</span><span>Hide</span></button>
-								</div>
-
 							</div>
-							<div data-showmore="items" data-showmore-media="320,min" class="tabs__body">
-								<div data-showmore-content="4" class="tabs__items">
-									<article data-showmore-content class="tabs__item item-tabs">
-										<a href="#" class="item-tabs__link">
-											<div class="item-tabs__img-box">
-												<picture><source data-srcset="img/collections/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/01.jpg" alt="Image"></picture>
-												<span class="item-tabs__counter">10</span>
-											</div>
-											<div class="item-tabs__body">
-												<div class="item-tabs__content">
-													<h3 class="item-tabs__title">
-														NFT Worlds
-													</h3>
-													<div class="item-tabs__subtitle">
-														Floor: 0.80ETH
-													</div>
-												</div>
-												<div class="item-tabs__stat">
-													<div class="item-tabs__price">
-														5.8k ETH
-													</div>
-													<div class="item-tabs__price item-tabs__price--gray">
-														$8.4M
-													</div>
-													<div class="item-tabs__price item-tabs__price--green item-tabs__price--fz-14">
-														$8.4M
-													</div>
-												</div>
-											</div>
-										</a>
-									</article>
+							<div class="tabs__body">
+								<div class="tabs__items">
 									<article class="tabs__item item-tabs">
-										<a href="#" class="item-tabs__link">
-											<div class="item-tabs__img-box">
-												<picture><source data-srcset="img/collections/02.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/02.jpg" alt="Image"></picture>
-												<span class="item-tabs__counter">5</span>
-											</div>
-											<div class="item-tabs__body">
-												<div class="item-tabs__content">
-													<h3 class="item-tabs__title">
-														Etherpilots
-													</h3>
-													<div class="item-tabs__subtitle">
-														Floor: 0.05ETH
-													</div>
-												</div>
-												<div class="item-tabs__stat">
-													<div class="item-tabs__price">
-														5.8k ETH
-													</div>
-													<div class="item-tabs__price item-tabs__price--gray">
-														$8.4M
-													</div>
-													<div class="item-tabs__price item-tabs__price--green item-tabs__price--fz-14">
-														$8.4M
-													</div>
-												</div>
-											</div>
-										</a>
-									</article>
-									<article class="tabs__item item-tabs">
-										<a href="#" class="item-tabs__link">
-											<div class="item-tabs__img-box">
-												<picture><source data-srcset="img/collections/03.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/03.jpg" alt="Image"></picture>
-												<span class="item-tabs__counter">9</span>
-											</div>
-											<div class="item-tabs__body">
-												<div class="item-tabs__content">
-													<h3 class="item-tabs__title">
-														Mineblowings
-													</h3>
-													<div class="item-tabs__subtitle">
-														Floor: 0.07ETH
-													</div>
-												</div>
-												<div class="item-tabs__stat">
-													<div class="item-tabs__price">
-														5.8k ETH
-													</div>
-													<div class="item-tabs__price item-tabs__price--gray">
-														$8.4M
-													</div>
-													<div class="item-tabs__price item-tabs__price--green item-tabs__price--fz-14">
-														$8.4M
-													</div>
-												</div>
-											</div>
-										</a>
-									</article>
-									<article class="tabs__item item-tabs">
-										<a href="#" class="item-tabs__link">
-											<div class="item-tabs__img-box">
-												<picture><source data-srcset="img/collections/04.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/04.jpg" alt="Image"></picture>
-												<span class="item-tabs__counter">2</span>
-											</div>
-											<div class="item-tabs__body">
-												<div class="item-tabs__content">
-													<h3 class="item-tabs__title">
-														Super Worlds
-													</h3>
-													<div class="item-tabs__subtitle">
-														Floor: 0.70ETH
-													</div>
-												</div>
-												<div class="item-tabs__stat">
-													<div class="item-tabs__price">
-														5.8k ETH
-													</div>
-													<div class="item-tabs__price item-tabs__price--gray">
-														$8.4M
-													</div>
-													<div class="item-tabs__price item-tabs__price--green item-tabs__price--fz-14">
-														$8.4M
-													</div>
-												</div>
-											</div>
-										</a>
-									</article>
-									<article class="tabs__item item-tabs">
-										<a href="#" class="item-tabs__link">
-											<div class="item-tabs__img-box">
-												<picture><source data-srcset="img/collections/05.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/05.jpg" alt="Image"></picture>
-												<span class="item-tabs__counter">6</span>
-											</div>
-											<div class="item-tabs__body">
-												<div class="item-tabs__content">
-													<h3 class="item-tabs__title">
-														Kive Core
-													</h3>
-													<div class="item-tabs__subtitle">
-														Floor: 0.06ETH
-													</div>
-												</div>
-												<div class="item-tabs__stat">
-													<div class="item-tabs__price">
-														5.8k ETH
-													</div>
-													<div class="item-tabs__price item-tabs__price--gray">
-														$8.4M
-													</div>
-													<div class="item-tabs__price item-tabs__price--green item-tabs__price--fz-14">
-														$8.4M
-													</div>
-												</div>
-											</div>
-										</a>
-									</article>
-									<article class="tabs__item item-tabs">
-										<a href="#" class="item-tabs__link">
-											<div class="item-tabs__img-box">
-												<picture><source data-srcset="img/collections/06.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/06.jpg" alt="Image"></picture>
-												<span class="item-tabs__counter">10</span>
-											</div>
-											<div class="item-tabs__body">
-												<div class="item-tabs__content">
-													<h3 class="item-tabs__title">
-														NFT Flow
-													</h3>
-													<div class="item-tabs__subtitle">
-														Floor: 0.50ETH
-													</div>
-												</div>
-												<div class="item-tabs__stat">
-													<div class="item-tabs__price">
-														5.8k ETH
-													</div>
-													<div class="item-tabs__price item-tabs__price--gray">
-														$8.4M
-													</div>
-													<div class="item-tabs__price item-tabs__price--green item-tabs__price--fz-14">
-														$8.4M
-													</div>
-												</div>
-											</div>
-										</a>
-									</article>
-									<article data-showmore-content class="tabs__item item-tabs">
 										<a href="#" class="item-tabs__link">
 											<div class="item-tabs__img-box">
 												<picture><source data-srcset="img/collections/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/01.jpg" alt="Image"></picture>
@@ -1149,16 +812,16 @@
 									<article class="tabs__item item-tabs">
 										<a href="#" class="item-tabs__link">
 											<div class="item-tabs__img-box">
-												<picture><source data-srcset="img/collections/06.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/06.jpg" alt="Image"></picture>
+												<picture><source data-srcset="img/collections/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/01.jpg" alt="Image"></picture>
 												<span class="item-tabs__counter">10</span>
 											</div>
 											<div class="item-tabs__body">
 												<div class="item-tabs__content">
 													<h3 class="item-tabs__title">
-														NFT Flow
+														NFT Worlds
 													</h3>
 													<div class="item-tabs__subtitle">
-														Floor: 0.50ETH
+														Floor: 0.80ETH
 													</div>
 												</div>
 												<div class="item-tabs__stat">
@@ -1178,16 +841,16 @@
 									<article class="tabs__item item-tabs">
 										<a href="#" class="item-tabs__link">
 											<div class="item-tabs__img-box">
-												<picture><source data-srcset="img/collections/06.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/06.jpg" alt="Image"></picture>
-												<span class="item-tabs__counter">10</span>
+												<picture><source data-srcset="img/collections/02.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-tabs__img ibg ibg--contain" data-src="img/collections/02.jpg" alt="Image"></picture>
+												<span class="item-tabs__counter">5</span>
 											</div>
 											<div class="item-tabs__body">
 												<div class="item-tabs__content">
 													<h3 class="item-tabs__title">
-														NFT Flow
+														Etherpilots
 													</h3>
 													<div class="item-tabs__subtitle">
-														Floor: 0.50ETH
+														Floor: 0.05ETH
 													</div>
 												</div>
 												<div class="item-tabs__stat">
@@ -1204,15 +867,13 @@
 											</div>
 										</a>
 									</article>
-								</div>
-								<div class="tabs__more-wrapper">
-									<button hidden data-showmore-button type="button" class=" tabs__more button"><span>See All
-											Collection</span><span>Hide</span></button>
-								</div>
 
+								</div>
 							</div>
-
-
+						</div>
+						<div class="tabs__more-wrapper">
+							<a href="#" class=" tabs__more button"><span>See All
+									Collection</span></a>
 						</div>
 					</div>
 				</div>
@@ -1225,7 +886,7 @@
 						Tranding nfts
 					</h2>
 					<div class="tranding__slider-box">
-						<div pagination="true" pagination-dynamic-bullets="true" class="tranding__slider swiper">
+						<div class="tranding__slider swiper">
 							<div class="tranding__wrapper swiper-wrapper">
 								<div class="tranding__slide swiper-slide">
 									<article class="tranding__item item-tranding">
@@ -1428,10 +1089,10 @@
 
 							</div>
 						</div>
-						<div aria-label="pugination buttons" class="tranding__swiper-pagination swiper-pagination">
-						</div>
 						<button type="button" aria-label="previous slide" class="tranding__button-prev swiper-button-prev _icon-arr-left"></button>
 						<button type="button" aria-label="next slide" class="tranding__button-next swiper-button-next _icon-arr-right"></button>
+						<div class="tranding__swiper-pagination swiper-pagination">
+						</div>
 					</div>
 				</div>
 			</section>
@@ -1627,7 +1288,7 @@
 				<div class="footer__bottom bottom-footer">
 					<address class="bottom-footer__address address">
 						<ul class="address__list">
-							<div class="address__title">Office</div>
+							<li class="address__title">Office</li>
 							<li class="address__item">
 								<a href="https://www.google.com/maps/search/545,+Street+11,+Block+F+California,+U.S.A/@36.7949747,-129.9073074,5z/data=!3m1!4b1?entry=ttu" class="address__link">
 									545, Street 11, Block F California, U.S.A
@@ -1635,7 +1296,7 @@
 							</li>
 						</ul>
 						<ul class="address__list">
-							<div class="address__title">Contact</div>
+							<li class="address__title">Contact</li>
 							<li class="address__item">
 								<a href="tel:+923023003215" class="address__link">
 									+92 302 300 3215
@@ -1667,7 +1328,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20240311091456"></script>
+	<script src="js/app.min.js?_v=20240311164026"></script>
 </body>
 
 </html>

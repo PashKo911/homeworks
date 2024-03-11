@@ -723,121 +723,6 @@
             bodyUnlock();
             document.documentElement.classList.remove("menu-open");
         }
-        function showMore() {
-            window.addEventListener("load", (function(e) {
-                const showMoreBlocks = document.querySelectorAll("[data-showmore]");
-                let showMoreBlocksRegular;
-                let mdQueriesArray;
-                if (showMoreBlocks.length) {
-                    showMoreBlocksRegular = Array.from(showMoreBlocks).filter((function(item, index, self) {
-                        return !item.dataset.showmoreMedia;
-                    }));
-                    showMoreBlocksRegular.length ? initItems(showMoreBlocksRegular) : null;
-                    document.addEventListener("click", showMoreActions);
-                    window.addEventListener("resize", showMoreActions);
-                    mdQueriesArray = dataMediaQueries(showMoreBlocks, "showmoreMedia");
-                    if (mdQueriesArray && mdQueriesArray.length) {
-                        mdQueriesArray.forEach((mdQueriesItem => {
-                            mdQueriesItem.matchMedia.addEventListener("change", (function() {
-                                initItems(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
-                            }));
-                        }));
-                        initItemsMedia(mdQueriesArray);
-                    }
-                }
-                function initItemsMedia(mdQueriesArray) {
-                    mdQueriesArray.forEach((mdQueriesItem => {
-                        initItems(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
-                    }));
-                }
-                function initItems(showMoreBlocks, matchMedia) {
-                    showMoreBlocks.forEach((showMoreBlock => {
-                        initItem(showMoreBlock, matchMedia);
-                    }));
-                }
-                function initItem(showMoreBlock, matchMedia = false) {
-                    showMoreBlock = matchMedia ? showMoreBlock.item : showMoreBlock;
-                    let showMoreContent = showMoreBlock.querySelectorAll("[data-showmore-content]");
-                    let showMoreButton = showMoreBlock.querySelectorAll("[data-showmore-button]");
-                    showMoreContent = Array.from(showMoreContent).filter((item => item.closest("[data-showmore]") === showMoreBlock))[0];
-                    showMoreButton = Array.from(showMoreButton).filter((item => item.closest("[data-showmore]") === showMoreBlock))[0];
-                    const hiddenHeight = getHeight(showMoreBlock, showMoreContent);
-                    if (matchMedia.matches || !matchMedia) if (hiddenHeight < getOriginalHeight(showMoreContent, showMoreBlock)) {
-                        _slideUp(showMoreContent, 0, showMoreBlock.classList.contains("_showmore-active") ? getOriginalHeight(showMoreContent) : hiddenHeight);
-                        showMoreButton.hidden = false;
-                    } else {
-                        _slideDown(showMoreContent, 0, hiddenHeight);
-                        showMoreButton.hidden = true;
-                    } else {
-                        _slideDown(showMoreContent, 0, hiddenHeight);
-                        showMoreButton.hidden = true;
-                    }
-                }
-                function getHeight(showMoreBlock, showMoreContent) {
-                    let hiddenHeight = 0;
-                    const showMoreType = showMoreBlock.dataset.showmore ? showMoreBlock.dataset.showmore : "size";
-                    const rowGap = parseFloat(getComputedStyle(showMoreContent).rowGap) ? parseFloat(getComputedStyle(showMoreContent).rowGap) : 0;
-                    if (showMoreType === "items") {
-                        const showMoreTypeValue = showMoreContent.dataset.showmoreContent ? showMoreContent.dataset.showmoreContent : 3;
-                        const showMoreItems = showMoreContent.children;
-                        for (let index = 1; index < showMoreItems.length; index++) {
-                            const showMoreItem = showMoreItems[index - 1];
-                            const marginTop = parseFloat(getComputedStyle(showMoreItem).marginTop) ? parseFloat(getComputedStyle(showMoreItem).marginTop) : 0;
-                            const marginBottom = parseFloat(getComputedStyle(showMoreItem).marginBottom) ? parseFloat(getComputedStyle(showMoreItem).marginBottom) : 0;
-                            hiddenHeight += showMoreItem.offsetHeight + marginTop;
-                            if (index == showMoreTypeValue) break;
-                            hiddenHeight += marginBottom;
-                        }
-                        rowGap ? hiddenHeight += (showMoreTypeValue - 1) * rowGap : null;
-                    } else {
-                        const showMoreTypeValue = showMoreContent.dataset.showmoreContent ? showMoreContent.dataset.showmoreContent : 150;
-                        hiddenHeight = showMoreTypeValue;
-                    }
-                    return hiddenHeight;
-                }
-                function getOriginalHeight(showMoreContent, showMoreBlock) {
-                    let parentHidden;
-                    let hiddenHeight;
-                    if (showMoreBlock && showMoreBlock.hidden) {
-                        showMoreBlock.hidden = false;
-                        hiddenHeight = showMoreContent.offsetHeight;
-                        setTimeout((() => {
-                            showMoreBlock.hidden = true;
-                        }), 300);
-                    }
-                    hiddenHeight = showMoreContent.offsetHeight;
-                    showMoreContent.style.removeProperty("height");
-                    if (showMoreContent.closest(`[hidden]`)) {
-                        parentHidden = showMoreContent.closest(`[hidden]`);
-                        parentHidden.hidden = false;
-                    }
-                    let originalHeight = showMoreContent.offsetHeight;
-                    parentHidden ? parentHidden.hidden = true : null;
-                    showMoreContent.style.height = `${hiddenHeight}px`;
-                    return originalHeight;
-                }
-                function showMoreActions(e) {
-                    const targetEvent = e.target;
-                    const targetType = e.type;
-                    if (targetType === "click") {
-                        if (targetEvent.closest("[data-showmore-button]")) {
-                            const showMoreButton = targetEvent.closest("[data-showmore-button]");
-                            const showMoreBlock = showMoreButton.closest("[data-showmore]");
-                            const showMoreContent = showMoreBlock.querySelector("[data-showmore-content]");
-                            const showMoreSpeed = showMoreBlock.dataset.showmoreButton ? showMoreBlock.dataset.showmoreButton : "500";
-                            const hiddenHeight = getHeight(showMoreBlock, showMoreContent);
-                            if (!showMoreContent.classList.contains("_slide")) {
-                                showMoreBlock.classList.contains("_showmore-active") ? _slideUp(showMoreContent, showMoreSpeed, hiddenHeight) : _slideDown(showMoreContent, showMoreSpeed, hiddenHeight);
-                                showMoreBlock.classList.toggle("_showmore-active");
-                            }
-                        }
-                    } else if (targetType === "resize") {
-                        showMoreBlocksRegular && showMoreBlocksRegular.length ? initItems(showMoreBlocksRegular) : null;
-                        mdQueriesArray && mdQueriesArray.length ? initItemsMedia(mdQueriesArray) : null;
-                    }
-                }
-            }));
-        }
         function FLS(message) {
             setTimeout((() => {
                 if (window.FLS) console.log(message);
@@ -4537,6 +4422,436 @@
                 destroy
             });
         }
+        function Autoplay(_ref) {
+            let {swiper, extendParams, on, emit, params} = _ref;
+            swiper.autoplay = {
+                running: false,
+                paused: false,
+                timeLeft: 0
+            };
+            extendParams({
+                autoplay: {
+                    enabled: false,
+                    delay: 3e3,
+                    waitForTransition: true,
+                    disableOnInteraction: false,
+                    stopOnLastSlide: false,
+                    reverseDirection: false,
+                    pauseOnMouseEnter: false
+                }
+            });
+            let timeout;
+            let raf;
+            let autoplayDelayTotal = params && params.autoplay ? params.autoplay.delay : 3e3;
+            let autoplayDelayCurrent = params && params.autoplay ? params.autoplay.delay : 3e3;
+            let autoplayTimeLeft;
+            let autoplayStartTime = (new Date).getTime();
+            let wasPaused;
+            let isTouched;
+            let pausedByTouch;
+            let touchStartTimeout;
+            let slideChanged;
+            let pausedByInteraction;
+            let pausedByPointerEnter;
+            function onTransitionEnd(e) {
+                if (!swiper || swiper.destroyed || !swiper.wrapperEl) return;
+                if (e.target !== swiper.wrapperEl) return;
+                swiper.wrapperEl.removeEventListener("transitionend", onTransitionEnd);
+                if (pausedByPointerEnter) return;
+                resume();
+            }
+            const calcTimeLeft = () => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                if (swiper.autoplay.paused) wasPaused = true; else if (wasPaused) {
+                    autoplayDelayCurrent = autoplayTimeLeft;
+                    wasPaused = false;
+                }
+                const timeLeft = swiper.autoplay.paused ? autoplayTimeLeft : autoplayStartTime + autoplayDelayCurrent - (new Date).getTime();
+                swiper.autoplay.timeLeft = timeLeft;
+                emit("autoplayTimeLeft", timeLeft, timeLeft / autoplayDelayTotal);
+                raf = requestAnimationFrame((() => {
+                    calcTimeLeft();
+                }));
+            };
+            const getSlideDelay = () => {
+                let activeSlideEl;
+                if (swiper.virtual && swiper.params.virtual.enabled) activeSlideEl = swiper.slides.filter((slideEl => slideEl.classList.contains("swiper-slide-active")))[0]; else activeSlideEl = swiper.slides[swiper.activeIndex];
+                if (!activeSlideEl) return;
+                const currentSlideDelay = parseInt(activeSlideEl.getAttribute("data-swiper-autoplay"), 10);
+                return currentSlideDelay;
+            };
+            const run = delayForce => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                cancelAnimationFrame(raf);
+                calcTimeLeft();
+                let delay = typeof delayForce === "undefined" ? swiper.params.autoplay.delay : delayForce;
+                autoplayDelayTotal = swiper.params.autoplay.delay;
+                autoplayDelayCurrent = swiper.params.autoplay.delay;
+                const currentSlideDelay = getSlideDelay();
+                if (!Number.isNaN(currentSlideDelay) && currentSlideDelay > 0 && typeof delayForce === "undefined") {
+                    delay = currentSlideDelay;
+                    autoplayDelayTotal = currentSlideDelay;
+                    autoplayDelayCurrent = currentSlideDelay;
+                }
+                autoplayTimeLeft = delay;
+                const speed = swiper.params.speed;
+                const proceed = () => {
+                    if (!swiper || swiper.destroyed) return;
+                    if (swiper.params.autoplay.reverseDirection) {
+                        if (!swiper.isBeginning || swiper.params.loop || swiper.params.rewind) {
+                            swiper.slidePrev(speed, true, true);
+                            emit("autoplay");
+                        } else if (!swiper.params.autoplay.stopOnLastSlide) {
+                            swiper.slideTo(swiper.slides.length - 1, speed, true, true);
+                            emit("autoplay");
+                        }
+                    } else if (!swiper.isEnd || swiper.params.loop || swiper.params.rewind) {
+                        swiper.slideNext(speed, true, true);
+                        emit("autoplay");
+                    } else if (!swiper.params.autoplay.stopOnLastSlide) {
+                        swiper.slideTo(0, speed, true, true);
+                        emit("autoplay");
+                    }
+                    if (swiper.params.cssMode) {
+                        autoplayStartTime = (new Date).getTime();
+                        requestAnimationFrame((() => {
+                            run();
+                        }));
+                    }
+                };
+                if (delay > 0) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout((() => {
+                        proceed();
+                    }), delay);
+                } else requestAnimationFrame((() => {
+                    proceed();
+                }));
+                return delay;
+            };
+            const start = () => {
+                autoplayStartTime = (new Date).getTime();
+                swiper.autoplay.running = true;
+                run();
+                emit("autoplayStart");
+            };
+            const stop = () => {
+                swiper.autoplay.running = false;
+                clearTimeout(timeout);
+                cancelAnimationFrame(raf);
+                emit("autoplayStop");
+            };
+            const pause = (internal, reset) => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                clearTimeout(timeout);
+                if (!internal) pausedByInteraction = true;
+                const proceed = () => {
+                    emit("autoplayPause");
+                    if (swiper.params.autoplay.waitForTransition) swiper.wrapperEl.addEventListener("transitionend", onTransitionEnd); else resume();
+                };
+                swiper.autoplay.paused = true;
+                if (reset) {
+                    if (slideChanged) autoplayTimeLeft = swiper.params.autoplay.delay;
+                    slideChanged = false;
+                    proceed();
+                    return;
+                }
+                const delay = autoplayTimeLeft || swiper.params.autoplay.delay;
+                autoplayTimeLeft = delay - ((new Date).getTime() - autoplayStartTime);
+                if (swiper.isEnd && autoplayTimeLeft < 0 && !swiper.params.loop) return;
+                if (autoplayTimeLeft < 0) autoplayTimeLeft = 0;
+                proceed();
+            };
+            const resume = () => {
+                if (swiper.isEnd && autoplayTimeLeft < 0 && !swiper.params.loop || swiper.destroyed || !swiper.autoplay.running) return;
+                autoplayStartTime = (new Date).getTime();
+                if (pausedByInteraction) {
+                    pausedByInteraction = false;
+                    run(autoplayTimeLeft);
+                } else run();
+                swiper.autoplay.paused = false;
+                emit("autoplayResume");
+            };
+            const onVisibilityChange = () => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                const document = ssr_window_esm_getDocument();
+                if (document.visibilityState === "hidden") {
+                    pausedByInteraction = true;
+                    pause(true);
+                }
+                if (document.visibilityState === "visible") resume();
+            };
+            const onPointerEnter = e => {
+                if (e.pointerType !== "mouse") return;
+                pausedByInteraction = true;
+                pausedByPointerEnter = true;
+                if (swiper.animating || swiper.autoplay.paused) return;
+                pause(true);
+            };
+            const onPointerLeave = e => {
+                if (e.pointerType !== "mouse") return;
+                pausedByPointerEnter = false;
+                if (swiper.autoplay.paused) resume();
+            };
+            const attachMouseEvents = () => {
+                if (swiper.params.autoplay.pauseOnMouseEnter) {
+                    swiper.el.addEventListener("pointerenter", onPointerEnter);
+                    swiper.el.addEventListener("pointerleave", onPointerLeave);
+                }
+            };
+            const detachMouseEvents = () => {
+                swiper.el.removeEventListener("pointerenter", onPointerEnter);
+                swiper.el.removeEventListener("pointerleave", onPointerLeave);
+            };
+            const attachDocumentEvents = () => {
+                const document = ssr_window_esm_getDocument();
+                document.addEventListener("visibilitychange", onVisibilityChange);
+            };
+            const detachDocumentEvents = () => {
+                const document = ssr_window_esm_getDocument();
+                document.removeEventListener("visibilitychange", onVisibilityChange);
+            };
+            on("init", (() => {
+                if (swiper.params.autoplay.enabled) {
+                    attachMouseEvents();
+                    attachDocumentEvents();
+                    start();
+                }
+            }));
+            on("destroy", (() => {
+                detachMouseEvents();
+                detachDocumentEvents();
+                if (swiper.autoplay.running) stop();
+            }));
+            on("_freeModeStaticRelease", (() => {
+                if (pausedByTouch || pausedByInteraction) resume();
+            }));
+            on("_freeModeNoMomentumRelease", (() => {
+                if (!swiper.params.autoplay.disableOnInteraction) pause(true, true); else stop();
+            }));
+            on("beforeTransitionStart", ((_s, speed, internal) => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                if (internal || !swiper.params.autoplay.disableOnInteraction) pause(true, true); else stop();
+            }));
+            on("sliderFirstMove", (() => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                if (swiper.params.autoplay.disableOnInteraction) {
+                    stop();
+                    return;
+                }
+                isTouched = true;
+                pausedByTouch = false;
+                pausedByInteraction = false;
+                touchStartTimeout = setTimeout((() => {
+                    pausedByInteraction = true;
+                    pausedByTouch = true;
+                    pause(true);
+                }), 200);
+            }));
+            on("touchEnd", (() => {
+                if (swiper.destroyed || !swiper.autoplay.running || !isTouched) return;
+                clearTimeout(touchStartTimeout);
+                clearTimeout(timeout);
+                if (swiper.params.autoplay.disableOnInteraction) {
+                    pausedByTouch = false;
+                    isTouched = false;
+                    return;
+                }
+                if (pausedByTouch && swiper.params.cssMode) resume();
+                pausedByTouch = false;
+                isTouched = false;
+            }));
+            on("slideChange", (() => {
+                if (swiper.destroyed || !swiper.autoplay.running) return;
+                slideChanged = true;
+            }));
+            Object.assign(swiper.autoplay, {
+                start,
+                stop,
+                pause,
+                resume
+            });
+        }
+        function effect_init_effectInit(params) {
+            const {effect, swiper, on, setTranslate, setTransition, overwriteParams, perspective, recreateShadows, getEffectParams} = params;
+            on("beforeInit", (() => {
+                if (swiper.params.effect !== effect) return;
+                swiper.classNames.push(`${swiper.params.containerModifierClass}${effect}`);
+                if (perspective && perspective()) swiper.classNames.push(`${swiper.params.containerModifierClass}3d`);
+                const overwriteParamsResult = overwriteParams ? overwriteParams() : {};
+                Object.assign(swiper.params, overwriteParamsResult);
+                Object.assign(swiper.originalParams, overwriteParamsResult);
+            }));
+            on("setTranslate", (() => {
+                if (swiper.params.effect !== effect) return;
+                setTranslate();
+            }));
+            on("setTransition", ((_s, duration) => {
+                if (swiper.params.effect !== effect) return;
+                setTransition(duration);
+            }));
+            on("transitionEnd", (() => {
+                if (swiper.params.effect !== effect) return;
+                if (recreateShadows) {
+                    if (!getEffectParams || !getEffectParams().slideShadows) return;
+                    swiper.slides.forEach((slideEl => {
+                        slideEl.querySelectorAll(".swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left").forEach((shadowEl => shadowEl.remove()));
+                    }));
+                    recreateShadows();
+                }
+            }));
+            let requireUpdateOnVirtual;
+            on("virtualUpdate", (() => {
+                if (swiper.params.effect !== effect) return;
+                if (!swiper.slides.length) requireUpdateOnVirtual = true;
+                requestAnimationFrame((() => {
+                    if (requireUpdateOnVirtual && swiper.slides && swiper.slides.length) {
+                        setTranslate();
+                        requireUpdateOnVirtual = false;
+                    }
+                }));
+            }));
+        }
+        function EffectCube(_ref) {
+            let {swiper, extendParams, on} = _ref;
+            extendParams({
+                cubeEffect: {
+                    slideShadows: true,
+                    shadow: true,
+                    shadowOffset: 20,
+                    shadowScale: .94
+                }
+            });
+            const createSlideShadows = (slideEl, progress, isHorizontal) => {
+                let shadowBefore = isHorizontal ? slideEl.querySelector(".swiper-slide-shadow-left") : slideEl.querySelector(".swiper-slide-shadow-top");
+                let shadowAfter = isHorizontal ? slideEl.querySelector(".swiper-slide-shadow-right") : slideEl.querySelector(".swiper-slide-shadow-bottom");
+                if (!shadowBefore) {
+                    shadowBefore = utils_createElement("div", `swiper-slide-shadow-cube swiper-slide-shadow-${isHorizontal ? "left" : "top"}`.split(" "));
+                    slideEl.append(shadowBefore);
+                }
+                if (!shadowAfter) {
+                    shadowAfter = utils_createElement("div", `swiper-slide-shadow-cube swiper-slide-shadow-${isHorizontal ? "right" : "bottom"}`.split(" "));
+                    slideEl.append(shadowAfter);
+                }
+                if (shadowBefore) shadowBefore.style.opacity = Math.max(-progress, 0);
+                if (shadowAfter) shadowAfter.style.opacity = Math.max(progress, 0);
+            };
+            const recreateShadows = () => {
+                const isHorizontal = swiper.isHorizontal();
+                swiper.slides.forEach((slideEl => {
+                    const progress = Math.max(Math.min(slideEl.progress, 1), -1);
+                    createSlideShadows(slideEl, progress, isHorizontal);
+                }));
+            };
+            const setTranslate = () => {
+                const {el, wrapperEl, slides, width: swiperWidth, height: swiperHeight, rtlTranslate: rtl, size: swiperSize, browser} = swiper;
+                const params = swiper.params.cubeEffect;
+                const isHorizontal = swiper.isHorizontal();
+                const isVirtual = swiper.virtual && swiper.params.virtual.enabled;
+                let wrapperRotate = 0;
+                let cubeShadowEl;
+                if (params.shadow) if (isHorizontal) {
+                    cubeShadowEl = swiper.wrapperEl.querySelector(".swiper-cube-shadow");
+                    if (!cubeShadowEl) {
+                        cubeShadowEl = utils_createElement("div", "swiper-cube-shadow");
+                        swiper.wrapperEl.append(cubeShadowEl);
+                    }
+                    cubeShadowEl.style.height = `${swiperWidth}px`;
+                } else {
+                    cubeShadowEl = el.querySelector(".swiper-cube-shadow");
+                    if (!cubeShadowEl) {
+                        cubeShadowEl = utils_createElement("div", "swiper-cube-shadow");
+                        el.append(cubeShadowEl);
+                    }
+                }
+                for (let i = 0; i < slides.length; i += 1) {
+                    const slideEl = slides[i];
+                    let slideIndex = i;
+                    if (isVirtual) slideIndex = parseInt(slideEl.getAttribute("data-swiper-slide-index"), 10);
+                    let slideAngle = slideIndex * 90;
+                    let round = Math.floor(slideAngle / 360);
+                    if (rtl) {
+                        slideAngle = -slideAngle;
+                        round = Math.floor(-slideAngle / 360);
+                    }
+                    const progress = Math.max(Math.min(slideEl.progress, 1), -1);
+                    let tx = 0;
+                    let ty = 0;
+                    let tz = 0;
+                    if (slideIndex % 4 === 0) {
+                        tx = -round * 4 * swiperSize;
+                        tz = 0;
+                    } else if ((slideIndex - 1) % 4 === 0) {
+                        tx = 0;
+                        tz = -round * 4 * swiperSize;
+                    } else if ((slideIndex - 2) % 4 === 0) {
+                        tx = swiperSize + round * 4 * swiperSize;
+                        tz = swiperSize;
+                    } else if ((slideIndex - 3) % 4 === 0) {
+                        tx = -swiperSize;
+                        tz = 3 * swiperSize + swiperSize * 4 * round;
+                    }
+                    if (rtl) tx = -tx;
+                    if (!isHorizontal) {
+                        ty = tx;
+                        tx = 0;
+                    }
+                    const transform = `rotateX(${isHorizontal ? 0 : -slideAngle}deg) rotateY(${isHorizontal ? slideAngle : 0}deg) translate3d(${tx}px, ${ty}px, ${tz}px)`;
+                    if (progress <= 1 && progress > -1) {
+                        wrapperRotate = slideIndex * 90 + progress * 90;
+                        if (rtl) wrapperRotate = -slideIndex * 90 - progress * 90;
+                        if (swiper.browser && swiper.browser.need3dFix && Math.abs(wrapperRotate) / 90 % 2 === 1) wrapperRotate += .001;
+                    }
+                    slideEl.style.transform = transform;
+                    if (params.slideShadows) createSlideShadows(slideEl, progress, isHorizontal);
+                }
+                wrapperEl.style.transformOrigin = `50% 50% -${swiperSize / 2}px`;
+                wrapperEl.style["-webkit-transform-origin"] = `50% 50% -${swiperSize / 2}px`;
+                if (params.shadow) if (isHorizontal) cubeShadowEl.style.transform = `translate3d(0px, ${swiperWidth / 2 + params.shadowOffset}px, ${-swiperWidth / 2}px) rotateX(89.99deg) rotateZ(0deg) scale(${params.shadowScale})`; else {
+                    const shadowAngle = Math.abs(wrapperRotate) - Math.floor(Math.abs(wrapperRotate) / 90) * 90;
+                    const multiplier = 1.5 - (Math.sin(shadowAngle * 2 * Math.PI / 360) / 2 + Math.cos(shadowAngle * 2 * Math.PI / 360) / 2);
+                    const scale1 = params.shadowScale;
+                    const scale2 = params.shadowScale / multiplier;
+                    const offset = params.shadowOffset;
+                    cubeShadowEl.style.transform = `scale3d(${scale1}, 1, ${scale2}) translate3d(0px, ${swiperHeight / 2 + offset}px, ${-swiperHeight / 2 / scale2}px) rotateX(-89.99deg)`;
+                }
+                const zFactor = (browser.isSafari || browser.isWebView) && browser.needPerspectiveFix ? -swiperSize / 2 : 0;
+                wrapperEl.style.transform = `translate3d(0px,0,${zFactor}px) rotateX(${swiper.isHorizontal() ? 0 : wrapperRotate}deg) rotateY(${swiper.isHorizontal() ? -wrapperRotate : 0}deg)`;
+                wrapperEl.style.setProperty("--swiper-cube-translate-z", `${zFactor}px`);
+            };
+            const setTransition = duration => {
+                const {el, slides} = swiper;
+                slides.forEach((slideEl => {
+                    slideEl.style.transitionDuration = `${duration}ms`;
+                    slideEl.querySelectorAll(".swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left").forEach((subEl => {
+                        subEl.style.transitionDuration = `${duration}ms`;
+                    }));
+                }));
+                if (swiper.params.cubeEffect.shadow && !swiper.isHorizontal()) {
+                    const shadowEl = el.querySelector(".swiper-cube-shadow");
+                    if (shadowEl) shadowEl.style.transitionDuration = `${duration}ms`;
+                }
+            };
+            effect_init_effectInit({
+                effect: "cube",
+                swiper,
+                on,
+                setTranslate,
+                setTransition,
+                recreateShadows,
+                getEffectParams: () => swiper.params.cubeEffect,
+                perspective: () => true,
+                overwriteParams: () => ({
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                    watchSlidesProgress: true,
+                    resistanceRatio: 0,
+                    spaceBetween: 0,
+                    centeredSlides: false,
+                    virtualTranslate: true
+                })
+            });
+        }
         function initSliders() {
             if (document.querySelector(".categories__slider")) new swiper_core_Swiper(".categories__slider", {
                 modules: [ Navigation, Pagination ],
@@ -4617,6 +4932,33 @@
                     }
                 }
             });
+            if (document.querySelector(".img-hero__slider")) new swiper_core_Swiper(".img-hero__slider", {
+                modules: [ Navigation, Pagination, EffectCube, Autoplay ],
+                observer: true,
+                observeParents: true,
+                slidesPerView: 1,
+                speed: 2300,
+                loop: true,
+                effect: "fade",
+                autoplay: {
+                    delay: 7e3,
+                    disableOnInteraction: false
+                },
+                effect: "cube",
+                effectCube: {
+                    slideShadows: false
+                },
+                pagination: {
+                    el: ".tranding__swiper-pagination",
+                    clickable: true,
+                    dynamicBullets: true,
+                    dynamicMainBullets: 3
+                },
+                navigation: {
+                    prevEl: ".tranding__button-prev",
+                    nextEl: ".tranding__button-next"
+                }
+            });
         }
         window.addEventListener("load", (function(e) {
             initSliders();
@@ -4627,6 +4969,100 @@
             class_loaded: "_lazy-loaded",
             use_native: true
         });
+        class ScrollWatcher {
+            constructor(props) {
+                let defaultConfig = {
+                    logging: true
+                };
+                this.config = Object.assign(defaultConfig, props);
+                this.observer;
+                !document.documentElement.classList.contains("watcher") ? this.scrollWatcherRun() : null;
+            }
+            scrollWatcherUpdate() {
+                this.scrollWatcherRun();
+            }
+            scrollWatcherRun() {
+                document.documentElement.classList.add("watcher");
+                this.scrollWatcherConstructor(document.querySelectorAll("[data-watch]"));
+            }
+            scrollWatcherConstructor(items) {
+                if (items.length) {
+                    this.scrollWatcherLogging(`Прокинувся, стежу за об'єктами (${items.length})...`);
+                    let uniqParams = uniqArray(Array.from(items).map((function(item) {
+                        return `${item.dataset.watchRoot ? item.dataset.watchRoot : null}|${item.dataset.watchMargin ? item.dataset.watchMargin : "0px"}|${item.dataset.watchThreshold ? item.dataset.watchThreshold : 0}`;
+                    })));
+                    uniqParams.forEach((uniqParam => {
+                        let uniqParamArray = uniqParam.split("|");
+                        let paramsWatch = {
+                            root: uniqParamArray[0],
+                            margin: uniqParamArray[1],
+                            threshold: uniqParamArray[2]
+                        };
+                        let groupItems = Array.from(items).filter((function(item) {
+                            let watchRoot = item.dataset.watchRoot ? item.dataset.watchRoot : null;
+                            let watchMargin = item.dataset.watchMargin ? item.dataset.watchMargin : "0px";
+                            let watchThreshold = item.dataset.watchThreshold ? item.dataset.watchThreshold : 0;
+                            if (String(watchRoot) === paramsWatch.root && String(watchMargin) === paramsWatch.margin && String(watchThreshold) === paramsWatch.threshold) return item;
+                        }));
+                        let configWatcher = this.getScrollWatcherConfig(paramsWatch);
+                        this.scrollWatcherInit(groupItems, configWatcher);
+                    }));
+                } else this.scrollWatcherLogging("Сплю, немає об'єктів для стеження. ZzzZZzz");
+            }
+            getScrollWatcherConfig(paramsWatch) {
+                let configWatcher = {};
+                if (document.querySelector(paramsWatch.root)) configWatcher.root = document.querySelector(paramsWatch.root); else if (paramsWatch.root !== "null") this.scrollWatcherLogging(`Эмм... батьківського об'єкта ${paramsWatch.root} немає на сторінці`);
+                configWatcher.rootMargin = paramsWatch.margin;
+                if (paramsWatch.margin.indexOf("px") < 0 && paramsWatch.margin.indexOf("%") < 0) {
+                    this.scrollWatcherLogging(`йой, налаштування data-watch-margin потрібно задавати в PX або %`);
+                    return;
+                }
+                if (paramsWatch.threshold === "prx") {
+                    paramsWatch.threshold = [];
+                    for (let i = 0; i <= 1; i += .005) paramsWatch.threshold.push(i);
+                } else paramsWatch.threshold = paramsWatch.threshold.split(",");
+                configWatcher.threshold = paramsWatch.threshold;
+                return configWatcher;
+            }
+            scrollWatcherCreate(configWatcher) {
+                this.observer = new IntersectionObserver(((entries, observer) => {
+                    entries.forEach((entry => {
+                        this.scrollWatcherCallback(entry, observer);
+                    }));
+                }), configWatcher);
+            }
+            scrollWatcherInit(items, configWatcher) {
+                this.scrollWatcherCreate(configWatcher);
+                items.forEach((item => this.observer.observe(item)));
+            }
+            scrollWatcherIntersecting(entry, targetElement) {
+                if (entry.isIntersecting) {
+                    !targetElement.classList.contains("_watcher-view") ? targetElement.classList.add("_watcher-view") : null;
+                    this.scrollWatcherLogging(`Я бачу ${targetElement.classList}, додав клас _watcher-view`);
+                } else {
+                    targetElement.classList.contains("_watcher-view") ? targetElement.classList.remove("_watcher-view") : null;
+                    this.scrollWatcherLogging(`Я не бачу ${targetElement.classList}, прибрав клас _watcher-view`);
+                }
+            }
+            scrollWatcherOff(targetElement, observer) {
+                observer.unobserve(targetElement);
+                this.scrollWatcherLogging(`Я перестав стежити за ${targetElement.classList}`);
+            }
+            scrollWatcherLogging(message) {
+                this.config.logging ? FLS(`[Спостерігач]: ${message}`) : null;
+            }
+            scrollWatcherCallback(entry, observer) {
+                const targetElement = entry.target;
+                this.scrollWatcherIntersecting(entry, targetElement);
+                targetElement.hasAttribute("data-watch-once") && entry.isIntersecting ? this.scrollWatcherOff(targetElement, observer) : null;
+                document.dispatchEvent(new CustomEvent("watcherCallback", {
+                    detail: {
+                        entry
+                    }
+                }));
+            }
+        }
+        modules_flsModules.watcher = new ScrollWatcher({});
         let addWindowScrollEvent = false;
         function headerScroll() {
             addWindowScrollEvent = true;
@@ -4717,9 +5153,10 @@
             getCounterValues() {
                 const counterValues = this.counterEl.getAttribute(this.counterAtr);
                 let custValue = this.counterEl.textContent.trim() || 0;
-                const [customTime, customRange] = counterValues.split(",").map((value => parseFloat(value.trim(), 10)));
+                const [customTime, customRange, customDelay] = counterValues.split(",").map((value => parseFloat(value.trim(), 10)));
                 this.time = customTime * 1e3 || 1e3;
                 this.range = customRange || 0;
+                this.delay = customDelay * 1e3 || 0;
                 this.value = parseInt(this.initSeparator(custValue));
                 if (this.counterEl.hasAttribute(this.separatorAtrName)) this.counterEl.textContent = this.formatNumberWithSeparator(this.value);
                 this.repeat = this.counterEl.hasAttribute(this.repeatAtrName);
@@ -4756,7 +5193,9 @@
             }
             startCounter() {
                 if (this.parentEl) this.setAnimationProperties();
-                this.animateCounter();
+                setTimeout((() => {
+                    this.animateCounter();
+                }), this.delay);
             }
             setAnimationProperties() {
                 this.offsetValue = this.totalLength - this.totalLength * this.value / this.maxValue;
@@ -4938,25 +5377,44 @@
                 if (this.parentEl) {
                     this.grandParent = this.parentEl.parentElement;
                     this.text = this.parentEl.getAttribute(`${this.parentAtr}`);
+                    this.createSvg();
+                    const resizeObserver = new ResizeObserver((() => {
+                        this.resize(this.getPath());
+                    }));
+                    resizeObserver.observe(this.parentEl);
                 }
-                this.createSvg();
-                const resizeObserver = new ResizeObserver((() => {
-                    this.resize(this.getPath());
-                }));
-                resizeObserver.observe(this.parentEl);
             }
+        }
+        function hideEls(el, countToShow) {
+            const articles = el.querySelectorAll(".item-tabs");
+            const count = countToShow || articles.length;
+            articles.forEach(((element, index) => {
+                element.style.display = index >= count ? "none" : "";
+            }));
         }
         window.onload = () => {
             const circleText = new CircleText;
             circleText.textSvgInit();
+            const collectionsBlocks = document.querySelectorAll(".tabs__body");
+            const matchFirst = window.matchMedia("(max-width: 1276.98px)");
+            const matchThird = window.matchMedia("(min-width: 1277px)");
+            const matchSecond = window.matchMedia("(max-width: 846px)");
+            const changeCount = () => {
+                collectionsBlocks.forEach((element => {
+                    if (matchFirst.matches) hideEls(element, 8);
+                    if (matchSecond.matches) hideEls(element, 3);
+                    if (matchThird.matches) hideEls(element);
+                }));
+            };
+            matchFirst.addEventListener("change", changeCount);
+            matchSecond.addEventListener("change", changeCount);
+            matchThird.addEventListener("change", changeCount);
+            changeCount();
         };
         isWebp();
         menuInit();
         spollers();
-        showMore();
-        setTimeout((() => {
-            tabs();
-        }), 200);
+        tabs();
         formFieldsInit({
             viewPass: false,
             autoHeight: false
