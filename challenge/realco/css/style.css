@@ -465,6 +465,9 @@ textarea {
   -webkit-transform: translate(0,-50%);
   transform: translate(0,-50%)
 }
+.header .button-search span {
+  transition: color .3s
+}
 .hero .button-search {
   padding-right: .625rem;
   padding-left: 1rem
@@ -661,13 +664,6 @@ textarea {
   width: 100%;
   aspect-ratio: 405/268
 }
-.item-products__image {
-  -webkit-transform: scale(1.001);
-  transform: scale(1.001);
-  transition: -webkit-transform .3s;
-  transition: transform .3s;
-  transition: transform .3s,-webkit-transform .3s
-}
 .item-products__content {
   background-color: var(--bg-third);
   flex-grow: 1;
@@ -749,6 +745,34 @@ textarea {
 }
 .prps__item span {
   line-height: 1.2
+}
+.image-zoom {
+  position: relative;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in
+}
+.image-zoom-block {
+  display: none;
+  width: 25%;
+  aspect-ratio: 1/1;
+  background-image: var(--image);
+  background-repeat: no-repeat;
+  background-size: 600%;
+  background-position: var(--x) var(--y);
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  -webkit-transform: translateX(calc(var(--x) * -1)) translateY(calc(var(--y) * -1));
+  transform: translateX(calc(var(--x) * -1)) translateY(calc(var(--y) * -1));
+  z-index: 2;
+  pointer-events: none
+}
+.image-zoom.-active {
+  cursor: -webkit-zoom-out;
+  cursor: zoom-out
+}
+.image-zoom.-enter .image-zoom-block {
+  display: block
 }
 .header {
   position: fixed;
@@ -1044,7 +1068,8 @@ textarea {
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: .8125rem
+  margin-bottom: .8125rem;
+  color: var(--bg-secondary)
 }
 .priority__title {
   color: var(--text-inverse);
@@ -2309,9 +2334,8 @@ textarea {
   .button--transparent:hover .icon {
     color: var(--bg-accent)
   }
-  .item-products__image:hover {
-    -webkit-transform: scale(1.03);
-    transform: scale(1.03)
+  .header .button-search span:hover {
+    color: var(--bg-accent)
   }
   .item-products__link:hover {
     text-decoration-color: var(--text-accent)
