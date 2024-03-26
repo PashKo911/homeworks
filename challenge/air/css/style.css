@@ -139,9 +139,6 @@ h6 {
 .page__private:not(:last-child) {
   margin-bottom: 3.125rem
 }
-.page__book:not(:first-child) {
-  margin-top: -7.1875rem
-}
 [class*=__container] {
   max-width: 71.25rem;
   margin: 0 auto;
@@ -159,6 +156,7 @@ textarea {
   height: 2.25rem;
   font-size: 1.5rem;
   display: block;
+  padding: 0 .625rem;
   caret-color: inherit;
   color: var(--text-third);
   cursor: pointer
@@ -188,7 +186,7 @@ textarea {
   line-height: 1
 }
 .input::-webkit-calendar-picker-indicator {
-  background-image: url(../../../img/hero/calendar.svg);
+  background-image: url(../img/hero/calendar.svg);
   cursor: pointer
 }
 .input[placeholder]:not([data-placeholder-nohiden])::-webkit-input-placeholder {
@@ -647,8 +645,7 @@ textarea {
 }
 .hero {
   position: relative;
-  padding-top: calc(var(--headH) + 1.875rem);
-  padding-bottom: 1.875rem
+  padding-top: calc(var(--headH) + 1.875rem)
 }
 .hero::after {
   content: "";
@@ -843,7 +840,7 @@ textarea {
   text-align: center
 }
 .membership__img img {
-  aspect-ratio: 61.426256%;
+  aspect-ratio: 758/200;
   width: 68.288288%
 }
 .card-membership {
@@ -1021,7 +1018,7 @@ textarea {
   gap: 1.875rem
 }
 .bottom-book__item {
-  padding: .9375rem 1.25rem;
+  padding: .9375rem .625rem;
   border-radius: .625rem;
   border: .0625rem solid #aaa;
   display: grid;
@@ -1051,18 +1048,21 @@ textarea {
   border: .0625rem solid #aaa;
   border-radius: 50%;
   color: var(--text-third);
-  align-self: center
+  align-self: center;
+  transition: color .3s
 }
 .bottom-book__label {
   color: var(--text-primary);
   font-size: .875rem;
   text-transform: uppercase;
-  line-height: 1.5
+  line-height: 1.5;
+  padding: 0 .625rem
 }
 .bottom-book__sub {
   font-size: .875rem;
   text-transform: uppercase;
-  line-height: 1.5
+  line-height: 1.5;
+  padding: 0 .625rem
 }
 .date-book {
   display: grid;
@@ -1072,7 +1072,8 @@ textarea {
   display: flex;
   -webkit-column-gap: 2.75rem;
   -moz-column-gap: 2.75rem;
-  column-gap: 2.75rem
+  column-gap: 2.75rem;
+  padding: 0 .625rem
 }
 .date-book__button {
   font-size: .875rem;
@@ -1179,6 +1180,9 @@ textarea {
   .page__membership:not(:last-child) {
     margin-bottom: 4.125rem
   }
+  .page__book:not(:first-child) {
+    margin-top: -7.1875rem
+  }
   .page__book:not(:last-child) {
     margin-bottom: 6.6875rem
   }
@@ -1271,6 +1275,9 @@ textarea {
   }
   .page__membership:not(:last-child) {
     margin-bottom: 3.125rem
+  }
+  .page__book:not(:first-child) {
+    margin-top: -.9375rem
   }
   .page__book:not(:last-child) {
     margin-bottom: 6.25rem
@@ -1577,6 +1584,16 @@ textarea {
   @supports not (margin-bottom:clamp(3.125rem ,2.7347560976rem + 1.9512195122vw ,4.125rem)) {
     .page__membership:not(:last-child) {
       margin-bottom: calc(3.125rem + 1 * (100vw - 20rem)/ 51.25)
+    }
+  }
+  @supports (margin-top:clamp(-7.1875rem ,1.5015243902rem + -12.1951219512vw ,-0.9375rem)) {
+    .page__book:not(:first-child) {
+      margin-top: clamp(-7.1875rem ,1.5015243902rem + -12.1951219512vw ,-.9375rem)
+    }
+  }
+  @supports not (margin-top:clamp(-7.1875rem ,1.5015243902rem + -12.1951219512vw ,-0.9375rem)) {
+    .page__book:not(:first-child) {
+      margin-top: calc(-.9375rem + -6.25 * (100vw - 20rem)/ 51.25)
     }
   }
   @supports (margin-bottom:clamp(6.25rem ,6.0792682927rem + 0.8536585366vw ,6.6875rem)) {
@@ -1933,6 +1950,9 @@ textarea {
     color: var(--bg-hv)
   }
   .body-book__requirements:hover {
+    color: var(--bg-hv)
+  }
+  .bottom-book__button:hover {
     color: var(--bg-hv)
   }
   .date-book__button:hover {
