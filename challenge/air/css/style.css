@@ -703,7 +703,6 @@ textarea {
   background-size: cover;
   -o-object-fit: cover;
   object-fit: cover;
-  position: relative;
   box-shadow: 0 4px 5px 0 rgba(0,0,0,.09),0 -4px 5px 0 rgba(0,0,0,.09);
   background-attachment: fixed;
   background-position: center center
