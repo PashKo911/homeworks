@@ -656,15 +656,13 @@ textarea {
   left: 0;
   background: linear-gradient(180deg,rgba(234,247,246,.8) 0,rgba(234,247,246,.8) 100%)
 }
-.no-webp .hero__img {
-  background: url(../img/hero/main.jpg) no-repeat
-}
 .hero__img {
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
+  background: url(../img/hero/main.jpg) no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: center center
@@ -690,9 +688,6 @@ textarea {
 .hero__button::after {
   content: "\e900"
 }
-.no-webp .hero__window {
-  background: url(../img/hero/main.jpg) no-repeat
-}
 .hero__window {
   border-radius: 7.5rem;
   border: .9375rem solid var(--text-fourth);
@@ -700,6 +695,7 @@ textarea {
   height: 28.1875rem;
   position: relative;
   z-index: 10;
+  background: url(../img/hero/main.jpg) no-repeat;
   background-size: cover;
   -o-object-fit: cover;
   object-fit: cover;
@@ -1957,10 +1953,4 @@ textarea {
   .date-book__button:hover {
     color: var(--bg-hv)
   }
-}
-.webp .hero__img {
-  background: url(../img/hero/main.webp) no-repeat
-}
-.webp .hero__window {
-  background: url(../img/hero/main.webp) no-repeat
 }
