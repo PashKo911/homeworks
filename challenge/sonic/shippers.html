@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20240411131116">
+	<link rel="stylesheet" href="css/style.min.css?_v=20240411175248">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,23 +35,18 @@
 								<div class="menu__sub sub-menu">
 									<ul class="sub-menu__list">
 										<li class="sub-menu__item">
-											<a href="#" class="sub-menu__link">
+											<a href="shippers.html#logistic-transparency" class="sub-menu__link">
 												Logistics Workflow
 											</a>
 										</li>
-										<li class="sub-menu__item">
+										<li href="shippers.html#features" class="sub-menu__item">
 											<a href="#" class="sub-menu__link">
-												Support
+												Features
 											</a>
 										</li>
 										<li class="sub-menu__item">
-											<a href="#" class="sub-menu__link">
-												Convenience
-											</a>
-										</li>
-										<li class="sub-menu__item">
-											<a href="#" class="sub-menu__link">
-												Solutions
+											<a href="shippers.html#strategy" class="sub-menu__link">
+												Strategy
 											</a>
 										</li>
 									</ul>
@@ -65,13 +60,8 @@
 								<div class="menu__sub sub-menu">
 									<ul class="sub-menu__list">
 										<li class="sub-menu__item">
-											<a href="#" class="sub-menu__link">
-												Support
-											</a>
-										</li>
-										<li class="sub-menu__item">
-											<a href="#" class="sub-menu__link">
-												Payment Options
+											<a href="shippers.html#features" class="sub-menu__link">
+												Features
 											</a>
 										</li>
 									</ul>
@@ -128,7 +118,11 @@
 					</div>
 				</div>
 				<div class="hero__image">
-					<picture><source srcset="img/shippers/hero/main.webp" type="image/webp"><img src="img/shippers/hero/main.jpg" alt="Image"></picture>
+					<picture>
+						<source srcset="img/shippers/hero/main.webp" media="(min-width: 992px)">
+						<source srcset="img/shippers/hero/main-small.webp" media="(max-width: 991.98px)">
+						<img src="img/shippers/hero/main.webp" alt="image">
+					</picture>
 				</div>
 			</section>
 			<section class="page-shippers__partners partners">
@@ -146,7 +140,7 @@
 					</div>
 				</div>
 			</section>
-			<section class="page-shippers__transparency transparency">
+			<section id="logistic-transparency" class="page-shippers__transparency transparency">
 				<div class="transparency__container">
 					<div class="transparency__header header-block header-block--center">
 						<div class="header-block__label header-block__label--border">
@@ -165,7 +159,99 @@
 					<picture><source data-srcset="img/shippers/transparency/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="transparency__img ibg" data-src="img/shippers/transparency/01.jpg" alt="Image"></picture>
 				</div>
 			</section>
-			<section class="page-shippers__strategy strategy">
+			<section class="page-shippers__monney monney">
+				<div class="monney__container">
+					<h2 class="monney__title">
+						“Give me your monnneeeyyyyy!!”
+					</h2>
+					<picture><source srcset="img/shippers/monney/avatar.webp" type="image/webp"><img class="monney__img" src="img/shippers/monney/avatar.jpg" alt="Image"></picture>
+					<h3 class="monney__name">
+						Matt Elquza
+					</h3>
+					<div class="monney__position">
+						Director of Operations
+					</div>
+				</div>
+			</section>
+			<section id="features" class="page-shippers__features features">
+				<div class="features__header header-block header-block--center">
+					<div class="header-block__label">
+						Features
+					</div>
+					<h2 class="header-block__title">
+						Dedicated Support, Year Round
+					</h2>
+					<div class="header-block__text">
+						<p>
+							America moves on trucks, but trucks don’t roll without freight. We're on standby 24/7,
+							365 days a year, ensuring your freight finds its way with the right trucks.
+						</p>
+					</div>
+				</div>
+				<article class="features__item item-features">
+					<div class="item-features__container">
+						<div class="item-features__wrapper">
+							<div class="item-features__content">
+								<div class="item-features__icon circle-icon _icon-dryage"></div>
+								<h3 class="item-features__title">
+									Customized Logistics Expertise
+								</h3>
+								<div class="item-features__text">
+									<p>
+										From small startups to major enterprises, our logistics solutions are designed
+										to
+										scale with your business.
+									</p>
+								</div>
+								<ul class="item-features__list list-features">
+									<li class="list-features__item _icon-check">
+										Optimize your supply chain with smart, scalable solutions.
+									</li>
+									<li class="list-features__item _icon-check">
+										Diverse solutions for many industries.
+									</li>
+									<li class="list-features__item _icon-check">
+										Enhance efficiency with our advanced Transportation Management System (TMS).
+									</li>
+								</ul>
+							</div>
+						</div>
+						<picture><source data-srcset="img/shippers/features/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-features__img ibg ibg--top" data-src="img/shippers/features/01.jpg" alt="Image"></picture>
+					</div>
+
+				</article>
+				<article class="features__item item-features item-features--reverse">
+					<div class="item-features__container">
+						<picture><source data-srcset="img/shippers/features/02.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-features__img ibg ibg--top" data-src="img/shippers/features/02.jpg" alt="Image"></picture>
+						<div class="item-features__content">
+							<div class="item-features__wrapper">
+								<div class="item-features__icon circle-icon _icon-smooz"></div>
+								<h3 class="item-features__title">
+									Round-the-Clock Single Contact Convenience
+								</h3>
+								<div class="item-features__text">
+									<p>
+										Experience seamless coordination with a dedicated point of contact available
+										24/7 for all your logistics needs.
+									</p>
+								</div>
+								<ul class="item-features__list list-features">
+									<li class="list-features__item _icon-check">
+										One contact, all solutions – simplifying communication.
+									</li>
+									<li class="list-features__item _icon-check">
+										Immediate response times, any hour, any day.
+									</li>
+									<li class="list-features__item _icon-check">
+										Personalized updates from a team that knows your business.
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</article>
+			</section>
+			<section id="strategy" class="page-shippers__strategy strategy">
 				<div class="strategy__container">
 					<div class="strategy__header header-block">
 						<div class="header-block__label">
@@ -282,98 +368,6 @@
 					</div>
 				</div>
 			</section>
-			<section class="page-shippers__monney monney">
-				<div class="monney__container">
-					<h2 class="monney__title">
-						“Give me your monnneeeyyyyy!!”
-					</h2>
-					<picture><source srcset="img/shippers/monney/avatar.webp" type="image/webp"><img class="monney__img" src="img/shippers/monney/avatar.jpg" alt="Image"></picture>
-					<h3 class="monney__name">
-						Matt Elquza
-					</h3>
-					<div class="monney__position">
-						Director of Operations
-					</div>
-				</div>
-			</section>
-			<section class="page-shippers__features features">
-				<div class="features__header header-block header-block--center">
-					<div class="header-block__label">
-						Features
-					</div>
-					<h2 class="header-block__title">
-						Dedicated Support, Year Round
-					</h2>
-					<div class="header-block__text">
-						<p>
-							America moves on trucks, but trucks don’t roll without freight. We're on standby 24/7,
-							365 days a year, ensuring your freight finds its way with the right trucks.
-						</p>
-					</div>
-				</div>
-				<article class="features__item item-features">
-					<div class="item-features__container">
-						<div class="item-features__wrapper">
-							<div class="item-features__content">
-								<div class="item-features__icon circle-icon _icon-dryage"></div>
-								<h3 class="item-features__title">
-									Customized Logistics Expertise
-								</h3>
-								<div class="item-features__text">
-									<p>
-										From small startups to major enterprises, our logistics solutions are designed
-										to
-										scale with your business.
-									</p>
-								</div>
-								<ul class="item-features__list list-features">
-									<li class="list-features__item _icon-check">
-										Optimize your supply chain with smart, scalable solutions.
-									</li>
-									<li class="list-features__item _icon-check">
-										Diverse solutions for many industries.
-									</li>
-									<li class="list-features__item _icon-check">
-										Enhance efficiency with our advanced Transportation Management System (TMS).
-									</li>
-								</ul>
-							</div>
-						</div>
-						<picture><source data-srcset="img/shippers/features/01.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-features__img ibg ibg--top" data-src="img/shippers/features/01.jpg" alt="Image"></picture>
-					</div>
-
-				</article>
-				<article class="features__item item-features item-features--reverse">
-					<div class="item-features__container">
-						<picture><source data-srcset="img/shippers/features/02.webp" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" type="image/webp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  class="item-features__img ibg ibg--top" data-src="img/shippers/features/02.jpg" alt="Image"></picture>
-						<div class="item-features__content">
-							<div class="item-features__wrapper">
-								<div class="item-features__icon circle-icon _icon-smooz"></div>
-								<h3 class="item-features__title">
-									Round-the-Clock Single Contact Convenience
-								</h3>
-								<div class="item-features__text">
-									<p>
-										Experience seamless coordination with a dedicated point of contact available
-										24/7 for all your logistics needs.
-									</p>
-								</div>
-								<ul class="item-features__list list-features">
-									<li class="list-features__item _icon-check">
-										One contact, all solutions – simplifying communication.
-									</li>
-									<li class="list-features__item _icon-check">
-										Immediate response times, any hour, any day.
-									</li>
-									<li class="list-features__item _icon-check">
-										Personalized updates from a team that knows your business.
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</article>
-			</section>
 		</main>
 		<div class="offer-card offer-card--bg">
 			<div class="offer-card__container">
@@ -414,7 +408,7 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20240411131116"></script>
+	<script src="js/app.min.js?_v=20240411175248"></script>
 
 
 </body>
