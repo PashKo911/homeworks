@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 
 // Мінімальна ширина сторінки
 $minWidth: 320;
@@ -12,52 +12,52 @@ $containerPadding: 20;
 // Ширина спрацьовування першого брейкпоінту
 $containerWidth: $maxWidthContainer + $containerPadding;
 
-@import "_functions.scss";
-@import "_temple.scss";
-@import "_fonts.scss";
-@import "_icons.scss";
-@import "_reset.scss";
-@import "_common.scss";
-@import "_header.scss";
-@import "_footer.scss";
+@import '_functions.scss';
+@import '_temple.scss';
+@import '_fonts.scss';
+@import '_icons.scss';
+@import '_reset.scss';
+@import '_common.scss';
+@import '_header.scss';
+@import '_footer.scss';
 
 // HERO
 
 .page {
-	@include adaptiveValue("padding-bottom", 200, 40);
-	@include adaptiveValue("padding-top", 190, 130, 0, 1920, 992);
+	@include adaptiveValue('padding-bottom', 200, 40);
+	@include adaptiveValue('padding-top', 190, 130, 0, 1920, 992);
 	// .page__hero
 	&__hero {
 	}
 
 	// .page__whitecollar
 	&__whitecollar {
-		@include adaptiveValue("margin-bottom", 100, 40);
+		@include adaptiveValue('margin-bottom', 100, 40);
 	}
 
 	// .page__brands
 	&__brands {
-		@include adaptiveValue("margin-bottom", 82, 60);
+		@include adaptiveValue('margin-bottom', 82, 60);
 	}
 
 	// .page__expertise
 	&__expertise {
-		@include adaptiveValue("margin-bottom", 131, 40);
+		@include adaptiveValue('margin-bottom', 131, 40);
 	}
 
 	// .page__solutions
 	&__solutions {
-		@include adaptiveValue("margin-bottom", 131, 40);
+		@include adaptiveValue('margin-bottom', 131, 40);
 	}
 
 	// .page__products
 	&__products {
-		@include adaptiveValue("margin-bottom", 150, 40);
+		@include adaptiveValue('margin-bottom', 150, 40);
 	}
 
 	// .page__reviews
 	&__reviews {
-		@include adaptiveValue("margin-bottom", 150, 40);
+		@include adaptiveValue('margin-bottom', 150, 40);
 	}
 
 	// .page__next
@@ -66,11 +66,11 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 
 	// .page__team
 	&__team {
-		@include adaptiveValue("margin-bottom", 200, 40);
+		@include adaptiveValue('margin-bottom', 200, 40);
 	}
 	// .page__posts
 	&__posts {
-		@include adaptiveValue("margin-bottom", 150, 40);
+		@include adaptiveValue('margin-bottom', 150, 40);
 	}
 
 	// .page__experience
@@ -81,7 +81,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 // HERO
 
 .hero {
-	@include adaptiveValue("--headH", 190, 130, 0, 1920, 992);
+	@include adaptiveValue('--headH', 190, 130, 0, 1920, 992);
 	min-height: calc(100svh - var(--headH));
 	position: relative;
 
@@ -137,7 +137,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	&__title {
 		color: $white;
 		@extend %PS;
-		@include adaptiveValue("font-size", 60, 34, 0, 1920, 992);
+		@include adaptiveValue('font-size', 60, 34, 0, 1920, 992);
 		font-weight: 700;
 		line-height: 1.1;
 		margin-bottom: toRem(20);
@@ -160,7 +160,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		display: flex;
 		align-items: center;
 		gap: toRem(30);
-		@include adaptiveValue("column-gap", 30, 15, 0, 1920, 992);
+		@include adaptiveValue('column-gap', 30, 15, 0, 1920, 992);
 		@media (max-width: $mobile) {
 			justify-content: center;
 			flex-wrap: wrap;
@@ -211,11 +211,11 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 // WHITE_COLLAR
 
 .whitecollar {
-	@include adaptiveValue("padding-top", 150, 40);
+	@include adaptiveValue('padding-top', 150, 40);
 	position: relative;
 
 	@media (min-width: toEm(1400)) {
-		@include adaptiveValue("padding-bottom", 150, 40);
+		@include adaptiveValue('padding-bottom', 150, 40);
 	}
 	// .whitecollar__bg
 	&__bg {
@@ -233,7 +233,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	// .whitecollar__container
 	&__container {
 		display: flex;
-		@include adaptiveValue("column-gap", 137, 40, 0, 1400, 992);
+		@include adaptiveValue('column-gap', 137, 40, 0, 1400, 992);
 		row-gap: toRem(30);
 
 		@media (max-width: $tablet) {
@@ -286,7 +286,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	&__title {
 		color: $dark;
 		@extend %PS;
-		@include adaptiveValue("font-size", 30, 24);
+		@include adaptiveValue('font-size', 30, 24);
 		line-height: 1.2;
 		font-weight: 600;
 		margin-bottom: toRem(13);
@@ -295,7 +295,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	// .left-whitecollar__text
 	&__text {
 		margin-bottom: toRem(23);
-		@include adaptiveValue("font-size", 18, 16);
+		@include adaptiveValue('font-size', 18, 16);
 		p {
 			color: #7d7d7d;
 			line-height: 1.46;
@@ -320,7 +320,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		}
 
 		&::after {
-			content: "";
+			content: '';
 			width: 100%;
 			height: toRem(2);
 			display: block;
@@ -341,9 +341,9 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	}
 	// .right-whitecollar__text
 	&__text {
-		@include adaptiveValue("margin-bottom", 20, 15);
+		@include adaptiveValue('margin-bottom', 20, 15);
 		p {
-			@include adaptiveValue("font-size", 18, 16);
+			@include adaptiveValue('font-size', 18, 16);
 			color: $mainColor;
 			line-height: 1.46;
 			&:not(:last-child) {
@@ -353,13 +353,13 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	}
 	// .right-whitecollar__list
 	&__list {
-		@include adaptiveValue("margin-bottom", 43, 25);
+		@include adaptiveValue('margin-bottom', 43, 25);
 	}
 	// .right-whitecollar__item
 	&__item {
 		color: $dark;
 		@extend %PS;
-		@include adaptiveValue("font-size", 20, 18);
+		@include adaptiveValue('font-size', 20, 18);
 		font-size: toRem(20);
 		display: flex;
 		align-items: flex-start;
@@ -376,7 +376,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	}
 	// .right-whitecollar__advantages
 	&__advantages {
-		@include adaptiveValue("margin-bottom", 37, 20);
+		@include adaptiveValue('margin-bottom', 37, 20);
 	}
 	// .right-whitecollar__link
 	&__link {
@@ -413,7 +413,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	&__title {
 		color: $dark;
 		@extend %PS;
-		@include adaptiveValue("font-size", 20, 18);
+		@include adaptiveValue('font-size', 20, 18);
 		font-weight: 600;
 		text-transform: capitalize;
 
@@ -441,7 +441,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	// .brands__container
 	&__container {
 		display: flex;
-		@include adaptiveValue("column-gap", 115, 40);
+		@include adaptiveValue('column-gap', 115, 40);
 		row-gap: toRem(25);
 		justify-content: center;
 		align-items: center;
@@ -488,7 +488,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	// .item-expertise__content
 	&__content {
 		& > *:not(:last-child) {
-			@include adaptiveValue("margin-bottom", 27, 15);
+			@include adaptiveValue('margin-bottom', 27, 15);
 		}
 	}
 	// .item-expertise__icon
@@ -515,7 +515,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	&__title {
 		color: $dark;
 		@extend %PS;
-		@include adaptiveValue("font-size", 25, 20);
+		@include adaptiveValue('font-size', 25, 20);
 		font-weight: 600;
 		line-height: 1.27;
 		text-transform: capitalize;
@@ -560,11 +560,11 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	&__body {
 		color: $white;
 		padding: toRem(100) 0 toRem(100) 0;
-		@include adaptiveValue("padding-top", 100, 40);
-		@include adaptiveValue("padding-bottom", 100, 40);
+		@include adaptiveValue('padding-top', 100, 40);
+		@include adaptiveValue('padding-bottom', 100, 40);
 
 		& > *:not(:last-child) {
-			@include adaptiveValue("margin-bottom", 36, 20);
+			@include adaptiveValue('margin-bottom', 36, 20);
 		}
 
 		@media (min-width: toEm(1200)) {
@@ -689,7 +689,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	// .info__item
 	&__item {
 		flex: 0 1 flBasis(2, 18);
-		@include adaptiveValue("font-size", 20, 18);
+		@include adaptiveValue('font-size', 20, 18);
 		display: flex;
 		align-items: center;
 		gap: toRem(8);
@@ -730,7 +730,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 			}
 		}
 		&::after {
-			content: "";
+			content: '';
 			display: block;
 			width: 100%;
 			height: toRem(2);
@@ -757,12 +757,12 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 
 .products {
 	& > *:not(:last-child) {
-		@include adaptiveValue("margin-bottom", 40, 30);
+		@include adaptiveValue('margin-bottom', 40, 30);
 	}
 	// .products__container
 	&__container {
 		& > *:not(:last-child) {
-			@include adaptiveValue("margin-bottom", 40, 30);
+			@include adaptiveValue('margin-bottom', 40, 30);
 		}
 	}
 	// .products__header
@@ -791,8 +791,8 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		max-width: toRem(1886);
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(toRem(347), 1fr));
-		@include adaptiveValue("column-gap", 40, 20);
-		@include adaptiveValue("row-gap", 40, 20);
+		@include adaptiveValue('column-gap', 40, 20);
+		@include adaptiveValue('row-gap', 40, 20);
 
 		@media (max-width: $mobile) {
 			grid-template-columns: repeat(auto-fill, minmax(toRem(220), 1fr));
@@ -869,7 +869,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		align-items: center;
 
 		&:not(:last-child) {
-			@include adaptiveValue("margin-bottom", 34, 15);
+			@include adaptiveValue('margin-bottom', 34, 15);
 		}
 	}
 	// .item-reviews__img
@@ -903,7 +903,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		color: $dark;
 		@extend %PS;
 
-		@include adaptiveValue("font-size", 20, 18);
+		@include adaptiveValue('font-size', 20, 18);
 		font-weight: 600;
 	}
 	// .item-reviews__subtitle
@@ -917,7 +917,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	// .item-reviews__text
 	&__text {
 		color: $mainColor;
-		@include adaptiveValue("font-size", 22, 14);
+		@include adaptiveValue('font-size', 22, 14);
 		font-style: italic;
 		line-height: 1.46;
 
@@ -961,16 +961,15 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 // NEXT
 
 .next {
-	@include adaptiveValue("padding-bottom", 123, 40);
-	@include adaptiveValue("padding-top", 123, 40);
+	@include adaptiveValue('padding-bottom', 123, 40);
+	@include adaptiveValue('padding-top', 123, 40);
 	background-color: $blue;
 	color: $white;
-
 
 	// .next__container
 	&__container {
 		display: flex;
-		@include adaptiveValue("column-gap", 53, 25);
+		@include adaptiveValue('column-gap', 53, 25);
 		row-gap: toRem(40);
 		animation: name duration timing-function delay iteration-count direction fill-mode;
 		@media (max-width: $tablet) {
@@ -1001,10 +1000,10 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	display: flex;
 	align-items: center;
 	gap: toRem(23);
-	@include adaptiveValue("column-gap", 23, 15);
-	@include adaptiveValue("padding", 35, 15);
+	@include adaptiveValue('column-gap', 23, 15);
+	@include adaptiveValue('padding', 35, 15);
 	background-color: $green;
-	@include adaptiveValue("margin-bottom", 50, 30);
+	@include adaptiveValue('margin-bottom', 50, 30);
 
 	// .card-work__img
 	&__img {
@@ -1027,7 +1026,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		display: flex;
 		align-items: center;
 		@extend %PS;
-		@include adaptiveValue("font-size", 35, 18);
+		@include adaptiveValue('font-size', 35, 18);
 		font-weight: 700;
 		line-height: 1;
 		position: relative;
@@ -1035,7 +1034,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	// .card-work__text
 	&__text {
 		@extend %PS;
-		@include adaptiveValue("font-size", 25, 16);
+		@include adaptiveValue('font-size', 25, 16);
 		line-height: 1.27;
 	}
 	// .card-work__perc
@@ -1045,7 +1044,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	&__bottom {
 		z-index: 3;
 		line-height: 1;
-		@include adaptiveValue("font-size", 18, 16);
+		@include adaptiveValue('font-size', 18, 16);
 	}
 	// .card-work__img-box
 	&__img-box {
@@ -1053,17 +1052,17 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 }
 
 .list-work {
-	@include adaptiveValue("padding-right", 73, 0, 0, $maxWidthContainer, 992);
+	@include adaptiveValue('padding-right', 73, 0, 0, $maxWidthContainer, 992);
 	// .list-work__item
 	&__item {
 		position: relative;
 		padding-left: toEm(43.6, 22);
-		@include adaptiveValue("font-size", 22, 18);
+		@include adaptiveValue('font-size', 22, 18);
 
 		&:not(:last-child) {
 			border-bottom: toRem(1) solid $white;
-			@include adaptiveValue("padding-bottom", 21, 15);
-			@include adaptiveValue("margin-bottom", 18, 15);
+			@include adaptiveValue('padding-bottom', 21, 15);
+			@include adaptiveValue('margin-bottom', 18, 15);
 		}
 
 		&::before {
@@ -1081,7 +1080,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	}
 	// .list-work__text
 	&__text {
-		@include adaptiveValue("font-size", 18, 16);
+		@include adaptiveValue('font-size', 18, 16);
 		line-height: 1.46;
 		display: grid;
 		gap: toRem(15);
@@ -1097,10 +1096,10 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	}
 }
 .form-book {
-	@include adaptiveValue("padding", 58, 30, 0, $maxWidthContainer, 992);
+	@include adaptiveValue('padding', 58, 30, 0, $maxWidthContainer, 992);
 	background-color: $white;
 	display: grid;
-	@include adaptiveValue("gap", 30, 20);
+	@include adaptiveValue('gap', 30, 20);
 
 	@media (max-width: $mobileSmall) {
 		padding: toRem(20);
@@ -1128,13 +1127,13 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		@media (max-width: $mobileSmall) {
 			flex-direction: column;
 		}
-		input[type="time" i]::-webkit-calendar-picker-indicator {
+		input[type='time' i]::-webkit-calendar-picker-indicator {
 			// opacity: 0;
 			// overflow: hidden;
 		}
 
-		input[type="date" i]::-webkit-calendar-picker-indicator {
-			background-image: url("../img/next/calendar.svg");
+		input[type='date' i]::-webkit-calendar-picker-indicator {
+			background-image: url('../img/next/calendar.svg');
 		}
 	}
 	// .form-book__textarea
@@ -1216,7 +1215,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		color: $white;
 		text-align: center;
 		@extend %PS;
-		@include adaptiveValue("font-size", 40, 22, 0, 1920, 992);
+		@include adaptiveValue('font-size', 40, 22, 0, 1920, 992);
 		font-weight: 700;
 		line-height: 1.21;
 		transition: color 0.3s;
@@ -1237,7 +1236,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		align-items: center;
 		flex-wrap: wrap;
 		gap: toRem(20);
-		@include adaptiveValue("margin-bottom", 40, 30);
+		@include adaptiveValue('margin-bottom', 40, 30);
 
 		@media (max-width: $mobileSmall) {
 			flex-direction: column;
@@ -1254,8 +1253,8 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(toRem(390), 1fr));
 
-		@include adaptiveValue("column-gap", 36, 30);
-		@include adaptiveValue("row-gap", 60, 40);
+		@include adaptiveValue('column-gap', 36, 30);
+		@include adaptiveValue('row-gap', 60, 40);
 		row-gap: toRem(40);
 
 		@media (max-width: $mobileSmall) {
@@ -1270,7 +1269,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 .item-posts {
 	display: flex;
 	flex-direction: column;
-	@include adaptiveValue("row-gap", 20, 15);
+	@include adaptiveValue('row-gap', 20, 15);
 
 	// .item-posts__top
 	&__top {
@@ -1298,7 +1297,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	&__right > * {
 		padding: toRem(21);
 		text-align: center;
-		@include adaptiveValue("font-size", 18, 16);
+		@include adaptiveValue('font-size', 18, 16);
 		text-transform: capitalize;
 		@media (max-width: $mobileSmall) {
 			padding: toRem(15);
@@ -1340,7 +1339,7 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	&__title {
 		color: $dark;
 		@extend %PS;
-		@include adaptiveValue("font-size", 30, 22);
+		@include adaptiveValue('font-size', 30, 22);
 		font-weight: 600;
 		line-height: 1.27;
 		text-transform: capitalize;
@@ -1362,9 +1361,9 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	&__text {
 		flex-grow: 1;
 		color: $mainColor;
-		@include adaptiveValue("font-size", 18, 16);
+		@include adaptiveValue('font-size', 18, 16);
 		line-height: 1.46;
-		@include adaptiveValue("margin-bottom", 26, 0, 0, $maxWidthContainer, 768);
+		@include adaptiveValue('margin-bottom', 26, 0, 0, $maxWidthContainer, 768);
 
 		> *:not(:last-child) {
 			margin-bottom: toRem(13);
@@ -1393,11 +1392,11 @@ $containerWidth: $maxWidthContainer + $containerPadding;
 	&__container {
 		position: relative;
 		aspect-ratio: 1220 / 525;
-		@include adaptiveValue("padding-top", 96, 40);
-		@include adaptiveValue("padding-bottom", 96, 40);
+		@include adaptiveValue('padding-top', 96, 40);
+		@include adaptiveValue('padding-bottom', 96, 40);
 
 		&::before {
-			content: "";
+			content: '';
 			position: absolute;
 			width: 100%;
 			height: 100%;
