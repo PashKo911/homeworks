@@ -1652,7 +1652,7 @@
         const da = new DynamicAdapt("max");
         da.init();
         window.onload = () => {
-            const currentPage = window.location.pathname.substring(1);
+            const [currentPage] = window.location.pathname.split("/").slice(-1);
             const menuLinks = document.querySelectorAll(".menu__link");
             menuLinks.forEach((menuLink => {
                 if (menuLink.getAttribute("href") === currentPage) menuLink.classList.add("_active-page");
@@ -1688,7 +1688,7 @@
         showMore();
         formFieldsInit({
             viewPass: false,
-            autoHeight: false
+            autoHeight: true
         });
         formSubmit();
     })();

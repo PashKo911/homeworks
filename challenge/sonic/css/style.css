@@ -225,6 +225,9 @@ textarea {
   border: none;
   border-radius: 0
 }
+.input._form-error {
+  border-color: red
+}
 .input[placeholder]:not([data-placeholder-nohiden])::-webkit-input-placeholder {
   -webkit-transition: opacity .3s;
   transition: opacity .3s
@@ -254,8 +257,7 @@ textarea {
 }
 textarea.input {
   resize: none;
-  padding: .875rem;
-  min-height: 8.375rem
+  padding: .875rem
 }
 .checkbox {
   display: grid;
@@ -1003,6 +1005,9 @@ textarea.input {
   flex-direction: column;
   gap: .75rem
 }
+.images-pledge * img {
+  width: 100%
+}
 .images-pledge .images-pledge__top {
   display: flex;
   justify-content: center;
@@ -1066,6 +1071,10 @@ textarea.input {
   align-items: center;
   position: relative;
   padding: 1.25rem 0
+}
+.items-precision__img picture {
+  display: flex;
+  justify-content: center
 }
 .items-precision__image {
   width: 85.714286%;
@@ -1329,6 +1338,9 @@ textarea.input {
   border-radius: .5rem;
   padding-left: .875rem;
   border: .0625rem solid #d0d5dd
+}
+.form-contact__number-body._form-error {
+  border-color: red
 }
 .form-contact__title-checkbox {
   color: var(--text-fourth);
@@ -2156,6 +2168,11 @@ textarea.input {
   .info-contact {
     padding-bottom: 1.875rem
   }
+  .info-contact::before {
+    right: 50%;
+    -webkit-transform: translate(50%,0);
+    transform: translate(50%,0)
+  }
   .info-contact__title {
     font-size: 1.25rem
   }
@@ -2278,6 +2295,14 @@ textarea.input {
   }
   .form-contact__row {
     flex-direction: column
+  }
+}
+@media (max-width:29.6875em) {
+  .actions-header__link {
+    border: .0625rem solid #d0d5dd;
+    border-radius: .5rem;
+    min-width: 7.5625rem;
+    text-align: center
   }
 }
 @media (max-width:26.5625em) {

@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20240411175248">
+	<link rel="stylesheet" href="css/style.min.css?_v=20240412103829">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,8 +39,8 @@
 												Logistics Workflow
 											</a>
 										</li>
-										<li href="shippers.html#features" class="sub-menu__item">
-											<a href="#" class="sub-menu__link">
+										<li class="sub-menu__item">
+											<a href="shippers.html#features" class="sub-menu__link">
 												Features
 											</a>
 										</li>
@@ -60,7 +60,7 @@
 								<div class="menu__sub sub-menu">
 									<ul class="sub-menu__list">
 										<li class="sub-menu__item">
-											<a href="shippers.html#features" class="sub-menu__link">
+											<a href="carriers.html#features" class="sub-menu__link">
 												Features
 											</a>
 										</li>
@@ -75,7 +75,7 @@
 							</li>
 						</ul>
 					</nav>
-					<div data-da=".menu__body, 450" class="menu__actions actions-header">
+					<div data-da=".menu__body, 475" class="menu__actions actions-header">
 						<a href="#" class="actions-header__link">
 							Log in
 						</a>
@@ -90,7 +90,7 @@
 		<main class="page-contacts">
 			<div class="page-contacts__contact contact">
 				<div class="contact__container">
-					<aside class="contact__info info-contact">
+					<section class="contact__info info-contact">
 						<div class="info-contact__top">
 							<h2 class="info-contact__title">
 								Let’s Start
@@ -134,7 +134,7 @@
 							<a href="#" aria-label="angellist" class="social__link _icon-angellist"></a>
 							<a href="#" aria-label="dribble" class="social__link _icon-dribble"></a>
 						</div>
-					</aside>
+					</section>
 					<div class="contact__form-wrapper">
 						<form class="contact__form form-contact" action="#" method="post">
 							<div class="form-contact__header header-block">
@@ -150,16 +150,16 @@
 							<div class="form-contact__row">
 								<label class="form-contact__label">
 									First name
-									<input type="text" name="firstName" id="firstName" data-error="Error" placeholder="First name" class="form-contact__input input">
+									<input data-required data-validate type="text" name="firstName" id="firstName" placeholder="First name" class="form-contact__input input">
 								</label>
 								<label class="form-contact__label">
 									Last name
-									<input type="text" name="lastName" id="lastName" data-error="Error" placeholder="Last name" class="form-contact__input input">
+									<input data-required data-validate type="text" name="lastName" id="lastName" placeholder="Last name" class="form-contact__input input">
 								</label>
 							</div>
 							<label class="form-contact__label">
 								Email
-								<input type="email" name="email" id="email" data-error="Error" placeholder="you@company.com" class="form-contact__input input">
+								<input data-required="email" data-validate type="email" name="email" id="email" placeholder="you@company.com" class="form-contact__input input">
 							</label>
 							<div class="form-contact__number-wrapper">
 								<label for="phone" class="form-contact__label">Phone number</label>
@@ -170,12 +170,12 @@
 										<option class="number-select__opt" value="uk">UK</option>
 										<option class="number-select__opt" value="fr">FR</option>
 									</select>
-									<input type="tel" name="phoneNumber" id="phone" data-error="Error" placeholder="+1 (555) 000-0000" class="form-contact__input input">
+									<input data-required data-validate type="tel" name="phoneNumber" id="phone" placeholder="+1 (555) 000-0000" class="form-contact__input input">
 								</div>
 							</div>
 							<label class="form-contact__label">
 								Message
-								<textarea name="textArea" id="textArea" placeholder="Leave us a message..." class="form-contact__input input"></textarea>
+								<textarea data-autoheight data-autoheight-min="134" name="textArea" id="textArea" placeholder="Leave us a message..." class="form-contact__input input"></textarea>
 							</label>
 							<div class="form-contact__wrapper-checkbox">
 								<div class="form-contact__title-checkbox">
@@ -208,7 +208,7 @@
 			</div>
 		</main>
 	</div>
-	<script src="js/app.min.js?_v=20240411175248"></script>
+	<script src="js/app.min.js?_v=20240412103829"></script>
 
 
 </body>
