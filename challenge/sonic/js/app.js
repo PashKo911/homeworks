@@ -801,6 +801,13 @@
                 }
             }
         }
+        function getActivePage() {
+            const [currentPage] = location.pathname.split("/").slice(-1);
+            const menuLinks = document.querySelectorAll(".menu__link");
+            if (menuLinks.length) menuLinks.forEach((menuLink => {
+                if (menuLink.getAttribute("href") === currentPage) menuLink.classList.add("_active-page");
+            }));
+        }
         let gotoblock_gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
             const targetBlockElement = document.querySelector(targetBlock);
             if (targetBlockElement) {
@@ -1652,11 +1659,6 @@
         const da = new DynamicAdapt("max");
         da.init();
         window.onload = () => {
-            const [currentPage] = window.location.pathname.split("/").slice(-1);
-            const menuLinks = document.querySelectorAll(".menu__link");
-            menuLinks.forEach((menuLink => {
-                if (menuLink.getAttribute("href") === currentPage) menuLink.classList.add("_active-page");
-            }));
             if (isMobile.any()) {
                 const matchQuery = window.matchMedia("(max-width: 768px)");
                 const parentEls = document.querySelectorAll(".menu__item--parent");
@@ -1691,5 +1693,6 @@
             autoHeight: true
         });
         formSubmit();
+        getActivePage();
     })();
 })();

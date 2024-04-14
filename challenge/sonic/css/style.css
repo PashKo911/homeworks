@@ -1006,7 +1006,9 @@ textarea.input {
   gap: .75rem
 }
 .images-pledge * img {
-  width: 100%
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover
 }
 .images-pledge .images-pledge__top {
   display: flex;
@@ -2166,7 +2168,9 @@ textarea.input {
     flex-direction: column-reverse
   }
   .info-contact {
-    padding-bottom: 1.875rem
+    padding-bottom: 1.875rem;
+    min-width: auto;
+    padding-right: 0
   }
   .info-contact::before {
     right: 50%;
