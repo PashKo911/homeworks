@@ -1028,8 +1028,7 @@ textarea.input {
   display: flex;
   gap: 2.777778%;
   justify-content: center;
-  align-items: flex-start;
-  aspect-ratio: 576/240
+  align-items: flex-start
 }
 .images-pledge__bottom > *:nth-child(odd) {
   aspect-ratio: 192/128;
