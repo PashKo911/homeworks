@@ -1,0 +1,7 @@
+/history1
+/favicon.ico
+/history2
+/favicon.ico
+/history3
+/favicon.ico
+/favicon.ico
