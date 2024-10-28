@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Наші продукти
+	</title>
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<nav class="header__nav">
+				<% headerLinks.forEach((link)=> { %>
+					<a href="<%= link.path %>" class="header__link">
+						<%= link.title %>
+					</a>
+					<%}) %>
+			</nav>
+		</div>
+		<main class="page">
+			<div class="page__products products">
+				<div class="products__container">
+					<h1>Наші продукти</h1>
+					<ul class="products__list">
+						<% productsList.forEach((product)=> { %>
+							<li class="products__item">
+								<a href="#" class="products__link link-products">
+									<img src="<%=product.imgPath %>" alt="" class="link-products__img">
+									<div class="link-products__content">
+										<div class="link-products__art">
+											Артикул: <%= product.article %>
+										</div>
+										<h3 class="link-products__title">
+											<%= product.title %>
+										</h3>
+										<p class="link-products__price">
+											<%= product.price %>
+										</p>
+									</div>
+								</a>
+							</li>
+							<%}) %>
+					</ul>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			<p>
+				<%= task %>
+			</p>
+		</footer>
+	</div>
+</body>
+
+</html>

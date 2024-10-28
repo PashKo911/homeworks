@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		<%= title %>
+	</title>
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<nav class="header__nav">
+				<% headerLinks.forEach((link)=> { %>
+					<a href="<%= link.path %>" class="header__link">
+						<%= link.title %>
+					</a>
+					<%}) %>
+			</nav>
+		</div>
+		<main class="page">
+			<div class="page__hero hero">
+				<div class="hero__container">
+					<h1>
+						<%= title %>
+					</h1>
+					<img src="images/main.webp" alt="" class="hero__img">
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			<p>
+				<%= task %>
+			</p>
+		</footer>
+	</div>
+</body>
+
+</html>

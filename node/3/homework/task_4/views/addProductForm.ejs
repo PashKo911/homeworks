@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Додати продукти
+	</title>
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<nav class="header__nav">
+				<% headerLinks.forEach((link)=> { %>
+					<a href="<%= link.path %>" class="header__link">
+						<%= link.title %>
+					</a>
+					<%}) %>
+			</nav>
+		</div>
+		<main class="page">
+			<div class="page__add-product add-product">
+				<div class="add-product__container">
+					<form class="form" action="/product/add" method="post">
+						<div class="form__item">
+							<label for="title" class="form__label">
+								Назва товару:
+							</label>
+							<input class="form__input" id="title" type="text" name="title" required>
+						</div>
+						<div class="form__item">
+							<label for="price" class="form__label">
+								Ціна товару:
+							</label>
+							<input class="form__input" id="price" type="number" name="price" required>
+						</div>
+						<div class="form__item">
+							<label for="img" class="form__label">
+								Зображення товару:
+							</label>
+							<input class="form__input" id="img" type="file" name="img" required>
+						</div>
+						<button class="form__button">Додати товар</button>
+					</form>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			<p>
+				<%= task %>
+			</p>
+		</footer>
+	</div>
+</body>
+
+</html>
