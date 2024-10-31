@@ -1,0 +1,6 @@
+[
+	{ "id": 1, "title": "Tea", "amount": 200, "price": 300 },
+	{ "id": 2, "title": "Milk", "amount": 500, "price": 100 },
+	{ "id": 1729100834620, "title": "Шовдарь", "amount": "120", "price": "8000" },
+	{ "id": 1729100860924, "title": "Сало", "amount": "7800", "price": "500" }
+]

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ua">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
+		Master Zoo
+	</title>
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+	<div class="wrapper">
+		<%- include('../../partials/header.ejs') %>
+			<main class="page">
+				<section class="page__add-product add-product">
+					<div class="add-product__container">
+						<h2 class="add-product__title">
+							Додати товар
+						</h2>
+						<form class="form" action="/products" method="post" enctype="multipart/form-data">
+							<div class="form__item">
+								<label for="article" class="form__label">
+									Артикул:
+								</label>
+								<input class="form__input" id="article" type="number" name="article" required>
+							</div>
+							<div class="form__item">
+								<label for="title" class="form__label">
+									Назва товару:
+								</label>
+								<input class="form__input" id="title" type="text" name="title" required>
+							</div>
+							<div class="form__item">
+								<label for="price" class="form__label">
+									Ціна товару:
+								</label>
+								<input class="form__input" id="price" type="number" name="price" required>
+							</div>
+							<div class="form__item">
+								<label for="description" class="form__label">
+									Опис товару:
+								</label>
+								<input class="form__input" id="description" type="text" name="description" required>
+							</div>
+							<div class="form__item">
+								<label for="img" class="form__label">
+									Зображення товару:
+								</label>
+								<input class="form__input" id="img" type="file" name="img">
+							</div>
+							<button class="button">Додати товар</button>
+						</form>
+					</div>
+				</section>
+			</main>
+			<%- include('../../partials/footer.ejs') %>
+	</div>
+</body>
+
+</html>

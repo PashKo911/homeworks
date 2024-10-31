@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ua">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
+		Master Zoo
+	</title>
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+	<div class="wrapper">
+		<%- include('../../partials/header.ejs') %>
+			<main class="page">
+				<section class="page__products products-detail">
+					<div class="products-detail__container">
+						<img src="<%=product.imgPath %>" alt="<%=product.title %>" class="products-detail__img">
+						<div class="products-detail__content">
+							<div class="products-details__art">
+								Артикул: <%= product.article %>
+							</div>
+							<h3 class="products-detail__title">
+								<%= product.title %>
+							</h3>
+							<p class="products-detail__price">
+								<%= product.price %>
+							</p>
+							<div class="products-detail__text">
+								<p>
+									<%=product.description %>
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+			<%- include('../../partials/footer.ejs') %>
+	</div>
+</body>
+
+</html>
