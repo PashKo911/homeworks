@@ -14,7 +14,7 @@ class Product {
 		try {
 			return await DataFileManager.getItemById(id)
 		} catch (error) {
-			throw new Error('Операція з даними не пройшла!')
+			throw new Error(`Операція з даними не пройшла! id: ${id} `)
 		}
 	}
 
@@ -23,6 +23,22 @@ class Product {
 			await DataFileManager.addItem({ id: uuidv4(), ...productObj })
 		} catch (error) {
 			throw new Error('Операція з додавання даних не пройшла!')
+		}
+	}
+
+	static async updateProduct(id, productData) {
+		try {
+			await DataFileManager.updateItemById(id, productData)
+		} catch (error) {
+			throw new Error('Оновлення даних не пройшло!')
+		}
+	}
+
+	static async deleteProductById(id) {
+		try {
+			await DataFileManager.deleteItemById(id)
+		} catch (error) {
+			throw new Error('Виникла помилка при видаленні')
 		}
 	}
 }

@@ -93,6 +93,14 @@ class DataFileManager {
 			throw new Error(`Помилка при видаленні об'єкта: ${error.message}`)
 		}
 	}
+	async deleteFile(filePath) {
+		try {
+			await fs.access(filePath)
+			await fs.unlink(filePath)
+		} catch (error) {
+			throw new Error(`Виникла помилка під час видалення файлу файлу ${error.message}`)
+		}
+	}
 }
 
 export default new DataFileManager(settings.dataPath)

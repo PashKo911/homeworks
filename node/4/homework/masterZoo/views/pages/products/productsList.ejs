@@ -32,16 +32,8 @@
 													<%= product.title %>
 												</h3>
 												<p class="link-products__price">
-													<%= product.price %>
+													<%= parseFloat(product.price).toFixed(2) %> грн.
 												</p>
-											</div>
-											<div class="buttons">
-												<button class="button">
-													Видалити
-												</button>
-												<button class="button">
-													Редагувати
-												</button>
 											</div>
 										</a>
 									</li>

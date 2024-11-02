@@ -8,6 +8,8 @@
 		Master Zoo
 	</title>
 	<link rel='stylesheet' href='/stylesheets/style.css' />
+	<script src="/javascripts/RequestManager.js"></script>
+
 </head>
 
 <body>
@@ -25,12 +27,21 @@
 								<%= product.title %>
 							</h3>
 							<p class="products-detail__price">
-								<%= product.price %>
+								<%= parseFloat(product.price).toFixed(2) %> грн.
 							</p>
 							<div class="products-detail__text">
 								<p>
 									<%=product.description %>
 								</p>
+							</div>
+							<div class="buttons">
+								<button onclick="RequestManager.deleteRequest('/products/<%=product.id %>')" href="#"
+									class="button">
+									Видалити
+								</button>
+								<a href="/products/edit/<%=product.id %>" class="button">
+									Редагувати
+								</a>
 							</div>
 						</div>
 					</div>

@@ -42,6 +42,11 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use((req, res, next) => {
+	req.__dirname = __dirname
+	next()
+})
+
 app.use('/', indexRouter)
 app.use('/products', productsRouter)
 
