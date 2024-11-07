@@ -1,7 +1,7 @@
 import { checkSchema } from 'express-validator'
 import { Router } from 'express'
 import ProductsController from '../controllers/productsController.mjs'
-import ProductsValidator from '../models/ProductsValidator.mjs'
+import ProductsValidator from '../validators/ProductsValidator.mjs'
 import upload from '../utils/uploadConfig.mjs'
 
 const router = new Router()

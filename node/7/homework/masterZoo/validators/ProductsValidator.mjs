@@ -37,8 +37,8 @@ class ProductsValidator {
 		},
 		description: {
 			isLength: {
-				options: { min: 10, max: 500 },
-				errorMessage: 'Опис товару повинен містити від 10 до 500 символів.',
+				options: { min: 10 },
+				errorMessage: 'Опис товару повинен містити від 10',
 			},
 			trim: true,
 			escape: true,

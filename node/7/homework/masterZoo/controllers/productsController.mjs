@@ -1,25 +1,20 @@
-// !!! Два момента так і не вирішив
-// !!! 1) в чаті писав про додавання файлу при неуспішній валідації
-// !!! 2) При редагуванні продукту, треба заново обирати зображення, превʼю зберігається але в інпуті файл не лежить,
-// !!! при створенні продукту також після валідації всі поля форми заповнюються, а от файл  треба знову  обирати, взагалі з цим фалом закопався))
-
 import path from 'path'
 
-import DataFileManager from '../utils/DataFileManager.mjs'
+import ProductsDBService from '../models/product/ProductsDBService.mjs'
 
-import Product from '../models/Product.mjs'
-import FormatErrors from '../models/FormatErrors.mjs'
+import FormatErrors from '../validators/FormatErrors.mjs'
 
 class ProductsController {
 	static async mainProducts(req, res) {
-		const productsList = await Product.loadProductsList()
+		const productsList = await ProductsDBService.loadProductsList()
 		res.render('pages/products/productsList', { productsList, currentPath: req.path })
 	}
 
 	static async productDetail(req, res) {
 		const id = req.params.id
 
-		const product = await Product.getProductById(id)
+		const product = await ProductsDBService.getProductById(id)
+		const { imgPath } = product
 		res.render('pages/products/productsDetail', { product, currentPath: req.path })
 	}
 
@@ -28,7 +23,7 @@ class ProductsController {
 		let product = {}
 
 		if (id) {
-			product = await Product.getProductById(id)
+			product = await ProductsDBService.getProductById(id)
 		}
 		res.render('pages/products/productsForm', { currentPath: req.path, product, errors: [] })
 	}
@@ -49,35 +44,51 @@ class ProductsController {
 			})
 		}
 
-		// Ініціалізація даних продукту
-		const productData = {
-			...req.body,
-			...(req.file ? { imgPath: `/images/products/${req.file.filename}` } : {}),
-		}
-
-		// Оновлення або додавання продукту
-		if (req.params.id) {
-			if (req.file) {
-				await Product.deleteOldImage(req.params.id, req.__dirname) // Видалення старого зображення
+		try {
+			// Ініціалізація даних продукту
+			const productData = {
+				...req.body,
+				...(req.file ? { imgPath: `/images/products/${req.file.filename}` } : {}),
 			}
-			await Product.updateProduct(req.params.id, productData)
-		} else {
-			await Product.addProduct(productData)
-		}
 
-		res.redirect('/products/productsList')
+			if (req.params.id) {
+				if (req.file) {
+					await ProductsDBService.deleteOldImage(req.params.id, req.__dirname) // Видалення старого зображення
+				}
+				await ProductsDBService.updateProduct(req.params.id, productData)
+			} else {
+				await ProductsDBService.addProduct(productData)
+			}
+			res.redirect('/products/productsList')
+		} catch (error) {
+			const product = {
+				...req.body,
+				...(req.params.id ? { id: req.params.id } : {}),
+			}
+			const errors = FormatErrors.formatMongoDBErrors(error)
+			console.log('===========')
+			console.log(errors, 'errors formated')
+			console.log('===========')
+			console.log(error, 'error ')
+
+			res.status(500).render('pages/products/productsForm', {
+				currentPath: req.path,
+				product,
+				errors,
+			})
+		}
 	}
 
 	static async deleteProduct(req, res) {
 		const id = req.params.id
 
-		const product = await Product.getProductById(id)
+		const product = await ProductsDBService.getProductById(id)
 
 		if (product.imgPath) {
 			const staticImgPath = path.join(req.__dirname, 'public/', product.imgPath)
-			await DataFileManager.deleteFile(staticImgPath)
+			await ProductsDBService.deleteFile(staticImgPath)
 		}
-		await Product.deleteProductById(id)
+		await ProductsDBService.deleteProductById(id)
 		res.sendStatus(204)
 	}
 }
