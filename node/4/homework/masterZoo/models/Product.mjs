@@ -1,3 +1,4 @@
+import path from 'path'
 import DataFileManager from '../utils/DataFileManager.mjs'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -40,6 +41,11 @@ class Product {
 		} catch (error) {
 			throw new Error('Виникла помилка при видаленні')
 		}
+	}
+	static async deleteOldImage(productId, rootDir) {
+		const { imgPath } = await Product.getProductById(productId)
+		const staticImgPath = path.join(rootDir, 'public/', imgPath)
+		await DataFileManager.deleteFile(staticImgPath)
 	}
 }
 

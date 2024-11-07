@@ -23,6 +23,10 @@
 .header {
 	padding: 15px;
 	background-color: rgb(216, 135, 5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
 }
 .header__nav {
 	display: flex;
@@ -179,23 +183,24 @@
 
 .form {
 	padding: 40px;
-	/* background-color: #856e6e; */
-	background-color: rgb(157, 105, 20);
+	background-color: rgb(244, 207, 148);
 	border-radius: 10px;
 	border: 1px solid #000;
 	width: 100%;
 	max-width: 1000px;
 	display: grid;
 	grid-template-columns: minmax(208px, 600px);
-	row-gap: 20px;
+	row-gap: 30px;
+	color: #000;
 }
 .form__item {
 	display: flex;
 	flex-direction: column;
+	position: relative;
 }
 .form__label {
 	margin-bottom: 5px;
-	font-size: 14px;
+	font-size: 16px;
 }
 .form__input {
 	width: 100%;
@@ -220,17 +225,12 @@
 	justify-content: center;
 	text-align: center;
 	cursor: pointer;
-	color: #fff;
+	color: #000;
 	font-size: 16px;
 	position: relative;
-	overflow: hidden;
 	margin-left: auto;
 	margin-right: auto;
 }
-
-/* .image-upload:focus {
-	outline: 1px solid red;
-} */
 
 .image-upload img {
 	width: 100%;
@@ -240,6 +240,18 @@
 }
 .image-upload input {
 	display: none;
+}
+
+.error-block {
+	font-size: 14px;
+	position: absolute;
+	bottom: -2px;
+	left: 0;
+	color: red;
+	padding-left: 5px;
+	z-index: 100;
+	display: none;
+	transform: translate(0, 100%);
 }
 
 .buttons {

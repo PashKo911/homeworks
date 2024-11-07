@@ -15,40 +15,90 @@
 				<section class="page__add-product add-product">
 					<div class="add-product__container">
 						<h2 class="add-product__title">Додати товар</h2>
-						<form class="form" action="/products<%= products ? '/' + products.id : '' %>" method="post"
+						<form class="form" action="/products<%= product.id ? '/' + product.id : '' %>" method="post"
 							enctype="multipart/form-data">
 							<div class="form__item">
 								<label for="article" class="form__label">Артикул:</label>
 								<input class="form__input" id="article" type="number" name="article"
-									value="<%= products ? products.article : '' %>" required>
+									value="<%= product ? product.article : '' %>">
+
+								<div <%=errors ? 'style= display:block;' : '' %> class="error-block">
+									<% if (errors.article) { %>
+										<% errors.article.forEach(error=> { %>
+											<span>
+												<%= error %>
+											</span>
+											<% }) %>
+												<% } %>
+								</div>
 							</div>
 							<div class="form__item">
 								<label for="title" class="form__label">Назва товару:</label>
 								<input class="form__input" id="title" type="text" name="title"
-									value="<%= products ? products.title : '' %>" required>
+									value="<%= product ? product.title : '' %>">
+
+								<div <%=errors ? 'style= display:block;' : '' %> class="error-block">
+									<% if (errors.title) { %>
+										<% errors.title.forEach(error=> { %>
+											<span>
+												<%= error %>
+											</span>
+											<% }) %>
+												<% } %>
+								</div>
 							</div>
 							<div class="form__item">
 								<label for="price" class="form__label">Ціна товару:</label>
 								<input class="form__input" id="price" type="number" name="price"
-									value="<%= products ? products.price : '' %>" required>
+									value="<%= product ? product.price : '' %>">
+
+								<div <%=errors ? 'style= display:block;' : '' %> class="error-block">
+									<% if (errors.price) { %>
+										<% errors.price.forEach(error=> { %>
+											<span>
+												<%= error %>
+											</span>
+											<% }) %>
+												<% } %>
+								</div>
 							</div>
 							<div class="form__item">
 								<label for="description" class="form__label">Опис товару:</label>
-								<textarea class="form__textarea" id="description" name="description"
-									required><%= products ? products.description : '' %></textarea>
+								<textarea class="form__textarea" id="description"
+									name="description"><%= product ? product.description : '' %></textarea>
+
+								<div <%=errors ? 'style= display:block;' : '' %> class="error-block">
+									<% if (errors.description) { %>
+										<% errors.description.forEach(error=> { %>
+											<span>
+												<%= error %>
+											</span>
+											<% }) %>
+												<% } %>
+								</div>
 							</div>
 							<div class="image-upload" id="uploadArea">
-								<span style="<%= products ? 'display: none;' : '' %>">Click or Drag to Upload
+								<span <%=product.id ? 'style = display:none' : '' %> >Click or Drag to Upload
 									Image</span>
-								<img id="previewImage" src="<%= products ? products.imgPath : '' %>"
-									alt="<%= products ? products.title : 'Load the image' %>"
-									style="<%= products ? 'display: block;' : 'display: none;' %>">
-								<input id="fileInput" type="file" name="img" accept="image/*" <%=products ? ''
-									: 'required' %> />
+								<img id="previewImage" src="<%= product ? product.imgPath : '' %>"
+									alt="<%= product.id ? product.title : 'Load the image' %>" <%=product.id
+									? 'style = display:block' : '' %>
+								>
+								<input id="fileInput" type="file" name="productImg" accept="image/*" />
+
+								<div <%=errors ? 'style= display:block;' : '' %> class="error-block">
+									<% if (errors.productImg) { %>
+										<% errors.productImg.forEach(error=> { %>
+											<span>
+												<%= error %>
+											</span>
+											<% }) %>
+												<% } %>
+								</div>
 							</div>
 
 							<button class="button">
-								<%= products ? 'Редагувати товар' : 'Додати товар' %>
+								<%= product.id ? 'Редагувати товар' : 'Додати товар' %>
 							</button>
 						</form>
 					</div>
