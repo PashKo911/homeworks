@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
+		Home Page
+	</title>
+	<link rel='stylesheet' href='/stylesheets/reset.css' />
+	<link rel='stylesheet' href='/stylesheets/common.css' />
+	<link rel='stylesheet' href='/stylesheets/pages/home.css' />
+</head>
+
+<body>
+	<div class="wrapper">
+		<%- include('../partials/header.ejs') %>
+			<main class="page">
+				<section class="page__home home">
+					<div class="home__img">
+						<img src="/images/home/Login_image.png" alt="Register image">
+					</div>
+					<div action="#" class="home__content">
+						<h1 class="home__title title">
+							Login into your account
+						</h1>
+						<form action="#" class="home__form">
+							<div class="home__wrapper">
+								<label class="home__label label" for="email">
+									Email Id :
+								</label>
+								<div class="home__inp-wrp">
+									<input id="email" name="email" type="email" value="admin@test.com"
+										placeholder="info@provistechnologies.com" class="home__input input" required>
+									<span>
+										<svg xmlns="http://www.w3.org/2000/svg" width="28" height="23"
+											viewBox="0 0 28 23" fill="none">
+											<path
+												d="M1.42373 0.892578L25.7962 0.892578C26.1553 0.892578 26.4997 1.02071 26.7537 1.24878C27.0076 1.47686 27.1502 1.78619 27.1502 2.10874V21.5673C27.1502 21.8898 27.0076 22.1992 26.7537 22.4272C26.4997 22.6553 26.1553 22.7834 25.7962 22.7834H1.42373C1.06462 22.7834 0.720217 22.6553 0.466287 22.4272C0.212358 22.1992 0.0697021 21.8898 0.0697021 21.5673L0.0697021 2.10874C0.0697021 1.78619 0.212358 1.47686 0.466287 1.24878C0.720217 1.02071 1.06462 0.892578 1.42373 0.892578ZM24.4422 6.04666L13.7075 14.6814L2.77776 6.01991L2.77776 20.3511H24.4422V6.04666ZM3.46966 3.3249L13.6926 11.4269L23.7679 3.3249L3.46966 3.3249Z"
+												fill="white" />
+										</svg>
+									</span>
+								</div>
+							</div>
+							<div class="home__wrapper">
+								<label class="home__label label" for="password">
+									Password
+								</label>
+								<div class="home__inp-wrp">
+									<input id="password" name="password" type="password" value="admin123"
+										placeholder="Enter your password" class="home__input input" required>
+									<span>
+										<svg xmlns="http://www.w3.org/2000/svg" width="25" height="26"
+											viewBox="0 0 25 26" fill="none">
+											<path
+												d="M22.0889 10.69H23.4429C23.802 10.69 24.1464 10.8181 24.4003 11.0462C24.6543 11.2742 24.7969 11.5836 24.7969 11.9061V24.0677C24.7969 24.3903 24.6543 24.6996 24.4003 24.9277C24.1464 25.1557 23.802 25.2839 23.4429 25.2839H1.77847C1.41935 25.2839 1.07495 25.1557 0.821024 24.9277C0.567094 24.6996 0.424438 24.3903 0.424438 24.0677L0.424438 11.9061C0.424438 11.5836 0.567094 11.2742 0.821024 11.0462C1.07495 10.8181 1.41935 10.69 1.77847 10.69H3.13249V9.47381C3.13249 8.35585 3.37765 7.24884 3.85398 6.21598C4.3303 5.18312 5.02846 4.24464 5.90859 3.45413C6.78872 2.66361 7.83359 2.03654 8.98353 1.60872C10.1335 1.18089 11.366 0.960693 12.6107 0.960693C13.8554 0.960693 15.0879 1.18089 16.2378 1.60872C17.3878 2.03654 18.4326 2.66361 19.3128 3.45413C20.1929 4.24464 20.8911 5.18312 21.3674 6.21598C21.8437 7.24884 22.0889 8.35585 22.0889 9.47381V10.69ZM3.13249 13.1223L3.13249 22.8516H22.0889V13.1223L3.13249 13.1223ZM11.2567 15.5546H13.9647V20.4192H11.2567V15.5546ZM19.3808 10.69V9.47381C19.3808 7.86108 18.6675 6.31441 17.3979 5.17404C16.1282 4.03367 14.4062 3.39301 12.6107 3.39301C10.8151 3.39301 9.09312 4.03367 7.82347 5.17404C6.55382 6.31441 5.84055 7.86108 5.84055 9.47381V10.69L19.3808 10.69Z"
+												fill="white" />
+										</svg>
+									</span>
+								</div>
+							</div>
+							<a href="#" class="home__forgot">
+								Forgot password?
+							</a>
+							<button disabled class="home__button button">
+								Login now
+							</button>
+							<span class="home__separator">
+								<span>OR</span>
+							</span>
+							<a href="/users/register" class="home__sign button button--transpaternt">
+								Signup now
+							</a>
+						</form>
+					</div>
+				</section>
+			</main>
+			<%- include('../partials/footer.ejs') %>
+	</div>
+</body>
+
+</html>

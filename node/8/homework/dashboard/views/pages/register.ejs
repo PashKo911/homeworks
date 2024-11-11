@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
+		Register
+	</title>
+	<link rel='stylesheet' href='/stylesheets/reset.css' />
+	<link rel='stylesheet' href='/stylesheets/common.css' />
+	<link rel='stylesheet' href='/stylesheets/pages/register.css' />
+</head>
+
+<body>
+	<div class="wrapper">
+		<%- include('../partials/header.ejs') %>
+			<main class="page">
+				<section class="page__register register">
+					<h1 class="regirster__title title">
+						Register
+					</h1>
+					<form action="/users/register<%=user?.id ? '/' + user.id : '' %>" method="post"
+						class="register__form form">
+						<div class="form__wrp">
+							<div class="form__item">
+								<label for="firstName" class="form__label label">
+									First Name
+								</label>
+								<input class="form__input input" id="firstName" type="text" name="firstName"
+									value="<%= user ? user.firstName : '' %>" required>
+								<div class="error-block"
+									style="<%= errors?.firstName ? 'display: block;' : 'display: none;' %>">
+									<%= errors?.firstName %>
+								</div>
+							</div>
+							<div class="form__item">
+								<label for="lastName" class="form__label label">
+									Last Name
+								</label>
+								<input class="form__input input" id="lastName" type="text" name="lastName"
+									value="<%= user ? user.lastName : '' %>" required>
+								<div class="error-block"
+									style="<%= errors?.lastName ? 'display: block;' : 'display: none;' %>">
+									<%= errors?.lastName %>
+								</div>
+							</div>
+							<div class="form__item">
+								<label for="phoneNumber" class="form__label label">
+									Phone Number
+								</label>
+								<input class="form__input input" id="phoneNumber" type="number" name="phoneNumber"
+									value="<%= user ? user.phoneNumber : '' %>" required>
+								<div class="error-block"
+									style="<%= errors?.phoneNumber ? 'display: block;' : 'display: none;' %>">
+									<%= errors?.phoneNumber %>
+								</div>
+							</div>
+							<div class="form__item">
+								<label for="email" class="form__label label">
+									Email
+								</label>
+								<input class="form__input input" id="email" type="email" name="email"
+									value="<%= user ? user.email : '' %>" required>
+								<div class="error-block"
+									style="<%= errors?.email ? 'display: block;' : 'display: none;' %>">
+									<%= errors?.email %>
+								</div>
+							</div>
+							<div class="form__item">
+								<label for="country" class="form__label label">
+									Country
+								</label>
+								<select name="country" id="country" class="form__select input">
+									<% if(countries.length){ %>
+										<%countries.forEach(country=>{ %>
+											<option value="<%=country._id %>">
+												<%= country.name%>
+											</option>
+											<%}) %>
+												<%} %>
+								</select>
+								<div class="error-block"
+									style="<%= errors?.country ? 'display: block;' : 'display: none;' %>">
+									<%= errors?.country %>
+								</div>
+							</div>
+							<div class="form__item">
+								<label for="password" class="form__label label">
+									Password
+								</label>
+								<input class="form__input input" id="password" type="password" name="password"
+									value="<%= user ? user.password : '' %>" required>
+								<div class="error-block"
+									style="<%= errors?.password ? 'display: block;' : 'display: none;' %>">
+									<%= errors?.password %>
+								</div>
+							</div>
+						</div>
+						<button class="form__button button">
+							Register
+						</button>
+
+					</form>
+				</section>
+			</main>
+			<%- include('../partials/footer.ejs') %>
+	</div>
+</body>
+
+</html>

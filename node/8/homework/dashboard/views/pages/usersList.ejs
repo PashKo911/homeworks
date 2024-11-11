@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
+		Users List
+	</title>
+	<link rel='stylesheet' href='/stylesheets/reset.css' />
+	<link rel='stylesheet' href='/stylesheets/common.css' />
+	<link rel='stylesheet' href='/stylesheets/pages/usersList.css' />
+	<script src="/javascripts/RequestManager.js"></script>
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<%- include('../partials/header.ejs') %>
+			<main class="page">
+				<section class="page__users users">
+					<div class="users__container">
+						<div class="users__wrp">
+							<div class="users__head">
+								<h2 class="users__title">
+									All Users
+								</h2>
+								<form action="/users" class="users__filter filer">
+									<label for="search" class="filter__item">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+											viewBox="0 0 24 24" fill="none">
+											<path
+												d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+												stroke="#7E7E7E" stroke-width="2" stroke-linecap="round"
+												stroke-linejoin="round" />
+											<path d="M21 21L16.65 16.65" stroke="#7E7E7E" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round" />
+										</svg>
+										<input id="search" type="text" name="search" placeholder="Search"
+											aria-label="search user" class="filter__input">
+									</label>
+									<div class="form__select-wrp">
+										<span>Sort by :</span>
+										<select class="filter__select" name="sort" id="role">
+											<% const options=['newest', 'firstName' , 'lastName' , 'email' , 'country'
+												, 'role' ]; %>
+												<% options.forEach(option=> { %>
+													<option class="filter__option" value="<%= option %>"
+														<%=option===sortBy ? 'selected' : '' %>>
+														<%= option.charAt(0).toUpperCase() + option.slice(1) %>
+													</option>
+													<% }); %>
+										</select>
+
+									</div>
+									<button aria-label="submit changes">
+										<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+											viewBox="0 0 30 30" fill="none">
+											<path d="M3.75 5H21.25L15 13.125V25L10 20V13.125L3.75 5Z" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round" />
+											<path d="M20 22.5L22.5 25L26.875 20.625" stroke-width="2"
+												stroke-linecap="round" stroke-linejoin="round" />
+										</svg>
+									</button>
+								</form>
+							</div>
+							<%if(usersList.length){ %>
+								<table>
+									<thead>
+										<tr>
+											<th>Users Name</th>
+											<th>Phone Number</th>
+											<th>Email</th>
+											<th>Country</th>
+											<th>Role</th>
+											<th>Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										<%usersList.forEach(user=> {%>
+											<tr>
+												<td>
+													<%= user.fullName%>
+												</td>
+												<td>
+													<%= user.formattedPhoneNumber%>
+												</td>
+												<td>
+													<%= user.email%>
+												</td>
+												<td>
+													<%=user.country.name %>
+												</td>
+												<td>
+													test
+												</td>
+												<td class="users__actions">
+													<button class="user__del" aria-label="Delete User"
+														onclick="RequestManager.deleteRequest('/users', '<%= user.id %>' )">
+														<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+															viewBox="0 0 26 26" fill="none">
+															<path
+																d="M13 0.25C5.96908 0.25 0.25 5.9705 0.25 13C0.25 20.0295 5.96908 25.75 13 25.75C20.0309 25.75 25.75 20.0295 25.75 13C25.75 5.9705 20.0309 0.25 13 0.25ZM13 22.9167C7.53308 22.9167 3.08333 18.4683 3.08333 13C3.08333 7.53167 7.53308 3.08333 13 3.08333C18.4669 3.08333 22.9167 7.53167 22.9167 13C22.9167 18.4683 18.4669 22.9167 13 22.9167ZM14.0016 13L17.7501 9.2515C17.8829 9.11867 17.9575 8.93853 17.9575 8.75071C17.9575 8.56288 17.8829 8.38275 17.7501 8.24992C17.6173 8.11712 17.4371 8.04253 17.2493 8.04253C17.0615 8.04253 16.8813 8.11712 16.7485 8.24992L13 11.9984L9.2515 8.2485C9.11791 8.11947 8.93898 8.04808 8.75326 8.04969C8.56753 8.0513 8.38988 8.1258 8.25854 8.25713C8.12721 8.38846 8.05272 8.56612 8.05111 8.75184C8.04949 8.93756 8.12089 9.11649 8.24992 9.25008L11.9984 13L8.24992 16.7485C8.11691 16.8813 8.04211 17.0615 8.04198 17.2495C8.04185 17.4375 8.11639 17.6178 8.24921 17.7508C8.38203 17.8838 8.56224 17.9586 8.75021 17.9587C8.93817 17.9589 9.11849 17.8843 9.2515 17.7515L13 14.0016L16.7485 17.7501C16.8137 17.8178 16.8918 17.8719 16.9782 17.9091C17.0646 17.9464 17.1575 17.966 17.2515 17.967C17.3456 17.9679 17.4389 17.9501 17.526 17.9146C17.6131 17.8792 17.6922 17.8267 17.7588 17.7603C17.8254 17.6939 17.8781 17.6148 17.9139 17.5278C17.9496 17.4408 17.9677 17.3476 17.967 17.2536C17.9663 17.1595 17.9469 17.0665 17.9099 16.9801C17.8729 16.8936 17.8191 16.8154 17.7515 16.7499L14.0016 13Z"
+																fill="#DF0404" />
+														</svg>
+													</button>
+												</td>
+											</tr>
+											<%}) %>
+									</tbody>
+								</table>
+								<%} else{%>
+									<h2 class="empty">Users list is Empty</h2>
+									<% if (isQuery) { %>
+										<a class="go-back-link" href="/users">
+											<< Go to all users</a>
+												<% } %>
+													<%} %>
+						</div>
+
+					</div>
+				</section>
+			</main>
+			<%- include('../partials/footer.ejs') %>
+	</div>
+</body>
+
+</html>
