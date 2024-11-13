@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= pageTitle%></title>
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link rel="stylesheet" href="/stylesheets/posts/list.css" />
+    <script src="/javascripts/RequestManager.js"></script>
+  </head>
+  <body>
+    <%- include('sections/header', { title: '' }) %>
+    <header>
+      <h1><%= headerTitle%></h1>
+    </header>
+
+    <main>
+      <% posts.forEach(post => { %>
+      <div class="post">
+        <div class="post-container">
+          <div class="post-header">
+            <img src="<%= post.img %>" alt="Post Image" class="post-image" />
+            <span><%= post.post %></span>
+          </div>
+
+          <button
+            onclick="RequestManager.deleteRequest('<%= deletePostRoute%>', '<%= post._id %>')"
+          >
+            Delete post
+          </button>
+        </div>
+        <div class="comments">
+          <h3>Коментарі</h3>
+          <div class="comments-container">
+            <% post.comments.forEach(comment => { %>
+            <div class="comment">
+              <p>
+                <strong><%= comment.commenter.name %>:</strong> <%=
+                comment.commentText %>
+              </p>
+              <button
+                onclick="RequestManager.deleteRequest('<%= deleteCommentRoute%>/<%= post._id %>', '<%= comment._id %>')"
+              >
+                Delete comment
+              </button>
+            </div>
+            <% }); %>
+          </div>
+          <form action="<%=addCommentBase%>/<%= post._id%>" method="POST">
+            <input
+              type="text"
+              name="commentText"
+              placeholder="Ваш коментар"
+              required
+            />
+            <select name="commenter" required>
+              <% users.forEach(user => { %>
+              <option value="<%= user._id %>"><%= user.name %></option>
+              <% }); %>
+            </select>
+            <button type="submit">Додати коментар</button>
+          </form>
+        </div>
+        <hr />
+      </div>
+      <% }); %>
+      <a href="/posts/register">Додати пост</a>
+    </main>
+    <script>
+      // Оновлення сторінки після додавання/видалення коментарів
+      document.querySelectorAll('.comments form').forEach((form) => {
+        form.addEventListener('submit', function () {
+          location.reload()
+        })
+      })
+    </script>
+  </body>
+</html>

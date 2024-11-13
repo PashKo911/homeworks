@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register page</title>
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <link rel="stylesheet" href="/stylesheets/products/list.css" />
+
+    <script src="/javascripts/RequestManager.js"></script>
+    <script>
+      function onFileInput(event) {
+        RequestManager.handleFileSelect(event, '#imgPreview')
+      }
+      function onSubmit(event, dataId) {
+        event.preventDefault()
+
+        RequestManager.postFormRequest(
+          '/users/register/' + dataId ?? '',
+          document.getElementById('dataForm')
+        )
+      }
+    </script>
+  </head>
+  <body>
+    <%- include('sections/header', { title: 'User form' }) %>
+    <hr />
+    <% if (errors?.length > 0) { %>
+    <ul>
+      <% errors.forEach(function(error) { %>
+      <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+    <hr />
+    <% } %>
+    <!-- enctype="multipart/form-data" -->
+    <form id="dataForm">
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        value="<%= data ? data.name : '' %>"
+      />
+      <input
+        type="number"
+        name="age"
+        placeholder="age"
+        value="<%= data ? data.age : '' %>"
+      />
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        value="<%= data ? data.email : '' %>"
+      />
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        value="<%= data ? data.password : '' %>"
+      />
+      <select name="type">
+        <% types.forEach(type => { %>
+        <option value="<%= type._id%>"><%= type.title%></option>
+        <%})%>
+      </select>
+      <div class="prod-container">
+        <label>
+          Зображення товару <input type="file" name="userImg" accept="image/*"
+          onchange="onFileInput(event)" <%= data ? '' : 'required' %> />
+        </label>
+        <img
+          id="imgPreview"
+          src="<%= data && data.imgSrc ? data.imgSrc : '/photo-not-available.jpg' %>"
+          alt="Product Image Preview"
+          class="prod-image"
+        />
+      </div>
+      <button onclick="onSubmit(event, '<%= data?.id%>')">Register</button>
+    </form>
+  </body>
+</html>

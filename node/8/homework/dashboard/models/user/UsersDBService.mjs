@@ -1,36 +1,66 @@
 import User from './User.mjs'
 
 class UsersDBService {
-	static buildQuery(filters) {
+	static buildQuery(queryParams) {
 		const query = {}
-		if (filters.search) {
-			const searchFields = ['firstName', 'lastName', 'email', 'role'] //!Country поки не працює
+
+		if (queryParams.search) {
+			const searchFields = ['firstName', 'lastName', 'email', 'role']
+
 			query.$or = searchFields.map((field) => ({
-				[field]: { $regex: filters.search, $options: 'i' },
+				[field]: { $regex: queryParams.search, $options: 'i' },
 			}))
+
+			query.$or.push({
+				country: { $regex: queryParams.search, $options: 'i' },
+			})
+
+			console.log('Итоговый запрос:', JSON.stringify(query, null, 2))
 		}
+
 		return query
 	}
 
-	static buildSort(sortBy) {
+	static buildSort(queryParams) {
 		const sort = {}
-		if (sortBy) {
-			if (sortBy === 'newest') {
+		if (queryParams.sort) {
+			if (queryParams.sort === 'newest') {
 				sort.createdAt = -1
 			} else {
-				sort[sortBy] = 1
+				sort[queryParams.sort] = 1
 			}
 		}
 		return sort
 	}
 
-	static async getList(filters, sortBy = null) {
+	static async getList(queryParams) {
 		try {
-			const query = this.buildQuery(filters)
-			const sort = this.buildSort(sortBy)
+			// const query = this.buildQuery(queryParams)
+			// const sort = this.buildSort(queryParams)
 
-			const usersList = await User.find(query).sort(sort).populate('country')
-			return usersList
+			// const usersList = User.find({}, { password: 0 }).populate('country')
+
+			// usersList.find(query).sort(sort)
+
+			// const result = await usersList.exec()
+			// console.log(result)
+
+			// return result
+			console.log(queryParams)
+
+			const query = User.find().populate('country', 'name -_id')
+
+			if (queryParams.search) {
+				query.where('country').equals(queryParams.search)
+			}
+			// if (searchParamsObj.title) {
+			// 	query.where('title').regex(new RegExp(`${searchParamsObj.title}`, 'i'))
+			// }
+
+			const result = await query.exec()
+
+			console.log(result)
+			return result
 		} catch (error) {
 			throw new Error(`Failed to get users list ${error.message}`)
 		}

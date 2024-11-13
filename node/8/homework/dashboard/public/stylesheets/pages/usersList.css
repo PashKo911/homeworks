@@ -38,6 +38,9 @@
 table {
 	width: 100%;
 	border-collapse: collapse;
+	&:not(:last-child) {
+		margin-bottom: 30px;
+	}
 }
 
 th,

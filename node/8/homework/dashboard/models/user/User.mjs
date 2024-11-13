@@ -43,10 +43,11 @@ const userSchema = new Schema(
 			},
 		},
 		country: {
-			type: Schema.Types.ObjectId,
+			type: mongoose.Schema.Types.ObjectId,
 			ref: 'Country',
 			required: [true, 'Country is required'],
 		},
+
 		password: {
 			type: String,
 			required: [true, 'Password is required'],

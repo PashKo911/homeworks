@@ -4,16 +4,16 @@ import CountryDBService from '../models/country/CountryDBService.mjs'
 
 class UsersController {
 	static async usersList(req, res) {
-		console.log('---------- filters')
-		console.log(req.query)
 		try {
-			const filters = req.query.search ? { search: req.query.search } : {}
-			const sortBy = req.query.sort || null
-			const isQuery = !!req.query
+			const queryParams = {}
+			for (const key in req.query) {
+				if (req.query[key]) queryParams[key] = req.query[key]
+			}
+			const isQuery = Object.keys(req.query).length > 0
 
-			const usersList = await UsersDBService.getList(filters, sortBy)
+			const usersList = await UsersDBService.getList(queryParams)
 
-			res.render('pages/usersList', { usersList, sortBy, isQuery })
+			res.render('pages/usersList', { usersList, sort: queryParams.sort, isQuery })
 		} catch (error) {
 			res.status(500).json({ error: error.message })
 		}

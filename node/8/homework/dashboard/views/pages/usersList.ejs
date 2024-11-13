@@ -46,7 +46,7 @@
 												, 'role' ]; %>
 												<% options.forEach(option=> { %>
 													<option class="filter__option" value="<%= option %>"
-														<%=option===sortBy ? 'selected' : '' %>>
+														<%=option===sort ? 'selected' : '' %>>
 														<%= option.charAt(0).toUpperCase() + option.slice(1) %>
 													</option>
 													<% }); %>
@@ -109,13 +109,13 @@
 											<%}) %>
 									</tbody>
 								</table>
-								<%} else{%>
+								<%}else{%>
 									<h2 class="empty">Users list is Empty</h2>
-									<% if (isQuery) { %>
-										<a class="go-back-link" href="/users">
-											<< Go to all users</a>
-												<% } %>
-													<%} %>
+									<%} %>
+										<%if (isQuery) { %>
+											<a class="go-back-link" href="/users">
+												<< Go back</a>
+													<%}%>
 						</div>
 
 					</div>
