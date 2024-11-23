@@ -45,7 +45,7 @@ class ProductsController {
 				initialValues: product,
 				errors: [],
 				submitUrl: '/products/addProduct' + (id ? `/${id}` : ''),
-				redirectUrl: '/products?sortBy=1',
+				redirectUrl: '/products?sortBy=-1',
 				user: req.session.user,
 			})
 		} catch (error) {
