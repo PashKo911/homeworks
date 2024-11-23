@@ -1,0 +1,134 @@
+.wrapper {
+}
+.page {
+}
+.container {
+}
+
+.courses {
+	width: 1200px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 30px;
+
+	&:not(:last-child) {
+		margin-bottom: 40px;
+	}
+}
+.course {
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1), 0 0 30px rgba(0, 0, 0, 0.1);
+	border-radius: 15px;
+	padding: 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+
+	.course__wrapper {
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.course__title {
+		color: #000;
+		font-size: 22px;
+		font-weight: 600;
+		white-space: nowrap;
+	}
+	.course__subtitle {
+		color: #000;
+		font-size: 18px;
+		font-weight: 500;
+		white-space: nowrap;
+		span {
+			font-size: 16px;
+			font-weight: normal;
+		}
+	}
+	.course__students {
+	}
+	.course__empty {
+	}
+	.course__seminars {
+	}
+	.course__buttons {
+		display: flex;
+		gap: 15px;
+		align-items: flex-start;
+	}
+	button {
+		width: max-content;
+	}
+}
+.students {
+	display: grid;
+	list-style-type: none;
+	counter-reset: item;
+
+	.students__item {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		position: relative;
+		color: #000;
+		font-size: 18px;
+
+		&::before {
+			counter-increment: item;
+			content: counter(item) '.';
+			color: #000;
+			font-size: 18px;
+			font-weight: 600;
+		}
+	}
+}
+.seminars-wrapper {
+	box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 10px rgba(0, 0, 0, 0.1);
+
+	border-radius: 10px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.seminars {
+	display: grid;
+	gap: 20px;
+
+	.seminars__item {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		padding-bottom: 10px;
+		&:not(:last-child) {
+			border-bottom: 1px dashed #000;
+		}
+	}
+	&__empty {
+	}
+}
+.seminars__buttons {
+	display: flex;
+	gap: 15px;
+}
+
+.seminar {
+}
+.seminar__inner {
+	color: #000;
+	font-size: 18px;
+	font-weight: 500;
+	white-space: nowrap;
+	span {
+		font-size: 16px;
+		font-weight: normal;
+	}
+}
+.courses-link {
+	width: max-content;
+	margin-bottom: 0px !important;
+}
+.empty-main {
+}

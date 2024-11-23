@@ -1,0 +1,9 @@
+<div class="header">
+	<nav class="header__nav">
+		<a href="/" class="header__link"> Home </a>
+		<a href="/products" class="header__link"> Products </a>
+		<a href="/auth/<%= user ? 'logout' : 'login' %>" class="header__link">
+			<%= user ? 'Log Out' : 'Login' %>
+		</a>
+	</nav>
+</div>

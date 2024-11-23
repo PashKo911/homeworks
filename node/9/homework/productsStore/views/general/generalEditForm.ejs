@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title><%= pageTitle %></title>
+		<script src="/javascripts/RequestManager.js"></script>
+		<script src="/javascripts/FormManager.js"></script>
+		<link rel="stylesheet" href="/stylesheets/reset.css" />
+		<link rel="stylesheet" href="/stylesheets/common.css" />
+	</head>
+	<body>
+		<div class="wrapper">
+			<%- include('../partials/header', {user}) %>
+			<main class="page">
+				<div class="container">
+					<div class="form-container">
+						<h1 class="title"><%= headerTitle %></h1>
+						<div id="errors"></div>
+						<div id="container"></div>
+					</div>
+
+					<script type="module">
+
+						const fields = <%- JSON.stringify(fields) %>;
+						const initialValues = <%- JSON.stringify(initialValues) %>;
+						const submitUrl = '<%- submitUrl %>';
+						const redirectUrl = '<%- redirectUrl %>';
+
+						const submitCallback = async (data) => {
+							const res = await RequestManager.doPostRequest(submitUrl, data, redirectUrl);
+						};
+
+						document.addEventListener('DOMContentLoaded', () => {
+							const form = new FormManager(fields, submitCallback, initialValues);
+							form.render('container');
+						});
+					</script>
+				</div>
+			</main>
+			<%- include('../partials/footer') %>
+		</div>
+	</body>
+</html>

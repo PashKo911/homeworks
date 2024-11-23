@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Список товарів</title>
+    <link rel="stylesheet" href="/stylesheets/products/list.css" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <script src="/javascripts/RequestManager.js"></script>
+  </head>
+  <body>
+    <%-include('../sections/header.ejs')%>
+    <hr />
+    <% if (errors?.length > 0) { %>
+    <ul>
+      <% errors.forEach(function(error) { %>
+      <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+    <hr />
+    <% } %>
+    <hr />
+    <% products.forEach(product => { %>
+    <div class="prod-container">
+      <img src="data:image;base64,<%= product.image %>" class="prod-image" />
+      <span> <%= product.title %> </span>
+      <span><%= product.price %></span>
+      <%if(user){%>
+      <a href="/products/register/<%= product._id %>" class="edit-link">Edit</a>
+
+      <button
+        onclick="RequestManager.deleteRequest('/products',  '<%= product._id %>')"
+      >
+        Delete
+      </button>
+      <%}%>
+    </div>
+    <% }) %>
+    <hr />
+    <%if(user){%>
+    <a href="/products/register">Додати новий товар</a>
+    <hr />
+    <%}%> <%-include('../sections/footer.ejs')%>
+  </body>
+</html>

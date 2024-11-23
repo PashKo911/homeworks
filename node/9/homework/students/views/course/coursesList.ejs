@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title><%= pageTitle %></title>
+		<script src="/javascripts/RequestManager.js"></script>
+		<link rel="stylesheet" href="/stylesheets/reset.css" />
+		<link rel="stylesheet" href="/stylesheets/common.css" />
+		<link rel="stylesheet" href="/stylesheets/coursesList.css" />
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<%- include('../partials/header') %>
+			<main class="page">
+				<div class="container">
+					<h1><%= headerTitle %></h1>
+					<% if(courses.length){ %>
+					<div class="courses">
+						<% courses.forEach((course)=>{ %>
+						<div class="course">
+							<div class="course__wrapper">
+								<h2 class="course__title">Title: <%=course.title %></h2>
+								<h3 class="course__subtitle">
+									Course duration: <span><%=course.courseDuration %> hours</span>
+								</h3>
+								<%if(course.students.length){ %>
+								<h3 class="course__subtitle">Students:</h3>
+								<ul class="course__students students">
+									<%course.students.forEach((student)=>{ %>
+									<li class="students__item"><%=student.name %></li>
+									<%}) %>
+								</ul>
+								<%} else{ %>
+								<h3 class="course__empty">There are no students in this course</h3>
+								<%} %>
+								<div class="seminars-wrapper">
+									<%if(course.seminars.length){ %>
+									<ul class="course__seminars seminars">
+										<%course.seminars.forEach((seminar)=>{ %>
+										<li class="seminars__item">
+											<div class="seminar__inner">Seminars's topic: <span><%= seminar.topic%></span></div>
+											<div class="seminar__inner">
+												Responsible student: <span><%= seminar.responsible.name%></span>
+											</div>
+											<div class="seminar__inner">
+												Lection duration: <span><%= seminar.lectionDuration%></span>
+											</div>
+											<div class="seminars__buttons">
+												<a
+													href="<%= addNewSeminarRoute + '/' + course._id + '/' + seminar._id %> "
+													class="courses-link"
+													>Edit</a
+												>
+												<button
+													onclick="RequestManager.deleteRequest('<%= deleteSeminarRoute%>/<%=course._id %>', '<%= seminar._id %>')">
+													Delete
+												</button>
+											</div>
+										</li>
+										<%}) %>
+									</ul>
+
+									<%} else{ %>
+									<h3 class="seminars__empty">There are no seminars for this Course</h3>
+									<%} %>
+									<a href="<%= addNewSeminarRoute + '/' + course._id %>" class="courses-link">Add Seminar</a>
+								</div>
+							</div>
+							<div class="course__buttons">
+								<a href="<%= editLinkBase + '/' + course._id %>" class="courses-link">Edit</a>
+								<button
+									onclick="RequestManager.deleteRequest('<%= deleteCourseRoute%>', '<%= course._id %>')">
+									Delete
+								</button>
+							</div>
+						</div>
+						<%}) %>
+					</div>
+					<%} else{ %>
+					<h2 class="empty-main">Courses list is empty</h2>
+					<%} %>
+					<a href="<%= addNewRoute %>" class="courses-link">Add Course</a>
+				</div>
+			</main>
+			<%- include('../partials/footer') %>
+		</div>
+	</body>
+</html>

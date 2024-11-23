@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title><%= pageTitle %></title>
+		<script src="/javascripts/ListDataManager.js"></script>
+		<script src="/javascripts/RequestManager.js"></script>
+		<link rel="stylesheet" href="/stylesheets/reset.css" />
+		<link rel="stylesheet" href="/stylesheets/common.css" />
+	</head>
+
+	<body>
+		<div class="wrapper">
+			<%- include('../partials/header', {user}) %>
+			<main class="page">
+				<div class="container">
+					<h1><%= headerTitle %></h1>
+					<div id="table-container"></div>
+					<hr />
+					<a href="<%= addNewRoute %>">Add</a>
+
+					<script>
+						window.onload = function () {
+							// Функція для створення посилання для редагування елемента
+							// Шлях для видалення елемента
+							const deleteRoute = '<%= deleteRoute %>'
+
+							// Функція для видалення елемента
+							async function deleteFunction(id) {
+								await RequestManager.deleteRequest(deleteRoute, id)
+								window.location.reload()
+							}
+							// Дані для відображення (передаються з сервера)
+							const data = <%- JSON.stringify(data) %>
+						  const fields = <%- JSON.stringify(fields) %>
+
+						  const createLinkFunction = (id) => `<%- editLinkBase%>/${id}`
+							// Відображення таблиці
+							const table = ListDataManager.createTableFromList(data, fields, createLinkFunction, deleteFunction)
+
+							document.getElementById('table-container').append(table)
+						}
+					</script>
+				</div>
+			</main>
+			<%- include('../partials/footer') %>
+		</div>
+	</body>
+</html>
