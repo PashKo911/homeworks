@@ -9,24 +9,19 @@ router.get('/', ProductController.getAllProducts)
 // router.get('/:id', ProductController.getProduct)
 router.get('/register/:id?', ProductController.registerForm)
 router.post(
-  '/:id?',
-  ensureAuthenticated,
-  ensureAdmin,
-  upload.single('image'),
-  ProductController.registerProduct
+	'/:id?',
+	ensureAuthenticated,
+	ensureAdmin,
+	upload.single('image'),
+	ProductController.registerProduct
 )
 router.put(
-  '/:id',
-  ensureAuthenticated,
-  ensureAdmin,
-  upload.single('image'),
-  ProductController.registerProduct
+	'/:id',
+	ensureAuthenticated,
+	ensureAdmin,
+	upload.single('image'),
+	ProductController.registerProduct
 )
-router.delete(
-  '/',
-  ensureAuthenticated,
-  ensureAdmin,
-  ProductController.deleteProduct
-)
+router.delete('/', ensureAuthenticated, ensureAdmin, ProductController.deleteProduct)
 
 export default router

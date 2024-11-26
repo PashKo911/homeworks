@@ -1,0 +1,12 @@
+<div class="header">
+	<nav class="header__nav">
+		<a href="/" class="header__link"> Home </a>
+		<a href="/products" class="header__link"> Products </a>
+		<%if(user?.type.name === 'admin'){ %>
+		<a href="/users" class="header__link"> Users </a>
+		<%} %>
+		<a href="/auth/<%= user ? 'logout' : 'login' %>" class="header__link">
+			<%= user ? 'Log Out' : 'Login' %>
+		</a>
+	</nav>
+</div>

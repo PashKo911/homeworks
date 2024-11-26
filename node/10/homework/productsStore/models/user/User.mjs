@@ -1,12 +1,29 @@
 import mongoose from 'mongoose'
-const { Schema } = mongoose
 import bcrypt from 'bcryptjs'
 
-// Створення схеми користувача
+const { Schema } = mongoose
+
 const userSchema = new Schema({
-	username: {
+	fullName: {
 		type: String,
-		required: [true, 'Name is required'],
+		required: [true, 'Full Name is required'],
+		minlength: [3, 'Full Name must be at least 3 characters long'],
+		maxlength: [50, 'Full Name must be at most 50 characters long'],
+		trim: true,
+	},
+	phoneNumber: {
+		type: String,
+		required: [true, 'Phone number is required'],
+		validate: {
+			validator: function (v) {
+				return /^\+?[1-9]\d{1,14}$/.test(v)
+			},
+			message: 'Phone number must be in E.164 format, e.g., +1234567890',
+		},
+	},
+	email: {
+		type: String,
+		required: [true, 'email is required'],
 		unique: [true, 'Name is not allowed'],
 		minlength: [3, 'Name must be at least 3 characters long'],
 		maxlength: [50, 'Name must be at most 50 characters long'],
@@ -27,17 +44,10 @@ const userSchema = new Schema({
 		//     'Password must contain at least one letter, one number, and one special character',
 		// },
 	},
-	email: {
-		type: String,
-		required: [true, 'email is required'],
-		// unique: [true, 'Name is not allowed'],
-		// minlength: [3, 'Name must be at least 3 characters long'],
-		// maxlength: [50, 'Name must be at most 50 characters long'],
-		trim: true,
-	},
 	type: {
 		type: Schema.Types.ObjectId,
 		ref: 'Type',
+		default: new mongoose.Types.ObjectId('67434ecae0c00366f89f7189'),
 	},
 })
 

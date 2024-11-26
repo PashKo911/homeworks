@@ -96,7 +96,7 @@
 		margin-bottom: 45px;
 	}
 }
-.button--transpaternt {
+.button.button--transparent {
 	background-color: transparent;
 	border: 1px solid #1e2772;
 	color: #1e2772;
