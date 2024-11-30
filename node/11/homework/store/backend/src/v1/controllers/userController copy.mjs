@@ -14,6 +14,7 @@ class UserController {
 
 			res.render('usersList', {
 				users: dataList,
+				user: req.user,
 			})
 		} catch (err) {
 			res.status(500).json({ error: err.message })
@@ -29,62 +30,58 @@ class UserController {
 				user = await UsersDBService.getById(id)
 			}
 			const types = await TypesDBService.getList()
-			console.log('===>>> types')
-			console.log(types)
 
 			//відредерити сторінку з формою
 			res.render('register', {
 				errors: [],
 				data: user,
 				types,
+				user: req.user,
 			})
 		} catch (err) {
 			res.status(500).json({ error: err.message })
 		}
 	}
-	// static async registerUser(req, res) {
-	// 	// Якщо валідація пройшла успішно, виконуємо логіку реєстрації
-	// 	const errors = validationResult(req)
-	// 	const data = req.body
-	// 	const types = await TypesDBService.getList()
+	static async registerUser(req, res) {
+		// Якщо валідація пройшла успішно, виконуємо логіку реєстрації
+		const errors = validationResult(req)
+		const data = req.body
+		const types = await TypesDBService.getList()
 
-	// 	if (!errors.isEmpty()) {
-	// 		if (req.params.id) data.id = req.params.id
-	// 		return res.status(400).render('register', {
-	// 			errors: errors.array(),
-	// 			data,
-	// 			types,
-	// 		})
-	// 	}
+		if (!errors.isEmpty()) {
+			if (req.params.id) data.id = req.params.id
+			return res.status(400).render('register', {
+				errors: errors.array(),
+				data,
+				types,
+				user: req.user,
+			})
+		}
 
-	// 	try {
-	// 		const { email, age, password, name, type } = req.body
-	// 		console.log('====>>> req.body')
-	// 		console.log(req.body)
+		try {
+			// const { email, age, password, name, type } = req.body
+			// const dataObj = { email, age, password, name, type }
+			const dataObj = req.body
+			if (req.file) dataObj.img = req.file.filename
 
-	// 		if (req.params.id) {
-	// 			// Оновлюємо дані про користувача в базі даних
-	// 			await UsersDBService.update(req.params.id, {
-	// 				email,
-	// 				age,
-	// 				password,
-	// 				name,
-	// 				type,
-	// 			})
-	// 		} else {
-	// 			// Додаємо користувача в базу даних
-	// 			await UsersDBService.create({ email, age, password, name, type })
-	// 		}
+			if (req.params.id) {
+				// Оновлюємо дані про користувача в базі даних
+				await UsersDBService.update(req.params.id, dataObj)
+			} else {
+				// Додаємо користувача в базу даних
+				await UsersDBService.create(dataObj)
+			}
 
-	// 		res.redirect('/users')
-	// 	} catch (err) {
-	// 		res.status(500).render('register', {
-	// 			errors: [{ msg: err.message }],
-	// 			data,
-	// 			types,
-	// 		})
-	// 	}
-	// }
+			res.redirect('/users')
+		} catch (err) {
+			res.status(500).render('register', {
+				errors: [{ msg: err.message }],
+				data,
+				types,
+				user: req.user,
+			})
+		}
+	}
 
 	static async deleteUser(req, res) {
 		try {

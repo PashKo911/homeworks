@@ -14,6 +14,7 @@ class RequestManager {
 				window.location.href = redirectRoute
 			} else {
 				const result = await response.json()
+				console.log(result)
 				this.showErrors(result.errors)
 			}
 		} catch (error) {

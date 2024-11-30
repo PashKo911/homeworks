@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>HW 11</title>
+		<link rel="stylesheet" href="./style/reset.css" />
+		<link rel="stylesheet" href="./style/common.css" />
+		<script src="scripts/RequestManager.js"></script>
+		<script src="scripts/settings.js"></script>
+		<script src="scripts/HeaderManager.js"></script>
+		<script src="scripts/LoginApiManager.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<script>
+				document.addEventListener('DOMContentLoaded', () => {
+					new HeaderManager('index.html', menuItems)
+				})
+			</script>
+			<main class="page">
+				<div class="container">
+					<h1>Задача. Доробити навчальний проєкт</h1>
+					<ul>
+						<li>1) Не відображати посилання, якщо користувач не пройшов автентифікацію</li>
+						<li>
+							2) Допрацювати можливість додавання продуктів, редагування та видалення (необхідно додавати
+							токени у запити)
+						</li>
+						<li>
+							3) Допрацювати можливість додавання користувачів, редагування та видалення (необхідно додавати
+							токени у запити)
+						</li>
+						<li>
+							4) Якщо користувач не пройшов автентифікацію, а користувач скопіював URL і пробує напряму
+							перейти на сторінку користувачів, то не відображати сторінку, а оразу перенаправляти його на
+							LoginPage
+						</li>
+					</ul>
+				</div>
+			</main>
+			<footer class="footer">
+				<span>Виконавець Коваленко Павло</span>
+				<a target="_blank" href="https://www.linkedin.com/in/pavlo-kovalenko-7999a5141/"
+					>Долучайтесь до Linkedin</a
+				>
+			</footer>
+		</div>
+	</body>
+</html>

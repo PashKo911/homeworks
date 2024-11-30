@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Реєстрація</title>
+		<!-- Підключення CSS файлу для стилізації сторінки -->
+		<link rel="stylesheet" href="../style/reset.css" />
+		<link rel="stylesheet" href="../style/common.css" />
+		<!-- Підключення необхідних JavaScript файлів -->
+		<script src="../scripts/RequestManager.js"></script>
+		<script src="../scripts/settings.js"></script>
+		<script src="../scripts/HeaderManager.js"></script>
+		<script src="../scripts/LoginApiManager.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<script>
+				// Використання HeaderManager для створення заголовка з меню
+				document.addEventListener('DOMContentLoaded', () => {
+					new HeaderManager('auth/login.html', menuItems)
+				})
+			</script>
+			<main class="page">
+				<div class="container">
+					<!-- Форма входу -->
+					<div class="form-container">
+						<!-- Контейнер для помилок -->
+						<h1>Реєстрація</h1>
+						<div id="errors"></div>
+						<form id="login-form">
+							<!-- Поле для введення електронної пошти -->
+							<div>
+								<label for="username">Username</label>
+								<input type="text" name="username" id="username" required />
+							</div>
+							<div>
+								<label for="email">Email:</label>
+								<input type="email" name="email" id="email" required />
+							</div>
+							<!-- Поле для введення пароля -->
+							<div>
+								<label for="password">Пароль:</label>
+								<input type="password" name="password" id="password" required />
+							</div>
+							<!-- Кнопка для надсилання форми -->
+							<button type="submit">Зареєструватись</button>
+						</form>
+						<a class="button" href="./login.html">Вже є обліковий запис</a>
+					</div>
+				</div>
+			</main>
+			<footer class="footer">
+				<span>Виконавець Коваленко Павло</span>
+				<a target="_blank" href="https://www.linkedin.com/in/pavlo-kovalenko-7999a5141/"
+					>Долучайтесь до Linkedin</a
+				>
+			</footer>
+		</div>
+
+		<script>
+			// Додаємо обробник події для форми входу
+			document.getElementById('login-form').addEventListener('submit', async function (event) {
+				event.preventDefault() // Запобігаємо звичайному надсиланню форми
+				// Отримуємо дані з форми
+				const form = event.target
+				const formData = {
+					username: form.username.value,
+					email: form.email.value,
+					password: form.password.value,
+				}
+
+				try {
+					// Виконуємо запит на авторизацію через LoginApiManager
+					const response = await LoginApiManager.signup(formData, (data) => {
+						// Зберігаємо токен у localStorage
+						localStorage.setItem('jwt_token', data.token)
+					})
+				} catch (error) {
+					// Відображаємо повідомлення про помилку у разі невдалої авторизації
+					document.getElementById('messages').innerText = 'Помилка входу: ' + error.message
+				}
+			})
+		</script>
+	</body>
+</html>

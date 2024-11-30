@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uk">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Додати користувача</title>
+		<!-- Підключення CSS файлу для стилізації сторінки -->
+		<link rel="stylesheet" href="../style/reset.css" />
+		<link rel="stylesheet" href="../style/common.css" />
+		<!-- Підключення необхідних JavaScript файлів -->
+		<script src="../scripts/RequestManager.js"></script>
+		<script>
+			RequestManager.protectRoute()
+		</script>
+		<script src="../scripts/FormManager.js"></script>
+		<script src="../scripts/settings.js"></script>
+		<script src="../scripts/HeaderManager.js"></script>
+		<script src="../scripts/UsersApiManager.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<main class="page">
+				<div class="container">
+					<h1>Додати користувача</h1>
+					<!-- Форма входу -->
+					<div id="form-container" class="form-container">
+						<!-- Контейнер для помилок -->
+						<div id="errors"></div>
+					</div>
+					<div id="messages"></div>
+				</div>
+			</main>
+			<footer class="footer">
+				<span>Виконавець Коваленко Павло</span>
+				<a target="_blank" href="https://www.linkedin.com/in/pavlo-kovalenko-7999a5141/"
+					>Долучайтесь до Linkedin</a
+				>
+			</footer>
+			<script>
+				// Використання HeaderManager для створення заголовка з меню
+				document.addEventListener('DOMContentLoaded', async () => {
+					new HeaderManager('auth/login.html', menuItems)
+
+					let user = {}
+					const urlParams = new URLSearchParams(window.location.search)
+					const id = urlParams.get('id') || ''
+
+					if (id) {
+						user = await UsersApiManager.getUserToEdit(id)
+					}
+
+					const submitCallback = async (data) => {
+						await UsersApiManager.addUser(data, id)
+					}
+
+					const form = new FormManager(
+						[
+							{ label: 'Імʼя користувача', type: 'text', name: 'username' },
+							{ label: 'Електронна адреса', type: 'email', name: 'email' },
+							{ label: 'Пароль', type: 'password', name: 'password' },
+						],
+						submitCallback,
+						user || {}
+					)
+					form.render('form-container')
+				})
+			</script>
+		</div>
+	</body>
+</html>
