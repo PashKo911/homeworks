@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./styles.css">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Task 5</title>
+</head>
+
+<body>
+	<h1>
+		Задача 5. Додаток містить масив об’єктів (логін, пароль) -- інсуючі логіни і паролі. Користувач вводить логін і
+		пароль, а програма повідомляє чи може користувач бути авторизованим (чи є він одним з масиву).
+	</h1>
+
+	<div id="app">
+		<label>
+			User Name:
+			<input type="text" v-model="login">
+		</label>
+		<label>
+			Password:
+			<input type="password" v-model="password">
+		</label>
+		<button type="button" @click="onLogin">
+			Submit
+		</button>
+	</div>
+
+	<script>
+		const { createApp } = Vue
+
+		const data = [
+			{
+				userName: 'user1',
+				password: 'user12345'
+			},
+			{
+				userName: 'user2',
+				password: 'user12345'
+			},
+			{
+				userName: 'user3',
+				password: 'user12345'
+			},
+			{
+				userName: 'user4',
+				password: 'user12345'
+			},
+			{
+				userName: 'user5',
+				password: 'user12345'
+			},
+		]
+
+		createApp({
+			data() {
+				return {
+					login: null,
+					password: null
+				}
+			},
+			methods: {
+				onLogin() {
+					const user = data.find(({ login, password }) => login === this.userName && password === this.password)
+					if (user) {
+						alert(`Hello ${user.userName}`)
+						this.login = null
+						this.password = null
+					} else {
+						alert('Invalid User Name or password')
+					}
+				}
+			},
+		}).mount('#app')
+	</script>
+</body>
+
+</html>

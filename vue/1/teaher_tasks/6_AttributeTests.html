@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{message}}</h1>
+      <div>
+        Product 1 price :
+        <span>{{price1}}</span>
+      </div>
+      <div>
+        Product 2 price :
+        <span>{{price2}}</span>
+      </div>
+      <div>
+        Total :
+        <span>{{price1+price2}}</span>
+      </div>
+      <img :src="shopLogo" :width="logoWidth+50" />
+      <a :[attr_name]="link">News</a>
+    </div>
+
+    <script>
+      //1. Імпортуємо createApp
+      const { createApp } = Vue
+
+      //2. Створюємо об’єкт додатку
+      const app = createApp({
+        //4. Описуємо моделі даних (властивості)
+        data() {
+          return {
+            message: 'Welcome!',
+            price1: 100,
+            price2: 150,
+            shopLogo: 'https://www.m-a.org.uk/resources/Shop-Logo.jpg',
+            logoWidth: 100,
+            attr_name: 'href',
+            link: 'https://www.ukr.net/',
+          }
+        },
+      })
+
+      //3. Монтуємо додаток
+      app.mount('#app')
+    </script>
+  </body>
+</html>

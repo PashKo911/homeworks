@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <label
+        >Number 1
+        <input type="number" v-model="num1" />
+      </label>
+      <label
+        >Number 2
+        <input type="number" v-model="num2" />
+      </label>
+      <div>Number 2 : <span>{{num2}}</span></div>
+      <button v-on:click="getSum">Get sum</button>
+      <button @click="getProduct">Get product</button>
+      <div>Summ : <span>{{getSum()}}</span></div>
+      <div>Product : <span>{{getProduct()}}</span></div>
+    </div>
+
+    <script>
+      //1. Імпортуємо createApp
+      const { createApp } = Vue
+
+      //2. Створюємо об’єкт додатку
+      const app = createApp({
+        //4. Описуємо моделі даних (властивості)
+        data() {
+          return {
+            num1: 2,
+            num2: 5,
+          }
+        },
+        methods: {
+          getSum() {
+            return this.num1 + this.num2
+          },
+          getProduct() {
+            return this.num1 * this.num2
+          },
+        },
+
+        created() {
+          setTimeout(() => {
+            this.num1 = 10000
+          }, 2000)
+        },
+      })
+
+      //3. Монтуємо додаток
+      app.mount('#app')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Користувачі</title>
+    <!-- Підключення CSS для стилів -->
+    <link rel="stylesheet" href="../style/main.css" />
+    <!-- Підключення необхідних скриптів -->
+    <script src="../scripts/api/RequestManager.js"></script>
+    <script src="../scripts/components/FormManager.js"></script>
+    <script src="../scripts/components/ListDataManager.js"></script>
+    <script src="../scripts/settings.js"></script>
+    <script src="../scripts/components/HeaderManager.js"></script>
+    <script src="../scripts/api/BaseApiManager.js"></script>
+    <script src="../scripts/api/UsersApiManager.js"></script>
+    <script src="../scripts/api/ProductsApiManager.js"></script>
+  </head>
+  <body>
+    <script>
+      // Використання класу HeaderManager для створення заголовка з меню
+      // document.addEventListener('DOMContentLoaded', async () => {
+      //   const fields = [
+      //     { name: 'title', type: 'text', required: true, label: 'Назва ролі' },
+      //   ]
+      //   //----- Вставка заголовку
+      //   const headerManager = new HeaderManager('users/list.html', menuItems)
+      // })
+    </script>
+    <h1>Тип коирстувача</h1>
+    <!-- Контейнер -->
+    <div id="container"></div>
+    <!-- Спіннер завантаження -->
+    <div class="loading" id="loading-spinner" style="display: none">
+      <div class="spinner"></div>
+      Завантаження...
+    </div>
+    <!-- Повідомлення про помилку -->
+    <div class="error-message" id="error-message" style="display: none">
+      Виникла помилка при завантаженні даних.
+    </div>
+    <hr />
+
+    <script>
+      // Функція, що виконується при завантаженні сторінки
+      window.onload = async function () {
+        //----- Вставка заголовку
+        const headerManager = new HeaderManager('products/list.html', menuItems)
+
+        // Функція для отримання даних та відображення форми
+        async function fetchDataAndDisplay() {
+          const loadingSpinner = document.getElementById('loading-spinner')
+          const errorMessage = document.getElementById('error-message')
+          const сontainer = document.getElementById('container')
+
+          try {
+            loadingSpinner.style.display = 'block'
+            сontainer.innerHTML = ''
+            errorMessage.style.display = 'none'
+
+            //----- Вставка форми
+            const prodObj =
+              (await ProductsApiManager.getBasedOnQueryId())?.data ?? {}
+            redirectUrl = `${headerManager.basePath}products/list.html`
+
+            if (prodObj.image && !prodObj.image.startsWith('data:')) {
+              prodObj.image = 'data:image;base64,' + prodObj.image
+            }
+            const submitCallback = async (data) => {
+              let res = await ProductsApiManager.register(data, prodObj)
+
+              if (res.errors) {
+                ProductsApiManager.showErrors(res.errors)
+              } else {
+                window.location.href = redirectUrl
+              }
+            }
+            //---
+
+            const fields = [
+              {
+                name: 'title',
+                type: 'text',
+                required: true,
+                label: 'Назва товару',
+              },
+              { name: 'price', type: 'number', required: true, label: 'Ціна' },
+              { name: 'description', type: 'text', label: 'Опис товару' },
+              { name: 'image', type: 'file', label: 'Зображення' },
+            ]
+            const form = new FormManager(fields, submitCallback, prodObj)
+            form.render('container')
+          } catch (error) {
+            console.error('Помилка при завантаженні даних:', error)
+            errorMessage.style.display = 'block'
+          } finally {
+            loadingSpinner.style.display = 'none'
+          }
+        }
+
+        // Виклик функції для отримання та відображення даних
+        fetchDataAndDisplay()
+      }
+    </script>
+  </body>
+</html>

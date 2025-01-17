@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        Number 1 :
+        <span>{{num1}}</span>
+      </div>
+      <div>
+        Number 2 :
+        <span>{{num2}}</span>
+      </div>
+      <button @click="getSum">Get sum</button>
+      <div>
+        Summ :
+        <span>{{summ}}</span>
+      </div>
+    </div>
+
+    <script>
+      //1. Імпортуємо createApp
+      const { createApp } = Vue
+
+      //2. Створюємо об’єкт додатку
+      const app = createApp({
+        //4. Описуємо моделі даних (властивості)
+        data() {
+          return {
+            num1: 2,
+            num2: 5,
+            summ: null,
+          }
+        },
+        methods: {
+          getSum() {
+            this.summ = this.num1 + this.num2
+          },
+        },
+      })
+
+      //3. Монтуємо додаток
+      app.mount('#app')
+    </script>
+  </body>
+</html>

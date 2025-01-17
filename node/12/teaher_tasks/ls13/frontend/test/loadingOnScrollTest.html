@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Load On Scroll Example</title>
+    <script src="./LoadOnScroll.js"></script>
+  </head>
+  <body>
+    <div id="items-container"></div>
+    <script>
+      // Ініціалізація класу LoadOnScroll
+      const infiniteScroll = new LoadOnScroll(
+        '#items-container',
+        '/products',
+        60
+      )
+    </script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<link rel="stylesheet" href="./styles.css">
+	<title>Task 2</title>
+</head>
+
+
+<body>
+	<h1>
+		Задача 2. Вводиться номер місяця. Автоматично виводити рекомендований одяг (зима – пальто, літо – шорти ….).
+		Також автоматично виводити зображення з відповідним зображенням лісу (зима – ліс зі снігом, осінь – жовтий ліс,
+		…).
+	</h1>
+
+
+	<div id="app">
+		<label>
+			Please Enter Number of month:
+			<input type="number" min="1" max="12" v-model.lazy.number="monthNumber">
+		</label>
+
+		<div class="output">
+			<h2>
+				You should wear: {{seasonData.clothing}}
+			</h2>
+			<img :src="seasonData.path" :alt="seasonData.clothing">
+		</div>
+	</div>
+
+	<script type="module">
+		const { createApp } = Vue
+
+		const seasonsData = {
+			winter: {
+				clothing: 'Jacket',
+				path: 'https://images.squarespace-cdn.com/content/v1/605a0c0a44ea5569588fcc2e/ada2a84e-a5ee-4e2a-81d8-8fb5b5b78d5d/JeroenSchouten-Speulderbos-Speulderforest-Winter-Spring-Path.jpg.jpg?format=2500w',
+			},
+			spring: {
+				clothing: 'Light Jacket',
+				path: 'https://as2.ftcdn.net/v2/jpg/05/70/67/49/1000_F_570674929_EaTbbQX83pfcFUKVO22Qs32dQSIvHg7A.jpg',
+			},
+			summer: {
+				clothing: 'Shorts',
+				path: 'https://cdn-pl0.puzzlegarage.com/img/puzzle/1a/3258_preview_r.v1.webp',
+			},
+			autumn: {
+				clothing: 'Raincoat',
+				path: 'https://images.pexels.com/photos/33109/fall-autumn-red-season.jpg?auto=compress&cs=tinysrgb&w=800',
+			},
+		}
+
+		const seasonsArray = Object.keys(seasonsData)
+
+		createApp({
+			data() {
+				return {
+					monthNumber: 1
+				}
+			},
+			methods: {
+				getSeason(monthNumber) {
+					const seasonIndex = Math.floor((monthNumber % 12) / 3)
+
+					return seasonsArray[seasonIndex]
+				}
+
+			},
+			computed: {
+				seasonData() {
+					if (this.monthNumber < 1) {
+						this.monthNumber = 1
+					}
+					if (this.monthNumber > 12) {
+						this.monthNumber = 12
+					}
+					return seasonsData[this.getSeason(this.monthNumber)]
+				}
+			}
+
+
+		}).mount('#app')
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Привіт {{userName}} !</h1>
+      <h2>Вам {{2025 - birthYear}} років.</h2>
+      <!-- <input type="text" :value="userName" /> -->
+      <input type="text" v-model.trim="userName" />
+      <input type="text" v-model.lazy="userName" />
+      <pre>{{userName}}</pre>
+    </div>
+
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            userName: 'Ivan',
+            birthYear: 2000,
+          }
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./styles.css">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Task 1</title>
+</head>
+
+<body>
+	<h1>
+		Задача 1. Вводиться кількість пасажирів. Вивести:
+	</h1>
+	<ul>
+		<li>
+			скільки потрібно автобусів (кожен автобус на 20 місць)
+		</li>
+		<li>
+			скільки пляшок води (кожному пасажиру 2 пляшки)
+		</li>
+		<li>
+			скільки бутербродів (кожному пасажиру 3 бутерброди)
+		</li>
+	</ul>
+
+	<div id="app">
+		<label>
+			Please enter passengers count
+			<br>
+			<input type="number" min="1" v-model.lazy.number="passengersNumber">
+		</label>
+		<ol>
+			<li>
+				Busses Count: {{bussesCount}}
+			</li>
+			<li>
+				Water Bottles Count: {{waterBottlesCount}}
+			</li>
+			<li>
+				Sandwiches Count: {{sandwichesCount}}
+			</li>
+		</ol>
+	</div>
+
+	<script>
+		const { createApp } = Vue
+		const seatsPerBus = 20
+		const waterBottlesPerPerson = 2
+		const sandwichesPerPerson = 3
+
+
+		createApp({
+			data() {
+				return {
+					passengersNumber: 0
+				}
+			},
+			methods: {
+				getBussesCount() {
+					return Math.ceil(this.passengersNumber / seatsPerBus)
+				},
+				getWaterBottlesCount() {
+					return this.passengersNumber * waterBottlesPerPerson
+				},
+				getSandwichesCount() {
+					return this.passengersNumber * sandwichesPerPerson
+				}
+			},
+
+			computed: {
+				bussesCount() {
+					return this.getBussesCount()
+				},
+				waterBottlesCount() {
+					return this.getWaterBottlesCount()
+				},
+				sandwichesCount() {
+					return this.getSandwichesCount()
+				}
+			}
+
+		}).mount('#app')
+	</script>
+</body>
+
+</html>

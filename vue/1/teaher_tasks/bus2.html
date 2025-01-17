@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- Вводиться кількість пасажирів. Вивести скільки потрібно автобусів (кожен автобус на 20 місць) -->
+
+    <div id="app">
+      <label>
+        Кількість пасажирів
+        <input type="number" v-model.number="passengersNumber" />
+      </label>
+      <hr />
+      <div>Кількість автобусів : {{busesNumber}}</div>
+      <hr />
+      <label>
+        Кількість автобусів
+        <input type="number" v-model="busesNumber" />
+      </label>
+      <hr />
+      <button @click="onClear">Clear</button>
+    </div>
+
+    <script>
+      const passengersInBus = 20
+
+      const { createApp } = Vue
+      createApp({
+        data() {
+          return {
+            passengersNumber: 0,
+          }
+        },
+        methods: {
+          getBussesNumber() {
+            return Math.ceil(this.passengersNumber / passengersInBus)
+          },
+          onClear() {
+            this.passengersNumber = 0
+          },
+        },
+        computed: {
+          //--- Тільки для читання ----
+          // busesNumber() {
+          //   return Math.ceil(this.passengersNumber / passengersInBus)
+          // },
+          //-- Для читання і запису
+          busesNumber: {
+            //-- для читання
+            get() {
+              return this.getBussesNumber()
+            },
+            //-- для запису
+            set(busNumVal) {
+              this.passengersNumber = passengersInBus * busNumVal
+            },
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

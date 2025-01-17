@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- Розробити конвертер валют. Вводиться курс долара, та кількість гривень. Вивести кількість доларів
+ -->
+
+    <!-- Задано початок та кінець діапазону. Випадковим чином генерувати значення з вказаного діапазону
+ -->
+    <div id="app">
+      <label>
+        Початок
+        <input type="number" v-model.lazy="start" />
+      </label>
+      <hr />
+      <label>
+        Кінець
+        <input type="number" v-model.lazy="end" />
+      </label>
+      <hr />
+      <!-- <div>Випадкове число 1 : {{ getRandomNumber() }}</div>
+      <div>Випадкове число 2 : {{ getRandomNumber() }}</div> -->
+      <div>Випадкове число 1 : {{ myRandomNumber }}</div>
+      <div>Випадкове число 2 : {{ myRandomNumber }}</div>
+    </div>
+
+    <script>
+      const { createApp } = Vue
+
+      createApp({
+        data() {
+          return {
+            start: 0,
+            end: 10,
+          }
+        },
+        methods: {
+          getRandomNumber() {
+            return (
+              this.start +
+              Math.floor(Math.random() * (this.end - this.start + 1)) +
+              this.currentYear
+            )
+          },
+        },
+        computed: {
+          currentYear() {
+            return new Date().getFullYear()
+          },
+          myRandomNumber() {
+            return (
+              this.start +
+              Math.floor(Math.random() * (this.end - this.start + 1)) +
+              this.currentYear
+            )
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

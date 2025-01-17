@@ -1,0 +1,186 @@
+.base-container {
+
+    display: flex;
+    height: calc(100vh - 140px); /* Займає всю висоту вікна браузера */
+    margin-top: 10px;
+    align-items: start;
+}
+
+.filters-container {
+    width: 300px;
+    flex-shrink: 0; /* Забезпечує, що елемент не буде зменшуватися */
+    height: 100%; /* Займає всю доступну висоту */
+    margin: 16px;
+}
+
+.content-container {
+    flex: 1; /* Забезпечує, що елемент займатиме всю доступну ширину */
+    height: 100%; /* Займає всю доступну висоту */
+    margin: 16px;
+}
+
+/* -------- filters ------------- */
+.filters-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-width: 400px;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.filter input[type="number"],
+.filter select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.filter input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.filter label input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.filter label {
+    display: flex;
+    align-items: center;
+}
+
+.filter label + label {
+    margin-top: 5px;
+}
+/* -------- content ------------- */
+.content-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    /* max-width: 800px; */
+    overflow-y: auto;
+
+}
+
+.content-container h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#table-container {
+    overflow-x: auto;
+}
+
+#table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#table-container th, #table-container td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+#table-container th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#table-container td img {
+    max-width: 50px;
+    border-radius: 4px;
+}
+
+#table-container td button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#table-container td button.edit {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#table-container td button.delete {
+    background-color: #f44336;
+    color: white;
+}
+/* --------------- pagination ---------- */
+#pagination ul{
+    display: flex;
+    li{
+      text-decoration: none;
+      margin: 10px;
+      padding: 10px;
+      border: 2px solid #007bff;
+      border-radius: 8px;
+      cursor: pointer;
+      a{
+        text-decoration: none;
+      }
+
+    }
+    .active{
+      background-color: green;
+
+    }
+    .disabled{
+        background-color: lightgrey;
+        cursor: auto;
+        pointer-events: none;
+        a{
+            cursor: auto;
+        }
+    }
+}
+
+  #pagination .pagination {
+    list-style: none; /* Видаляє маркери */
+    padding: 0; /* Видаляє відступи */
+    margin: 0; /* Видаляє поля */
+    display: flex; /* Робить елементи списку горизонтальними */
+    gap: 10px; /* Додає відступи між елементами */
+}
+/* ------------ sort ------------- */
+.price-order-selector {
+    display: flex;
+    justify-content: flex-end; /* Розташування селектора справа */
+    align-items: center;
+    font-size: 16px;
+
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.price-order-dropdown {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+

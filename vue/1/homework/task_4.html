@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./styles.css">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Task 4</title>
+</head>
+
+<body>
+	<h1>
+		Задача 4. “Рахунок у банку”
+	</h1>
+	<h2>Вимоги:</h2>
+	<ol>
+		<li>
+			Спочатку сума дорівнює 0грн. Змінити суму у гривнях можна або зарахуванням на рахунок, або зняттям.
+		</li>
+		<li>
+			Сума автоматично переводиться у долари та євро (фіксований курс задається у data).
+		</li>
+		<li>
+			Можливість зарахувати суму (контролювати, щоб не була від’ємною)
+		</li>
+		<li>
+			Можливість зняти (щоб не можна зняти більше ніж є на рахунку)
+		</li>
+		<li>
+			При виконанні зняття і зарахування коштів вираховувати 3% від суми (відображати кількість відсотків
+			автоматично)
+		</li>
+	</ol>
+	<h2>
+		При зміні суми :
+	</h2>
+	<ul>
+		<li>
+			- якщо було зняття, то суму відоражати червоним
+		</li>
+		<li>
+			- якщо було зарахування, то суму відображати зеленим
+		</li>
+		<li>
+			Якщо сума валюти менша за 100 то відображати червоним кольором, інакше - зеленим
+		</li>
+	</ul>
+
+	<div id="app">
+		<h2 :class="balanceClassName">
+			Total Balance: {{balanceToPrint}} UAN
+		</h2>
+		<label>
+			Credit to account:
+			<input type="number" v-model.lazy.number="increasedCount">
+			<button type="button" @click="increaseMoney">
+				Submit
+			</button>
+		</label>
+		<label>
+			Withdraw from account
+			<input type="number" v-model.lazy.number="decreasedCount">
+			<button type="button" @click="decreaseMoney">
+				Submit
+			</button>
+		</label>
+		<h2>
+			Service Fees: {{taxToPrint}} UAN
+		</h2>
+		<hr>
+		<h2 :class="balanceInUSD.className">
+			Total in USD: {{balanceInUSD.value}}
+		</h2>
+		<h2 :class="balanceInEURO.className">
+			Total in EURO: {{balanceInEURO.value}}
+		</h2>
+	</div>
+
+	<script>
+		const { createApp } = Vue
+		const serviceTax = 0.03
+		const euroCourse = 43.84
+		const usdCourse = 42.65
+
+		createApp({
+			data() {
+				return {
+					increasedCount: 0,
+					decreasedCount: 0,
+					totalBalance: 0,
+					currentTax: 0,
+					balanceClassName: null,
+				}
+			},
+			methods: {
+				applyTax(value) {
+					return value * serviceTax
+				},
+				increaseMoney() {
+					if (this.increasedCount < 0) {
+						this.increasedCount = 0
+						this.currentTax = 0
+						return alert('It must be a positive number')
+					}
+					this.currentTax = this.applyTax(this.increasedCount)
+					this.totalBalance += this.increasedCount - this.currentTax
+					this.balanceClassName = 'green'
+					this.increasedCount = 0
+				},
+				decreaseMoney() {
+					if (this.decreasedCount > this.totalBalance) {
+						this.decreasedCount = 0
+						this.currentTax = 0
+						return alert("You don't have enough money")
+					}
+					this.currentTax = this.applyTax(this.decreasedCount)
+					this.totalBalance -= this.decreasedCount + this.currentTax
+					this.balanceClassName = 'red'
+					this.decreasedCount = 0
+				}
+
+			},
+			computed: {
+				balanceToPrint() {
+					return this.totalBalance.toFixed(2)
+				},
+				taxToPrint() {
+					return this.currentTax.toFixed(2)
+				},
+				balanceInUSD() {
+					const balance = (this.totalBalance / usdCourse).toFixed(2)
+					return {
+						value: balance,
+						className: balance < 100 ? 'red' : 'green'
+					}
+				},
+				balanceInEURO() {
+					const balance = (this.totalBalance / euroCourse).toFixed(2)
+					return {
+						value: balance,
+						className: balance < 100 ? 'red' : 'green'
+					}
+				}
+			}
+
+		}).mount('#app')
+	</script>
+</body>
+
+</html>

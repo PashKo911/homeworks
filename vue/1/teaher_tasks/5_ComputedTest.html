@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Розробити конвертер валют. Вводиться курс долара, та кількість гривень. Вивести кількість доларів -->
+
+    <div id="app">
+      <div>
+        <label>
+          Курс
+          <input type="number" v-model="dollarRate" />
+        </label>
+      </div>
+      <div>
+        <label>
+          Гривні
+          <input type="number" v-model.lazy="grnSum" @focus="onFocus" />
+        </label>
+      </div>
+      <hr />
+      <div>
+        <label>
+          Долари
+          <!-- <input type="number" :value="grnSum/dollarRate" /> -->
+          <span>{{ dollarSum }}</span>
+        </label>
+      </div>
+      <div>
+        <label>
+          Євро
+          <span>{{ evroSum }}</span>
+        </label>
+      </div>
+    </div>
+
+    <script>
+      const { createApp } = Vue
+
+      createApp({
+        data() {
+          return {
+            dollarRate: 38,
+            grnSum: null,
+          }
+        },
+
+        computed: {
+          dollarSum() {
+            return (this.grnSum / this.dollarRate).toFixed(2)
+          },
+          evroSum() {
+            return this.dollarSum * 1.07
+          },
+        },
+
+        methods: {
+          //чому не працює?
+          onFocus() {
+            this.grnSum = 0
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>
