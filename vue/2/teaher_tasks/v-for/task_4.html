@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <!-- Прилад. Вивести дані, які представлені у об’єкті
+ -->
+
+    <div id="app"></div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            seasonsReport: {
+              spring: {
+                title: 'Весна',
+                averaheTemp: 12,
+                visitors: 1239,
+              },
+              summer: {
+                title: 'Літо',
+                averaheTemp: 32,
+                visitors: 6231,
+              },
+              fall: {
+                title: 'Осінь',
+                averaheTemp: 20,
+                visitors: 2230,
+              },
+              winter: {
+                title: 'Зима',
+                averaheTemp: 12,
+                visitors: 642,
+              },
+            },
+          }
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

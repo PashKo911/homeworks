@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .high {
+        background-color: green;
+      }
+      .middle {
+        background-color: yellow;
+      }
+      .low {
+        background-color: red;
+      }
+
+      .selected {
+        box-shadow: -5px -5px 20px 20px blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <label>
+        Energy level
+        <input
+          type="number"
+          class="selected"
+          :class="statusColor"
+          v-model="energyLevel"
+        />
+      </label>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            energyLevel: 1,
+          }
+        },
+        computed: {
+          statusColor() {
+            let currectStateClass
+            if (this.energyLevel > 80) currectStateClass = 'high'
+            else if (this.energyLevel > 30) currectStateClass = 'middle'
+            else currectStateClass = 'low'
+            return currectStateClass
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

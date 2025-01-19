@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <label> Age <input type="number" v-model="personAge" /> </label>
+      <div>
+        <div v-if=" !isAccessAllowed">Доступ заборонено</div>
+        <div v-else>
+          <ul>
+            <li>Tea</li>
+            <li>Milk</li>
+            <li>Bread</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- якщо вік більше 18, то запропонувати авто, інше вертоліт -->
+      <div>
+        <div v-if="personAge>18">Купи авто</div>
+        <div v-else>Купи вертоліт</div>
+      </div>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            personAge: null,
+          }
+        },
+        computed: {
+          isAccessAllowed() {
+            return this.personAge >= 16
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- <div v-for="product in productsList" :key="product.id">
+        <h2>{{product.title}}</h2>
+        <div>Price : {{product.price}}</div>
+        <hr />
+      </div> -->
+      <div v-for="(product, index) in productsList" :key="product.id">
+        <h2>{{index+1}} - {{product.title}}</h2>
+        <div>Price : {{product.price}}</div>
+        <hr />
+      </div>
+    </div>
+
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            productsList: [
+              {
+                id: 1,
+                title: 'Tea',
+                price: 90,
+              },
+              {
+                id: 2,
+                title: 'Milk',
+                price: 120,
+              },
+              {
+                id: 3,
+                title: 'Bread',
+                price: 25,
+              },
+              {
+                id: 4,
+                title: 'Chees',
+                price: 390,
+              },
+            ],
+          }
+        },
+        methods: {
+          getRandomNumber() {
+            return Math.floor(Math.random() * 10)
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

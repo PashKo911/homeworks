@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <div>{{randomNumber}}</div>
+      <button v-show="isButtonVisible" @click="startGenerating">
+        Генерувати
+      </button>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            randomNumber: 1,
+          }
+        },
+        computed: {
+          isButtonVisible() {
+            return this.randomNumber && this.randomNumber % 2 !== 0
+          },
+        },
+        methods: {
+          startGenerating() {
+            setInterval(() => {
+              this.randomNumber = Math.floor(Math.random() * 10)
+            }, 1000)
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

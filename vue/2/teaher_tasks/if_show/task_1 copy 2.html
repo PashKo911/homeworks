@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <label> Money <input type="number" v-model="userMoney" /> </label>
+      <label>
+        Product price <input type="number" v-model="productPrice" />
+      </label>
+      <div v-if="userMoney<productPrice">
+        Ще треба доплатити : {{ productPrice-userMoney }}
+      </div>
+      <div v-else-if="userMoney-productPrice>=100">
+        Купіть акційний товар
+        <button>Купити</button>
+      </div>
+      <div v-else-if="userMoney===productPrice">:-)</div>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            userMoney: null,
+            productPrice: null,
+          }
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

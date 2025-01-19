@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .first-place {
+        color: green;
+        font-size: 18px;
+      }
+      .second-place {
+        color: yellow;
+        font-size: 14px;
+      }
+      .third-place {
+        color: orange;
+        font-size: 12px;
+      }
+      .default-place {
+        color: blue;
+        font-size: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <label>
+        Place number
+        <input type="number" :class="placeClass" v-model="placeNum" />
+      </label>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            placeNum: null,
+          }
+        },
+        computed: {
+          placeClass() {
+            let resClass
+            switch (this.placeNum) {
+              case 1:
+                resClass = 'first-place'
+                break
+              case 2:
+                resClass = 'second-place'
+                break
+              case 3:
+                resClass = 'third-place'
+                break
+              default:
+                resClass = 'default-place'
+                break
+            }
+            return resClass
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <!-- Приклад. Розробити список покупок. Корстувач у формі поступово додає назву товару і кількість і товари
+поступово додаються у список покупок. -->
+
+    <div id="app">
+      <div>
+        <div>
+          <label>
+            Назва товару
+            <input type="text" v-model="prodTitle" />
+          </label>
+        </div>
+        <div>
+          <label>
+            Кількість товару
+            <input type="number" v-model="prodCount" />
+          </label>
+        </div>
+        <button @click="onProductAdd">Додати</button>
+      </div>
+
+      <hr />
+      <h1>Список продуктів</h1>
+      <div>
+        <ol>
+          <li v-for="(product, index) in productsList" :key="index">
+            {{product.title}} - {{product.count}}
+          </li>
+        </ol>
+      </div>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            prodTitle: null,
+            prodCount: null,
+            productsList: [],
+          }
+        },
+        methods: {
+          onProductAdd() {
+            this.productsList.push({
+              title: this.prodTitle,
+              count: this.prodCount,
+            })
+            this.prodTitle = null
+            this.prodCount = null
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

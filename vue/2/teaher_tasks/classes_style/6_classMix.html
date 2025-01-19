@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .empty {
+        background-color: grey;
+      }
+      .allowed {
+        background-color: green;
+      }
+      .not-allowed {
+        background-color: red;
+      }
+
+      .elite {
+        border: 3px solid yellow;
+      }
+      .super-elite {
+        box-shadow: -5px -5px 20px 20px blue;
+      }
+
+      .equal-font {
+        color: red;
+      }
+      .not-equal-font {
+        color: orange;
+      }
+      .my {
+        font-size: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <label>
+        Price
+        <input type="number" v-model="productPrice" />
+      </label>
+      <label>
+        User money
+        <input type="number" v-model="userMoney" />
+      </label>
+      <button
+        :class="[
+          'my',
+          statusColor,
+
+          {
+
+            'elite':isElite,
+            'super-elite':isSuperElite,
+
+            [titleFont] : isCompleted
+
+          }
+      ]"
+      >
+        Купити
+      </button>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            productPrice: null,
+            userMoney: null,
+          }
+        },
+        computed: {
+          isCompleted() {
+            return this.userMoney && this.productPrice
+          },
+          statusColor() {
+            let currectStateClass
+            if (!this.isCompleted) currectStateClass = 'empty'
+            else if (this.userMoney >= this.productPrice)
+              currectStateClass = 'allowed'
+            else currectStateClass = 'not-allowed'
+            return currectStateClass
+          },
+          titleFont() {
+            return this.userMoney === this.productPrice
+              ? 'equal-font'
+              : 'not-equal-font'
+          },
+          isElite() {
+            return this.isCompleted && this.productPrice > 1000
+          },
+          isSuperElite() {
+            return this.isCompleted && this.productPrice > 100000
+          },
+        },
+      }).mount('#app')
+    </script>
+
+    <!-- Приклад. Вводимо кількість грошей користувача та вартість товару.
+Колір кнопки «Купити»:
+  - не введено якесь значення – сіра,
+  - недостатньо грошей - червона,
+  - достатньо грошей – зелена
+Якщо вартість покупки більше 1000 грн (елітний) – додати жовту рамку
+Якщо вартість покупки білье 100 000 (супер елітний) – додати тінь
+
+Шрифт тексту кнопки застосовувати якщо введено дані:
+- якщо вартість і ціна співпадають - червоний
+- інкше - оранжевий
+-->
+  </body>
+</html>

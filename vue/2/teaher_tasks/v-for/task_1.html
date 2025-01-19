@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <!-- Приклад. Дано масив з побажаннями. Вибрати випадковим чином 4 із них -->
+
+    <div id="app">
+      <div v-for="w in 4">{{w}} - {{getRandomWish()}}</div>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const wishes = [
+        {
+          id: 1,
+          wish: 'Нехай у вас буде чудовий день!',
+        },
+        {
+          id: 2,
+          wish: 'Бажаю вам щастя і радості!',
+        },
+        {
+          id: 3,
+          wish: 'Нехай у вас все буде добре!',
+        },
+        {
+          id: 4,
+          wish: 'Нехай ваша мрія збудеться!',
+        },
+        {
+          id: 5,
+          wish: "Бажаю вам міцного здоров'я!",
+        },
+        {
+          id: 6,
+          wish: 'Нехай у вас буде багато успіхів!',
+        },
+        {
+          id: 7,
+          wish: 'Бажаю вам завжди залишатися собою!',
+        },
+      ]
+
+      const app = createApp({
+        methods: {
+          getRandomWish() {
+            const randIndex = Math.floor(Math.random() * wishes.length)
+            return wishes[randIndex].wish
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

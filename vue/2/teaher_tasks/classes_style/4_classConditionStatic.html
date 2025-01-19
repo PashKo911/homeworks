@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Hola</title>
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<style>
+		.allowed {
+			background-color: green;
+		}
+
+		.empty {
+			background-color: yellow;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<label>
+			Age
+			<input type="number" :class="{
+             'allowed':isWorkerAgeValid,
+             'empty':isAgeEmpty
+          }" v-model="personAge" />
+		</label>
+	</div>
+	<script>
+		const { createApp } = Vue
+
+		const app = createApp({
+			data() {
+				return {
+					personAge: true,
+				}
+			},
+			computed: {
+				isWorkerAgeValid() {
+					return this.personAge && this.personAge >= 18
+				},
+				isAgeEmpty() {
+					return !this.personAge
+				},
+			},
+		}).mount('#app')
+	</script>
+</body>
+
+</html>

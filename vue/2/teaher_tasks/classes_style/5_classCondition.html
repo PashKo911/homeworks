@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .young {
+        background-color: green;
+      }
+      .senior {
+        background-color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <label> Age <input type="number" v-model="personAge" /> </label>
+      <button
+        :class="{
+
+            [ statusClass ] : isWorkerAgeValid,
+
+        }"
+        :disabled="!isWorkerAgeValid"
+      >
+        Зареєструватись
+      </button>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            personAge: null,
+          }
+        },
+        computed: {
+          isWorkerAgeValid() {
+            return this.personAge && this.personAge >= 18
+          },
+          statusClass() {
+            return this.personAge < 45 ? 'young' : 'senior'
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>
