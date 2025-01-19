@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="./style.css">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Task_2</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<h2>
+			Задача 2. З випадаючого списку вибираємо клас квитка у літаку. Якщо
+		</h2>
+		<ol class="task">
+			<li>
+				бізнес - виводимо елементи для вибору газети та коньяку (якщо вибрано коньяк, то запропонувати закуску
+				(так/ні)), на фоні зображення бізнес кают
+			</li>
+			<li>
+				економ – виводимо елементи для вибору типу пива і чипсів, на фоні хмарки.
+			</li>
+		</ol>
+
+		<div id="app">
+			<label>
+				Select class:
+				<select v-model="selectedClass">
+					<option value="business">Business class</option>
+					<option value="economy">Economy class</option>
+				</select>
+			</label>
+			<div class="outputSelect" v-show="selectedClass">
+				<img :alt="selectedClass" :src="additionalData?.imgPath">
+				<label>
+					Choose additional options
+					<select v-model="selectedAdditionalOption">
+						<option :value="option" v-for="option in additionalData?.options" :key="option">{{option}}
+						</option>
+					</select>
+				</label>
+				<label v-if="isBusinessAndCognacSelected">
+					Do you want a snack
+					<select v-model="selectedSnack">
+						<option value="business">Yes</option>
+						<option value="economy">No</option>
+					</select>
+				</label>
+			</div>
+		</div>
+
+		<script>
+			const { createApp } = Vue
+			const additionalData = {
+				business: {
+					options: ['newspaper', 'cognac'],
+					imgPath: 'https://www.biletik.aero/upload/resize_cache/format_converted/a9c58a57821eaa433c6072dbf180a271.webp'
+				},
+				economy: {
+					options: ['chips', 'beer'],
+					imgPath: 'https://images.squarespace-cdn.com/content/v1/6123aa4da7d85907b823dc29/1646063669874-SKXA5SWVYES9QIB01OHI/clouds.jpg?format=2500w'
+				}
+			}
+
+			createApp({
+
+				data() {
+					return {
+						selectedClass: null,
+						selectedAdditionalOption: null,
+						selectedSnack: null
+					}
+				},
+
+				computed: {
+					additionalData() {
+						return additionalData[this.selectedClass]
+					},
+					isBusinessAndCognacSelected() {
+						return this.selectedClass === 'business' && this.selectedAdditionalOption === 'cognac'
+					}
+				}
+			}).mount('#app')
+		</script>
+	</div>
+</body>
+
+</html>

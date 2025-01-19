@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="./style.css">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Task_5</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<h2>
+			Задача 5. Самостійно сформуйте масив даних та виведіть фрагмент на зразок поданого (дані не обов’язково
+			повинні співпадати)
+		</h2>
+
+		<div id="app">
+			<ul class="searchList">
+				<li v-for="searchItem in searchList">
+					<a target="_blank" class="topLink" :href="searchItem.link">
+						<div class="img">
+							<img :alt="searchItem.label" :src="searchItem.imgPath">
+						</div>
+						<div class="right">
+							<h3>
+								{{searchItem.label}}
+							</h3>
+							<div>
+								{{searchItem.link}}
+							</div>
+						</div>
+					</a>
+					<div class="description">
+						{{searchItem.description}}
+					</div>
+					<div class="items" v-if="hasSubLinks(searchItem)">
+						<a target="_blank" :href="subLink.url" v-for="(subLink, i ) in searchItem.subLinks" :key="i">
+							{{subLink.title}}
+						</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<script>
+			const { createApp } = Vue
+
+			const searchList = [
+				{
+					id: 1,
+					imgPath: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAYFBMVEX///+63c6gz7um0sCr1cSv18aYzLYmonRjtpTB4NP4/Pvu9/PT6eA3pnyFxKoAkFcAlV8AklpruZoAlV4AmmgAmGTi8evl8+4AiUmLx69Yso612ssupHgLnWxBqYHK5dqH3wIXAAAAq0lEQVR4AdzLgwEDQRRF0bu27f67zJuYDeQMv/gDlu24/OL5QYiI63luBMSup1+CpBlXeVGWhXK+3rKqkazxuCrbtquJm9aoemQYubJVLZJJt3QzTOlScXPOtbJ2Gk1xtiDlxm1UVa0h0Gfn1dYapY9VafTghXLSAauelVeBGXSAw4xavDC5DWPv2sblhXLVgpFWbcCbtLil5iLi3X4aTEhMFjMmxJFYQxIAAFFuC1yESb31AAAAAElFTkSuQmCC',
+					label: 'W3Schools',
+					link: 'https://www.w3schools.com/whatis/whatis_vue.asp',
+					title: 'What is Vue.js',
+					description: 'Vue.js lets you extend HTML with HTML attributes called directives. Vue.js directives offers functionality to HTML applications.',
+				},
+				{
+					id: 2,
+					imgPath: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAKlBMVEVHcEwA3IEA3IIA3IIA3IEA3YEA3IIA3IEA3IIA3IEA3YAA3IIA3IIA3ILh7so9AAAADXRSTlMAuMiVelysDeIeMO9In4urzgAAAMVJREFUOI3VUtsOhTAIg9035f9/94yxweZJfLeJOim2hQjwLWSf6mtDIaI3Pnae0ksDDYjJ3f55Lw2Oz44oPPnKZOi3CMAPyo8GN+Rp5DQpw91LXoKGaXYfDdccsQiJ/bp2fpoDNGnIQ+ocscgpkZgtSas266UppVvjF9zWEZ8fFRs7q5mdYA+Eum0LvlyXmTqvut+WcmSPMk/d1urO6d3IxmkdMvh95KqIWsD5Gyiy7VswdBRueSv6fvwUxBRkwIQGD5/AD5RIDU3H5M4EAAAAAElFTkSuQmCC',
+					label: 'Nuxt',
+					link: 'https://nuxt.com/',
+					title: 'Nuxt: The Intuitive Vue Framework · Nuxt',
+					description: 'Nuxt is an open source framework that makes web development intuitive and powerful. Create performant and production-grade full-stack web apps and websites ...',
+					subLinks: [
+						{
+							title: 'Installation',
+							url: 'https://nuxt.com/docs/getting-started/installation'
+						},
+						{
+							title: 'Nuxt',
+							url: 'https://nuxt.com/docs/getting-started/installation'
+						},
+						{
+							title: 'ESLint Module',
+							url: 'https://nuxt.com/docs/getting-started/installation'
+						},
+						{
+							title: 'Nuxt Modules',
+							url: 'https://nuxt.com/docs/getting-started/installation'
+						}
+					]
+				},
+				{
+					id: 3,
+					imgPath: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAb1BMVEX////4+Pi3ubtvcnZNUVU+Q0cpLjLr6+x3en0sMTYkKS59gIORk5aUl5n8/Pzw8PFTV1tbX2Pc3d5DSEzn5+g3PECLjpFKTlKFh4qxs7XCxMUuMze/wcLh4uPV1tZzd3o/Q0jOz9CmqKpjZ2qfoaTxAyfNAAABPUlEQVR4AW3TBYKDMBQE0AltAgzuzur9z7ibH5oKfWjc4UEFl6s2Rl8vgcJZGMX04iTEM5UaPomzHA+KkidVAa/WfKNpffMd32oKCHUlWfb27Q19ZSMVrNHGTMDckMtQLqSegdXGpvi3Sf93W9UudRby2WzsEgL4oMvwoqY1AsrQNfFipbXkCGh1BV6oT1pfRwvfOJlo9ZA5NAonStbmB1pawBuDTAgkX4MzV/eC2H3e0C7lk1aBEzd+7SpigJOZVoXx+J5UxzADil+8+KZYoRaK5y2WZxSdgm0j+dakzkIc2kzT6W3IcFnDTzdt4sKbWMqkpNl229IMsfMmg6UaMsJXmv4qCMXDoI4mO5oADwyFDnGoO3KI0jSHQ6E3eJum5TP4Y+EVyUOGXHZjgWd7ZEwOJzZRjbPQt7mF8P4AzsYZpmkFLF4AAAAASUVORK5CYII=',
+					label: 'GITHub',
+					link: 'https://github.com/vuejs',
+					title: 'Vue',
+					description: 'Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. TypeScript 48.5k 8.5k.',
+					subLinks: [
+						{
+							title: 'Vuejs/core',
+							url: 'https://github.com/vuejs/core'
+						},
+						{
+							title: 'Vuejs/create-vue',
+							url: 'https://github.com/vuejs/create-vue'
+						},
+						{
+							title: 'Vuejs/docs',
+							url: 'https://github.com/vuejs/docs'
+						},
+						{
+							title: 'Vuejs/pinia',
+							url: 'https://github.com/vuejs/pinia'
+						}
+					]
+				},
+				{
+					id: 4,
+					imgPath: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAAAAABXZoBIAAAAnklEQVR4AeTNIQiDQABG4b+u17X1aF6PK3YEO9iMJqPVau82y4FgMezS0oVLhqsHtrcqeqzDXv3CEz/6L4yTtZM3dnHmPTtjzXZAXKYVo4agkU2GI2Lloc6JDez1+flswMu1EQZ3xlE7lK8eKDkjtwE+crBMV+wesKmCiisGGepZIfQJpMj9SNb2MYWrChjVkULuCyCfRvsdmBieyQQAsoDk/9ryhFMAAAAASUVORK5CYII=',
+					label: 'Wikipedia',
+					link: 'https://uk.wikipedia.org/wiki/Vue.js',
+					title: 'Vue.js',
+					description: 'Vue.js (commonly referred to as Vue; pronounced) is an open-source model–view–viewmodel front end JavaScript framework for building user interfaces and single-page applications It was created by Evan You and is maintained by him and the rest of the active core team members',
+				},
+			]
+
+			createApp({
+				methods: {
+					hasSubLinks(searchItem) {
+						return searchItem.subLinks && searchItem.subLinks.length > 0;
+					}
+				},
+				computed: {
+					searchList() {
+						return searchList
+					},
+				}
+			}).mount('#app')
+		</script>
+	</div>
+</body>
+
+</html>

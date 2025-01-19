@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="./style.css">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Task_1</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<h2>
+			Задача 1. Вводимо логін і пароль. Якщо логін вірний відображаємо смайл. Якщо ні, то:
+		</h2>
+		<ol class="task">
+			<li>
+				Якщо логін = Іван – колір повідомлення про помилку синій
+			</li>
+			<li>
+				Якщо хтось інший, то колір повідомлення червоний
+			</li>
+		</ol>
+
+		<div id="app">
+			<form>
+				<label>
+					User Name:
+					<input type="text" v-model.lazy.trim="userName">
+				</label>
+				<label>
+					Password:
+					<input type="password" v-model.lazy.trim="password">
+				</label>
+				<button type="button" @click="onAuth">
+					Submit
+				</button>
+			</form>
+			<div class="output">
+				<img class="smile" src="./img/smile.png" alt="Smile" v-if="isValidAuth">
+				<p class="error" :class="errorComputedClass" v-if="errorComputedClass">
+					Error during authentication
+				</p>
+			</div>
+		</div>
+
+		<script>
+			const { createApp } = Vue
+
+			const data = [
+				{
+					userName: 'user1',
+					password: 'user1'
+				},
+				{
+					userName: 'user2',
+					password: 'user2'
+				},
+				{
+					userName: 'user3',
+					password: 'user3'
+				},
+			]
+
+			createApp({
+				data() {
+					return {
+						userName: null,
+						password: null,
+						authResult: false,
+						errorClass: null
+					}
+				},
+				methods: {
+					onAuth() {
+						this.authResult = data.some(({ userName, password }) => userName === this.userName && password === this.password)
+
+						if (this.authResult) {
+							this.userName = null
+							this.password = null
+							this.errorClass = null
+						} else {
+							this.getErrorClass()
+						}
+					},
+					getErrorClass() {
+						if (this.userName.toLowerCase() === 'ivan') {
+							this.errorClass = 'blue'
+						} else {
+							this.errorClass = 'red'
+						}
+					}
+				},
+				computed: {
+					isValidAuth() {
+						return this.authResult
+					},
+					errorComputedClass() {
+						return this.errorClass
+					}
+				}
+			}).mount('#app')
+		</script>
+	</div>
+</body>
+
+</html>

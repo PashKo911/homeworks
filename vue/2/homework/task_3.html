@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="./style.css">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Task_3</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<h2>
+			Задача 3. Елемент тренажера англійської. Виводимо зображення елемента і слово. Користувач вводить відповідь.
+			Якщо вірно – відтворюємо фразу «Добре. Молодець!» (і додаємо зелену рамку до елемента), якщо ні - то
+			відтворюємо фразу «Невірно, спробуйте ще раз» (і додаємо червону рамку).
+		</h2>
+
+		<div id="app">
+			<div class="translator" :class="answerStatus?.className">
+				<button type="button" class="next" v-show="answerStatus" @click="generateTask">
+					Next
+				</button>
+				<div class="statusBlock" v-show="answerStatus">
+					{{answerStatus?.message}}
+				</div>
+				<img :src="currentTask.imgPath" :alt="currentTask.word">
+				<span>{{currentTask.word}}</span>
+				<label>
+					Your translation:
+					<input type="text" v-model.lazy.trim="answer">
+				</label>
+				<button type="button" @click="checkAnswer">
+					Submit
+				</button>
+			</div>
+		</div>
+
+		<script>
+			const { createApp } = Vue
+			const correctMessage = 'Good. Well done!'
+			const incorrectMessage = 'Wrong, try again'
+			const translatorData = [
+				{
+					imgPath: 'https://imgcdn.stablediffusionweb.com/2024/4/9/b822e947-5e7d-43b3-9313-740dc2a442dc.jpg',
+					word: 'car',
+					translation: 'автомобіль'
+				},
+				{
+					imgPath: 'https://easydrawingguides.com/wp-content/uploads/2021/01/how-to-draw-a-cartoon-bird-featured-image-1200.png',
+					word: 'bird',
+					translation: 'пташка'
+				},
+				{
+					imgPath: 'https://images.squarespace-cdn.com/content/v1/66a915244ca56a48947821db/c83ac024-abd2-4cb2-8aca-d81056f08a6c/santas-little-helper-simpsons-dog-character-800x566+2.jpg?format=2500w',
+					word: 'dog',
+					translation: 'собака'
+				},
+				{
+					imgPath: 'https://i.pinimg.com/236x/f5/ef/9b/f5ef9b8944afabffc5c2d231be8a44cf.jpg',
+					word: 'watermelon',
+					translation: 'кавун'
+				},
+				{
+					imgPath: 'https://cdn.vectorstock.com/i/2000v/14/50/cartoon-wolf-vector-11191450.avif',
+					word: 'wolf',
+					translation: 'вовк'
+				},
+				{
+					imgPath: 'https://st5.depositphotos.com/89237578/75144/v/600/depositphotos_751440688-stock-illustration-cheerful-rabbit-giving-thumbs-cute.jpg',
+					word: 'rabbit',
+					translation: 'заєць'
+				},
+				{
+					imgPath: 'https://st2.depositphotos.com/7857468/12354/v/950/depositphotos_123548828-stock-illustration-cute-baby-bear-cartoon.jpg',
+					word: 'bear',
+					translation: 'ведмідь'
+				},
+			]
+
+			createApp({
+				data() {
+					return {
+						answer: "",
+						currentTask: null,
+						currentIndex: null,
+						isCorrectAnswer: null,
+					};
+				},
+				created() {
+					this.generateTask();
+				},
+				methods: {
+					generateTask() {
+						if (translatorData.length) {
+							let newIndex
+							do {
+								newIndex = Math.floor(Math.random() * translatorData.length);
+							} while (newIndex === this.currentIndex)
+
+							this.currentIndex = newIndex
+							this.currentTask = translatorData[this.currentIndex];
+							this.isCorrectAnswer = null;
+							this.answer = "";
+						}
+					},
+					checkAnswer() {
+						if (this.answer) {
+							const correctTranslation = this.currentTask.translation.toLowerCase();
+							this.isCorrectAnswer = this.answer.toLowerCase() === correctTranslation;
+						}
+					},
+				},
+				computed: {
+					answerStatus() {
+						if (this.isCorrectAnswer === true) {
+							return { className: "green", message: correctMessage };
+						} else if (this.isCorrectAnswer === false) {
+							return { className: "red", message: incorrectMessage };
+						}
+						return null;
+					},
+				},
+			}).mount("#app");
+
+		</script>
+	</div>
+</body>
+
+</html>

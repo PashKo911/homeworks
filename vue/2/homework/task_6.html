@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="./style.css">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Task_6</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<h2>
+			Задача 6. Задача. На кухню поступають замовлення. Спочатку ми додаємо їх у список “Очікують на виконання”,
+			якщо повар береться робити — замовлення переходить у список “Виконуються”, якщо замовлення виконано —
+			переходить у список “Готові до виносу”. Якщо натиснути на “Подано” - страва зникає з таблиці
+		</h2>
+
+		<div id="app">
+			<div class="dishTop">
+				<label>
+					Make an order:
+					<input type="text" v-model.lazy.trim="orderedDish">
+				</label>
+				<button type="button" @click="makeOrder">
+					Add
+				</button>
+			</div>
+			<div class="dishTables" v-show="hasAnyOrders">
+				<div class="dishTable" v-for="(table, tableIndex) in tablesConfig" :key="tableIndex">
+					<h3>{{table.title}}:</h3>
+					<ul>
+						<li v-for="(order, orderIndex) in ordersTables[tableIndex]" :key="orderIndex">
+							<span>{{order}}</span>
+							<button type="button" @click="moveOrder(tableIndex, orderIndex)">
+								{{table.buttonTitle}}
+							</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			const { createApp } = Vue
+
+			createApp({
+				data() {
+					return {
+						orderedDish: '',
+						tablesConfig: [
+							{ title: 'Awaiting execution', buttonTitle: 'Prepare' },
+							{ title: 'Are executed', buttonTitle: 'Prepared' },
+							{ title: 'Ready for delivery', buttonTitle: 'Served' },
+						],
+						ordersTables: [[], [], []]
+					}
+				},
+				methods: {
+					makeOrder() {
+						if (this.orderedDish) {
+							this.ordersTables[0].push(this.orderedDish)
+							this.orderedDish = ''
+						}
+					},
+					moveOrder(tableIndex, orderIndex) {
+						const nextTableIndex = tableIndex + 1;
+						if (nextTableIndex < this.ordersTables.length) {
+							this.ordersTables[nextTableIndex].push(this.ordersTables[tableIndex][orderIndex]);
+						}
+						this.ordersTables[tableIndex].splice(orderIndex, 1);
+					}
+
+				},
+				computed: {
+					hasAnyOrders() {
+						return this.ordersTables.some(orderTable => orderTable.length > 0)
+					},
+				}
+			}).mount('#app')
+		</script>
+	</div>
+</body>
+
+</html>
