@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .low {
+        background-color: orange;
+      }
+      .normal {
+        background-color: green;
+      }
+      .danger {
+        background-color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Задача 3. Вводиться дозволена швидкість і поточна швидкість авто. Якщо не введено дозволену швидкість, то елемент введення поточної швидкості заблокований. Якщо швидкість менше 50% дозволеної, то колір input – оранжевий, якщо від 50% до 100% - зелений, вище 100% - червоний. Якщо значення вище 90% починає блимати повідомлення «Увага!»     -->
+    <div id="app">
+      <div
+        :class="{
+        [currentClass]: isDataValid
+      }"
+      >
+        <label>
+          Limit
+          <input type="number" v-model="limitSpeed" />
+        </label>
+        <label>
+          Auto speed
+          <input type="number" v-model="currentSpeed" :disabled="!limitSpeed" />
+        </label>
+        <div>{{currentSpeedRate}}%</div>
+        <div v-show="isAlertVisible">Увага!</div>
+      </div>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const INTERVAL_MS = 1000
+      const app = createApp({
+        data() {
+          return {
+            limitSpeed: null,
+            currentSpeedValue: null,
+            isAlertVisible: false,
+            intervalId: null,
+          }
+        },
+        computed: {
+          currentSpeed: {
+            get() {
+              return this.currentSpeedValue
+            },
+            set(newVal) {
+              this.currentSpeedValue = newVal
+              if ((newVal * 100) / this.limitSpeed > 90)
+                this.startDisplayAlert()
+              else this.stopDisplayAlert()
+            },
+          },
+          isDataValid() {
+            return this.currentSpeed && this.limitSpeed
+          },
+          currentSpeedRate() {
+            return (this.currentSpeed * 100) / this.limitSpeed
+          },
+          currentClass() {
+            let currentClass = null
+            if (this.currentSpeedRate < 50) currentClass = 'low'
+            else if (this.currentSpeedRate < 100) currentClass = 'normal'
+            else currentClass = 'danger'
+            return currentClass
+          },
+        },
+        methods: {
+          startDisplayAlert() {
+            if (!this.intervalId) {
+              this.intervalId = setInterval(() => {
+                this.isAlertVisible = !this.isAlertVisible
+              }, INTERVAL_MS)
+            }
+          },
+          stopDisplayAlert() {
+            if (this.intervalId) {
+              clearInterval(this.intervalId)
+              this.isAlertVisible = false
+              this.intervalId = null
+            }
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

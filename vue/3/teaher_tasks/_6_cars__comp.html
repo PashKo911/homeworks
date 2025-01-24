@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .filters-container {
+        display: flex;
+        align-items: start;
+      }
+      .filter {
+        border: 2px solid black;
+        margin: 20px;
+        padding: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Задача 8. Дано список автомобілів (марка, рік випуску, ціна). Сформувати елементи для фільтрування з використанням випадаючого списку (контент цих випадаючих списків сформувати у залежності від переданого списку). -->
+
+    <div id="app">
+      <div class="filters-container">
+        <div class="filter">
+          <h1>Марки</h1>
+          <select v-model="selectedBrand">
+            <option
+              v-for="brand in uniqueBrandsList"
+              :key="brand.value"
+              :value="brand.value"
+            >
+              {{brand.text}}
+            </option>
+          </select>
+        </div>
+        <div class="filter">
+          <h1>Рік випуску</h1>
+          <select v-model="selectedYear">
+            <option :value="null">Всі Роки</option>
+            <option v-for="year in uniqueYearsList" :key="year" :value="year">
+              {{year}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="filtered-cars-list">
+        <h1>Список авто, що відповідають фільтрам</h1>
+        <div v-for="car in filteredCarsList" :key="car.id" class="car-item">
+          {{car.brand}} - {{car.year}} - {{car.price}}
+        </div>
+      </div>
+    </div>
+    <script>
+      const { createApp } = Vue
+      const cars = [
+        { id: 1, brand: 'Toyota', year: 2020, price: 20000, owner: 'John Doe' },
+        {
+          id: 2,
+          brand: 'Honda',
+          year: 2020,
+          price: 18000,
+          owner: 'Jane Smith',
+        },
+        {
+          id: 3,
+          brand: 'Ford',
+          year: 2018,
+          price: 15000,
+          owner: 'Alice Brown',
+        },
+        {
+          id: 4,
+          brand: 'Toyota',
+          year: 2020,
+          price: 21000,
+          owner: 'Michael Johnson',
+        },
+        { id: 5, brand: 'BMW', year: 2019, price: 30000, owner: 'Chris Green' },
+        { id: 6, brand: 'Honda', year: 2021, price: 17000, owner: 'Tom Hanks' },
+        { id: 7, brand: 'Ford', year: 2018, price: 16000, owner: 'Emma White' },
+        {
+          id: 8,
+          brand: 'Toyota',
+          year: 2021,
+          price: 22000,
+          owner: 'Sarah Black',
+        },
+        { id: 9, brand: 'BMW', year: 2019, price: 31000, owner: 'Liam Blue' },
+        {
+          id: 10,
+          brand: 'Honda',
+          year: 2020,
+          price: 19000,
+          owner: 'Olivia Pink',
+        },
+      ]
+
+      const app = createApp({
+        data() {
+          return {
+            selectedBrand: null,
+            selectedYear: null,
+          }
+        },
+        computed: {
+          uniqueBrandsList() {
+            const brandsItems = [
+              {
+                value: null,
+                text: 'Всі марки',
+              },
+            ]
+            Array.from(new Set(cars.map((car) => car.brand))).forEach(
+              (brand) => {
+                brandsItems.push({
+                  value: brand,
+                  text: brand,
+                })
+              }
+            )
+            return brandsItems
+          },
+          uniqueYearsList() {
+            return Array.from(new Set(cars.map((car) => car.year)))
+          },
+          filteredCarsList() {
+            return cars.filter(
+              (car) =>
+                (!this.selectedBrand || car.brand === this.selectedBrand) &&
+                (!this.selectedYear || car.year === this.selectedYear)
+            )
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <!-- Задача 7. Динамічний пошук. Є список працівників і поле пошуку. При введенні відображаються усі, які містять вказаний фрагмент -->
+
+    <div id="app">
+      <div>
+        <label>
+          Пошук за іменем
+          <input
+            type="text"
+            placeholder="Введіть текст для пошуку"
+            v-model.trim="searchText"
+          />
+        </label>
+      </div>
+      <div>
+        <h1>Список імен</h1>
+        <div v-if="filteredUsersNames.length">
+          <div v-for="(userName, index) in filteredUsersNames" :key="index">
+            {{userName}}
+          </div>
+        </div>
+        <div v-else>Список порожній</div>
+      </div>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const usersNames = ['Ivan', 'Petro', 'Olga', 'Olena', 'John']
+
+      const app = createApp({
+        data() {
+          return {
+            searchText: null,
+          }
+        },
+        computed: {
+          filteredUsersNames() {
+            let filteredList = usersNames
+            if (this.searchText) {
+              const text = this.searchText.toLowerCase()
+              filteredList = usersNames.filter((userName) =>
+                userName.toLowerCase().includes(text)
+              )
+            }
+            return filteredList
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

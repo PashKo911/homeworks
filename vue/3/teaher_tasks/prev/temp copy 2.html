@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <!-- Задача 1. З клавіатури вводиться довжина у сантиметрах. Виводити скільки це метрів, кілометрів. -->
+    <div id="app">
+      <div>
+        <label
+          >CM:
+          <input type="number" v-model="cm" />
+        </label>
+      </div>
+      <div>Meters: {{meters}}</div>
+      <div>Meters: {{kilometers}}</div>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            cm: null,
+          }
+        },
+        computed: {
+          meters() {
+            return (this.cm / 100).toFixed(2)
+          },
+          kilometers() {
+            return (this.meters / 1000).toFixed(2)
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

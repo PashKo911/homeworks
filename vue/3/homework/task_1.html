@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="./styles/common.css">
+	<link rel="stylesheet" href="./styles/task_1.css">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Task_1</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<h2>
+			Задача 9. Перекладач. Користувачу виводять змішані картки з словами на англійській і українській мові.
+			Користувач поступово клікає на картки (виділяємо синьою рамкою). Якщо знайдено правильні пари карток, що
+			відповідають одному слову, то видаляємо ці картки. Інакше - виділяємо червоною рамкою і через секунду
+			забираємо рамку.
+		</h2>
+
+		<div id="app">
+			<h3>
+				Find a pair of words:
+			</h3>
+			<div class="wordsWrapper">
+				<template v-if="enWordsList.length">
+					<ul v-for="(wordsList, i) in [enWordsList, uaWordsList]" :key="i">
+						<li v-for="{id, word} in wordsList" :key="id">
+							<button :class="getClass(id)" @click="onSelectWord(id)">
+								{{word}}
+							</button>
+						</li>
+					</ul>
+				</template>
+				<img v-else class="winner" alt="winner" :src="winnerImgPath">
+			</div>
+		</div>
+
+		<script>
+			const { createApp } = Vue
+			const winnerImgPath = 'https://e7.pngegg.com/pngimages/991/645/png-clipart-trophy-podium-winner-photography-public-relations-thumbnail.png'
+
+			const words = [
+				{ id: 0, en: 'table', ua: 'стіл' },
+				{ id: 1, en: 'car', ua: 'автомобіль' },
+				{ id: 2, en: 'bus', ua: 'автобус' },
+				{ id: 3, en: 'man', ua: 'людина' },
+				{ id: 4, en: 'boy', ua: 'хлопець' },
+				{ id: 5, en: 'girl', ua: 'дівчина' },
+				{ id: 6, en: 'house', ua: 'будинок' },
+				{ id: 7, en: 'tree', ua: 'дерево' },
+				{ id: 8, en: 'dog', ua: 'собака' },
+				{ id: 9, en: 'cat', ua: 'кіт' },
+			];
+
+			createApp({
+				data() {
+					return {
+						enWordsList: [],
+						uaWordsList: [],
+						userAnswerArray: [],
+						winnerImgPath
+					}
+				},
+				created() {
+					this.enWordsList = this.getMixedFormattedArray(words, 'en');
+					this.uaWordsList = this.getMixedFormattedArray(words, 'ua');
+				},
+				methods: {
+					getMixedArrayFisher(array) {
+						for (let i = array.length - 1; i > 0; i--) {
+							let randomIndex = Math.floor(Math.random() * (i + 1))
+								;[array[i], array[randomIndex]] = [array[randomIndex], array[i]];
+						}
+						return array;
+					},
+					formatArray(array, language) {
+						return array.map((word, i) => ({
+							id: `${word.id}-${language}`,
+							word: word[language.toLowerCase()],
+						}));
+					},
+					getMixedFormattedArray(array, language) {
+						const wordsList = this.formatArray(array, language);
+						return this.getMixedArrayFisher(wordsList);
+					},
+					deleteElFromArrById(id, array) {
+						const index = array.findIndex(el => el.id.split('-')[0] === id);
+						if (index !== -1) array.splice(index, 1);
+					},
+
+					onSelectWord(id) {
+						if (!this.userAnswerArray.length) {
+							this.userAnswerArray.push(id)
+						} else {
+							const [rootId, lang] = id.split('-')
+							const isSameLanguage = this.userAnswerArray[0].split('-')[1] === lang
+							const isSameWord = this.userAnswerArray.includes(id)
+
+							if (isSameWord) {
+								this.userAnswerArray = []
+								return
+							}
+							if (isSameLanguage) {
+								this.userAnswerArray[0] = id
+								return
+							}
+
+							this.userAnswerArray.push(id)
+
+							const isRightAnswer = this.userAnswerArray.every((answerId) => answerId.split('-')[0] === rootId)
+
+							if (isRightAnswer) {
+								this.deleteElFromArrById(rootId, this.enWordsList)
+								this.deleteElFromArrById(rootId, this.uaWordsList)
+
+								this.userAnswerArray = []
+
+							} else {
+								setTimeout(() => {
+									this.userAnswerArray.pop()
+								}, 1000);
+							}
+						}
+
+					},
+
+					getClass(id) {
+						if (this.userAnswerArray.includes(id)) {
+							return this.userAnswerArray.length === 2 ? 'red' : 'blue';
+						}
+					}
+
+				},
+
+			}).mount('#app')
+		</script>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .container {
+        display: flex;
+        align-items: start;
+      }
+      .list-container {
+        width: 500px;
+        height: 700px;
+        margin: 20px;
+      }
+      .athlete-container {
+        border: 2px solid black;
+        padding: 10px;
+      }
+      .athlete {
+        border: 2px solid black;
+        display: flex;
+        justify-content: space-between;
+        margin: 5px;
+        padding: 5px;
+      }
+      button {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Задача 5. Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у змаганні. При цьому є два стовпці. В одному відображені всі спортсмени, в іншому – список тих, хто був вибраний. При натисканні на зелену стрілку спортсмен переміщається у список для змагань. При натисканні на червону стрілку спортсмен переміщається у загальний список.     -->
+    <div id="app">
+      <div class="container">
+        <div class="list-container">
+          <h1>Загальний список</h1>
+          <div
+            v-for="(athlete, index) in generalAthletesList"
+            :key="athlete"
+            class="athlete"
+            @click="onSelect(index)"
+          >
+            <div>{{athlete}}</div>
+            <button>👉</button>
+          </div>
+        </div>
+        <div class="list-container">
+          <h1>Список обраних</h1>
+          <div
+            v-for="(athlete, index) in selectedAthletesList"
+            :key="athlete"
+            class="athlete"
+            @click="onDeselect(index)"
+          >
+            <div>{{athlete}}</div>
+            <button>👈</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            generalAthletesList: [
+              'John',
+              'Peter',
+              'Olga',
+              'Tanya',
+              'Stepan',
+              'Oksana',
+            ],
+            selectedAthletesList: ['Simon', 'Galya'],
+          }
+        },
+        methods: {
+          onSelect(index) {
+            this.selectedAthletesList.push(this.generalAthletesList[index])
+            this.generalAthletesList.splice(index, 1)
+          },
+          onDeselect(index) {
+            this.generalAthletesList.push(this.selectedAthletesList[index])
+            this.selectedAthletesList.splice(index, 1)
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

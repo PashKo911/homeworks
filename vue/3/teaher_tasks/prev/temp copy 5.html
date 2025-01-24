@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .cell {
+        width: 40px;
+        height: 40px;
+        border: 2px solid black;
+        margin: 10px;
+        display: inline-block;
+        cursor: pointer;
+      }
+      .closed {
+        background-color: grey;
+      }
+      .mine {
+        background-color: red;
+      }
+      .free {
+        background-color: green;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Задача 4. Однорядковий сапер. Однорядкова таблиця, до клітинок якої додано інформацію про наявність міни (використати атрибути). Спочатку клітинки сірі. При натисненні на клітинку аналізується чи є там міна і тоді колір стає червоним, якщо немає – зеленим. Додати можливість відкриття усіх сусідніх незамінованих клітинок при відкритті незамінованої клітинки. -->
+    <div id="app">
+      <div
+        v-for="(cell, index) in gameField"
+        :key="index"
+        class="cell"
+        :class="{
+        'closed':cell.isClosed,
+        'mine':!cell.isClosed &&cell.hasMine,
+        'free':!cell.isClosed &&!cell.hasMine,
+      }"
+        @click="onClick(index)"
+      ></div>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            gameField: [
+              {
+                hasMine: 1,
+                isClosed: true,
+              },
+              {
+                hasMine: 0,
+                isClosed: true,
+              },
+              {
+                hasMine: 0,
+                isClosed: true,
+              },
+              {
+                hasMine: 0,
+                isClosed: true,
+              },
+              {
+                hasMine: 0,
+                isClosed: true,
+              },
+              {
+                hasMine: 0,
+                isClosed: true,
+              },
+              {
+                hasMine: 0,
+                isClosed: true,
+              },
+              {
+                hasMine: 1,
+                isClosed: true,
+              },
+              {
+                hasMine: 1,
+                isClosed: true,
+              },
+              {
+                hasMine: 0,
+                isClosed: true,
+              },
+              {
+                hasMine: 0,
+                isClosed: true,
+              },
+              {
+                hasMine: 0,
+                isClosed: true,
+              },
+              {
+                hasMine: 0,
+                isClosed: true,
+              },
+            ],
+          }
+        },
+        methods: {
+          onClick(index) {
+            this.gameField[index].isClosed = false
+            if (this.gameField[index].hasMine === 0) {
+              for (let i = index + 1; i < this.gameField.length; i++) {
+                if (this.gameField[i].hasMine === 0)
+                  this.gameField[i].isClosed = false
+                else break
+              }
+              for (let i = index - 1; i >= 0; i--) {
+                if (this.gameField[i].hasMine === 0)
+                  this.gameField[i].isClosed = false
+                else break
+              }
+            }
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

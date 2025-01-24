@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .frost {
+        background-color: white;
+      }
+      .low {
+        background-color: blue;
+      }
+      .middle {
+        background-color: green;
+      }
+      .high {
+        background-color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Задача 2. З клавіатури вводиться температура. Змінювати колір фону у залежності від значення:
+•	менше нуля – білий -frost
+•	від 0 до 10 – синій -low,
+•	від 11 до 22 – зелений -middle
+•	вище 22 – червоний -high
+Реалізувати з класами і стилями. -->
+
+    <div id="app">
+      <div>
+        <label>
+          Temp:
+          <input
+            type="number"
+            v-model="temp"
+            :class="{
+              [temperatureClass]:temp
+             }"
+          />
+        </label>
+      </div>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            temp: null,
+          }
+        },
+        computed: {
+          temperatureClass() {
+            let resClass
+            if (this.temp < 0) resClass = 'frost'
+            else if (this.temp < 10) resClass = 'low'
+            else if (this.temp < 22) resClass = 'middle'
+            else resClass = 'high'
+            return resClass
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

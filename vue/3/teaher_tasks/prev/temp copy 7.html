@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <!-- Задача 7. Динамічний пошук. Є список працівників і поле пошуку. При введенні відображаються усі, які містять вказаний фрагмент -->
+
+    <div id="app">
+      <div>
+        <label>
+          Пошук:
+          <input type="text" v-model="searchText" />
+        </label>
+      </div>
+      <div>
+        <ol v-if="filteredWorkersList.length">
+          <li v-for="(worker, index) in filteredWorkersList" :key="index">
+            {{worker}}
+          </li>
+        </ol>
+        <div v-else>Таких немає</div>
+      </div>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            workers: ['John', 'Peter', 'Olga', 'Tanya', 'Stepan', 'Oksana'],
+            searchText: null,
+          }
+        },
+        computed: {
+          filteredWorkersList() {
+            if (!this.searchText) return this.workers
+            const searchParam = this.searchText.toLowerCase()
+            return this.workers.filter((worker) =>
+              worker.toLowerCase().includes(searchParam)
+            )
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

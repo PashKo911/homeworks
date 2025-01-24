@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <!-- Задача 18. Створити реєстраційну форму учасників
+    * ім"я
+    * рік
+    * тип працівника (менедржер, директор, секретар)
+    * чи є авто
+    * стать
+
+    . -->
+
+    <div id="app">
+      <form>
+        <h1>Реєстраційна форма</h1>
+        <div>
+          <label>
+            Ім"я
+            <input type="text" v-model="user.name" />
+          </label>
+        </div>
+        <div>
+          <label>
+            Рік народження
+            <input type="text" v-model="user.year" />
+          </label>
+        </div>
+        <div>
+          <label>
+            Тип працівника
+            <select v-model="user.type">
+              <option
+                v-for="userType in usersTypesList"
+                :key="userType.value"
+                :value="userType.value"
+              >
+                {{userType.text}}
+              </option>
+            </select>
+          </label>
+        </div>
+        <div>
+          <label>
+            Чиє авто
+            <input type="checkbox" v-model="user.auto" />
+          </label>
+        </div>
+        <div>
+          <label>
+            Стать
+
+            <input type="radio" value="man" v-model="user.gender" /> Чоловік
+            <input type="radio" value="woman" v-model="user.gender" /> Жінка
+          </label>
+        </div>
+      </form>
+      <div>
+        <button @click="onRegister">Додати</button>
+      </div>
+      <div>
+        <h1>Список користувачів</h1>
+        <div v-for="userItem in usersList" :key="userItem.id">{{userItem}}</div>
+      </div>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const defaultUserData = {
+        name: null,
+        year: null,
+        type: null,
+        auto: false,
+        gender: null,
+      }
+      const usersTypesListData = [
+        {
+          value: 'manager',
+          text: 'менедржер',
+        },
+        {
+          value: 'director',
+          text: 'директор',
+        },
+        {
+          value: 'secretary',
+          text: 'секретар',
+        },
+      ]
+
+      const app = createApp({
+        data() {
+          return {
+            user: { ...defaultUserData },
+            usersList: [],
+          }
+        },
+        computed: {
+          usersTypesList() {
+            return usersTypesListData
+          },
+        },
+        methods: {
+          onRegister() {
+            this.usersList.push({
+              id: new Date().getTime(),
+              ...this.user,
+            })
+            this.user = { ...defaultUserData }
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

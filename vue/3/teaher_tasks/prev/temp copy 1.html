@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+
+  <body>
+    <!-- Задача 4. “Рахунок у банку”
+Вимоги:
+1) Спочатку сума дорівнює 0грн. Змінити суму у гривнях можна або зарахуванням на рахунок, або зняттям.
+2) Сума автоматично переводиться у долари та євро (фіксований курс задається у data).
+3) можливість зарахувати суму (контролювати, щоб не була від’ємною)
+4) можливість зняти (щоб не можна зняти більше ніж є на рахунку)
+5) при виконанні зняття і зарахування коштів вираховувати 3% від суми (відображати кількість відсотків автоматично)
+
+При зміні суми :
+- якщо було зняття, то суму відоражати червоним
+- якщо було зарахування, то суму відображати зеленим
+Якщо сума валюти менша за 100 то відображати червоним кольором, інакше - зеленим -->
+
+    <div id="app">
+      <div>Сума на рахунку: {{balance}}</div>
+      <div>
+        <label>
+          Зарахувати на рахунок :
+          <input type="number" v-model="addMoneyValue" @focus="onFocus" />
+          <button @click="onAdd">Зарахувати</button>
+        </label>
+      </div>
+      <div>
+        <label>
+          Зняти з рахунку :
+          <input type="number" v-model="withdrawMoneyValue" @focus="onFocus" />
+          <button @click="onWithdraw">Зняти</button>
+        </label>
+      </div>
+      <div>Відстотки за обслуговування: {{taxRateLabel}} грн.</div>
+      <hr />
+      <div>Сума у доларах: {{dollarValue}}</div>
+      <div>Сума у євро: {{euroValue}}</div>
+      <hr />
+      <div v-if="message">{{message}}</div>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const TAX_PERCENTAGE = 3
+      const DOLLAR_RATE = 38
+      const EURO_RATE = 40
+
+      const app = createApp({
+        data() {
+          return {
+            balance: 0,
+            addMoneyValue: null,
+            withdrawMoneyValue: null,
+            message: null,
+          }
+        },
+        computed: {
+          taxRate() {
+            let sum = (this.addMoneyValue ?? 0) + (this.withdrawMoneyValue ?? 0)
+            return (sum * TAX_PERCENTAGE) / 100
+          },
+          taxRateLabel() {
+            return this.taxRate.toFixed(2)
+          },
+          dollarValue() {
+            return (this.balance / DOLLAR_RATE).toFixed(2)
+          },
+          euroValue() {
+            return (this.balance / EURO_RATE).toFixed(2)
+          },
+        },
+        methods: {
+          onAdd() {
+            if (this.addMoneyValue < 0) {
+              this.message = 'Сума додавання має бути додатною'
+              return
+            }
+            this.balance += this.addMoneyValue - this.taxRate
+            this.addMoneyValue = null
+          },
+          onWithdraw() {
+            const valueToSubtract = this.withdrawMoneyValue + this.taxRate
+            if (this.balance < valueToSubtract) {
+              this.message = 'Недостатньо коштів'
+              return
+            }
+            this.balance -= valueToSubtract
+            this.withdrawMoneyValue = null
+          },
+          onFocus() {
+            this.message = null
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

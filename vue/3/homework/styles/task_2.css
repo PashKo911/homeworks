@@ -1,0 +1,65 @@
+.container {
+	display: flex;
+	gap: 0.9375rem;
+	align-items: flex-end;
+	justify-content: center;
+
+	label {
+		/* max-width: 18.75rem; */
+	}
+	.button {
+		padding-left: 1.875rem;
+		padding-right: 1.875rem;
+	}
+
+	.result {
+		h2 {
+			text-align: center;
+		}
+
+		ul {
+			&:not(:last-child) {
+				margin-bottom: 1.875rem;
+			}
+
+			li {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				align-content: center;
+				gap: 1.875rem;
+				border-bottom: 0.0625rem dashed #fff;
+				&:not(:last-child) {
+					margin-bottom: 0.625rem;
+				}
+
+				span {
+					&:nth-child(2) {
+						.red {
+							color: red;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+label.example {
+	display: flex;
+	align-items: center;
+	gap: 0.625rem;
+
+	span {
+		flex-shrink: 0;
+		white-space: no-wrap;
+
+		&:nth-child(1) {
+			min-width: 9.75rem;
+		}
+	}
+
+	input {
+		max-width: 9.375rem;
+		flex-grow: 1;
+	}
+}

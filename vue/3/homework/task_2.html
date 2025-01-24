@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="./styles/common.css">
+	<link rel="stylesheet" href="./styles/task_2.css">
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<title>Task_2</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<h2>
+			Задача 13. Тренажер додавання. Вводимо загальну кількість прикладів і натискаємо на кнопку «Старт». Після
+			запуску (натисканні на кнопку «Старт») кожні 10 секунд (10 секунд між завданнями) користувачу задають
+			випадковий приклад з додавання двох цифр і робиться перевірка. Формується список тих, які він відповів
+			правильно, і які він відповів неправильно. Загальна кількість прикладів вводиться.
+		</h2>
+
+		<div id="app">
+			<div class="container" v-if="hasIncorrectAnswersAndSimulatorFinished">
+				<div class="result">
+					<h2>
+						Simulator's Result:
+					</h2>
+					<h3>
+						Incorrect Answers:
+					</h3>
+					<ul>
+						<li v-for="({firstNumber, secondNumber, userAnswer, correctAnswer}, i) in incorrectAnswersArr"
+							:key="i">
+							<span>
+								{{firstNumber}} + {{secondNumber}} = {{correctAnswer}}
+							</span>
+							<span>
+								Your Answer: <span class="red"> {{userAnswer}}</span>
+							</span>
+						</li>
+					</ul>
+					<h2>Try Again</h2>
+				</div>
+			</div>
+			<div class="container" v-show="!isSimulatorStarted">
+				<label>
+					Total examples number:
+					<input type="number" v-model.number="examplesNumber">
+				</label>
+				<button class="button" :disabled="isCorrectExamplesNumber" @click="onStart">
+					Start
+				</button>
+			</div>
+			<div class="container" v-show="isSimulatorStarted">
+				<label class="example">
+					<span>
+						{{currentExample?.firstNumber}} + {{currentExample?.secondNumber}} =
+					</span>
+					<input type="number" v-model.number="userAnswer">
+					<span>?</span>
+				</label>
+				<button class="button" :disabled="!isNumber" @click="onAnswer">
+					Submit
+				</button>
+			</div>
+		</div>
+		<script>
+			const { createApp } = Vue
+			const minNumberForTask = -200
+			const maxNumberForTask = 1000
+			const timeBetweenTasks = 10000
+
+			createApp({
+				data() {
+					return {
+						examplesNumber: null,
+						userAnswer: null,
+						currentExample: null,
+						correctAnswersArr: [],
+						incorrectAnswersArr: [],
+						timer: null,
+						currentExampleIndex: 0,
+						isSimulatorStarted: false
+					}
+				},
+				methods: {
+					getRandomNumber(min = minNumberForTask, max = maxNumberForTask) {
+						return Math.floor(Math.random() * (max - min + 1)) + min
+					},
+					getRandomExample() {
+						const firstNumber = this.getRandomNumber()
+						const secondNumber = this.getRandomNumber()
+						const correctAnswer = firstNumber + secondNumber
+						this.currentExample = { firstNumber, secondNumber, correctAnswer }
+					},
+					startTimer() {
+						clearTimeout(this.timer)
+						this.timer = setTimeout(() => {
+							this.nextExample()
+						}, timeBetweenTasks)
+					},
+					nextExample() {
+						if (this.currentExampleIndex < this.examplesNumber) {
+							this.currentExampleIndex++
+							this.getRandomExample()
+							this.startTimer()
+						} else {
+							clearTimeout(this.timer)
+							this.currentExample = null
+							this.userAnswer = null
+							this.examplesNumber = null
+							this.isSimulatorStarted = false
+
+						}
+					},
+					onStart() {
+						this.currentExampleIndex = 0
+						this.correctAnswersArr = []
+						this.incorrectAnswersArr = []
+						this.isSimulatorStarted = true
+						this.nextExample()
+					},
+					onAnswer() {
+						if (this.userAnswer === this.currentExample.correctAnswer) {
+							this.correctAnswersArr.push({
+								userAnswer: this.userAnswer,
+								...this.currentExample,
+							})
+							console.log('Correct Answers', this.correctAnswersArr)
+						} else {
+							this.incorrectAnswersArr.push({
+								userAnswer: this.userAnswer,
+								...this.currentExample,
+							})
+							console.log('Incorrect Answers', this.incorrectAnswersArr)
+						}
+						this.userAnswer = null
+						this.nextExample()
+					},
+				},
+				computed: {
+					isCorrectExamplesNumber() {
+						return !(this.examplesNumber > 0 && Number.isInteger(this.examplesNumber))
+					},
+					isNumber() {
+						return Number.isFinite(this.userAnswer)
+					},
+					hasIncorrectAnswersAndSimulatorFinished() {
+						return !this.isSimulatorStarted && this.incorrectAnswersArr.length
+					}
+				},
+			}).mount('#app')
+		</script>
+
+	</div>
+</body>
+
+</html>

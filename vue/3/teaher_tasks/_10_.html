@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Hola</title>
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<style>
+		.btn {
+			height: 30px;
+			width: 30px;
+			font-size: 24px;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- Задача 10. Хрестики-нулики. З історією (можна повернутись назад) -->
+
+	<div id="app">
+		<table>
+			<tr v-for="rowIndex in gameField.length">
+				<td v-for="colIndex in gameField[rowIndex-1].length">
+					<button class="btn" @click="onClick(rowIndex, colIndex)">
+						{{gameField[rowIndex-1][colIndex-1]}}
+					</button>
+				</td>
+			</tr>
+		</table>
+		<hr />
+		<h1>Історія</h1>
+		<button v-for="ind in history.length" @click="goToStep(ind)">
+			Крок {{ind}}
+		</button>
+	</div>
+	<script>
+		const { createApp } = Vue
+
+		const usersMarks = ['o', 'x']
+
+		const app = createApp({
+			data() {
+				return {
+					currentUserMarkIndex: 0,
+					gameField: [
+						['', '', ''],
+						['', '', ''],
+						['', '', ''],
+					],
+					history: [],
+				}
+			},
+			computed: {
+				currentUserMark() {
+					return usersMarks[this.currentUserMarkIndex]
+				},
+			},
+			methods: {
+				goToStep(ind) {
+					this.currentUserMarkIndex =
+						this.history[ind - 1].currentUserMarkIndex
+					this.gameField = JSON.parse(this.history[ind - 1].gameField)
+					this.history.splice(ind - 1)
+				},
+				changeUserMark() {
+					this.currentUserMarkIndex =
+						(this.currentUserMarkIndex + 1) % usersMarks.length
+				},
+				onClick(rowIndex, colIndex) {
+					this.history.push({
+						currentUserMarkIndex: this.currentUserMarkIndex,
+						gameField: JSON.stringify(this.gameField),
+					})
+					this.gameField[rowIndex - 1][colIndex - 1] = this.currentUserMark
+					if (this.checkForWin()) alert(`${this.currentUserMark} - виграв`)
+					this.changeUserMark()
+					console.log(this.history)
+				},
+				checkForWin() {
+					//--- шукаємо по горизонталі
+					for (
+						let rowIndex = 0;
+						rowIndex < this.gameField.length;
+						rowIndex++
+					) {
+						const marksNumberInRow = this.gameField[rowIndex].reduce(
+							(prevMarkNum, cellMark) =>
+								cellMark === this.currentUserMark
+									? prevMarkNum + 1
+									: prevMarkNum,
+							0
+						)
+						if (marksNumberInRow === this.gameField[rowIndex].length)
+							return true
+					}
+					//--- шукаємо по вертикалі
+					for (
+						let colIndex = 0;
+						colIndex < this.gameField[0].length;
+						colIndex++
+					) {
+						let marksNumberInColumn = 0
+						for (
+							let rowIndex = 0;
+							rowIndex < this.gameField.length;
+							rowIndex++
+						) {
+							if (this.gameField[rowIndex][colIndex] === this.currentUserMark)
+								marksNumberInColumn++
+						}
+						if (marksNumberInColumn === this.gameField.length) return true
+					}
+					//------------ по головній діагоналі
+					let mainDiagonalMarksNum = 0
+					for (let ind = 0; ind < this.gameField.length; ind++) {
+						if (this.gameField[ind][ind] === this.currentUserMark)
+							mainDiagonalMarksNum++
+					}
+					if (mainDiagonalMarksNum === this.gameField.length) return true
+					//------------ по головній діагоналі
+					let addDiagonalMarksNum = 0
+					for (let ind = 0; ind < this.gameField.length; ind++) {
+						if (
+							this.gameField[ind][this.gameField.length - ind - 1] ===
+							this.currentUserMark
+						)
+							addDiagonalMarksNum++
+					}
+					if (addDiagonalMarksNum === this.gameField.length) return true
+				},
+			},
+		}).mount('#app')
+	</script>
+</body>
+
+</html>
