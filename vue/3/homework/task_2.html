@@ -127,13 +127,11 @@
 								userAnswer: this.userAnswer,
 								...this.currentExample,
 							})
-							console.log('Correct Answers', this.correctAnswersArr)
 						} else {
 							this.incorrectAnswersArr.push({
 								userAnswer: this.userAnswer,
 								...this.currentExample,
 							})
-							console.log('Incorrect Answers', this.incorrectAnswersArr)
 						}
 						this.userAnswer = null
 						this.nextExample()
