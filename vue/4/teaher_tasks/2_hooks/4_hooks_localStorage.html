@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--
+Приклад. Зберігаємо та продовжуємо редагувати дані. На сайті користувач вводить назву товару та кількість. Перед виході з сайту зберегти дані у localSrorage. А при заході на сайт – відновлювати дані з localSrorage.
+  -->
+
+    <div id="app">
+      <div>
+        <label>
+          Назва товару :
+          <input type="text" v-model="product.title" />
+        </label>
+      </div>
+      <div>
+        <label>
+          Ціна товару :
+          <input type="number" v-model="product.price" />
+        </label>
+      </div>
+      <button @click="saveData">Зберегти дані</button>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            product: {
+              title: null,
+              price: null,
+            },
+          }
+        },
+
+        methods: {
+          saveData() {
+            localStorage.setItem('product', JSON.stringify(this.product))
+          },
+          loadData() {
+            console.log('loadData')
+            if (localStorage.getItem('product'))
+              this.product = JSON.parse(localStorage.getItem('product'))
+          },
+        },
+
+        mounted() {
+          this.loadData()
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

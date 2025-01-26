@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Приклад. Після створення запустити таймер для відображення поточного часу -->
+
+    <div id="app">
+      <h1>Поточний час</h1>
+      <h2>{{currentTime}}</h2>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            currentTime: null,
+          }
+        },
+
+        methods: {
+          setCurrentTime() {
+            this.currentTime = new Date().toLocaleTimeString()
+          },
+        },
+
+        created() {
+          setInterval(() => {
+            this.setCurrentTime()
+          }, 1000)
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

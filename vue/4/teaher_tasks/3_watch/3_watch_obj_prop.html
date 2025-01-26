@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Приклад. Зберігати ім’я користувача у localStorage. При наступному заході завантажувати це ім’я. -->
+
+    <div id="app">
+      <div>
+        <label>
+          Введіть ім’я :
+          <input type="text" v-model="user.name" />
+        </label>
+      </div>
+      <div>
+        <label>
+          Введіть вік :
+          <input type="number" v-model="user.age" />
+        </label>
+      </div>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            user: {
+              name: 'Ivan',
+              age: 21,
+            },
+          }
+        },
+
+        watch: {
+          'user.name'(newValue, oldValue) {
+            localStorage.setItem('user', JSON.stringify(this.user))
+          },
+          'user.age'(newValue, oldValue) {
+            localStorage.setItem('user', JSON.stringify(this.user))
+          },
+        },
+
+        mounted() {
+          this.userName = JSON.parse(localStorage.getItem('user'))
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

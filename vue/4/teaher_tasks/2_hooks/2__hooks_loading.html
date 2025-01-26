@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Приклад. Після створення зробити запит на сервер для завантаження даних -->
+
+    <div id="app">
+      <div v-if="isLoading">... Завнтаження ...</div>
+      <div v-else v-for="item in resData">
+        <hr />
+        <h1>{{item.attributes.titles.en}}</h1>
+        <img :src="item.attributes.posterImage.medium" />
+        <div>{{item.attributes.description}}</div>
+      </div>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            resData: null,
+            isLoading: true,
+          }
+        },
+
+        methods: {
+          loadData() {
+            fetch(
+              'https://kitsu.io/api/edge/anime?page[limit]=5&page[offset]=0'
+            )
+              .then((response) => response.json())
+              .then((resData) => {
+                console.log(resData)
+                this.resData = resData.data
+                this.isLoading = false
+              })
+          },
+        },
+
+        created() {
+          this.loadData()
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

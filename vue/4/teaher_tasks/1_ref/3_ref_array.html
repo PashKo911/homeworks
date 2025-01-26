@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Приклад. Вводиться 3 оцінки. Поступово якщо якась з оцінок не введена, то виводити повідомлення і поміщати
+    фокус у потрібне поле -->
+
+    <div id="app">
+      <div v-for="i in 3" :key="i">
+        <label>
+          Оцінка № {{i}} :
+          <input ref="mark" type="number" v-model="marks[i-1]" />
+        </label>
+      </div>
+
+      <button @click="getAverage">Знайти мінімальну оцінку</button>
+
+      <div v-if="message" class="error">{{message}}</div>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            marks: [],
+            message: null,
+          }
+        },
+
+        methods: {
+          getAverage() {
+            let notValidInputIndex = -1
+            for (let i = 0; i < 3; i++) {
+              if (!this.marks[i]) {
+                notValidInputIndex = i
+                break
+              }
+            }
+            if (notValidInputIndex !== -1) {
+              this.$refs.mark[notValidInputIndex].focus()
+              this.message = `Задайте оцінку № ${notValidInputIndex + 1}`
+            } else {
+              this.message = `Найменша оцінка: ${Math.min(...this.marks)}`
+            }
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

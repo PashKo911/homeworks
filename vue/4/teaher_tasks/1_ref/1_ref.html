@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Приклад. При відкритті сайту перевіряється вік користувача.
+    1)якщо не ввів, просимо ввести (поміщаємо фокус в елемент вводу)
+    2)якщо вік менше 18 років – доступ заборонено
+    3)якщо вік більше за 18 років – доступ дозволено -->
+
+    <div id="app">
+      <div>
+        <label ref="myLabel">
+          Введіть вік :
+          <input ref="userAge" type="number" v-model="age" />
+        </label>
+      </div>
+
+      <button @click="onStart">Go</button>
+
+      <div v-if="message" class="error">{{message}}</div>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            age: null,
+            message: null,
+          }
+        },
+
+        methods: {
+          onStart() {
+            if (!this.age) {
+              console.log('this.$refs')
+              console.log(this.$refs)
+              console.log('this.$refs.userAge')
+              console.log(this.$refs.userAge)
+              this.$refs.userAge.focus()
+              this.message = 'Введіть вік'
+            } else {
+              if (this.age < 18) this.message = 'Вхід заборонено'
+              else this.message = 'Вхід дозволено'
+            }
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>

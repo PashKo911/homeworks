@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Приклад. Вводиться логін і пароль. Поступово якщо якесь з полів не введено, то виводити повідомлення і поміщати
+    фокус у потрібне поле -->
+
+    <div id="app">
+      <div>
+        <label>
+          Login :
+          <input ref="login" type="text" v-model="login" />
+        </label>
+      </div>
+      <div>
+        <label>
+          Password :
+          <input ref="password" type="password" v-model="password" />
+        </label>
+      </div>
+      <button @click.prevent="onLogin">Go</button>
+
+      <div v-if="message && isMessageVisible" class="error">{{message}}</div>
+    </div>
+    <script>
+      const { createApp } = Vue
+
+      const app = createApp({
+        data() {
+          return {
+            login: null,
+            password: null,
+            fieldName: null,
+            message: null,
+          }
+        },
+
+        computed: {
+          isMessageVisible() {
+            return this.fieldName && !this[this.fieldName]
+          },
+        },
+
+        methods: {
+          onLogin() {
+            if (!this.login) {
+              this.$refs.login.focus()
+              this.fieldName = 'login'
+              this.message = 'Задайте login'
+            } else if (!this.password) {
+              this.$refs.password.focus()
+              this.fieldName = 'password'
+              this.message = 'Задайте password'
+            }
+          },
+        },
+      }).mount('#app')
+    </script>
+  </body>
+</html>
