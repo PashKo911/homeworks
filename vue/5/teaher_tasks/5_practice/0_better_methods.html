@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../css/normalize.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .task {
+        padding-top: 20px;
+        width: fit-content;
+        margin: 0px auto;
+        color: #ebebeb99;
+      }
+
+      .task_title {
+        text-align: center;
+        padding: 5px;
+      }
+
+      .task_desc {
+        max-width: 600px;
+        text-align: justify;
+        padding: 16px;
+      }
+
+      form {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        row-gap: 16px;
+      }
+
+      label {
+        display: block;
+        padding-bottom: 6px;
+      }
+
+      input {
+        padding: 8px;
+        font-size: 20px;
+        text-align: center;
+        border-radius: 8px;
+        border: none;
+      }
+
+      button {
+        padding: 8px;
+        width: 100px;
+        border-radius: 8px;
+        border: none;
+      }
+
+      .error-msg {
+        font-size: 1.25rem;
+        text-align: center;
+        padding-top: 20px;
+        color: red;
+      }
+
+      .success-image {
+        width: 150px;
+      }
+
+      .success-image img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .isIvan {
+        color: blue;
+      }
+    </style>
+
+    <title>ДЗ №2</title>
+  </head>
+
+  <body>
+    <div class="task">
+      <p class="task_title">Завдання №1</p>
+      <p class="task_desc">
+        Вводимо логін і пароль. Якщо логін вірний відображаємо смайл. Якщо ні,
+        то: <br />
+        1) якщо логін = Іван – колір повідомлення про помилку синій <br />
+        2) якщо хтось інший, то колір повідомлення червоний
+      </p>
+    </div>
+
+    <div id="app">
+      <form>
+        <div class="login">
+          <label>login</label>
+          <input type="text" v-model.trim="login" @focus="hideResults" />
+        </div>
+
+        <div class="password">
+          <label>password</label>
+          <input type="password" v-model.trim="password" @focus="hideResults" />
+        </div>
+
+        <button @click.prevent="authentication">Go</button>
+
+        <div v-show="showResults">
+          <div v-if="isUserExist" class="success-image">
+            <img src="../../assets/smile-icon.svg" alt="image" />
+          </div>
+
+          <div v-else class="error-msg" :class="{isIvan}">Не вірні дані</div>
+        </div>
+
+        <template v-if="isMessageVisible">
+          <div v-if="correctAnswer">....sdsdsdsd</div>
+          <div v-else>....sdsdsdsd</div>
+        </template>
+      </form>
+    </div>
+
+    <script>
+      const { createApp } = Vue
+
+      const usersList = [
+        { login: 'user1', password: 'password1' },
+        { login: 'user2', password: 'password2' },
+        { login: 'user3', password: 'password3' },
+        { login: 'user4', password: 'password4' },
+        { login: 'user5', password: 'password5' },
+        { login: 'Ivan', password: '111' },
+      ]
+
+      const app = createApp({
+        data() {
+          return {
+            correctAnswer: null,
+            login: '',
+            password: '',
+            showResults: false,
+            isUserExist: false,
+          }
+        },
+        computed: {
+          isMessageVisible() {
+            return this.correctAnswer !== null
+          },
+          isIvan() {
+            return this.login.toUpperCase() === 'IVAN'
+          },
+        },
+        methods: {
+          checkUser() {
+            console.log('11111111')
+            const enteredLogin = this.login.toUpperCase()
+            return usersList.some(
+              (user) =>
+                user.login.toUpperCase() === enteredLogin &&
+                user.password === this.password
+            )
+          },
+          authentication() {
+            this.isUserExist = this.checkUser()
+            this.showResults = true
+          },
+          hideResults() {
+            this.showResults = false
+          },
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>
