@@ -1,0 +1,14 @@
+@use 'sass:math';
+@use '../utilities/mixins' as *;
+@use './settings' as *;
+
+body {
+	font-family: 'Shantell Sans', sans-serif;
+	font-size: 1rem;
+}
+
+[class*='container'] {
+	max-width: toRem($maxWidthContainer);
+	margin: 0 auto;
+	padding: 0 toRem(math.div($containerPadding, 2));
+}
