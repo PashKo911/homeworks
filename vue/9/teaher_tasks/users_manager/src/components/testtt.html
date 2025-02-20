@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zxx">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/fonts.css" />
+        <link rel="stylesheet" href="css/reset.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <title>Lesson 2</title>
+    </head>
+    <body>
+        <style>
+            .active-card {
+                border: 2px solid rgb(19, 165, 0);
+            }
+            .failed-card {
+                border: 2px solid rgb(255, 0, 0);
+            }
+
+            .removed-card {
+                display: none;
+            }
+            .deleted-card {
+                display: none;
+                opacity: 0;
+            }
+        </style>
+        <div class="wrapper">
+            <main class="main__container">
+                <div id="app">
+                    <div class="table">
+                        <div class="en">
+                            <button
+                                v-for="(word, index) in words"
+                                :key="word.id"
+                                :class="{ 'active-card': word.isClickedEn, 'failed-card':word.isRedEn}"
+                                @click="addClassOnClick(index, 'en')"
+                                class="table__en"
+                            >
+                                {{ word.en }}
+                            </button>
+                        </div>
+                        <div class="ua">
+                            <button
+                                v-for="(word, index) in uaWords"
+                                :key="word.id"
+                                :class="{ 'active-card': word.isClickedUa,'failed-card':word.isRedUa}"
+                                @click="addClassOnClick(index, 'ua')"
+                                class="table__en"
+                            >
+                                {{ word.ua }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script>
+            //Задача 9. Перекладач. Користувачу виводять змішані картки з словами на англійській і українській мові. Користувач поступово клікає на картки (виділяємо синьою рамкою). Якщо знайдено правильні пари карток, що відповідають одному слову, то видаляємо ці картки. Інакше - виділяємо червоною рамкою і через секунду забираємо рамку.
+            const words = [
+                {
+                    id: 0,
+                    en: 'table',
+                    ua: 'стіл',
+                    isClickedEn: false,
+                    isClickedUa: false,
+                    isRedUa: false,
+                    isRedEn: false,
+                },
+
+                {
+                    id: 1,
+                    en: 'car',
+                    ua: 'авто',
+                    isClickedEn: false,
+                    isClickedUa: false,
+                    isRedEn: false,
+                    isRedUa: false,
+                },
+                {
+                    id: 2,
+                    en: 'pen',
+                    ua: 'ручка',
+                    isClickedEn: false,
+                    isClickedUa: false,
+                    isRedEn: false,
+                    isRedUa: false,
+                },
+                {
+                    id: 3,
+                    en: 'water',
+                    ua: 'вода',
+                    isClickedEn: false,
+                    isClickedUa: false,
+                    isRedEn: false,
+                    isRedUa: false,
+                },
+            ]
+            const { createApp } = Vue
+
+            createApp({
+                data() {
+                    return {
+                        //isClicked: false,
+                        //IsRemove: false,
+                        words,
+                        selectedPair: [],
+                    }
+                },
+                computed: {
+                    uaWords() {
+                        return this.getRandomList(this.words)
+                    },
+                },
+                methods: {
+                    addClassOnClick(index, lang) {
+                        const word = this.words[index]
+
+                        const en = word.en
+                        const ua = word.ua
+                        console.log(en)
+                        console.log(ua)
+                        if (lang === 'en' && !word.isClickedEn) {
+                            this.words[index].isClickedEn = true
+                        }
+                        //else   {
+                        //  this.words[index].isClickedEn = false
+                        //}
+
+                        if (lang === 'ua' && !word.isClickedUa) {
+                            this.words[index].isClickedUa = true
+                        }
+                        //else  {
+                        //  this.words[index].isClickedUa = false
+                        //}
+                        console.log(this.words)
+
+                        if (word.isClickedEn && word.isClickedUa) {
+                            this.words.splice(index, 1)
+                            this.selectedPair = []
+                        } else {
+                            this.selectedPair.push(word)
+                        }
+
+                        console.log(this.selectedPair)
+                        if (this.selectedPair.length === 2 && !(this.selectedPair[0].id === this.selectedPair[1].id)) {
+                            console.log(this.words)
+                            if (word.isClickedEn && word.isClickedUa) {
+                                this.words.splice(index, 1)
+                            }
+
+                            if (lang === 'en' && !word.isRedEn) {
+                                this.selectedPair[1].isRedEn = true
+                                this.selectedPair[1].isClickedEn = false
+                            } else {
+                                this.selectedPair[0].isRedEn = true
+                                this.selectedPair[0].isClickedEn = false
+                            }
+                            if (lang === 'ua' && !word.isRedUa) {
+                                this.selectedPair[1].isRedUa = true
+                                this.selectedPair[1].isClickedUa = false
+                            } else {
+                                this.selectedPair[0].isRedUa = true
+                                this.selectedPair[0].isClickedUa = false
+                            }
+
+                            setTimeout(this.getTime, 500)
+
+                            console.log(this.selectedPair)
+                        }
+                    },
+                    getTime(lang) {
+                        if (this.selectedPair[1].isRedEn) {
+                            this.selectedPair[1].isRedEn = false
+                        } else {
+                            this.selectedPair[0].isRedEn = false
+                        }
+                        if (this.selectedPair[1].isRedUa) {
+                            this.selectedPair[1].isRedUa = false
+                        } else {
+                            this.selectedPair[0].isRedUa = false
+                        }
+
+                        this.clearArr()
+
+                        //this.words[index].isClickedEn = false
+                        //this.words[index].isClickedUa = false
+                    },
+
+                    clearArr() {
+                        this.selectedPair = []
+                    },
+
+                    getRandomList(arr) {
+                        let copy = [...arr]
+                        let res = []
+                        for (let i = 0; i < arr.length; i++) {
+                            const randIndex = Math.floor(Math.random() * copy.length)
+                            res.push(copy[randIndex])
+                            copy.splice(randIndex, 1)
+                        }
+
+                        console.log(res)
+                        return res
+                    },
+                },
+            }).mount('#app')
+        </script>
+    </body>
+</html>

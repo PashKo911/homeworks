@@ -13,6 +13,7 @@
 	align-items: center;
 }
 .img {
-	@include adaptiveValue('width', 500, 360);
+	width: 100%;
+	// @include adaptiveValue('width', 500, 360);
 }
 </style>

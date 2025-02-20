@@ -38,7 +38,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use '@/assets/styles/common/settings' as *;
 .container {
 	display: flex;
 	align-items: flex-start;

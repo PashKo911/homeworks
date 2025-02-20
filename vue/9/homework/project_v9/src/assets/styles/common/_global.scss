@@ -1,0 +1,53 @@
+@use 'sass:math';
+@use '../utilities/mixins' as *;
+@use './settings' as *;
+
+body {
+	font-family: 'Shantell Sans', sans-serif;
+	font-size: 1rem;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+
+	@supports (overflow: clip) {
+		overflow: clip;
+	}
+
+	> main {
+		flex: 1 1 auto;
+		padding-top: 5.625rem;
+		padding-bottom: 1.875rem;
+	}
+	> * {
+		min-width: 0;
+	}
+}
+
+[class*='container'] {
+	max-width: toRem($maxWidthContainer);
+	margin: 0 auto;
+	padding: 0 toRem(math.div($containerPadding, 2));
+}
+
+.button {
+	padding: toRem(5) toRem(15);
+	background-color: #58c6c2;
+	border-radius: toRem(5);
+	color: #fff;
+	transition: color 0.2s, background-color 0.2s;
+
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: #49f6f0;
+		}
+	}
+}
