@@ -10,6 +10,13 @@ body {
 	-webkit-text-size-adjust: 100%;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	overflow-y: scroll;
+
+	&:has(.menu-open) {
+		overflow: hidden;
+		touch-action: none;
+		overscroll-behavior: none;
+	}
 }
 
 #app {
@@ -36,4 +43,33 @@ body {
 	max-width: toRem($maxWidthContainer);
 	margin: 0 auto;
 	padding: 0 toRem(math.div($containerPadding, 2));
+}
+
+// .wrapper {
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	min-height: calc(100svh - toRem(248));
+// }
+
+// .content {
+// 	border-radius: toRem(15);
+// 	box-shadow: 0 0 toRem(9) rgb(0, 0, 0, 0.15);
+// 	width: 100%;
+// 	max-width: toRem(600);
+// 	@include adaptiveValue('padding', 40, 15, 0, 600, 320);
+// }
+
+h1.title {
+	font-weight: 700;
+	@include adaptiveValue('font-size', 26, 20);
+}
+
+h2.title {
+	font-weight: 600;
+	@include adaptiveValue('font-size', 22, 18);
+}
+h3.title {
+	font-weight: 500;
+	@include adaptiveValue('font-size', 20, 16);
 }

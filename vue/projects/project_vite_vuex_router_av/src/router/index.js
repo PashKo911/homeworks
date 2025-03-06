@@ -8,8 +8,18 @@ const router = createRouter({
 			path: '/',
 			name: 'home',
 			component: HomeView,
+			meta: { requiresAuth: false },
 		},
 	],
 })
+
+// router.beforeEach((to) => {
+// 	if (to.meta.requiresAuth && !store.getters['auth/isAuthenticated']) {
+// 		return {
+// 			name: 'auth',
+// 			query: { redirect: to.fullPath },
+// 		}
+// 	}
+// })
 
 export default router

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import LayoutComp from './components/Layout/LayoutComp.vue'
+import LayoutComp from './components/layout/LayoutComp.vue'
 export default {
 	name: 'App',
 	components: { LayoutComp },

@@ -8,13 +8,13 @@
 				<nav class="nav">
 					<ul class="list">
 						<li class="item">
-							<router-link class="link" :to="{ name: 'home' }" @click="onClick">Home</router-link>
+							<router-link class="link" :to="{ name: 'home' }">Home</router-link>
 						</li>
 						<li class="item">
-							<router-link class="link" :to="{ name: 'lessons' }" @click="onClick">Lessons</router-link>
+							<router-link class="link" :to="{ name: 'lessons' }">Lessons</router-link>
 						</li>
 						<li class="item">
-							<router-link class="link" :to="{ name: 'teachers' }" @click="onClick">Teachers</router-link>
+							<router-link class="link" :to="{ name: 'teachers' }">Teachers</router-link>
 						</li>
 					</ul>
 				</nav>
@@ -41,14 +41,16 @@ export default {
 		onAuth() {
 			this.isAuthenticated ? this.logout() : this.$router.push({ name: 'auth' })
 		},
-		onClick() {
-			if (this.isMenuOpen) this.isMenuOpen = !this.isMenuOpen
-		},
 	},
 	computed: {
 		...mapGetters('auth', ['user', 'isAuthenticated']),
 		authButtonTitle() {
 			return this.isAuthenticated ? `${this.user.firstName} Logout` : 'Login'
+		},
+	},
+	watch: {
+		$route() {
+			this.isMenuOpen = false
 		},
 	},
 }

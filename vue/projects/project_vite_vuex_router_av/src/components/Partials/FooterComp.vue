@@ -17,7 +17,7 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
-	background-color: #58c6c2;
+	background-color: var(--main-color);
 	box-shadow: 0 -0.25rem 0.625rem rgba(0, 0, 0, 0.2);
 	padding: 0.625rem 0;
 }
@@ -26,6 +26,7 @@ export default {
 	flex-direction: column;
 	gap: 0.3125rem;
 	align-items: center;
+	color: var(--light-text);
 }
 .link {
 	text-decoration: underline;
