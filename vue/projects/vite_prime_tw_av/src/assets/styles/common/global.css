@@ -1,0 +1,90 @@
+body {
+	font-size: 1rem;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	height: 100%;
+	overflow: auto;
+	/* scrollbar-width: none; */
+	-ms-overflow-style: none; /* IE и Edge */
+}
+
+body::-webkit-scrollbar {
+	display: none; /* Chrome, Safari */
+}
+body:has(.menu-open) {
+	touch-action: none;
+	overscroll-behavior: none;
+	overflow: hidden;
+}
+/* body:not(.p-overflow-hidden) {
+	overflow-y: scroll;
+}
+
+body:has(.menu-open) {
+	touch-action: none;
+	overscroll-behavior: none;
+	overflow: hidden;
+	padding-right: 0.9375rem;
+}
+
+.p-overflow-hidden header {
+	padding-right: var(--p-scrollbar-width);
+} */
+
+#app {
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+
+	@supports (overflow: clip) {
+		overflow: clip;
+	}
+
+	> main {
+		flex: 1 1 auto;
+	}
+	> * {
+		min-width: 0;
+	}
+}
+
+[class*='container'] {
+	max-width: 91.875rem;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 0.9375rem;
+	padding-right: 0.9375rem;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-height: calc(100svh - 4.875rem);
+}
+
+/* .content {
+	border-radius: toRem(15);
+	box-shadow: 0 0 toRem(9) rgb(0, 0, 0, 0.15);
+	width: 100%;
+	max-width: toRem(600);
+	@include adaptiveValue('padding', 40, 15, 0, 600, 320);
+} */
+
+/* h1.title {
+	font-weight: 700;
+	@include adaptiveValue('font-size', 28, 20);
+}
+
+h2.title {
+	font-weight: 600;
+	@include adaptiveValue('font-size', 22, 18);
+}
+h3.title {
+	font-weight: 500;
+	@include adaptiveValue('font-size', 20, 16);
+} */
