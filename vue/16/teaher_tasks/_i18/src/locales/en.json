@@ -1,0 +1,11 @@
+{
+    "menu": {
+        "home": "Home page",
+        "contacts": "Contacts page"
+    },
+    "actionTitles": {
+        "login": "Login",
+        "logout": "Logout",
+        "addTask": "Add task"
+    }
+}

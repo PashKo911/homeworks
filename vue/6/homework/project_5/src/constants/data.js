@@ -90,13 +90,13 @@ export const productsList = [
 ]
 
 export const sellersList = [
-	{ id: 1, name: 'rozetka' },
-	{ id: 2, name: 'another' },
+	{ id: 'VJmuhJ4NwzrjImkiBWY0', name: 'rozetka' },
+	{ id: 'YQjKS4cAVJunHTB4g77N', name: 'another' },
 ]
 
 export const brandsList = [
-	{ id: 1, name: 'apple' },
-	{ id: 2, name: 'acer' },
-	{ id: 3, name: 'asus' },
-	{ id: 4, name: 'lenovo' },
+	{ id: 'ViQ1o3jC2EWpmVlSl1cq', name: 'apple' },
+	{ id: 'mrPsX5AhnBqELmnN0id8', name: 'acer' },
+	{ id: 'NlipgBerKVQbxLIRzUDE', name: 'asus' },
+	{ id: 'mrPsX5AhnBqELmnN0id8', name: 'lenovo' },
 ]

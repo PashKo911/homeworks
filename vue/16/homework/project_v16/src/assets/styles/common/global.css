@@ -52,7 +52,7 @@ body:has(.menu-open) {
 	}
 }
 
-[class*='container'] {
+[class~='container'] {
 	max-width: 91.875rem;
 	margin-left: auto;
 	margin-right: auto;
@@ -61,9 +61,9 @@ body:has(.menu-open) {
 }
 
 .fullscreen {
-	display: flex;
+	/* display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: center; */
 	min-height: calc(100svh - 4.875rem);
 }
 
@@ -88,3 +88,7 @@ h3.title {
 	max-width: toRem(600);
 	@include adaptiveValue('padding', 40, 15, 0, 600, 320);
 } */
+
+.c-left-visible {
+	transform: translateX(-0.9375rem);
+}

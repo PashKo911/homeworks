@@ -1,0 +1,51 @@
+{
+	"menu": {
+		"home": "Home",
+		"products": "Products",
+		"contacts": "Contacts"
+	},
+	"home": {
+		"title": "Task: Develop an application with authentication and localization (language switching) capabilities. The admin can add, edit, and delete product cards (the card will display the appropriate elements for deletion, editing, etc.). Other users can only read information and add items to the cart. In the project, include a folder named 'rules' where you will insert screenshots of the rules you used in the Firebase settings panel for verification."
+	},
+	"loginForm": {
+		"title": "Login",
+		"subtitle": "Login with Google",
+		"closeButton": "Close"
+	},
+	"productForm": {
+		"addTitle": "Add",
+		"editTitle": "Edit",
+		"closeButton": "Close"
+	},
+	"actionTitles": {
+		"login": "Login",
+		"logout": "Logout",
+		"addTask": "Add task"
+	},
+	"productsFilter": {
+		"sellersTitle": "Seller",
+		"brandTitle": "Brand"
+	},
+	"actionTitles": {
+		"buyButton": "Buy",
+		"toolsButton": "Show tools",
+		"newProductButton": "New"
+	},
+	"productForm": {
+		"addTitle": "Add",
+		"editTitle": "Edit",
+		"closeButton": "Close",
+		"titleInput": "Title",
+		"priceInput": "Price",
+		"brandInput": "Brand",
+		"sellerInput": "Seller",
+		"imageInput": "Image path"
+	},
+	"contacts": {
+		"title": "Contacts"
+	},
+	"currency": {
+		"uah": "USD",
+		"symbol": "$"
+	}
+}
