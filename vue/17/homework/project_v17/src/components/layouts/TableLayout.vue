@@ -41,9 +41,9 @@
 </template>
 
 <script setup>
-import { defineProps, computed, onMounted, ref } from 'vue'
-import { useCrudStore } from '@/stores/useCrudStore.js'
+import { defineProps, computed, ref, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
+import { storesMap } from '@/stores'
 import * as yup from 'yup'
 import { yupResolver } from '@primevue/forms/resolvers/yup'
 import { useToast } from 'primevue/usetoast'
@@ -51,6 +51,7 @@ import { useToast } from 'primevue/usetoast'
 const props = defineProps({
 	collectionName: {
 		type: String,
+		default: '',
 		required: true,
 	},
 	collectionTitle: {
@@ -59,14 +60,17 @@ const props = defineProps({
 	},
 })
 
-const toast = useToast()
-const crudStore = useCrudStore(props.collectionName)()
+const storeName = computed(() => `${props.collectionName.toLowerCase()}Store`)
 
-const { isLoading, getItemsList } = storeToRefs(crudStore)
+const store = storesMap[storeName.value]()
+
+const { isLoading, getItemsList } = storeToRefs(store)
 
 onMounted(() => {
-	crudStore.loadList()
+	store.loadList()
 })
+
+const toast = useToast()
 
 const schema = yup.object({
 	name: yup.string().required('Required').min(3, 'Min 3 chars').max(40),
@@ -77,7 +81,7 @@ const resolver = ref(yupResolver(schema))
 const onFormSubmit = async ({ valid, values, reset }) => {
 	if (valid) {
 		try {
-			await crudStore.addItem(values)
+			await store.addItem(values)
 			toast.add({ severity: 'success', summary: 'Success', detail: 'Item Added', life: 3000 })
 		} catch (error) {
 			toast.add({ severity: 'error', summary: 'Rejected', detail: error.message, life: 3000 })
@@ -89,7 +93,7 @@ const onFormSubmit = async ({ valid, values, reset }) => {
 
 const onDelete = async (id) => {
 	try {
-		await crudStore.deleteItem(id)
+		await store.deleteItem(id)
 		toast.add({ severity: 'success', summary: 'Success', detail: 'Item Deleted', life: 3000 })
 	} catch (error) {
 		toast.add({ severity: 'error', summary: 'Rejected', detail: error.message, life: 3000 })

@@ -15,7 +15,7 @@
 							@submit="onFormSubmit"
 							:validateOnSubmit="true"
 							:validateOnValueUpdate="false"
-							class="flex gap-4 flex-wrap">
+							class="flex gap-4">
 							<div class="flex flex-col gap-1 relative">
 								<Select
 									name="friendId"
@@ -71,30 +71,32 @@
 
 <script setup>
 import { computed, onMounted, ref } from 'vue'
-import { useCrudStore } from '@/stores/useCrudStore.js'
 import { storeToRefs } from 'pinia'
 import * as yup from 'yup'
 import { yupResolver } from '@primevue/forms/resolvers/yup'
 
-import { useAssignmentStore } from '@/stores/useAssignmentStore.js'
+import { useFriendsStore } from '@/stores/useFriendsStore'
+import { useGiftsStore } from '@/stores/useGiftsStore'
+import { useAssignmentsStore } from '@/stores/useAssignmentStore.js'
 import { useToast } from 'primevue/usetoast'
 
 import MainLayout from '@/components/layouts/MainLayout.vue'
 
 const toast = useToast()
-const assignmentsStore = useAssignmentStore()
+const assignmentsStore = useAssignmentsStore()
 
-const friendsStore = useCrudStore('friends')()
-const giftsStore = useCrudStore('gifts')()
+const friendsStore = useFriendsStore()
+const giftsStore = useGiftsStore()
+
 const { loadList: loadAssignments, computePopulation, addItem, deleteItem } = assignmentsStore
 
-const { populatedAssignmentsList, isLoading } = storeToRefs(assignmentsStore)
+const { populatedAssignmentsList, getItemsList, isLoading, getItemsTest } = storeToRefs(assignmentsStore)
 const { getItemsList: friendsList, isLoading: isFriendsLoading } = storeToRefs(friendsStore)
 const { getItemsList: giftsList, isLoading: isGiftsLoading } = storeToRefs(giftsStore)
 
 onMounted(async () => {
 	await Promise.all([friendsStore.loadList(), giftsStore.loadList(), loadAssignments()])
-	computePopulation()
+	console.log(getItemsTest.value)
 })
 
 const schema = yup.object({
