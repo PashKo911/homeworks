@@ -1,46 +1,36 @@
-import getModuleSettingsObject from '../helpers/GetModuleSettingsObject'
+import { ref } from 'vue'
+import { useCrudStore } from './useCrudStore'
 
-const assignmentsModule = getModuleSettingsObject('assignments')
+export const useAssignmentStore = () => {
+	const assignmentStore = useCrudStore('assignments')()
+	const friendStore = useCrudStore('friends')()
+	const giftStore = useCrudStore('gifts')()
 
-const additionalGetters = {
-	populatedAssignmentsList: (state, getters, rootState, rootGetters) => {
-		const busesMap = Object.fromEntries(rootGetters['buses/getItemsList'].map((bus) => [bus.id, bus]))
-		const driversMap = Object.fromEntries(
-			rootGetters['drivers/getItemsList'].map((driver) => [driver.id, driver])
-		)
+	const populatedAssignmentsList = ref([])
 
-		return state.assignments.map((assignment) => {
-			const bus = busesMap[assignment.busId] || {}
-			const driver = driversMap[assignment.driverId] || {}
+	function computePopulation() {
+		const friendsArr = Array.isArray(friendStore.getItemsList.value) ? friendStore.getItemsList.value : []
+		const giftsArr = Array.isArray(giftStore.getItemsList.value) ? giftStore.getItemsList.value : []
+		const assignmentsArr = Array.isArray(assignmentStore.getItemsList.value)
+			? assignmentStore.getItemsList.value
+			: []
 
+		const friendsMap = Object.fromEntries(friendsArr.map((friend) => [friend.id, friend]))
+		const giftsMap = Object.fromEntries(giftsArr.map((gift) => [gift.id, gift]))
+
+		populatedAssignmentsList.value = assignmentsArr.map((assignment) => {
+			const friend = friendsMap[assignment.friendId] || {}
+			const gift = giftsMap[assignment.giftId] || {}
 			return {
 				id: assignment.id,
-				busNumber: bus.number || null,
-				driverName: driver.name || null,
+				friendName: friend.name || null,
+				giftName: gift.name || null,
 			}
 		})
-	},
+	}
+
+	assignmentStore.populatedAssignmentsList = populatedAssignmentsList
+	assignmentStore.computePopulation = computePopulation
+
+	return assignmentStore
 }
-
-const assignments = {
-	...assignmentsModule,
-	getters: {
-		...assignmentsModule.getters,
-		...additionalGetters,
-	},
-	actions: {
-		...assignmentsModule.actions,
-		deleteDependentAssignment({ state, dispatch }, dependentId) {
-			const assignment = state.assignments.find((a) => a.driverId === dependentId || a.busId === dependentId)
-
-			if (!assignment) {
-				return
-			}
-
-			dispatch('deleteItem', assignment.id)
-			dispatch('loadList')
-		},
-	},
-}
-
-export default assignments

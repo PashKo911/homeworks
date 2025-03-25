@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="fixed bg-black/20 inset-0 z-50 backdrop-blur-sm grid place-items-center transition-colors duration-500"
+		class="fixed bg-black/20 inset-0 z-[500] backdrop-blur-sm grid place-items-center transition-colors duration-500"
 		v-show="loading">
 		<ProgressSpinner v-show="loading" />
 	</div>

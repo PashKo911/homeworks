@@ -1,6 +1,6 @@
 <template>
 	<main-layout :loading="isLoading" :hasError="hasError">
-		<div class="fixed left-[.9375rem] top-[5rem] z-10 flex items-center gap-4">
+		<div class="fixed right-[.9375rem] md:left-[.9375rem] top-[5rem] z-10 flex items-center gap-4">
 			<Button :label="$t('actionTitles.toolsButton')" icon="pi pi-cog" @click="setPermissionsManually" />
 			<Button
 				v-if="userPermissions.write"

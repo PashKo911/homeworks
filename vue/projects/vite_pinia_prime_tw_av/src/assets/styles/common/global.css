@@ -1,0 +1,79 @@
+body {
+	font-size: 1rem;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	height: 100%;
+	overflow: auto;
+	/* scrollbar-width: none; */
+	-ms-overflow-style: none; /* IE и Edge */
+}
+
+body::-webkit-scrollbar {
+	display: none; /* Chrome, Safari */
+}
+body:has(.menu-open) {
+	touch-action: none;
+	overscroll-behavior: none;
+	overflow: hidden;
+}
+/* body:not(.p-overflow-hidden) {
+	overflow-y: scroll;
+}
+
+body:has(.menu-open) {
+	touch-action: none;
+	overscroll-behavior: none;
+	overflow: hidden;
+	padding-right: 0.9375rem;
+}
+
+.p-overflow-hidden header {
+	padding-right: var(--p-scrollbar-width);
+} */
+
+#app {
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+
+	@supports (overflow: clip) {
+		overflow: clip;
+	}
+
+	> main {
+		flex: 1 1 auto;
+	}
+	> * {
+		min-width: 0;
+	}
+}
+
+[class~='container'] {
+	max-width: 91.875rem;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 0.9375rem;
+	padding-right: 0.9375rem;
+}
+
+.fullscreen {
+	min-height: calc(100svh - 4.875rem);
+}
+
+h1.title {
+	font-weight: 700;
+	font-size: clamp(1.25rem, 1.111rem + 0.7vw, 1.75rem);
+}
+
+h2.title {
+	font-weight: 600;
+	font-size: clamp(1.375rem, 1.3402173913rem + 0.1739130435vw, 1.5rem);
+}
+h3.title {
+	font-weight: 500;
+	font-size: clamp(1rem, 0.93rem + 0.35vw, 1.25rem);
+}

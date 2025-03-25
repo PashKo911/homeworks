@@ -4,11 +4,11 @@
 			selector: '@next',
 			toggleClass: 'c-left-visible',
 		}"
-		class="fixed top-[6.25rem] shrink-0 md:hidden">
+		class="fixed top-[9.375rem] shrink-0 md:hidden z-30">
 		<Button icon="pi pi-sliders-v" size="large" />
 	</div>
 	<aside
-		class="fixed md:sticky w-[15rem] h-full md:h-auto top-[4.125rem] md:top-[8.125rem] translate-x-[calc(-100%-.9375rem)] md:translate-x-0 bg-white dark:bg-surface-900 border-r border-surface-200 dark:border-surface-700 md:border-r-0 md:border-t md:border-l md:border-b md:shrink-0 basis-[170px] transition-transform duration-300 p-4 md:p-4">
+		class="fixed md:sticky w-[15rem] h-full md:h-auto top-[4.125rem] md:top-[8.125rem] translate-x-[calc(-100%-.9375rem)] md:translate-x-0 bg-white dark:bg-surface-900 border-r border-surface-200 dark:border-surface-700 md:border-r-0 md:border-t md:border-l md:border-b md:shrink-0 basis-[170px] transition-transform duration-300 p-4 md:p-4 z-50">
 		<div
 			v-styleclass="{
 				selector: '@parent',
